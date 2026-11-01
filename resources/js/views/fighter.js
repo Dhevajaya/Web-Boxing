@@ -1,5 +1,6 @@
 import { esc, api, STAT_NAMES } from '../ui.js';
 import { baseFighter, ovr } from '../game/index.js';
+import { session, logout, openLogin } from '../auth.js';
 
 export function fighterView(el, username) {
   el.innerHTML = `<p class="loading">Mencari @${esc(username)}…</p>`;
@@ -22,12 +23,18 @@ export function fighterView(el, username) {
 }
 
 function draw(el, f) {
+  const mine = session.me?.username === f.username;
+  const welcome = mine && new URLSearchParams(location.search).has('selamat');
+  if (welcome) history.replaceState({}, '', location.pathname); // jangan tampil lagi saat dimuat ulang
+
   const stats = Object.entries(STAT_NAMES)
     .map(([k, label]) => `<div class="stat"><span>${label}</span><div class="bar"><i style="width:${f.stats[k]}%"></i></div><b>${f.stats[k]}</b></div>`)
     .join('');
+  const brand = window.GAME?.brand ?? {};
 
   el.innerHTML = `
-    <a href="/" data-link class="sub" style="color:var(--muted);text-decoration:none">← Cari nama lain</a>
+    <a href="/" data-link class="sub back">← Cari nama lain</a>
+    ${welcome ? `<p class="banner">🥊 Selamat datang di ring, <b>@${esc(f.username)}</b>! Fight Night pertamamu dimulai saat fitur pertandingan rilis.</p>` : ''}
     <article class="fcard">
       <div class="fcard-head">
         <div>
@@ -38,6 +45,7 @@ function draw(el, f) {
       </div>
       <div class="fcard-body">
         <div class="pills">
+          ${mine ? '<span class="pill on">Ini kamu</span>' : ''}
           ${f.npc ? '<span class="pill">NPC</span>' : ''}
           ${f.verified ? '<span class="pill on">✓ Terverifikasi</span>' : ''}
           <span class="pill">${esc(f.kelas)}</span>
@@ -52,10 +60,23 @@ function draw(el, f) {
         <div class="stats">${stats}</div>
       </div>
     </article>
-    ${f.registered ? '' : `<section class="card">
-      <h2>Belum jadi petarung</h2>
-      <p class="sub">Kartu ini dibuat otomatis dari username. Pemiliknya cukup follow <b>@${esc(window.GAME?.brand?.instagram)}</b> lalu kirim DM <b>${esc(window.GAME?.brand?.keyword)}</b> (aktif mulai Fase 2).</p>
-    </section>`}
+    ${mine ? `<section class="card">
+      <h2>Akunmu</h2>
+      <p class="sub">${f.verified ? 'Terverifikasi lewat Instagram.' : 'Masuk lewat mode manual/pengembang, belum terverifikasi Instagram.'} Atur tampilan dan poin stat hadir di Fase 3.</p>
+      <div class="row">
+        <button class="btn btn-ghost" id="logoutBtn" type="button">Keluar</button>
+        <button class="btn btn-ghost" id="logoutAllBtn" type="button">Keluar semua perangkat</button>
+      </div>
+    </section>` : ''}
+    ${!f.registered && !session.me ? `<section class="card">
+      <h2>Ini akunmu?</h2>
+      <p class="sub">Kartu ini dibuat otomatis dari username. Follow <b>@${esc(brand.instagram)}</b> lalu kirim DM <b>${esc(brand.keyword)}</b> untuk jadi petarung.</p>
+      <button class="btn btn-accent btn-block" id="claimBtn" type="button">Masuk / daftar</button>
+    </section>` : ''}
     ${f.offline ? '<p class="parity">Server belum terhubung; kartu dihitung di browser.</p>' : ''}
   `;
+
+  el.querySelector('#logoutBtn')?.addEventListener('click', () => logout(false));
+  el.querySelector('#logoutAllBtn')?.addEventListener('click', () => logout(true));
+  el.querySelector('#claimBtn')?.addEventListener('click', () => openLogin());
 }

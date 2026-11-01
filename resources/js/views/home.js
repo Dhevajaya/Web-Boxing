@@ -2,12 +2,16 @@ import { $, esc, api, normalizeUsername } from '../ui.js';
 import { navigate } from '../router.js';
 import { baseFighter, simulate, signature, ovr } from '../game/index.js';
 import { describe, resultLine } from '../game/commentary.js';
+import { session, openLogin } from '../auth.js';
 
 export function homeView(el) {
   const brand = window.GAME?.brand ?? {};
+  const expired = new URLSearchParams(location.search).get('masuk') === 'kedaluwarsa';
+  if (expired) history.replaceState({}, '', '/');
   el.innerHTML = `
+    ${expired ? '<p class="banner bad">Link masuk itu sudah kedaluwarsa atau sudah dipakai. Minta link baru ya.</p>' : ''}
     <section class="hero">
-      <span class="eyebrow">Fase 1 · fondasi</span>
+      <span class="eyebrow">Fase 2 · masuk lewat Instagram</span>
       <h1>Mana <em>lawan</em>mu?</h1>
       <p>Ketik username Instagram untuk melihat kartu petarungnya.</p>
     </section>
@@ -43,8 +47,14 @@ export function homeView(el) {
       </div>
     </section>
 
-    <p class="sub" style="text-align:center;color:var(--muted)">Follow <b>@${esc(brand.instagram)}</b> lalu DM <b>${esc(brand.keyword)}</b> untuk jadi petarung (aktif mulai Fase 2).</p>
+    ${session.me ? '' : `<section class="card">
+      <h2>Jadi petarung</h2>
+      <p class="sub">Follow <b>@${esc(brand.instagram)}</b> lalu kirim DM <b>${esc(brand.keyword)}</b>. Tanpa password.</p>
+      <button class="btn btn-accent btn-block" id="joinBtn" type="button">Masuk / daftar</button>
+    </section>`}
   `;
+  $('#joinBtn', el)?.addEventListener('click', () => openLogin());
+  if (expired) openLogin();
 
   $('#search', el).onsubmit = (e) => {
     e.preventDefault();
