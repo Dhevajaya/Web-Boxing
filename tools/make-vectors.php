@@ -74,6 +74,22 @@ foreach ([1] as $version) {
     }
 }
 
+// Tampilan avatar bawaan dari username (resources/game/looks.json). Pakai RNG sendiri
+// agar vektor petarung/laga di atas tidak bergeser.
+$looks = App\Game\Looks::load(__DIR__.'/../resources/game');
+$lg = new Rng(31337);
+$out['looks'] = [];
+foreach (['budi', 'siti', 'Si.Merah', 'npc.bang_jago', 'a'] as $u) {
+    $out['looks'][] = ['username' => $u, 'expect' => $looks->default($u)];
+}
+for ($i = 0; $i < 60; $i++) {
+    $u = '';
+    for ($j = 0, $len = 2 + $lg->int(16); $j < $len; $j++) {
+        $u .= 'abcdefghijklmnopqrstuvwxyz0123456789._'[$lg->int(38)];
+    }
+    $out['looks'][] = ['username' => $u, 'expect' => $looks->default($u)];
+}
+
 $file = __DIR__.'/../tests/fixtures/engine_vectors.json';
 file_put_contents($file, json_encode($out, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)."\n");
 echo 'Ditulis: '.realpath($file).' ('.count($out['fights'])." laga, ".count($out['fighters'])." petarung)\n";

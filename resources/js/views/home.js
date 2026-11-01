@@ -1,6 +1,6 @@
 import { $, esc, api, normalizeUsername } from '../ui.js';
 import { navigate } from '../router.js';
-import { baseFighter, simulate, signature, ovr } from '../game/index.js';
+import { baseFighter, simulate, signature, ovr, lookFor, avatar } from '../game/index.js';
 import { describe, resultLine } from '../game/commentary.js';
 import { session, openLogin } from '../auth.js';
 
@@ -11,7 +11,7 @@ export function homeView(el) {
   el.innerHTML = `
     ${expired ? '<p class="banner bad">Link masuk itu sudah kedaluwarsa atau sudah dipakai. Minta link baru ya.</p>' : ''}
     <section class="hero">
-      <span class="eyebrow">Fase 2 · masuk lewat Instagram</span>
+      <span class="eyebrow">Fase 3 · atur petarungmu</span>
       <h1>Mana <em>lawan</em>mu?</h1>
       <p>Ketik username Instagram untuk melihat kartu petarungnya.</p>
     </section>
@@ -37,9 +37,9 @@ export function homeView(el) {
       <button class="btn btn-accent btn-block" id="go" type="button">Tanding!</button>
       <div id="ring" hidden>
         <div class="versus">
-          <div><div class="side-name blue" id="na"></div><div class="hp blue"><i id="ha" style="width:100%"></i></div></div>
+          <div><div class="side-av" id="aa"></div><div class="side-name blue" id="na"></div><div class="hp blue"><i id="ha" style="width:100%"></i></div></div>
           <span class="vs">VS</span>
-          <div><div class="side-name red" id="nb"></div><div class="hp red"><i id="hb" style="width:100%"></i></div></div>
+          <div><div class="side-av red" id="ab"></div><div class="side-name red" id="nb"></div><div class="hp red"><i id="hb" style="width:100%"></i></div></div>
         </div>
         <ul class="feed" id="feed"></ul>
         <div class="result" id="res" hidden><b id="resT"></b><span id="resS"></span></div>
@@ -83,6 +83,15 @@ export function homeView(el) {
     $('#res', el).hidden = true;
     $('#na', el).textContent = `${names.a} · ${ovr(fa.base)}`;
     $('#nb', el).textContent = `${ovr(fb.base)} · ${names.b}`;
+    // Wajah dari hash dulu, lalu diganti tampilan pilihan pemain bila sudah daftar.
+    const face = (sel, u, flip) => {
+      $(sel, el).innerHTML = avatar(lookFor(u), { size: 64, flip, title: `@${u}` });
+      api(`/api/fighters/${u}`).then(({ data }) => {
+        if (data.look) $(sel, el).innerHTML = avatar(data.look, { size: 64, flip, title: `@${u}` });
+      }).catch(() => {});
+    };
+    face('#aa', ua, false);
+    face('#ab', ub, true);
     const feed = $('#feed', el);
     feed.innerHTML = '';
     const setHp = (e) => {

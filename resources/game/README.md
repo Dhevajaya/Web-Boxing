@@ -7,6 +7,9 @@ Keduanya harus menghasilkan pertarungan yang identik dari input yang sama (stat,
 | --- | --- | --- |
 | `rules.v1.json` | Rumus pertarungan versi 1: pukulan, peluang kena, damage, knockdown, poin ronde, bobot OVR, cara membuat stat dasar dari username | **Tidak**, setelah dipakai di produksi |
 | `content.json` | Daftar julukan, kota, kelas bawaan, NPC | Tambah di **akhir** daftar saja |
+| `looks.json` | Katalog tampilan avatar: bagian, item, warna, level buka, `defaultPool` untuk tampilan bawaan | Tambah item kapan saja; **jangan** ganti/hapus `id` yang sudah dipakai. Mengubah `defaultPool` mengubah wajah bawaan semua petarung yang belum menyimpan tampilan |
+
+Tampilan bawaan dari username juga dicek kesetaraannya (PHP = JS) lewat bagian `looks` di `tests/fixtures/engine_vectors.json`.
 
 ## Mengubah rumus
 

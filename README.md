@@ -10,7 +10,7 @@ Stack: **Laravel 12 · PHP 8.3 · MySQL/SQLite · JavaScript (Vite)**. Dirancang
 | --- | --- | --- |
 | 1 | Fondasi Laravel, `config/game.php`, mesin pertarungan PHP + JS + test vektor, migration inti, seeder | ✅ |
 | 2 | Login Instagram (sekali ketuk, link DM, kode, manual, dev), sesi pemain | ✅ |
-| 3 | Profil dan editor tampilan petarung | ⏳ |
+| 3 | Profil: avatar, editor tampilan, julukan & kota, bagi poin stat | ✅ |
 | 4 | Fight Night batch, arena animasi, ranking | ⏳ |
 | 5–11 | Tantangan, Mading, Season, Sasana, Piala, Latihan, Markas, Admin, Dukung, QA | ⏳ |
 
@@ -34,6 +34,8 @@ php artisan serve                      # di terminal lain, buka http://localhost
 ```
 
 Masuk sebagai pemain di lokal: klik **Masuk** → bagian *Mode pengembang* → ketik username apa saja (aktif karena `APP_ENV=local` dan `AUTH_DEV_LOGIN=true`).
+
+Setelah masuk, buka **Profil** → *Atur petarung* untuk mengganti tampilan avatar, julukan & kota, dan membagi poin stat (`/profil/tampilan`, `/profil/identitas`, `/profil/stat`).
 
 Di beranda ada kotak **Uji mesin**: laga dihitung di browser lalu dibandingkan dengan hitungan server. Tanda ✓ berarti keduanya identik.
 
@@ -78,16 +80,19 @@ GitHub Actions menjalankan ketiganya di setiap push dan Pull Request.
 | Warna dan font | `resources/css/app.css` (bagian `:root`) |
 | Rumus pertarungan | `resources/game/rules.v{n}.json`, baca `resources/game/README.md` dulu |
 | Julukan, kota, NPC bawaan | `resources/game/content.json` (tambah di akhir daftar saja) |
+| Pilihan tampilan avatar (warna, rambut, aksesori, level buka) | `resources/game/looks.json` (jangan ganti/hapus `id` yang sudah dipakai) |
+| Panjang julukan/kota, jeda ganti, kata terlarang | `config/game.php` → `profile` |
+| Jatah poin stat dan jeda pindah poin | `config/game.php` → `points` |
 
 Nilai di tabel `settings` (nanti diubah dari panel admin) mengalahkan nilai di `config/game.php`.
 
 ## Struktur penting
 
 ```text
-app/Game/            mesin murni: Rng, FighterFactory, FightSimulator, Progression
+app/Game/            mesin murni: Rng, FighterFactory, FightSimulator, Progression, Looks, NameRules
 app/Support/         GameConfig (config + settings)
 resources/game/      aturan mesin (JSON) yang dipakai PHP dan JS
-resources/js/game/   port mesin ke JavaScript untuk animasi di browser
+resources/js/game/   port mesin ke JavaScript + avatar.js (gambar avatar SVG)
 tests/fixtures/      vektor kesetaraan PHP = JS
 tools/               make-vectors, check-engine, engine-stats
 ```

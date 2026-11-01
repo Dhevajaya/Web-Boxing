@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Game\Looks;
+use App\Game\NameRules;
 use App\Game\Rules;
 use App\Support\GameConfig;
 use Illuminate\Cache\RateLimiting\Limit;
@@ -20,6 +22,10 @@ class AppServiceProvider extends ServiceProvider
             resource_path('game'),
             (int) config('game.engine.version', 1),
         ));
+
+        // Katalog tampilan avatar (resources/game/looks.json), juga dipakai JavaScript.
+        $this->app->singleton(Looks::class, fn () => Looks::load(resource_path('game')));
+        $this->app->bind(NameRules::class, fn ($app) => new NameRules($app->make(GameConfig::class)->get('profile')));
     }
 
     public function boot(): void

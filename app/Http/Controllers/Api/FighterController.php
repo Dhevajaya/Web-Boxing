@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Game\FighterFactory;
+use App\Game\Looks;
 use App\Game\Progression;
 use App\Http\Controllers\Controller;
 use App\Models\Fighter;
@@ -12,11 +13,12 @@ use App\Models\Season;
 /**
  * Kartu petarung publik. Username yang belum daftar tetap punya kartu
  * (stat dasar dari hash), hanya saja `registered = false`.
+ * `look` selalu terisi (bawaan dari hash bila belum diatur), siap digambar avatar.js.
  * Fase berikutnya menambah rekor tantangan, latihan, lencana, dan laga terakhir.
  */
 class FighterController extends Controller
 {
-    public function show(string $username, FighterFactory $factory)
+    public function show(string $username, FighterFactory $factory, Looks $looks)
     {
         $u = Fighter::normalizeUsername($username);
         if (! $u) {
@@ -27,6 +29,7 @@ class FighterController extends Controller
         $base = $factory->base($u);
         $stats = $f ? $f->effectiveStats() : $base['base'];
         $prog = Progression::fromConfig();
+        $level = $prog->level((int) ($f?->xp ?? 0));
 
         $record = null;
         if ($f && ($season = Season::current())) {
@@ -44,12 +47,13 @@ class FighterController extends Controller
             'styleName' => $base['styleName'],
             'kelas' => $base['kelas'],
             'nick' => ($f?->nick ?: $base['nick']).' dari '.($f?->kota ?: $base['kota']),
-            'look' => $f?->look,
+            'look' => $looks->resolve($f?->look, $u),
             'base' => $base['base'],
             'points' => $f?->points ?? (object) [],
             'stats' => $stats,
             'ovr' => $factory->ovr($stats),
-            'level' => $prog->level((int) ($f?->xp ?? 0)),
+            'level' => $level,
+            'pointsFree' => $f ? max(0, $prog->pointsFor($level['lv']) - array_sum($f->points ?? [])) : 0,
             'record' => $record ?? ['w' => 0, 'l' => 0, 'd' => 0, 'ko' => 0, 'stars' => 0],
             'tier' => $prog->tier((int) ($record->stars ?? 0)),
             'sasana' => $f?->sasana?->only(['slug', 'name', 'icon', 'color']),

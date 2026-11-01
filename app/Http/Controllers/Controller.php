@@ -16,8 +16,9 @@ abstract class Controller
         ], $status, $headers);
     }
 
-    protected function fail(string $code, string $message, int $status = 422)
+    /** @param array $extra kolom tambahan di dalam `error`, misalnya `fields` atau `retry_at` */
+    protected function fail(string $code, string $message, int $status = 422, array $extra = [])
     {
-        return response()->json(['error' => ['code' => $code, 'message' => $message]], $status);
+        return response()->json(['error' => ['code' => $code, 'message' => $message] + $extra], $status);
     }
 }

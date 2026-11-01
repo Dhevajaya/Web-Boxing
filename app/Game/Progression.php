@@ -99,4 +99,45 @@ final class Progression
 
         return $sum <= $this->pointsFor($lv);
     }
+
+    /**
+     * Pemeriksaan lengkap pembagian poin dari editor stat.
+     *
+     * @param  array<string,mixed>  $points  stat => poin
+     * @param  array<string,int>  $base  stat dasar petarung (menentukan kunci yang sah)
+     * @return string|null null bila sah; selain itu kode galat: invalid, over_budget, over_max
+     */
+    public function checkPoints(array $points, int $lv, array $base, int $statMax): ?string
+    {
+        if (! $this->validPoints($points, $lv, array_keys($base))) {
+            $sum = 0;
+            foreach ($points as $k => $v) {
+                if (! array_key_exists($k, $base) || ! is_int($v) || $v < 0) {
+                    return 'invalid';
+                }
+                $sum += $v;
+            }
+
+            return 'over_budget';
+        }
+        foreach ($points as $k => $v) {
+            if ($base[$k] + $v > $statMax) {
+                return 'over_max';
+            }
+        }
+
+        return null;
+    }
+
+    /** Ada poin yang DIPINDAH (bukan sekadar ditambah)? Itu dibatasi waktu (points.respec_days). */
+    public static function isRespec(array $old, array $new): bool
+    {
+        foreach ($old as $k => $v) {
+            if ((int) $v > (int) ($new[$k] ?? 0)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

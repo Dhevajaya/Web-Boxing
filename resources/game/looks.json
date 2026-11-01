@@ -1,0 +1,125 @@
+{
+  "note": "Katalog tampilan avatar, dipakai bersama PHP (validasi) dan JavaScript (gambar + editor). ID item disimpan di database: JANGAN ganti atau hapus ID yang sudah dipakai. Item baru boleh ditambah di mana saja. 'lv' = level minimal untuk membuka item. 'defaultPool' menentukan tampilan bawaan dari username; mengubahnya mengubah tampilan semua petarung yang belum pernah menyimpan tampilan sendiri.",
+  "salt": "look1",
+  "parts": [
+    {
+      "key": "skin",
+      "name": "Kulit",
+      "kind": "swatch",
+      "items": [
+        { "id": "terang", "name": "Terang", "color": "#f1cfa6" },
+        { "id": "langsat", "name": "Kuning langsat", "color": "#e3b585" },
+        { "id": "sawo", "name": "Sawo matang", "color": "#c48a59" },
+        { "id": "zaitun", "name": "Zaitun", "color": "#a97b4f" },
+        { "id": "coklat", "name": "Coklat", "color": "#8d5a34" },
+        { "id": "gelap", "name": "Gelap", "color": "#5f3b22" }
+      ],
+      "defaultPool": ["terang", "langsat", "sawo", "zaitun", "coklat", "gelap"]
+    },
+    {
+      "key": "hair",
+      "name": "Rambut",
+      "kind": "chip",
+      "items": [
+        { "id": "botak", "name": "Botak" },
+        { "id": "cepak", "name": "Cepak" },
+        { "id": "spike", "name": "Jabrik" },
+        { "id": "belah", "name": "Belah samping" },
+        { "id": "keriting", "name": "Keriting" },
+        { "id": "gondrong", "name": "Gondrong" },
+        { "id": "kuncir", "name": "Kuncir" },
+        { "id": "mohawk", "name": "Mohawk", "lv": 5 },
+        { "id": "afro", "name": "Afro", "lv": 8 }
+      ],
+      "defaultPool": ["botak", "cepak", "spike", "belah", "keriting", "gondrong", "kuncir"]
+    },
+    {
+      "key": "hairColor",
+      "name": "Warna rambut",
+      "kind": "swatch",
+      "items": [
+        { "id": "hitam", "name": "Hitam", "color": "#1c1918" },
+        { "id": "coklat_tua", "name": "Coklat tua", "color": "#43291b" },
+        { "id": "coklat", "name": "Coklat", "color": "#7a4a28" },
+        { "id": "pirang", "name": "Pirang", "color": "#d8b15a" },
+        { "id": "merah", "name": "Merah bata", "color": "#a3412a" },
+        { "id": "uban", "name": "Uban", "color": "#b9bcc0", "lv": 3 },
+        { "id": "biru", "name": "Biru", "color": "#3f74e6", "lv": 5 },
+        { "id": "pink", "name": "Merah muda", "color": "#e45da3", "lv": 5 },
+        { "id": "hijau", "name": "Hijau stabilo", "color": "#7ddc3a", "lv": 10 }
+      ],
+      "defaultPool": ["hitam", "hitam", "hitam", "coklat_tua", "coklat_tua", "coklat", "pirang", "merah"]
+    },
+    {
+      "key": "face",
+      "name": "Wajah",
+      "kind": "chip",
+      "items": [
+        { "id": "serius", "name": "Serius" },
+        { "id": "senyum", "name": "Senyum" },
+        { "id": "garang", "name": "Garang" },
+        { "id": "santai", "name": "Santai" },
+        { "id": "teriak", "name": "Teriak", "lv": 3 }
+      ],
+      "defaultPool": ["serius", "senyum", "garang", "santai"]
+    },
+    {
+      "key": "beard",
+      "name": "Kumis & jenggot",
+      "kind": "chip",
+      "items": [
+        { "id": "tidak", "name": "Tidak ada" },
+        { "id": "kumis", "name": "Kumis" },
+        { "id": "janggut", "name": "Janggut" },
+        { "id": "brewok", "name": "Brewok" }
+      ],
+      "defaultPool": ["tidak", "tidak", "tidak", "kumis", "janggut", "brewok"]
+    },
+    {
+      "key": "gloves",
+      "name": "Sarung tinju",
+      "kind": "swatch",
+      "items": [
+        { "id": "merah", "name": "Merah", "color": "#d8352a" },
+        { "id": "biru", "name": "Biru", "color": "#2c6be0" },
+        { "id": "hitam", "name": "Hitam", "color": "#25262b" },
+        { "id": "putih", "name": "Putih", "color": "#ecebe6" },
+        { "id": "hijau", "name": "Hijau", "color": "#25935f" },
+        { "id": "ungu", "name": "Ungu", "color": "#7a4fd6", "lv": 3 },
+        { "id": "oranye", "name": "Oranye", "color": "#f07a1a", "lv": 5 },
+        { "id": "emas", "name": "Emas", "color": "#f2b52e", "lv": 10 }
+      ],
+      "defaultPool": ["merah", "merah", "biru", "biru", "hitam", "putih", "hijau"]
+    },
+    {
+      "key": "trunks",
+      "name": "Celana",
+      "kind": "swatch",
+      "items": [
+        { "id": "merah", "name": "Merah", "color": "#c62f26" },
+        { "id": "biru", "name": "Biru", "color": "#2459c4" },
+        { "id": "hitam", "name": "Hitam", "color": "#202125" },
+        { "id": "putih", "name": "Putih", "color": "#e6e4de" },
+        { "id": "hijau", "name": "Hijau", "color": "#1f8052" },
+        { "id": "ungu", "name": "Ungu", "color": "#6a43bd", "lv": 3 },
+        { "id": "oranye", "name": "Oranye", "color": "#e06d12", "lv": 5 },
+        { "id": "emas", "name": "Emas", "color": "#e5a823", "lv": 10 }
+      ],
+      "defaultPool": ["merah", "biru", "hitam", "putih", "hijau"]
+    },
+    {
+      "key": "extra",
+      "name": "Aksesori",
+      "kind": "chip",
+      "items": [
+        { "id": "tidak", "name": "Tidak ada" },
+        { "id": "ikat", "name": "Ikat kepala" },
+        { "id": "plester", "name": "Plester" },
+        { "id": "pelindung", "name": "Pelindung kepala", "lv": 4 },
+        { "id": "kacamata", "name": "Kacamata hitam", "lv": 7 },
+        { "id": "mahkota", "name": "Mahkota", "lv": 15 }
+      ],
+      "defaultPool": ["tidak", "tidak", "tidak", "ikat", "plester"]
+    }
+  ]
+}

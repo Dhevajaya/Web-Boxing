@@ -15087,5 +15087,852 @@
                 "sig": "1aa5d5a9"
             }
         }
+    ],
+    "looks": [
+        {
+            "username": "budi",
+            "expect": {
+                "skin": "langsat",
+                "hair": "botak",
+                "hairColor": "hitam",
+                "face": "santai",
+                "beard": "tidak",
+                "gloves": "biru",
+                "trunks": "hitam",
+                "extra": "tidak"
+            }
+        },
+        {
+            "username": "siti",
+            "expect": {
+                "skin": "gelap",
+                "hair": "keriting",
+                "hairColor": "hitam",
+                "face": "senyum",
+                "beard": "janggut",
+                "gloves": "hitam",
+                "trunks": "hijau",
+                "extra": "plester"
+            }
+        },
+        {
+            "username": "Si.Merah",
+            "expect": {
+                "skin": "zaitun",
+                "hair": "spike",
+                "hairColor": "coklat",
+                "face": "serius",
+                "beard": "tidak",
+                "gloves": "biru",
+                "trunks": "hijau",
+                "extra": "tidak"
+            }
+        },
+        {
+            "username": "npc.bang_jago",
+            "expect": {
+                "skin": "gelap",
+                "hair": "gondrong",
+                "hairColor": "coklat",
+                "face": "serius",
+                "beard": "kumis",
+                "gloves": "biru",
+                "trunks": "merah",
+                "extra": "plester"
+            }
+        },
+        {
+            "username": "a",
+            "expect": {
+                "skin": "gelap",
+                "hair": "cepak",
+                "hairColor": "coklat_tua",
+                "face": "serius",
+                "beard": "tidak",
+                "gloves": "merah",
+                "trunks": "merah",
+                "extra": "tidak"
+            }
+        },
+        {
+            "username": "4r122r5h",
+            "expect": {
+                "skin": "gelap",
+                "hair": "gondrong",
+                "hairColor": "hitam",
+                "face": "serius",
+                "beard": "tidak",
+                "gloves": "biru",
+                "trunks": "hitam",
+                "extra": "tidak"
+            }
+        },
+        {
+            "username": "i2xo.eftxhov",
+            "expect": {
+                "skin": "langsat",
+                "hair": "botak",
+                "hairColor": "hitam",
+                "face": "santai",
+                "beard": "janggut",
+                "gloves": "biru",
+                "trunks": "merah",
+                "extra": "ikat"
+            }
+        },
+        {
+            "username": "ew181pd_dr",
+            "expect": {
+                "skin": "terang",
+                "hair": "cepak",
+                "hairColor": "merah",
+                "face": "garang",
+                "beard": "janggut",
+                "gloves": "merah",
+                "trunks": "hijau",
+                "extra": "tidak"
+            }
+        },
+        {
+            "username": "9kjdvkk07aa",
+            "expect": {
+                "skin": "langsat",
+                "hair": "keriting",
+                "hairColor": "hitam",
+                "face": "garang",
+                "beard": "tidak",
+                "gloves": "merah",
+                "trunks": "hijau",
+                "extra": "ikat"
+            }
+        },
+        {
+            "username": "3qmgb7tp3j_wrvf",
+            "expect": {
+                "skin": "zaitun",
+                "hair": "spike",
+                "hairColor": "hitam",
+                "face": "garang",
+                "beard": "janggut",
+                "gloves": "hijau",
+                "trunks": "hitam",
+                "extra": "tidak"
+            }
+        },
+        {
+            "username": "ufu5p",
+            "expect": {
+                "skin": "coklat",
+                "hair": "spike",
+                "hairColor": "coklat_tua",
+                "face": "serius",
+                "beard": "kumis",
+                "gloves": "merah",
+                "trunks": "hitam",
+                "extra": "ikat"
+            }
+        },
+        {
+            "username": "74jb_q",
+            "expect": {
+                "skin": "langsat",
+                "hair": "cepak",
+                "hairColor": "coklat",
+                "face": "senyum",
+                "beard": "tidak",
+                "gloves": "putih",
+                "trunks": "hijau",
+                "extra": "ikat"
+            }
+        },
+        {
+            "username": "18",
+            "expect": {
+                "skin": "zaitun",
+                "hair": "keriting",
+                "hairColor": "hitam",
+                "face": "serius",
+                "beard": "tidak",
+                "gloves": "hijau",
+                "trunks": "hijau",
+                "extra": "tidak"
+            }
+        },
+        {
+            "username": "wpk5re",
+            "expect": {
+                "skin": "sawo",
+                "hair": "keriting",
+                "hairColor": "coklat",
+                "face": "serius",
+                "beard": "tidak",
+                "gloves": "merah",
+                "trunks": "merah",
+                "extra": "ikat"
+            }
+        },
+        {
+            "username": "x7xpem",
+            "expect": {
+                "skin": "gelap",
+                "hair": "gondrong",
+                "hairColor": "hitam",
+                "face": "serius",
+                "beard": "kumis",
+                "gloves": "biru",
+                "trunks": "putih",
+                "extra": "ikat"
+            }
+        },
+        {
+            "username": "k4_d2x21zfq5s",
+            "expect": {
+                "skin": "terang",
+                "hair": "belah",
+                "hairColor": "pirang",
+                "face": "serius",
+                "beard": "tidak",
+                "gloves": "putih",
+                "trunks": "putih",
+                "extra": "tidak"
+            }
+        },
+        {
+            "username": "66k76vptra",
+            "expect": {
+                "skin": "zaitun",
+                "hair": "botak",
+                "hairColor": "coklat",
+                "face": "garang",
+                "beard": "janggut",
+                "gloves": "hitam",
+                "trunks": "merah",
+                "extra": "tidak"
+            }
+        },
+        {
+            "username": "o.9m14rwsnr",
+            "expect": {
+                "skin": "coklat",
+                "hair": "cepak",
+                "hairColor": "hitam",
+                "face": "garang",
+                "beard": "tidak",
+                "gloves": "putih",
+                "trunks": "hijau",
+                "extra": "tidak"
+            }
+        },
+        {
+            "username": "05tkhmon",
+            "expect": {
+                "skin": "zaitun",
+                "hair": "botak",
+                "hairColor": "coklat",
+                "face": "santai",
+                "beard": "tidak",
+                "gloves": "hijau",
+                "trunks": "biru",
+                "extra": "ikat"
+            }
+        },
+        {
+            "username": "fvx",
+            "expect": {
+                "skin": "sawo",
+                "hair": "keriting",
+                "hairColor": "coklat_tua",
+                "face": "serius",
+                "beard": "janggut",
+                "gloves": "biru",
+                "trunks": "putih",
+                "extra": "tidak"
+            }
+        },
+        {
+            "username": "8sz82rtj",
+            "expect": {
+                "skin": "terang",
+                "hair": "belah",
+                "hairColor": "hitam",
+                "face": "garang",
+                "beard": "kumis",
+                "gloves": "biru",
+                "trunks": "biru",
+                "extra": "tidak"
+            }
+        },
+        {
+            "username": "fhghcqyegh8_gqph_",
+            "expect": {
+                "skin": "coklat",
+                "hair": "belah",
+                "hairColor": "hitam",
+                "face": "santai",
+                "beard": "kumis",
+                "gloves": "putih",
+                "trunks": "biru",
+                "extra": "ikat"
+            }
+        },
+        {
+            "username": "9gq",
+            "expect": {
+                "skin": "gelap",
+                "hair": "botak",
+                "hairColor": "hitam",
+                "face": "garang",
+                "beard": "tidak",
+                "gloves": "putih",
+                "trunks": "biru",
+                "extra": "plester"
+            }
+        },
+        {
+            "username": "ypusalya1dgrd0t",
+            "expect": {
+                "skin": "langsat",
+                "hair": "gondrong",
+                "hairColor": "coklat_tua",
+                "face": "santai",
+                "beard": "tidak",
+                "gloves": "hijau",
+                "trunks": "putih",
+                "extra": "tidak"
+            }
+        },
+        {
+            "username": "s3yr1tiuoos0a",
+            "expect": {
+                "skin": "langsat",
+                "hair": "kuncir",
+                "hairColor": "merah",
+                "face": "santai",
+                "beard": "kumis",
+                "gloves": "merah",
+                "trunks": "hitam",
+                "extra": "ikat"
+            }
+        },
+        {
+            "username": "z3i21ju3",
+            "expect": {
+                "skin": "coklat",
+                "hair": "kuncir",
+                "hairColor": "coklat",
+                "face": "santai",
+                "beard": "tidak",
+                "gloves": "putih",
+                "trunks": "hijau",
+                "extra": "ikat"
+            }
+        },
+        {
+            "username": "yo",
+            "expect": {
+                "skin": "terang",
+                "hair": "keriting",
+                "hairColor": "hitam",
+                "face": "senyum",
+                "beard": "tidak",
+                "gloves": "merah",
+                "trunks": "putih",
+                "extra": "ikat"
+            }
+        },
+        {
+            "username": "tnyi7ypf99it",
+            "expect": {
+                "skin": "gelap",
+                "hair": "spike",
+                "hairColor": "hitam",
+                "face": "garang",
+                "beard": "kumis",
+                "gloves": "putih",
+                "trunks": "merah",
+                "extra": "plester"
+            }
+        },
+        {
+            "username": "_4842lgvo58s9",
+            "expect": {
+                "skin": "sawo",
+                "hair": "botak",
+                "hairColor": "coklat_tua",
+                "face": "senyum",
+                "beard": "tidak",
+                "gloves": "hitam",
+                "trunks": "biru",
+                "extra": "ikat"
+            }
+        },
+        {
+            "username": "xlxhi889",
+            "expect": {
+                "skin": "coklat",
+                "hair": "cepak",
+                "hairColor": "pirang",
+                "face": "santai",
+                "beard": "janggut",
+                "gloves": "merah",
+                "trunks": "putih",
+                "extra": "ikat"
+            }
+        },
+        {
+            "username": "_m",
+            "expect": {
+                "skin": "sawo",
+                "hair": "kuncir",
+                "hairColor": "coklat",
+                "face": "santai",
+                "beard": "tidak",
+                "gloves": "putih",
+                "trunks": "putih",
+                "extra": "ikat"
+            }
+        },
+        {
+            "username": "fd08yh.iv",
+            "expect": {
+                "skin": "terang",
+                "hair": "gondrong",
+                "hairColor": "coklat_tua",
+                "face": "senyum",
+                "beard": "janggut",
+                "gloves": "hijau",
+                "trunks": "putih",
+                "extra": "tidak"
+            }
+        },
+        {
+            "username": "7fux096i",
+            "expect": {
+                "skin": "coklat",
+                "hair": "botak",
+                "hairColor": "hitam",
+                "face": "serius",
+                "beard": "janggut",
+                "gloves": "merah",
+                "trunks": "merah",
+                "extra": "tidak"
+            }
+        },
+        {
+            "username": "g0chw3zru.plp.tnv",
+            "expect": {
+                "skin": "coklat",
+                "hair": "botak",
+                "hairColor": "hitam",
+                "face": "senyum",
+                "beard": "tidak",
+                "gloves": "hijau",
+                "trunks": "hitam",
+                "extra": "plester"
+            }
+        },
+        {
+            "username": "9q6hrbk8fwtp.gun",
+            "expect": {
+                "skin": "zaitun",
+                "hair": "spike",
+                "hairColor": "hitam",
+                "face": "santai",
+                "beard": "tidak",
+                "gloves": "biru",
+                "trunks": "merah",
+                "extra": "plester"
+            }
+        },
+        {
+            "username": "nu9yx",
+            "expect": {
+                "skin": "terang",
+                "hair": "kuncir",
+                "hairColor": "merah",
+                "face": "garang",
+                "beard": "tidak",
+                "gloves": "hitam",
+                "trunks": "merah",
+                "extra": "tidak"
+            }
+        },
+        {
+            "username": "ik5rgnmw02pm76c",
+            "expect": {
+                "skin": "sawo",
+                "hair": "spike",
+                "hairColor": "coklat_tua",
+                "face": "serius",
+                "beard": "tidak",
+                "gloves": "merah",
+                "trunks": "hijau",
+                "extra": "plester"
+            }
+        },
+        {
+            "username": "9ddw4",
+            "expect": {
+                "skin": "sawo",
+                "hair": "spike",
+                "hairColor": "merah",
+                "face": "senyum",
+                "beard": "tidak",
+                "gloves": "biru",
+                "trunks": "putih",
+                "extra": "ikat"
+            }
+        },
+        {
+            "username": "5sxm_cp4hhxsy3",
+            "expect": {
+                "skin": "sawo",
+                "hair": "belah",
+                "hairColor": "merah",
+                "face": "serius",
+                "beard": "tidak",
+                "gloves": "merah",
+                "trunks": "putih",
+                "extra": "plester"
+            }
+        },
+        {
+            "username": "8ptgbkho9wyr4p",
+            "expect": {
+                "skin": "coklat",
+                "hair": "cepak",
+                "hairColor": "coklat_tua",
+                "face": "serius",
+                "beard": "tidak",
+                "gloves": "hitam",
+                "trunks": "hijau",
+                "extra": "tidak"
+            }
+        },
+        {
+            "username": "feo0po",
+            "expect": {
+                "skin": "coklat",
+                "hair": "spike",
+                "hairColor": "hitam",
+                "face": "senyum",
+                "beard": "kumis",
+                "gloves": "hitam",
+                "trunks": "biru",
+                "extra": "tidak"
+            }
+        },
+        {
+            "username": "ukmlvi.pznqa",
+            "expect": {
+                "skin": "zaitun",
+                "hair": "spike",
+                "hairColor": "pirang",
+                "face": "garang",
+                "beard": "tidak",
+                "gloves": "merah",
+                "trunks": "hijau",
+                "extra": "tidak"
+            }
+        },
+        {
+            "username": "c7e5e73vv",
+            "expect": {
+                "skin": "gelap",
+                "hair": "belah",
+                "hairColor": "coklat_tua",
+                "face": "serius",
+                "beard": "tidak",
+                "gloves": "biru",
+                "trunks": "hijau",
+                "extra": "tidak"
+            }
+        },
+        {
+            "username": "13aix6",
+            "expect": {
+                "skin": "gelap",
+                "hair": "cepak",
+                "hairColor": "coklat_tua",
+                "face": "serius",
+                "beard": "brewok",
+                "gloves": "putih",
+                "trunks": "merah",
+                "extra": "plester"
+            }
+        },
+        {
+            "username": "o7113r0h1",
+            "expect": {
+                "skin": "gelap",
+                "hair": "belah",
+                "hairColor": "coklat_tua",
+                "face": "senyum",
+                "beard": "brewok",
+                "gloves": "merah",
+                "trunks": "merah",
+                "extra": "tidak"
+            }
+        },
+        {
+            "username": "y82",
+            "expect": {
+                "skin": "coklat",
+                "hair": "keriting",
+                "hairColor": "hitam",
+                "face": "garang",
+                "beard": "tidak",
+                "gloves": "putih",
+                "trunks": "putih",
+                "extra": "plester"
+            }
+        },
+        {
+            "username": "jaagu2i",
+            "expect": {
+                "skin": "sawo",
+                "hair": "gondrong",
+                "hairColor": "hitam",
+                "face": "garang",
+                "beard": "janggut",
+                "gloves": "biru",
+                "trunks": "merah",
+                "extra": "tidak"
+            }
+        },
+        {
+            "username": "juk_be_rg08ak9kuv",
+            "expect": {
+                "skin": "sawo",
+                "hair": "cepak",
+                "hairColor": "hitam",
+                "face": "garang",
+                "beard": "tidak",
+                "gloves": "biru",
+                "trunks": "hijau",
+                "extra": "tidak"
+            }
+        },
+        {
+            "username": "ryesjm8l2f.fcs",
+            "expect": {
+                "skin": "zaitun",
+                "hair": "spike",
+                "hairColor": "hitam",
+                "face": "serius",
+                "beard": "tidak",
+                "gloves": "putih",
+                "trunks": "biru",
+                "extra": "tidak"
+            }
+        },
+        {
+            "username": "qkn",
+            "expect": {
+                "skin": "coklat",
+                "hair": "botak",
+                "hairColor": "hitam",
+                "face": "santai",
+                "beard": "kumis",
+                "gloves": "hijau",
+                "trunks": "merah",
+                "extra": "tidak"
+            }
+        },
+        {
+            "username": "3qi4d6f1",
+            "expect": {
+                "skin": "gelap",
+                "hair": "spike",
+                "hairColor": "pirang",
+                "face": "serius",
+                "beard": "tidak",
+                "gloves": "hitam",
+                "trunks": "merah",
+                "extra": "tidak"
+            }
+        },
+        {
+            "username": "n9304gx8",
+            "expect": {
+                "skin": "coklat",
+                "hair": "cepak",
+                "hairColor": "hitam",
+                "face": "santai",
+                "beard": "tidak",
+                "gloves": "biru",
+                "trunks": "biru",
+                "extra": "tidak"
+            }
+        },
+        {
+            "username": "e8u8wev8u",
+            "expect": {
+                "skin": "langsat",
+                "hair": "belah",
+                "hairColor": "coklat_tua",
+                "face": "garang",
+                "beard": "brewok",
+                "gloves": "biru",
+                "trunks": "merah",
+                "extra": "plester"
+            }
+        },
+        {
+            "username": "wil7s3dl7w.m",
+            "expect": {
+                "skin": "terang",
+                "hair": "kuncir",
+                "hairColor": "coklat",
+                "face": "serius",
+                "beard": "kumis",
+                "gloves": "merah",
+                "trunks": "hitam",
+                "extra": "tidak"
+            }
+        },
+        {
+            "username": "vdu0l0o",
+            "expect": {
+                "skin": "terang",
+                "hair": "keriting",
+                "hairColor": "hitam",
+                "face": "garang",
+                "beard": "kumis",
+                "gloves": "hitam",
+                "trunks": "biru",
+                "extra": "tidak"
+            }
+        },
+        {
+            "username": "r4qh45_espru",
+            "expect": {
+                "skin": "gelap",
+                "hair": "spike",
+                "hairColor": "hitam",
+                "face": "garang",
+                "beard": "kumis",
+                "gloves": "hijau",
+                "trunks": "hijau",
+                "extra": "tidak"
+            }
+        },
+        {
+            "username": "p3oxv",
+            "expect": {
+                "skin": "zaitun",
+                "hair": "spike",
+                "hairColor": "coklat_tua",
+                "face": "garang",
+                "beard": "kumis",
+                "gloves": "merah",
+                "trunks": "hijau",
+                "extra": "tidak"
+            }
+        },
+        {
+            "username": "f.d_5fjjdmw",
+            "expect": {
+                "skin": "sawo",
+                "hair": "spike",
+                "hairColor": "hitam",
+                "face": "garang",
+                "beard": "tidak",
+                "gloves": "putih",
+                "trunks": "merah",
+                "extra": "tidak"
+            }
+        },
+        {
+            "username": "lktovw.0m",
+            "expect": {
+                "skin": "zaitun",
+                "hair": "belah",
+                "hairColor": "coklat_tua",
+                "face": "santai",
+                "beard": "tidak",
+                "gloves": "putih",
+                "trunks": "hitam",
+                "extra": "ikat"
+            }
+        },
+        {
+            "username": "yinpnu",
+            "expect": {
+                "skin": "gelap",
+                "hair": "cepak",
+                "hairColor": "coklat",
+                "face": "santai",
+                "beard": "brewok",
+                "gloves": "biru",
+                "trunks": "hijau",
+                "extra": "tidak"
+            }
+        },
+        {
+            "username": "c3zmp.c.",
+            "expect": {
+                "skin": "gelap",
+                "hair": "kuncir",
+                "hairColor": "hitam",
+                "face": "senyum",
+                "beard": "tidak",
+                "gloves": "merah",
+                "trunks": "merah",
+                "extra": "ikat"
+            }
+        },
+        {
+            "username": "bjbzkrntu_g_",
+            "expect": {
+                "skin": "langsat",
+                "hair": "kuncir",
+                "hairColor": "pirang",
+                "face": "santai",
+                "beard": "brewok",
+                "gloves": "merah",
+                "trunks": "biru",
+                "extra": "ikat"
+            }
+        },
+        {
+            "username": "7ik79bz",
+            "expect": {
+                "skin": "terang",
+                "hair": "belah",
+                "hairColor": "hitam",
+                "face": "serius",
+                "beard": "janggut",
+                "gloves": "merah",
+                "trunks": "putih",
+                "extra": "tidak"
+            }
+        },
+        {
+            "username": "iy7dtyfce0_n.l1",
+            "expect": {
+                "skin": "terang",
+                "hair": "botak",
+                "hairColor": "hitam",
+                "face": "serius",
+                "beard": "janggut",
+                "gloves": "biru",
+                "trunks": "hijau",
+                "extra": "tidak"
+            }
+        },
+        {
+            "username": "yqxhktq",
+            "expect": {
+                "skin": "langsat",
+                "hair": "cepak",
+                "hairColor": "hitam",
+                "face": "senyum",
+                "beard": "tidak",
+                "gloves": "putih",
+                "trunks": "biru",
+                "extra": "tidak"
+            }
+        }
     ]
 }

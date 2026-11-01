@@ -55,6 +55,23 @@ return [
         'respec_days' => 7,            // memindah poin yang sudah dipasang
     ],
 
+    // Profil buatan pemain: julukan, kota, tampilan avatar (katalog: resources/game/looks.json).
+    'profile' => [
+        'nick_min' => 3,
+        'nick_max' => 24,
+        'kota_min' => 3,
+        'kota_max' => 24,
+        'identity_cooldown_hours' => 24,   // jeda mengganti julukan/kota (ganti pertama bebas)
+        // Kata yang tidak boleh ada di julukan/kota. Kata < 5 huruf dicocokkan utuh,
+        // yang lebih panjang dicocokkan di mana saja (juga "4njing", "anjiiing").
+        'banned_words' => [
+            'admin', 'moderator', 'official', 'resmi', 'staff',
+            'anjing', 'bangsat', 'bajingan', 'babi', 'asu', 'jancok', 'jancuk', 'kontol', 'memek',
+            'ngentot', 'entot', 'goblok', 'tolol', 'kampret', 'pelacur', 'lonte', 'perek', 'bego',
+            'tai', 'taik', 'setan', 'iblis', 'fuck', 'shit', 'bitch', 'nazi',
+        ],
+    ],
+
     'xp' => [
         'win' => 10,
         'ko_bonus' => 5,

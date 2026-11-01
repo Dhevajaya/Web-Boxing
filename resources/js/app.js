@@ -3,6 +3,7 @@ import { session, loadSession, onAuthChange, openLogin } from './auth.js';
 import { homeView } from './views/home.js';
 import { fighterView } from './views/fighter.js';
 import { soonView } from './views/soon.js';
+import { editorView } from './views/editor.js';
 
 const view = document.getElementById('view');
 
@@ -13,6 +14,12 @@ route(/^\/profil\/?$/, () => {
     soonView(view, 'profil');
     openLogin();
   }
+}, 'profil');
+route(/^\/profil\/(tampilan|identitas|stat)\/?$/, (section) => {
+  if (session.me) return editorView(view, section);
+  soonView(view, 'profil');
+  openLogin();
+  return null;
 }, 'profil');
 route(/^\/(mading|latihan|markas|piala|dukung|privasi)\/?$/, (page) => soonView(view, page), (page) => page);
 route(/^\/t\/([A-Za-z0-9_-]{6,16})\/?$/, () => soonView(view, 'tantangan'), null);

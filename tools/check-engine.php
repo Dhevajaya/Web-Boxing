@@ -46,7 +46,12 @@ foreach ($vec['fights'] as $i => $t) {
     $check(FightSimulator::signature($r) === $t['expect']['sig'] && $r['win'] === $t['expect']['win'], "laga #{$i} (seed {$t['seed']})");
 }
 
-$n = count($vec['rng']) + count($vec['fnv']) + count($vec['fighters']) + count($vec['fights']);
+$looks = App\Game\Looks::load(__DIR__.'/../resources/game');
+foreach ($vec['looks'] ?? [] as $t) {
+    $check($looks->default($t['username']) === $t['expect'], "tampilan {$t['username']}");
+}
+
+$n = count($vec['looks'] ?? []) + count($vec['rng']) + count($vec['fnv']) + count($vec['fighters']) + count($vec['fights']);
 if ($fail) {
     fwrite(STDERR, "{$fail} dari {$n} vektor GAGAL\n");
     exit(1);

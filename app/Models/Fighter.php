@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Game\FighterFactory;
+use App\Game\Looks;
+use App\Game\Progression;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Database\Eloquent\Builder;
@@ -29,7 +31,7 @@ class Fighter extends Model implements AuthenticatableContract
     }
 
     protected $fillable = [
-        'instagram_username', 'ig_scoped_id', 'status', 'is_npc', 'look', 'nick', 'kota',
+        'instagram_username', 'ig_scoped_id', 'status', 'is_npc', 'look', 'nick', 'kota', 'identity_changed_at',
         'points', 'points_respec_at', 'xp', 'level', 'sasana_id', 'sasana_season',
         'supporter_tier', 'supporter_anonymous', 'verified_at', 'activated_at', 'last_active_at',
     ];
@@ -44,6 +46,7 @@ class Fighter extends Model implements AuthenticatableContract
             'look' => 'array',
             'points' => 'array',
             'points_respec_at' => 'datetime',
+            'identity_changed_at' => 'datetime',
             'verified_at' => 'datetime',
             'activated_at' => 'datetime',
             'last_active_at' => 'datetime',
@@ -101,6 +104,17 @@ class Fighter extends Model implements AuthenticatableContract
     public function fightInput(array $bonus = [], ?int $version = null): array
     {
         return ['style' => $this->base($version)['style'], 'stats' => $this->effectiveStats($bonus, $version)];
+    }
+
+    /** Tampilan avatar: pilihan tersimpan di atas bawaan dari username. */
+    public function resolvedLook(): array
+    {
+        return app(Looks::class)->resolve($this->look, $this->instagram_username);
+    }
+
+    public function levelNumber(): int
+    {
+        return Progression::fromConfig()->level((int) $this->xp)['lv'];
     }
 
     public function displayNick(): string
