@@ -285,6 +285,7 @@ class InstagramLoginTest extends TestCase
         $this->postJson('/api/auth/dev', ['username' => 'tes'])->assertNotFound(); // APP_ENV=testing
 
         $this->app['env'] = 'local';
+        $this->withoutMiddleware(\Illuminate\Foundation\Http\Middleware\ValidateCsrfToken::class); // CSRF aktif di env local
         $this->postJson('/api/auth/dev', ['username' => 'tes'])->assertOk();
         $this->assertAuthenticated('fighter');
     }
@@ -299,6 +300,8 @@ class InstagramLoginTest extends TestCase
         $this->getJson('/api/me')->assertJsonPath('data.username', 'budi');
 
         Fighter::where('instagram_username', 'budi')->update(['status' => 'suspended']);
+        // Di produksi setiap request memuat petarung baru dari DB; di test guard menyimpannya.
+        \Illuminate\Support\Facades\Auth::guard('fighter')->forgetUser();
         $this->getJson('/api/me')->assertJsonPath('data', null);
     }
 
