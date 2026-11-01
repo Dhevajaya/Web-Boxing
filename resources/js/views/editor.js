@@ -9,6 +9,7 @@ const TABS = [
   ['tampilan', 'Tampilan'],
   ['identitas', 'Julukan'],
   ['stat', 'Poin stat'],
+  ...(window.GAME?.features?.sasana === false ? [] : [['sasana', 'Sasana']]),
 ];
 
 const STAT_HINTS = {
@@ -75,7 +76,7 @@ export function editorView(el, initialTab) {
       b.tabIndex = on ? 0 : -1;
     });
     $('#pane', el).setAttribute('aria-labelledby', `tab-${id}`);
-    ({ tampilan: drawLook, identitas: drawIdentity, stat: drawStats })[id]();
+    ({ tampilan: drawLook, identitas: drawIdentity, stat: drawStats, sasana: drawSasana })[id]();
   }
 
   // Simpan ke server; perbarui profil bila berhasil, tampilkan pesan bila gagal.
@@ -106,9 +107,11 @@ export function editorView(el, initialTab) {
     const parts = LOOKS.parts.map((part) => {
       const opts = part.items.map((it) => {
         const need = it.lv ?? 1;
-        const locked = need > lv && p.look[part.key] !== it.id;
+        const TIER = { tribun: 1, ringside: 2, vip: 3 };
+        const supLocked = it.supporter && (TIER[p.supporter] ?? 0) < TIER[it.supporter] && p.look[part.key] !== it.id;
+        const locked = (need > lv && p.look[part.key] !== it.id) || supLocked;
         const on = look[part.key] === it.id;
-        const lockTag = locked ? `<small class="lock">🔒 Lv${need}</small>` : '';
+        const lockTag = supLocked ? '<small class="lock">♥</small>' : locked ? `<small class="lock">🔒 Lv${need}</small>` : '';
         return part.kind === 'swatch'
           ? `<button type="button" class="sw${on ? ' on' : ''}" data-part="${part.key}" data-id="${it.id}" aria-pressed="${on}" ${locked ? 'disabled' : ''}
                title="${esc(it.name)}${locked ? ` (Level ${need})` : ''}" aria-label="${esc(it.name)}${locked ? `, terbuka di Level ${need}` : ''}" style="--c:${it.color}">${lockTag}</button>`
@@ -126,7 +129,7 @@ export function editorView(el, initialTab) {
         </div>
       </div>
       ${parts}
-      <p class="hint">Item bergembok terbuka saat levelmu naik. Kamu sekarang Level ${lv}.</p>
+      <p class="hint">Item bergembok terbuka saat levelmu naik. Kamu sekarang Level ${lv}. Item ♥ khusus <a href="/dukung" data-link>pendukung</a>.</p>
       <div class="savebar">
         <p class="m-status" id="saveStatus" aria-live="polite"></p>
         <button class="btn btn-accent" type="button" id="saveLook">Simpan tampilan</button>
@@ -271,6 +274,39 @@ export function editorView(el, initialTab) {
     $('#resetPts', pane).onclick = () => { points = { ...p.points }; refresh(); };
     $('#savePts', pane).onclick = (e) => save('/api/me/points', { points }, e.currentTarget, $('#saveStatus', pane), 'Poin tersimpan.');
     refresh();
+  }
+
+  // ------------------------------------------------------------ sasana
+
+  function drawSasana() {
+    const pane = $('#pane', el);
+    pane.innerHTML = '<p class="loading">Memuat sasana…</p>';
+    api('/api/sasana').then(({ data }) => {
+      if (!alive || tab !== 'sasana') return;
+      const mine = p.sasana?.slug;
+      pane.innerHTML = `
+        <p class="hint">Pilih satu sasana untuk season ini. Kemenangan Fight Night-mu menyumbang poin Perang Sasana (3 per menang, 1 per seri, +1 tiap KO). ${p.sasanaLocked ? '<b>Pilihanmu terkunci sampai season berikutnya.</b>' : 'Setelah memilih, tidak bisa pindah sampai season berikutnya.'}</p>
+        <div class="sas-grid">${data.map((s) => `
+          <button type="button" class="sas${mine === s.slug ? ' on' : ''}" data-slug="${esc(s.slug)}" style="--c:${esc(s.color)}" ${p.sasanaLocked ? 'disabled' : ''} aria-pressed="${mine === s.slug}">
+            <span class="sas-ic" aria-hidden="true">${esc(s.icon)}</span><b>${esc(s.name)}</b><small>${esc(s.motto ?? '')}</small><em>${s.members} anggota</em>
+          </button>`).join('')}</div>
+        <a class="btn btn-ghost btn-block" href="/ranking?papan=sasana" data-link>Lihat Perang Sasana</a>
+        <div class="savebar"><p class="m-status" id="saveStatus" aria-live="polite"></p></div>`;
+      pane.querySelectorAll('.sas').forEach((b) => b.addEventListener('click', async () => {
+        const name = b.querySelector('b').textContent;
+        if (!confirm(`Gabung sasana ${name}? Tidak bisa pindah sampai season berikutnya.`)) return;
+        try {
+          await api('/api/me/sasana', { method: 'PUT', body: JSON.stringify({ slug: b.dataset.slug }) });
+          const { data: fresh } = await api('/api/me/profile', { cache: 'no-store' });
+          if (!alive) return;
+          load(fresh);
+          drawSasana();
+        } catch (e) {
+          const s = $('#saveStatus', pane);
+          if (s) s.textContent = e.message;
+        }
+      }));
+    }).catch((e) => { pane.innerHTML = `<p class="m-status">${esc(e.message)}</p>`; });
   }
 
   return { cleanup: () => { alive = false; } };

@@ -39,7 +39,7 @@ class GameSeeder extends Seeder
         }
 
         // Admin pertama dari .env (opsional): ADMIN_EMAIL dan ADMIN_PASSWORD.
-        if (($email = env('ADMIN_EMAIL')) && ($password = env('ADMIN_PASSWORD'))) {
+        if (($email = config('game.admin_seed.email')) && ($password = config('game.admin_seed.password'))) {
             Admin::firstOrCreate(['email' => $email], [
                 'name' => 'Owner', 'password' => $password, 'role' => 'owner',
             ]);

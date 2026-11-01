@@ -30,7 +30,13 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        RateLimiter::for('api-read', fn (Request $r) => Limit::perMinute(120)->by($r->ip()));
+        // Operator seluler sering memakai CGNAT (banyak pemain berbagi satu IP), jadi batas utama
+        // per sesi browser; batas per IP hanya rem kasar untuk bot.
+        RateLimiter::for('api-read', fn (Request $r) => [
+            Limit::perMinute(240)->by('read-s:'.($r->session()?->getId() ?: $r->ip())),
+            Limit::perMinute(3000)->by('read-ip:'.$r->ip()),
+        ]);
+        RateLimiter::for('chat', fn (Request $r) => Limit::perMinute(20)->by('chat:'.($r->session()?->getId() ?: $r->ip())));
         RateLimiter::for('api-write', fn (Request $r) => Limit::perMinute(30)->by($r->session()?->getId() ?: $r->ip()));
         // Minta kode / mulai login: 10 per 10 menit per IP, 5 per 10 menit per username.
         RateLimiter::for('auth', function (Request $r) {

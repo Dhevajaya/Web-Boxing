@@ -72,6 +72,12 @@ return [
         ],
     ],
 
+    // Tantangan langsung (/t/{kode}): laga instan, hanya penantang yang dapat XP.
+    'challenge' => [
+        'daily_limit' => 20,             // tantangan per pemain per hari (zona game)
+        'same_opponent_minutes' => 10,   // jeda menantang lawan yang sama
+    ],
+
     'xp' => [
         'win' => 10,
         'ko_bonus' => 5,
@@ -123,6 +129,7 @@ return [
     'piala' => [
         'reg_open' => 'monday 00:00',
         'draw' => 'thursday 12:00',
+        'early_rounds_day' => 'saturday',   // babak sebelum 3 babak terakhir dimainkan hari ini
         'early_rounds_at' => '19:00',
         'round_gap_minutes' => 15,
         'finals' => ['sunday 19:00', 'sunday 19:30', 'sunday 20:00'],
@@ -143,13 +150,21 @@ return [
         'xp_cap_per_game' => 20,
         'bonus_max' => 3,
         'max_taps_per_sec' => 15,
+        // Per mini-game: stat yang dilatih, skor maksimal yang masuk akal (anti-curang),
+        // skor per 1 XP, dan skor untuk bonus +1/+2/+3 stat pada laga hari itu.
         'games' => [
-            'samsak' => 'power',
-            'hindari' => 'speed',
-            'lompat' => 'stamina',
-            'tahan' => 'defense',
-            'situp' => 'chin',
+            'samsak' => ['stat' => 'power', 'max' => 450, 'xp_div' => 10, 'bonus' => [120, 180, 240]],
+            'hindari' => ['stat' => 'speed', 'max' => 40, 'xp_div' => 1, 'bonus' => [12, 18, 24]],
+            'lompat' => ['stat' => 'stamina', 'max' => 50, 'xp_div' => 1, 'bonus' => [15, 24, 32]],
+            'tahan' => ['stat' => 'defense', 'max' => 60, 'xp_div' => 2, 'bonus' => [30, 42, 52]],
+            'situp' => ['stat' => 'chin', 'max' => 450, 'xp_div' => 8, 'bonus' => [90, 140, 190]],
         ],
+    ],
+
+    // Cari lawan sparing di Markas: pemain aktif N hari terakhir dengan selisih bintang <= stars.spar_range.
+    'spar' => [
+        'active_days' => 3,
+        'limit' => 10,
     ],
 
     'chat' => [
@@ -159,6 +174,18 @@ return [
         'report_threshold' => 3,
         'mute_hours' => 24,
         'retention_days' => 7,
+    ],
+
+    // Dukung: donasi lewat Saweria (atau platform lain yang mengirim webhook JSON).
+    // Pemain menulis @username di pesan donasi; total donasi menentukan tier (tidak pernah turun).
+    'supporter' => [
+        'saweria_url' => env('SUPPORT_SAWERIA_URL'),        // mis. https://saweria.co/akunmu
+        'webhook_token' => env('SUPPORT_WEBHOOK_TOKEN'),    // rahasia di URL webhook: /api/webhooks/saweria/{token}
+        'tiers' => [
+            ['id' => 'tribun', 'name' => 'Tribun', 'min' => 10000],
+            ['id' => 'ringside', 'name' => 'Ringside', 'min' => 25000],
+            ['id' => 'vip', 'name' => 'VIP', 'min' => 50000],
+        ],
     ],
 
     'auth' => [
@@ -172,6 +199,12 @@ return [
     'dm_queue' => [
         'busy_backlog' => 500,
         'busy_age_sec' => 300,
+    ],
+
+    // Admin pertama, dibuat GameSeeder bila keduanya diisi (lebih aman: php artisan admin:create).
+    'admin_seed' => [
+        'email' => env('ADMIN_EMAIL'),
+        'password' => env('ADMIN_PASSWORD'),
     ],
 
     'instagram' => [

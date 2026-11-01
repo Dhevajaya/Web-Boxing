@@ -1,5 +1,5 @@
 {
-  "note": "Katalog tampilan avatar, dipakai bersama PHP (validasi) dan JavaScript (gambar + editor). ID item disimpan di database: JANGAN ganti atau hapus ID yang sudah dipakai. Item baru boleh ditambah di mana saja. 'lv' = level minimal untuk membuka item. 'defaultPool' menentukan tampilan bawaan dari username; mengubahnya mengubah tampilan semua petarung yang belum pernah menyimpan tampilan sendiri.",
+  "note": "Katalog tampilan avatar, dipakai bersama PHP (validasi) dan JavaScript (gambar + editor). ID item disimpan di database: JANGAN ganti atau hapus ID yang sudah dipakai. Item baru boleh ditambah di mana saja. 'lv' = level minimal untuk membuka item. 'supporter' = tier pendukung minimal (tribun < ringside < vip). 'defaultPool' menentukan tampilan bawaan dari username; mengubahnya mengubah tampilan semua petarung yang belum pernah menyimpan tampilan sendiri.",
   "salt": "look1",
   "parts": [
     {
@@ -46,7 +46,8 @@
         { "id": "uban", "name": "Uban", "color": "#b9bcc0", "lv": 3 },
         { "id": "biru", "name": "Biru", "color": "#3f74e6", "lv": 5 },
         { "id": "pink", "name": "Merah muda", "color": "#e45da3", "lv": 5 },
-        { "id": "hijau", "name": "Hijau stabilo", "color": "#7ddc3a", "lv": 10 }
+        { "id": "hijau", "name": "Hijau stabilo", "color": "#7ddc3a", "lv": 10 },
+        { "id": "emas", "name": "Emas", "color": "#f2c14e", "supporter": "ringside" }
       ],
       "defaultPool": ["hitam", "hitam", "hitam", "coklat_tua", "coklat_tua", "coklat", "pirang", "merah"]
     },
@@ -87,7 +88,8 @@
         { "id": "hijau", "name": "Hijau", "color": "#25935f" },
         { "id": "ungu", "name": "Ungu", "color": "#7a4fd6", "lv": 3 },
         { "id": "oranye", "name": "Oranye", "color": "#f07a1a", "lv": 5 },
-        { "id": "emas", "name": "Emas", "color": "#f2b52e", "lv": 10 }
+        { "id": "emas", "name": "Emas", "color": "#f2b52e", "lv": 10 },
+        { "id": "neon", "name": "Neon pendukung", "color": "#2df5c4", "supporter": "tribun" }
       ],
       "defaultPool": ["merah", "merah", "biru", "biru", "hitam", "putih", "hijau"]
     },
@@ -103,7 +105,8 @@
         { "id": "hijau", "name": "Hijau", "color": "#1f8052" },
         { "id": "ungu", "name": "Ungu", "color": "#6a43bd", "lv": 3 },
         { "id": "oranye", "name": "Oranye", "color": "#e06d12", "lv": 5 },
-        { "id": "emas", "name": "Emas", "color": "#e5a823", "lv": 10 }
+        { "id": "emas", "name": "Emas", "color": "#e5a823", "lv": 10 },
+        { "id": "neon", "name": "Neon pendukung", "color": "#16c9a0", "supporter": "tribun" }
       ],
       "defaultPool": ["merah", "biru", "hitam", "putih", "hijau"]
     },

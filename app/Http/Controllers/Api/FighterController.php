@@ -57,6 +57,9 @@ class FighterController extends Controller
             'record' => $record ?? ['w' => 0, 'l' => 0, 'd' => 0, 'ko' => 0, 'stars' => 0],
             'tier' => $prog->tier((int) ($record->stars ?? 0)),
             'sasana' => $f?->sasana?->only(['slug', 'name', 'icon', 'color']),
+            'supporter' => $f && ! $f->supporter_anonymous ? $f->supporter_tier : null,
+            'badges' => $f ? \App\Models\Badge::where('fighter_id', $f->id)->orderBy('awarded_at')->get(['code', 'meta', 'awarded_at'])
+                ->map(fn ($b) => ['code' => $b->code, 'meta' => $b->meta, 'at' => $b->awarded_at->toIso8601String()]) : [],
         ], headers: ['Cache-Control' => 'public, max-age=15, s-maxage=30']);
     }
 }

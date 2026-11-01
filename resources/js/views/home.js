@@ -1,4 +1,4 @@
-import { $, esc, api, normalizeUsername } from '../ui.js';
+import { $, esc, api, normalizeUsername, countdown, RESULT } from '../ui.js';
 import { navigate } from '../router.js';
 import { baseFighter, simulate, signature, ovr, lookFor, avatar } from '../game/index.js';
 import { describe, resultLine } from '../game/commentary.js';
@@ -11,9 +11,15 @@ export function homeView(el) {
   el.innerHTML = `
     ${expired ? '<p class="banner bad">Link masuk itu sudah kedaluwarsa atau sudah dipakai. Minta link baru ya.</p>' : ''}
     <section class="hero">
-      <span class="eyebrow">Fase 3 · atur petarungmu</span>
+      <span class="eyebrow">Fight Night tiap 6 jam</span>
       <h1>Mana <em>lawan</em>mu?</h1>
       <p>Ketik username Instagram untuk melihat kartu petarungnya.</p>
+    </section>
+
+    <section class="card fn-card" id="fn" aria-live="polite">
+      <div class="fn-row"><div><span class="eyebrow">Fight Night berikutnya</span><b class="fn-time" id="fnTime">…</b></div><b class="fn-cd" id="fnCd">--:--:--</b></div>
+      <div id="fnMine"></div>
+      <div class="row"><a class="btn btn-ghost btn-sm" href="/ranking" data-link>🏆 Ranking</a>${window.GAME?.features?.piala === false ? '' : '<a class="btn btn-ghost btn-sm" href="/piala" data-link>🥇 Piala</a>'}</div>
     </section>
 
     <form class="field" id="search" autocomplete="off">
@@ -54,6 +60,25 @@ export function homeView(el) {
     </section>`}
   `;
   $('#joinBtn', el)?.addEventListener('click', () => openLogin());
+
+  let stopCd = () => {};
+  let alive = true;
+  api('/api/fight-night').then(({ data }) => {
+    if (!alive) return;
+    const tz = window.GAME?.brand?.timezone;
+    $('#fnTime', el).textContent = `${new Date(data.next).toLocaleString('id-ID', { weekday: 'long', hour: '2-digit', minute: '2-digit', timeZone: tz })} WIB`;
+    stopCd = countdown(data.next, (t, s) => {
+      const cd = $('#fnCd', el);
+      if (cd) cd.textContent = t;
+      if (s === 0) stopCd();
+    });
+    if (data.mine) {
+      const [, label, cls] = RESULT[data.mine.result];
+      $('#fnMine', el).innerHTML = `<a class="fn-mine" href="/laga/${data.mine.id}" data-link><span class="res ${cls}">${label}</span> laga terakhirmu vs <b>@${esc(data.mine.opponent?.username ?? '?')}</b> (${esc(data.mine.how)}) <span class="go">Tonton ›</span></a>`;
+    } else if (session.me) {
+      $('#fnMine', el).innerHTML = '<p class="hint">Kamu otomatis ikut selama aktif dalam 14 hari terakhir.</p>';
+    }
+  }).catch(() => { if (alive) $('#fn', el).hidden = true; });
   if (expired) openLogin();
 
   $('#search', el).onsubmit = (e) => {
@@ -135,5 +160,5 @@ export function homeView(el) {
       .catch(() => { p.textContent = `Browser: ${sig} · server tidak terjangkau.`; });
   };
 
-  return { cleanup: () => clearInterval(timer) };
+  return { cleanup: () => { alive = false; clearInterval(timer); stopCd(); } };
 }

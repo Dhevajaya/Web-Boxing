@@ -257,3 +257,251 @@ button { cursor: pointer; }
 .bar2 .a { background: var(--accent); }
 .pt-hint { color: var(--muted); font-size: 12px; }
 @media (prefers-reduced-motion: reduce) { .bar2 i { transition: none; } }
+
+/* ------------------------------------------------------------ Fase 4: Fight Night, arena, ranking */
+
+.fn-card { gap: 10px; }
+.fn-row { display: flex; justify-content: space-between; align-items: end; gap: 10px; }
+.fn-time { display: block; font-size: 17px; text-transform: capitalize; }
+.fn-cd { font-family: var(--f-mono); font-size: 26px; color: var(--accent); letter-spacing: .04em; }
+.fn-mine { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; padding: 10px 12px; border-radius: 12px; background: var(--surface-2); text-decoration: none; font-size: 14px; }
+.fn-mine .go { margin-left: auto; color: var(--accent); font-weight: 800; }
+.fn-card .row .btn { flex: 1; }
+
+/* Label hasil M/K/S */
+.res { display: inline-grid; place-items: center; min-width: 28px; height: 28px; padding: 0 8px; border-radius: 8px; font-weight: 800; font-size: 13px; background: var(--surface-2); color: var(--muted); }
+.res.win { background: color-mix(in srgb, var(--win) 20%, transparent); color: var(--win); }
+.res.lose { background: color-mix(in srgb, var(--lose) 18%, transparent); color: var(--lose); }
+
+/* Riwayat laga */
+.fights { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.fights a { display: grid; grid-template-columns: 28px 36px 1fr auto; gap: 10px; align-items: center; padding: 8px; border-radius: 12px; background: var(--surface-2); text-decoration: none; }
+.fl-av { width: 36px; height: 36px; border-radius: 50%; overflow: hidden; background: var(--bg); }
+.fl-av .avatar { width: 100%; height: 100%; transform: translateY(6%) scale(1.12); }
+.fl-id { min-width: 0; }
+.fl-id b { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.fl-id small, .fl-at { color: var(--muted); font-size: 12px; }
+.empty { color: var(--muted); text-align: center; padding: 14px 0; list-style: none; }
+
+/* Arena */
+.arena-meta { display: flex; justify-content: space-between; align-items: baseline; }
+.arena { display: flex; flex-direction: column; gap: 10px; }
+.arena-top { display: grid; grid-template-columns: 1fr auto 1fr; gap: 10px; align-items: end; }
+.corner { min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.corner.red { text-align: right; }
+.cname { font-weight: 800; text-decoration: none; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.corner.blue .cname { color: var(--cool); }
+.corner.red .cname { color: var(--hot); }
+.rd { font-family: var(--f-display); font-size: 26px; color: var(--accent); line-height: 1; }
+.ring { position: relative; height: 210px; border-radius: 18px; overflow: hidden; display: flex; justify-content: space-between; align-items: flex-end; padding: 0 4%;
+  background:
+    linear-gradient(to bottom, transparent 0 22%, color-mix(in srgb, var(--hot) 70%, transparent) 22% calc(22% + 3px), transparent calc(22% + 3px) 38%, rgb(255 255 255 / .55) 38% calc(38% + 3px), transparent calc(38% + 3px) 54%, color-mix(in srgb, var(--cool) 70%, transparent) 54% calc(54% + 3px), transparent calc(54% + 3px)),
+    radial-gradient(ellipse at 50% 0%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 70%),
+    linear-gradient(to bottom, #1a1d26 0 78%, #2a2216 78%);
+  border: 1px solid var(--line); }
+.boxer { width: 46%; max-width: 170px; transform-origin: 50% 100%; }
+.boxer .avatar { width: 100%; height: auto; }
+.boxer.lunge { animation: lunge .32s ease-out; }
+.boxer.b.lunge { animation-name: lunge-b; }
+.boxer.hit { animation: shake .3s ease-out; }
+.boxer.big { animation: shake .45s ease-out; filter: drop-shadow(0 0 10px var(--hot)); }
+.boxer.dodge { animation: dodge .35s ease-out; }
+.boxer.down { animation: down .9s ease-out forwards; }
+.boxer.win { animation: win .7s ease-in-out 3; }
+@keyframes lunge { 50% { transform: translateX(18%) scale(1.05); } }
+@keyframes lunge-b { 50% { transform: translateX(-18%) scale(1.05); } }
+@keyframes shake { 20% { transform: translateX(-5%) rotate(-3deg); } 50% { transform: translateX(4%) rotate(2deg); } 80% { transform: translateX(-2%); } }
+@keyframes dodge { 50% { transform: translateY(8%) scale(.96); } }
+@keyframes down { 30% { transform: rotate(-8deg); } 100% { transform: translateY(40%) rotate(-18deg); opacity: .55; } }
+@keyframes win { 50% { transform: translateY(-8%); } }
+.pow { position: absolute; top: 18%; font-family: var(--f-display); font-size: 40px; color: var(--accent); text-shadow: 3px 3px 0 var(--hot), -1px -1px 0 #000; pointer-events: none; opacity: 0; }
+.pow.on-a { left: 14%; }
+.pow.on-b { right: 14%; }
+.pow.go { animation: pow .8s ease-out; }
+@keyframes pow { 0% { opacity: 0; transform: scale(.4) rotate(-10deg); } 25% { opacity: 1; transform: scale(1.15) rotate(-6deg); } 100% { opacity: 0; transform: scale(1) rotate(-6deg) translateY(-20px); } }
+.controls { display: flex; gap: 8px; justify-content: center; }
+.arena .feed { max-height: 180px; }
+.result-card .row .btn { flex: 1; }
+.xp-gain { margin: 0; text-align: center; font-family: var(--f-mono); font-weight: 700; color: var(--win); }
+@media (prefers-reduced-motion: reduce) {
+  .boxer, .pow { animation: none !important; }
+  .boxer.down { transform: translateY(30%) rotate(-12deg); opacity: .6; }
+}
+
+/* Ranking */
+.rank { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.rank li { display: grid; grid-template-columns: 30px 44px 1fr auto; gap: 10px; align-items: center; padding: 8px 10px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); }
+.rank li.me { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, var(--surface)); }
+.rank li.loading, .rank li.empty { display: block; border: 0; background: none; }
+.rk { font-family: var(--f-display); font-size: 20px; text-align: center; color: var(--muted); }
+.rank li:nth-child(1) .rk { color: var(--accent); }
+.rank li:nth-child(2) .rk, .rank li:nth-child(3) .rk { color: var(--ink); }
+.rk-av { width: 44px; height: 44px; border-radius: 50%; overflow: hidden; background: var(--surface-2); display: grid; place-items: center; }
+.rk-av .avatar { width: 100%; height: 100%; transform: translateY(6%) scale(1.12); }
+.rk-av.sas { font-size: 22px; background: color-mix(in srgb, var(--c) 30%, var(--surface-2)); }
+.rk-id { min-width: 0; text-decoration: none; }
+.rk-id b { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rk-id small { display: block; color: var(--muted); font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rk-st { text-align: right; font-family: var(--f-mono); }
+.rk-st b { display: block; color: var(--accent); }
+.rk-st small { color: var(--muted); font-size: 11px; }
+.sup { color: var(--hot); }
+
+/* ------------------------------------------------------------ Fase 5–6: tantangan, mading, lencana */
+.challenge { flex-direction: row; align-items: center; flex-wrap: wrap; }
+.challenge > div { flex: 1; min-width: 180px; }
+.challenge .m-status { flex-basis: 100%; }
+.badges { display: flex; flex-wrap: wrap; gap: 6px; }
+.badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px 4px 6px; border-radius: 999px; font-size: 12px; font-weight: 700;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 22%, var(--surface-2)), var(--surface-2)); border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent); }
+.badge i { font-style: normal; font-size: 15px; }
+.sup-pill { background: color-mix(in srgb, var(--hot) 18%, transparent); color: var(--hot); }
+.news.pinned { border-color: color-mix(in srgb, var(--accent) 50%, var(--line)); }
+.news-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.news h2 { font-size: 26px; }
+.news-body p { margin: 0 0 8px; }
+.news-body a { color: var(--accent); overflow-wrap: anywhere; }
+.hl { display: flex; flex-direction: column; gap: 4px; padding: 10px 12px; border-radius: 12px; background: var(--surface-2); text-decoration: none; }
+.hl .go { color: var(--accent); font-weight: 800; font-size: 13px; }
+.who { display: inline-flex; align-items: center; gap: 6px; font-weight: 800; text-decoration: none; vertical-align: middle; }
+.mini-av { width: 28px; height: 28px; border-radius: 50%; overflow: hidden; background: var(--bg); display: inline-block; }
+.mini-av .avatar { width: 100%; height: 100%; transform: translateY(6%) scale(1.12); }
+.mini-rank { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.mini-rank li { display: grid; grid-template-columns: 28px 1fr auto; gap: 8px; align-items: center; }
+.mini-rank .rk { font-size: 18px; }
+.h3 { margin: 4px 0 0; font-family: var(--f-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.hl-line { line-height: 2; }
+
+/* ------------------------------------------------------------ Fase 7–8: piala, sasana */
+.tabs:has(> :nth-child(4)) { grid-template-columns: repeat(4, 1fr); }
+.champ { display: flex; gap: 14px; align-items: center; text-decoration: none; }
+.champ-av { width: 96px; height: 96px; border-radius: 50%; overflow: hidden; flex: none; background: radial-gradient(circle at 50% 35%, color-mix(in srgb, var(--accent) 45%, var(--surface-2)), var(--surface-2) 70%); box-shadow: 0 0 0 3px var(--accent); }
+.champ-av .avatar { width: 100%; height: 100%; transform: translateY(6%) scale(1.12); }
+.champ b { display: block; font-family: var(--f-display); font-weight: 400; font-size: 30px; color: var(--accent); }
+.champ small { color: var(--muted); }
+.bracket { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(170px, 1fr); gap: 12px; overflow-x: auto; padding-bottom: 6px; margin: 0 -16px; padding-inline: 16px; scroll-snap-type: x mandatory; }
+.br-col { display: flex; flex-direction: column; justify-content: space-around; gap: 10px; scroll-snap-align: start; }
+.br-h { display: flex; justify-content: space-between; align-items: baseline; }
+.br-h small { color: var(--muted); font-size: 12px; }
+.bm { display: flex; flex-direction: column; gap: 4px; padding: 8px; border-radius: 12px; background: var(--surface-2); border: 1px solid var(--line); text-decoration: none; }
+a.bm:hover { border-color: var(--accent); }
+.bm-p { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; min-width: 0; }
+.bm-p .mini-av { width: 24px; height: 24px; flex: none; }
+.bm-n { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bm-p.won { color: var(--win); }
+.bm-p.lost { color: var(--muted); text-decoration: line-through; }
+.bm-p.tbd { color: var(--muted); }
+.bm-meta { font-size: 11px; color: var(--accent); font-weight: 800; text-align: right; }
+.bm-list { display: flex; flex-direction: column; gap: 10px; }
+.sas-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.sas { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; padding: 14px 12px; border-radius: 14px; text-align: left;
+  border: 2px solid color-mix(in srgb, var(--c) 40%, var(--line)); background: linear-gradient(160deg, color-mix(in srgb, var(--c) 22%, var(--surface-2)), var(--surface-2)); }
+.sas.on { border-color: var(--c); box-shadow: 0 0 0 3px color-mix(in srgb, var(--c) 35%, transparent); }
+.sas:disabled:not(.on) { opacity: .5; cursor: not-allowed; }
+.sas:disabled.on { cursor: default; }
+.sas-ic { font-size: 30px; }
+.sas b { font-size: 17px; }
+.sas small { color: var(--muted); font-size: 12px; }
+.sas em { font-style: normal; font-family: var(--f-mono); font-size: 11px; color: var(--c); margin-top: 4px; }
+
+/* ------------------------------------------------------------ Fase 9: latihan */
+.linkish { background: none; border: 0; padding: 0; text-align: left; }
+.games { display: flex; flex-direction: column; gap: 8px; }
+.game { display: grid; grid-template-columns: 46px 1fr auto; gap: 12px; align-items: center; padding: 12px; border-radius: 14px; border: 1px solid var(--line); background: var(--surface); text-align: left; }
+.game:hover { border-color: var(--accent); }
+.g-ic { font-size: 30px; text-align: center; }
+.g-id b { display: block; font-size: 17px; }
+.g-id small, .g-st small { color: var(--muted); font-size: 12px; }
+.g-st { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+.pips { display: inline-flex; gap: 4px; }
+.pips i { width: 10px; height: 10px; border-radius: 50%; background: var(--surface-2); border: 1px solid var(--line); }
+.pips i.on { background: var(--accent); border-color: var(--accent); }
+.play { gap: 10px; }
+.play-top { display: flex; justify-content: space-between; align-items: center; }
+.score { font-family: var(--f-display); font-size: 40px; color: var(--accent); line-height: 1; }
+.timebar { height: 6px; border-radius: 99px; background: var(--surface-2); overflow: hidden; }
+.timebar i { display: block; height: 100%; width: 100%; background: var(--hot); }
+.stage { position: relative; min-height: 330px; display: flex; flex-direction: column; justify-content: center; align-items: stretch; gap: 14px; user-select: none; -webkit-user-select: none; touch-action: manipulation; }
+.count { font-family: var(--f-display); font-size: 110px; text-align: center; color: var(--accent); }
+.done { align-items: stretch; }
+.done .result b { font-size: 64px; }
+.done .row .btn { flex: 1; }
+/* samsak */
+.bag { align-self: center; width: 150px; height: 300px; border: 0; background: none; padding: 0; transform-origin: 50% 0; touch-action: manipulation; }
+.bag-body { display: block; width: 120px; height: 250px; margin: 0 auto; border-radius: 40px 40px 56px 56px; position: relative;
+  background: linear-gradient(90deg, #7a1f1a, #c6392c 40%, #8f251e); box-shadow: inset 0 -12px 0 #5b1612, 0 6px 0 #0006; }
+.bag-body::before { content: ""; position: absolute; left: 50%; top: -50px; width: 4px; height: 50px; background: #888; transform: translateX(-50%); }
+.bag-body::after { content: ""; position: absolute; left: 10px; right: 10px; top: 40%; height: 14px; background: var(--accent); border-radius: 4px; }
+.bag.swing { animation: swing .25s ease-out; }
+@keyframes swing { 40% { transform: rotate(-7deg); } 75% { transform: rotate(3deg); } }
+/* hindari */
+.dodge-ring { position: relative; height: 200px; display: grid; place-items: center; overflow: hidden; border-radius: 14px; background: var(--surface-2); }
+.dodge-me { width: 120px; }
+.dodge-me .avatar { width: 100%; height: auto; }
+.dodge-me.slip { animation: slip .35s ease-out; }
+.dodge-me.hurt { animation: shake .35s ease-out; filter: drop-shadow(0 0 10px var(--hot)); }
+@keyframes slip { 50% { transform: translateX(var(--dx)) rotate(calc(var(--dx) / 3 * 1deg)); } }
+.glove { position: absolute; top: 40%; font-size: 46px; }
+.glove.l { left: -10%; }
+.glove.r { right: -10%; transform: scaleX(-1); }
+.glove.l.fly { animation: fly-l linear forwards; }
+.glove.r.fly { animation: fly-r linear forwards; }
+@keyframes fly-l { to { left: 38%; } }
+@keyframes fly-r { to { right: 38%; } }
+.dodge-btns .btn, .situp-btns .btn { padding: 22px 10px; font-size: 18px; }
+/* lompat */
+.rope-wrap { position: relative; height: 230px; perspective: 400px; display: flex; justify-content: center; align-items: flex-end; }
+.rope { position: absolute; left: 50%; top: 20px; width: 170px; height: 190px; margin-left: -85px; border: 4px solid var(--accent); border-radius: 50%; transform-origin: 50% 50%; }
+.jumper { font-size: 80px; line-height: 1; position: relative; z-index: 1; margin-bottom: 20px; }
+.jumper.up { animation: hop .35s ease-out; }
+.jumper.trip { animation: shake .3s ease-out; }
+@keyframes hop { 50% { transform: translateY(-50px); } }
+.floor { position: absolute; left: 0; right: 0; bottom: 0; height: 14px; border-radius: 8px; background: var(--surface-2); display: flex; justify-content: center; }
+.zone { display: block; width: 40%; height: 100%; border-radius: 8px; background: color-mix(in srgb, var(--win) 25%, transparent); transition: background .05s; }
+.zone.on { background: var(--win); }
+.jump-btn { padding: 22px; font-size: 20px; }
+/* tahan */
+.light { height: 170px; border-radius: 18px; display: grid; place-items: center; font-family: var(--f-display); font-size: 44px; transition: background .1s; }
+.light.safe { background: color-mix(in srgb, var(--win) 30%, var(--surface-2)); color: var(--win); }
+.light.attack { background: color-mix(in srgb, var(--lose) 40%, var(--surface-2)); color: #fff; }
+.guard { padding: 34px 10px; font-size: 18px; touch-action: none; }
+.guard.held { background: var(--cool); color: #04151a; }
+/* situp */
+.situp-fig { font-size: 110px; text-align: center; transition: transform .1s; }
+.situp-fig.up { transform: rotate(-35deg); }
+
+/* ------------------------------------------------------------ Fase 9: markas */
+.mk { gap: 10px; }
+.mk-h { display: flex; flex-direction: column; }
+.msgs { list-style: none; margin: 0; padding: 0 2px; display: flex; flex-direction: column; gap: 10px; height: clamp(220px, calc(100dvh - 430px), 520px); overflow-y: auto; overscroll-behavior: contain; }
+.msg { display: grid; grid-template-columns: 28px 1fr; gap: 8px; align-items: start; }
+.msg .mini-av { width: 28px; height: 28px; }
+.msg-b { min-width: 0; background: var(--surface-2); border-radius: 4px 12px 12px 12px; padding: 6px 10px; }
+.msg.mine .msg-b { background: color-mix(in srgb, var(--accent) 12%, var(--surface-2)); }
+.msg-h { display: flex; align-items: baseline; gap: 6px; font-size: 13px; }
+.msg-h a { text-decoration: none; }
+.msg-h small { color: var(--muted); font-size: 11px; }
+.msg-b p { margin: 2px 0 0; overflow-wrap: anywhere; }
+.rep { margin-left: auto; border: 0; background: none; color: var(--muted); font-size: 13px; padding: 0 2px; }
+.mk-in small { font-family: var(--f-mono); font-size: 11px; color: var(--muted); }
+.spar { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.spar li { display: grid; grid-template-columns: 44px 1fr auto; gap: 10px; align-items: center; }
+.mini-av.lg { width: 44px; height: 44px; }
+
+/* ------------------------------------------------------------ Fase 10: dukung */
+.tiers { display: flex; flex-direction: column; gap: 10px; }
+.tier-card.mine { border-color: var(--hot); }
+.tier-h { display: flex; justify-content: space-between; align-items: baseline; }
+.tier-h b { font-family: var(--f-display); font-weight: 400; font-size: 26px; text-transform: uppercase; color: var(--hot); }
+.tier-h span { font-family: var(--f-mono); color: var(--muted); font-size: 13px; }
+.tier-card ul { margin: 0; padding-left: 18px; color: var(--muted); }
+.sup-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.sup-item { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px 4px 4px; border-radius: 99px; background: var(--surface-2); text-decoration: none; font-weight: 700; font-size: 13px; }
+.sup-item small { color: var(--hot); font-weight: 600; }
+.inline-check { flex-direction: row; justify-content: flex-start; gap: 8px; align-items: center; font-weight: 600; margin: 0; }
+
+/* ------------------------------------------------------------ Fase 11: halaman teks */
+.prose h2 { font-size: 22px; margin-top: 6px; }
+.prose p, .prose ul { margin: 0; color: var(--ink); }
+.prose ul { padding-left: 20px; display: flex; flex-direction: column; gap: 6px; }
+.prose a { color: var(--accent); }

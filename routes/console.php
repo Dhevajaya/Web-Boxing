@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Schedule;
 Schedule::command('ig:process')->everyMinute()->withoutOverlapping();
 Schedule::command('ig:send')->everyMinute()->withoutOverlapping();
 Schedule::command('auth:prune')->daily();
+Schedule::command('game:prune')->dailyAt('04:10');
 
 Artisan::command('ig:process {--limit=200}', function (InstagramProcessor $p) {
     $n = $p->processPending((int) $this->option('limit'));
@@ -34,6 +35,63 @@ Artisan::command('auth:prune', function () {
     $o = \App\Models\IgOutbox::where('created_at', '<', now()->subDays(14))->whereIn('status', ['sent', 'failed'])->delete();
     $this->info("Dihapus: {$n} permintaan masuk, {$e} event IG, {$o} DM lama");
 })->purpose('Hapus data login dan Instagram yang sudah lama');
+
+// --- Fight Night (Fase 4) ---
+Schedule::command('fightnight:tick')->everyMinute()->withoutOverlapping(10);
+
+Artisan::command('fightnight:tick', function (\App\Services\Game\FightNight $fn) {
+    foreach ($fn->tick() as $line) {
+        $this->line($line);
+    }
+})->purpose('Siapkan, hitung, dan terbitkan Fight Night sesuai jadwal');
+
+Artisan::command('fightnight:run {--slot= : waktu slot (zona game), mis. "2026-11-02 18:00"} {--now : slot = sekarang, untuk uji di lokal}', function (\App\Services\Game\FightNight $fn, \App\Services\Game\Calendar $cal) {
+    if ($this->option('now')) {
+        $slot = \Carbon\CarbonImmutable::now()->startOfMinute();
+    } elseif ($s = $this->option('slot')) {
+        $slot = \Carbon\CarbonImmutable::parse($s, $cal->tz())->utc();
+    } else {
+        $slot = $cal->nextSlot();
+    }
+    $run = $fn->runNow($slot);
+    $this->info("Slot {$run->slot_at->setTimezone($cal->tz())->format('Y-m-d H:i')} WIB: {$run->status}, {$run->pairs_total} laga".($run->error ? " ({$run->error})" : ''));
+    if ($run->status !== 'done') {
+        $this->warn('Hasil diterapkan otomatis saat jam slot tiba (fightnight:tick).');
+    }
+})->purpose('Jalankan satu Fight Night sekarang (manual/uji)');
+
+// --- Piala Mingguan (Fase 7) ---
+Schedule::command('piala:tick')->everyMinute()->withoutOverlapping(10)
+    ->when(fn () => app(\App\Support\GameConfig::class)->feature('piala'));
+
+Artisan::command('piala:tick', function (\App\Services\Game\Piala $piala) {
+    $piala->tick();
+    $cup = $piala->current();
+    $this->line("Piala {$cup->week_start}: {$cup->status}");
+})->purpose('Undian dan laga Piala Mingguan sesuai jadwal');
+
+// --- Season (Fase 6) ---
+Artisan::command('season:close {--name= : nama season baru} {--force : tanpa konfirmasi}', function (\App\Services\Game\Seasons $seasons) {
+    $cur = \App\Models\Season::current();
+    if (! $cur) {
+        $this->error('Tidak ada season aktif.');
+
+        return 1;
+    }
+    if (! $this->option('force') && ! $this->confirm("Tutup {$cur->name}? Peringkat dibekukan dan bintang mulai dari 0.")) {
+        return 1;
+    }
+    $r = $seasons->close($this->option('name'));
+    $this->info("{$r['closed']->name} ditutup ({$r['ranked']} petarung berperingkat). {$r['next']->name} dimulai.");
+})->purpose('Tutup season aktif dan mulai season berikutnya');
+
+// --- Pembersihan data lama ---
+Artisan::command('game:prune', function (\App\Support\GameConfig $game) {
+    $chat = \App\Models\ChatMessage::where('created_at', '<', now()->subDays((int) $game->get('chat.retention_days')))->delete();
+    $train = \Illuminate\Support\Facades\DB::table('training_sessions')->where('created_at', '<', now()->subDays(30))->delete();
+    $runs = \App\Models\FightNightRun::where('slot_at', '<', now()->subDays((int) $game->get('fight_night.retention_days')))->delete();
+    $this->info("Dihapus: {$chat} pesan chat, {$train} sesi latihan, {$runs} catatan Fight Night");
+})->purpose('Hapus chat, sesi latihan, dan catatan run yang sudah lama');
 
 // --- Login manual (sebelum Instagram API siap, atau saat DM bermasalah) ---
 Artisan::command('login:pending', function () {
@@ -85,3 +143,54 @@ Artisan::command('game:simulate {a} {b} {--seed=1} {--v=}', function (FighterFac
     $winner = $r['win'] === 'draw' ? 'SERI' : '@'.($r['win'] === 'a' ? $fa['username'] : $fb['username']);
     $this->info("Hasil: {$winner} · {$r['how']} ronde {$r['rd']} · poin {$r['scoreA']}-{$r['scoreB']} · sig ".FightSimulator::signature($r));
 })->purpose('Simulasikan laga dua username (tanpa menyimpan apa pun)');
+
+// --- Data contoh untuk mencoba di lokal ---
+Artisan::command('game:demo {count=12 : jumlah pemain contoh} {--nights=4 : Fight Night yang dimainkan}', function (\App\Services\Game\FightNight $fn, \App\Services\Game\Calendar $cal) {
+    if (app()->environment('production')) {
+        $this->error('Tidak boleh di produksi.');
+
+        return 1;
+    }
+    $names = ['budi', 'siti', 'raka', 'dewi', 'eko_jp', 'mawar.123', 'jojo', 'tegar', 'ayu', 'bagas', 'intan', 'yoga', 'rina', 'fajar', 'lala', 'dodi'];
+    $n = min((int) $this->argument('count'), count($names));
+    foreach (array_slice($names, 0, $n) as $u) {
+        \App\Models\Fighter::firstOrCreate(['instagram_username' => $u], [
+            'status' => 'active', 'activated_at' => now(), 'last_active_at' => now(), 'verified_at' => now(),
+        ]);
+    }
+    $slot = $cal->prevSlot();
+    $slots = [];
+    for ($i = 0; $i < (int) $this->option('nights'); $i++) {
+        $slots[] = $slot;
+        $slot = $cal->prevSlot($slot->subMinute());
+    }
+    foreach (array_reverse($slots) as $s) {
+        $run = $fn->runNow($s);
+        $this->line("Fight Night {$s->setTimezone($cal->tz())->format('d M H:i')} WIB: {$run->pairs_total} laga");
+    }
+    $this->info("{$n} pemain contoh siap. Masuk lewat mode pengembang dengan salah satu username di atas.");
+})->purpose('Buat pemain contoh dan mainkan beberapa Fight Night (lokal saja)');
+
+// --- Admin ---
+Artisan::command('admin:create {email} {--name=Owner} {--role=owner : owner, moderator, atau editor} {--password= : kosongkan agar ditanya}', function () {
+    $email = strtolower((string) $this->argument('email'));
+    if (! filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $this->error('Email tidak valid.');
+
+        return 1;
+    }
+    $role = (string) $this->option('role');
+    if (! in_array($role, ['owner', 'moderator', 'editor'], true)) {
+        $this->error('Peran harus owner, moderator, atau editor.');
+
+        return 1;
+    }
+    $password = (string) ($this->option('password') ?: $this->secret('Password (min. 10 karakter)'));
+    if (mb_strlen($password) < 10) {
+        $this->error('Password minimal 10 karakter.');
+
+        return 1;
+    }
+    $admin = \App\Models\Admin::updateOrCreate(['email' => $email], ['name' => (string) $this->option('name'), 'password' => $password, 'role' => $role]);
+    $this->info("Admin {$admin->email} ({$admin->role}) siap. Masuk di ".url('/admin'));
+})->purpose('Buat atau perbarui akun admin (password di-hash)');

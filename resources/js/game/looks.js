@@ -25,7 +25,7 @@ export function resolveLook(catalog, stored, username) {
 export function randomLook(catalog, level, rnd = Math.random) {
   const out = {};
   for (const p of catalog.parts) {
-    const open = p.items.filter((i) => (i.lv ?? 1) <= level);
+    const open = p.items.filter((i) => (i.lv ?? 1) <= level && !i.supporter);
     out[p.key] = open[Math.floor(rnd() * open.length)].id;
   }
   return out;

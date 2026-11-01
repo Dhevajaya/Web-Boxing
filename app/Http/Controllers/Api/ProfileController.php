@@ -55,12 +55,14 @@ class ProfileController extends Controller
             return $this->fail('invalid', 'Data tampilan tidak valid.');
         }
 
-        $r = $this->looks->validate($input, $f->resolvedLook(), $f->levelNumber());
+        $r = $this->looks->validate($input, $f->resolvedLook(), $f->levelNumber(), $f->supporter_tier);
         if ($r['errors']) {
             $key = array_key_first($r['errors']);
-            $message = $r['errors'][$key] === 'locked'
-                ? 'Item itu baru terbuka di Level '.$this->looks->unlockLevel($key, (string) $input[$key]).'.'
-                : 'Ada pilihan tampilan yang tidak dikenal.';
+            $message = match ($r['errors'][$key]) {
+                'locked' => 'Item itu baru terbuka di Level '.$this->looks->unlockLevel($key, (string) $input[$key]).'.',
+                'supporter' => 'Item itu khusus pendukung (Dukung).',
+                default => 'Ada pilihan tampilan yang tidak dikenal.',
+            };
 
             return $this->fail('invalid_look', $message, 422, ['fields' => $r['errors']]);
         }
@@ -230,6 +232,10 @@ class ProfileController extends Controller
             'statMax' => $this->statMax(),
             'respecDays' => $days,
             'respecNextAt' => $this->respecNextAt($f, $days)?->toIso8601String(),
+            'sasana' => $f->sasana?->only(['slug', 'name', 'icon', 'color']),
+            'sasanaLocked' => $f->sasana_id && (int) $f->sasana_season === $this->game->currentSeasonNumber(),
+            'supporter' => $f->supporter_tier,
+            'supporterAnonymous' => (bool) $f->supporter_anonymous,
         ];
     }
 }

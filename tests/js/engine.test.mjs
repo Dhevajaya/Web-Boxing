@@ -61,7 +61,7 @@ test('katalog tampilan: ID unik, pool bawaan hanya berisi item tanpa kunci', () 
     for (const id of p.defaultPool) {
       const item = p.items.find((i) => i.id === id);
       assert.ok(item, `${p.key}.${id} di defaultPool tidak ada di items`);
-      assert.ok((item.lv ?? 1) <= 1, `${p.key}.${id} terkunci, jangan masuk defaultPool`);
+      assert.ok((item.lv ?? 1) <= 1 && !item.supporter, `${p.key}.${id} terkunci, jangan masuk defaultPool`);
     }
   }
 });

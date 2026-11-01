@@ -48,9 +48,9 @@ class GameConfig
     public function publicConfig(): array
     {
         $all = config('game');
-        unset($all['instagram']);
+        unset($all['instagram'], $all['admin_seed'], $all['supporter']['webhook_token']);
         foreach ($this->overrides() as $key => $value) {
-            if (! str_starts_with($key, 'instagram.')) {
+            if (! str_starts_with($key, 'instagram.') && ! str_starts_with($key, 'admin_seed.') && $key !== 'supporter.webhook_token') {
                 Arr::set($all, $key, $value);
             }
         }

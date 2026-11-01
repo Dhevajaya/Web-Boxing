@@ -1,4 +1,5 @@
-import { esc, api, STAT_NAMES } from '../ui.js';
+import { esc, api, STAT_NAMES, fmtDate, RESULT, KIND, badgeLabel, sendChallenge } from '../ui.js';
+import { navigate } from '../router.js';
 import { baseFighter, ovr, lookFor, avatar } from '../game/index.js';
 import { session, logout, openLogin } from '../auth.js';
 
@@ -23,6 +24,31 @@ export function fighterView(el, username) {
     });
 
   return { cleanup: () => { alive = false; } };
+}
+
+// Riwayat laga (terbaru dulu), dengan tombol muat lebih banyak.
+export function fightList(box, username) {
+  const load = (before) => api(`/api/fighters/${encodeURIComponent(username)}/fights${before ? `?before=${before}` : ''}`)
+    .then(({ data }) => {
+      if (!box.isConnected) return; // pemain sudah pindah halaman
+      const list = box.querySelector('.fights');
+      const html = data.items.map((x) => {
+        const [letter, label, cls] = RESULT[x.result];
+        const o = x.opponent ?? { username: '?', look: null };
+        return `<li><a href="${x.kind === 'challenge' && x.code ? `/t/${esc(x.code)}` : `/laga/${x.id}`}" data-link>
+          <span class="res ${cls}" title="${label}">${letter}</span>
+          <span class="fl-av">${o.look ? avatar(o.look, { size: 36 }) : ''}</span>
+          <span class="fl-id"><b>vs @${esc(o.username)}</b><small>${esc(KIND[x.kind] ?? x.kind)} · ${esc(x.how)}${x.how !== 'Angka' ? ` R${x.round}` : ''}${x.xp ? ` · +${x.xp} XP` : ''}</small></span>
+          <span class="fl-at">${esc(fmtDate(x.at, { hour: undefined, minute: undefined }))}</span></a></li>`;
+      }).join('');
+      if (!before && !html) list.innerHTML = '<li class="empty">Belum ada laga.</li>';
+      else list.insertAdjacentHTML('beforeend', html);
+      const more = box.querySelector('.more');
+      more.hidden = !data.next;
+      more.onclick = () => load(data.next);
+    })
+    .catch(() => { if (box.isConnected) box.querySelector('.fights').innerHTML = '<li class="empty">Riwayat laga belum bisa dimuat.</li>'; });
+  load(null);
 }
 
 function levelBlock(f) {
@@ -50,7 +76,7 @@ function draw(el, f) {
 
   el.innerHTML = `
     <a href="/" data-link class="sub back">← Cari nama lain</a>
-    ${welcome ? `<p class="banner">🥊 Selamat datang di ring, <b>@${esc(f.username)}</b>! Atur tampilan dan bagikan ${free || ''} poin statmu dulu, Fight Night pertamamu dimulai saat fitur pertandingan rilis.</p>` : ''}
+    ${welcome ? `<p class="banner">🥊 Selamat datang di ring, <b>@${esc(f.username)}</b>! Atur tampilan dan bagikan ${free || ''} poin statmu dulu, Fight Night berikutnya kamu ikut bertanding otomatis.</p>` : ''}
     <article class="fcard">
       <div class="fcard-head">
         <div class="fcard-av">${avatar(look, { size: 92, title: `Avatar @${f.username}` })}</div>
@@ -69,7 +95,10 @@ function draw(el, f) {
           <span class="pill">${esc(f.kelas)}</span>
           <span class="pill">${esc(f.styleName)}</span>
           ${f.registered ? '' : '<span class="pill">Belum daftar</span>'}
+          ${f.supporter ? `<span class="pill sup-pill">♥ Pendukung</span>` : ''}
+          ${f.sasana ? `<span class="pill" style="color:${esc(f.sasana.color)}">${esc(f.sasana.icon)} ${esc(f.sasana.name)}</span>` : ''}
         </div>
+        ${f.badges?.length ? `<div class="badges">${f.badges.map((b) => { const [ic, label] = badgeLabel(b.code, b.meta); return `<span class="badge" title="${esc(label)}"><i aria-hidden="true">${ic}</i>${esc(label)}</span>`; }).join('')}</div>` : ''}
         ${levelBlock(f)}
         ${f.registered ? `<div class="record">
           <div><b>${f.record.w}</b><small>Menang</small></div>
@@ -79,11 +108,27 @@ function draw(el, f) {
         <div class="stats">${stats}</div>
       </div>
     </article>
+    ${f.registered && f.active && !mine && !f.npc ? `<section class="card challenge">
+      <div><h2>Tantang @${esc(f.username)}</h2><p class="sub">Laga instan 3 ronde. Hasilnya bisa dibagikan.</p></div>
+      <button class="btn btn-accent" id="chBtn" type="button">🥊 Tantang!</button>
+      <p class="m-status" id="chErr" hidden></p>
+    </section>` : ''}
+    ${f.registered && f.npc && session.me ? `<section class="card challenge">
+      <div><h2>Latih tanding</h2><p class="sub">NPC ini siap jadi lawan latihanmu.</p></div>
+      <button class="btn btn-ghost" id="chBtn" type="button">🥊 Tantang</button>
+      <p class="m-status" id="chErr" hidden></p>
+    </section>` : ''}
+    ${f.registered ? `<section class="card" id="history">
+      <h2>Laga terakhir</h2>
+      <ul class="fights"></ul>
+      <button class="btn btn-ghost btn-block more" type="button" hidden>Muat lebih banyak</button>
+    </section>` : ''}
     ${mine ? `<section class="card">
       <h2>Atur petarung</h2>
       <nav class="edit-links" aria-label="Atur petarung">
         <a href="/profil/tampilan" data-link><span class="ic" aria-hidden="true">🎨</span><span><b>Tampilan</b><small>Wajah, rambut, sarung tinju</small></span></a>
         <a href="/profil/identitas" data-link><span class="ic" aria-hidden="true">✏️</span><span><b>Julukan & kota</b><small>“${esc(f.nick)}”</small></span></a>
+        ${window.GAME?.features?.sasana === false ? '' : `<a href="/profil/sasana" data-link><span class="ic" aria-hidden="true">🏯</span><span><b>Sasana</b><small>${f.sasana ? `${esc(f.sasana.icon)} ${esc(f.sasana.name)}` : 'Belum memilih kubu'}</small></span></a>`}
         <a href="/profil/stat" data-link><span class="ic" aria-hidden="true">💪</span><span><b>Poin stat</b><small>${free ? `${free} poin belum dipakai` : 'Semua poin sudah terpasang'}</small></span>${free ? `<em class="dot">${free}</em>` : ''}</a>
       </nav>
     </section>
@@ -103,6 +148,19 @@ function draw(el, f) {
     ${f.offline ? '<p class="parity">Server belum terhubung; kartu dihitung di browser.</p>' : ''}
   `;
 
+  if (f.registered) fightList(el.querySelector('#history'), f.username);
+  el.querySelector('#chBtn')?.addEventListener('click', async (e) => {
+    if (!session.me) return openLogin();
+    const btn = e.currentTarget;
+    btn.disabled = true;
+    const err = await sendChallenge(f.username, navigate);
+    if (err && btn.isConnected) {
+      const p = el.querySelector('#chErr');
+      p.hidden = false;
+      p.textContent = err;
+      btn.disabled = false;
+    }
+  });
   el.querySelector('#logoutBtn')?.addEventListener('click', () => logout(false));
   el.querySelector('#logoutAllBtn')?.addEventListener('click', () => logout(true));
   el.querySelector('#claimBtn')?.addEventListener('click', () => openLogin());

@@ -1,6 +1,6 @@
 # Menyambungkan Instagram
 
-Login pemain berjalan lewat **Instagram API with Instagram Login** (Messaging). Selama langkah ini belum selesai, game tetap bisa dipakai lewat **mode pengembang** (lokal) dan **persetujuan manual** (`php artisan login:approve KODE`).
+Login pemain berjalan lewat **Instagram API with Instagram Login** (Messaging). Selama langkah ini belum selesai, game tetap bisa dipakai lewat **mode pengembang** (lokal) dan **persetujuan manual**: panel admin → Login manual, atau `php artisan login:approve KODE`.
 
 ## 1. Akun Instagram resmi
 
@@ -54,6 +54,6 @@ Kalau balasan tidak datang: `php artisan ig:process`, lalu `php artisan ig:send`
 | Sekali ketuk | Ketuk tombol di web → Instagram terbuka → kirim | Webhook membawa `ref` + IGSID → username dari Profile API → browser yang menunggu langsung masuk |
 | Link DM | Kirim `GELUD` | Petarung diaktifkan, balasan berisi link sekali pakai (2 jam) |
 | Kode | Ketik username di web, kirim kode yang tampil lewat DM | Kode cocok **dan** username pengirim sama dengan yang diketik → browser masuk |
-| Manual | Sama seperti kode | Admin menjalankan `php artisan login:approve KODE` |
+| Manual | Sama seperti kode | Admin mengetik kode di panel admin → Login manual (atau `php artisan login:approve KODE`) |
 
 Identitas yang dipegang adalah **IGSID** dari Meta, bukan username yang diketik, jadi nama orang lain tidak bisa diklaim. Kalau pemain mengganti username Instagram, petarungnya ikut berganti nama saat ia DM lagi.

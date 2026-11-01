@@ -92,6 +92,14 @@ final class Looks
         return (int) ($this->index[$key][$id]['lv'] ?? 1);
     }
 
+    /** Tier pendukung minimal untuk item, atau null. */
+    public function supporterTier(string $key, string $id): ?string
+    {
+        return $this->index[$key][$id]['supporter'] ?? null;
+    }
+
+    private const TIERS = ['tribun' => 1, 'ringside' => 2, 'vip' => 3];
+
     /**
      * Memeriksa pilihan pemain. Bagian yang tidak dikirim diambil dari $current.
      * Item terkunci tetap boleh dipertahankan bila sudah dipakai sebelumnya
@@ -101,7 +109,7 @@ final class Looks
      * @param  array<string, string>  $current  tampilan saat ini (hasil resolve)
      * @return array{look: array<string,string>, errors: array<string,string>}
      */
-    public function validate(array $input, array $current, int $level): array
+    public function validate(array $input, array $current, int $level, ?string $supporter = null): array
     {
         $look = $current;
         $errors = [];
@@ -117,8 +125,15 @@ final class Looks
 
                 continue;
             }
-            if ($this->unlockLevel($key, $id) > $level && ($current[$key] ?? null) !== $id) {
+            $keep = ($current[$key] ?? null) === $id;
+            if ($this->unlockLevel($key, $id) > $level && ! $keep) {
                 $errors[$key] = 'locked';
+
+                continue;
+            }
+            $need = $this->supporterTier($key, $id);
+            if ($need && (self::TIERS[$supporter] ?? 0) < self::TIERS[$need] && ! $keep) {
+                $errors[$key] = 'supporter';
 
                 continue;
             }

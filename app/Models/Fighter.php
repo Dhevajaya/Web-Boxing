@@ -31,7 +31,7 @@ class Fighter extends Model implements AuthenticatableContract
     }
 
     protected $fillable = [
-        'instagram_username', 'ig_scoped_id', 'status', 'is_npc', 'look', 'nick', 'kota', 'identity_changed_at',
+        'instagram_username', 'ig_scoped_id', 'status', 'muted_until', 'is_npc', 'look', 'nick', 'kota', 'identity_changed_at',
         'points', 'points_respec_at', 'xp', 'level', 'sasana_id', 'sasana_season',
         'supporter_tier', 'supporter_anonymous', 'verified_at', 'activated_at', 'last_active_at',
     ];
@@ -47,6 +47,7 @@ class Fighter extends Model implements AuthenticatableContract
             'points' => 'array',
             'points_respec_at' => 'datetime',
             'identity_changed_at' => 'datetime',
+            'muted_until' => 'datetime',
             'verified_at' => 'datetime',
             'activated_at' => 'datetime',
             'last_active_at' => 'datetime',
@@ -115,6 +116,21 @@ class Fighter extends Model implements AuthenticatableContract
     public function levelNumber(): int
     {
         return Progression::fromConfig()->level((int) $this->xp)['lv'];
+    }
+
+    /** Ringkasan untuk daftar (ranking, laga, chat): tanpa data pribadi. */
+    public function summary(): array
+    {
+        $b = $this->base();
+
+        return [
+            'username' => $this->instagram_username,
+            'nick' => ($this->nick ?: $b['nick']).' dari '.($this->kota ?: $b['kota']),
+            'look' => $this->resolvedLook(),
+            'level' => Progression::fromConfig()->level((int) $this->xp)['lv'],
+            'npc' => (bool) $this->is_npc,
+            'supporter' => $this->supporter_anonymous ? null : $this->supporter_tier,
+        ];
     }
 
     public function displayNick(): string

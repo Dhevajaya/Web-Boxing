@@ -18,10 +18,16 @@ return Application::configure(basePath: dirname(__DIR__))
             'api/webhooks/*',
         ]);
 
+        $middleware->alias(['feature' => \App\Http\Middleware\RequireFeature::class]);
+
         // Keluarkan pemain yang sesinya dicabut atau akunnya disuspend.
         $middleware->web(append: [
             \App\Http\Middleware\ValidateFighterSession::class,
+            \App\Http\Middleware\SecurityHeaders::class,
         ]);
+
+        // Di belakang proxy hosting (Hostinger/Cloudflare): percayai X-Forwarded-* agar HTTPS terdeteksi.
+        $middleware->trustProxies(at: '*');
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
