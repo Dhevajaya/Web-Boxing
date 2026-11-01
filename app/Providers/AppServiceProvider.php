@@ -26,9 +26,14 @@ class AppServiceProvider extends ServiceProvider
     {
         RateLimiter::for('api-read', fn (Request $r) => Limit::perMinute(120)->by($r->ip()));
         RateLimiter::for('api-write', fn (Request $r) => Limit::perMinute(30)->by($r->session()?->getId() ?: $r->ip()));
-        RateLimiter::for('auth', fn (Request $r) => [
-            Limit::perMinutes(10, 5)->by('ip:'.$r->ip()),
-            Limit::perMinutes(10, 5)->by('u:'.strtolower((string) $r->input('username'))),
-        ]);
+        // Minta kode / mulai login: 10 per 10 menit per IP, 5 per 10 menit per username.
+        RateLimiter::for('auth', function (Request $r) {
+            $limits = [Limit::perMinutes(10, 10)->by('auth-ip:'.$r->ip())];
+            if ($u = strtolower(trim((string) $r->input('username'), " @\t\n"))) {
+                $limits[] = Limit::perMinutes(10, 5)->by('auth-u:'.$u);
+            }
+
+            return $limits;
+        });
     }
 }

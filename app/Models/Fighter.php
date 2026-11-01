@@ -3,13 +3,31 @@
 namespace App\Models;
 
 use App\Game\FighterFactory;
+use Illuminate\Auth\Authenticatable;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Fighter extends Model
+/**
+ * Petarung = pemain. Masuk tanpa password (lewat DM Instagram), jadi kolom
+ * password dan remember token tidak ada; sesi dikelola App\Services\Auth\PlayerAuth.
+ */
+class Fighter extends Model implements AuthenticatableContract
 {
+    use Authenticatable;
+
+    public function getAuthPassword(): string
+    {
+        return '';
+    }
+
+    public function getRememberTokenName(): string
+    {
+        return '';
+    }
+
     protected $fillable = [
         'instagram_username', 'ig_scoped_id', 'status', 'is_npc', 'look', 'nick', 'kota',
         'points', 'points_respec_at', 'xp', 'level', 'sasana_id', 'sasana_season',

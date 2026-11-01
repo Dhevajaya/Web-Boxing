@@ -9,7 +9,7 @@ Stack: **Laravel 12 · PHP 8.3 · MySQL/SQLite · JavaScript (Vite)**. Dirancang
 | Fase | Isi | Status |
 | --- | --- | --- |
 | 1 | Fondasi Laravel, `config/game.php`, mesin pertarungan PHP + JS + test vektor, migration inti, seeder | ✅ |
-| 2 | Login Instagram (ref-link, link DM, kode, manual), sesi | ⏳ |
+| 2 | Login Instagram (sekali ketuk, link DM, kode, manual, dev), sesi pemain | ✅ |
 | 3 | Profil dan editor tampilan petarung | ⏳ |
 | 4 | Fight Night batch, arena animasi, ranking | ⏳ |
 | 5–11 | Tantangan, Mading, Season, Sasana, Piala, Latihan, Markas, Admin, Dukung, QA | ⏳ |
@@ -33,6 +33,8 @@ npm run dev                            # biarkan jalan di terminal ini
 php artisan serve                      # di terminal lain, buka http://localhost:8000
 ```
 
+Masuk sebagai pemain di lokal: klik **Masuk** → bagian *Mode pengembang* → ketik username apa saja (aktif karena `APP_ENV=local` dan `AUTH_DEV_LOGIN=true`).
+
 Di beranda ada kotak **Uji mesin**: laga dihitung di browser lalu dibandingkan dengan hitungan server. Tanda ✓ berarti keduanya identik.
 
 Coba juga dari terminal:
@@ -42,6 +44,17 @@ php artisan game:simulate budi siti --seed=7
 ```
 
 Mau pakai MySQL? Ubah `DB_CONNECTION=mysql` dan isi `DB_*` di `.env`, lalu `php artisan migrate --seed`.
+
+## Login pemain
+
+Pemain masuk lewat DM Instagram, tanpa password. Panduan menyambungkan akun Instagram resmi ada di [docs/instagram-setup.md](docs/instagram-setup.md).
+
+Sebelum Instagram tersambung, pemain bisa minta kode di web lalu admin menyetujuinya:
+
+```bash
+php artisan login:pending          # daftar kode yang menunggu
+php artisan login:approve ABCD-EFGH
+```
 
 ## Test
 

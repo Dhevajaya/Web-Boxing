@@ -17,6 +17,11 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->validateCsrfTokens(except: [
             'api/webhooks/*',
         ]);
+
+        // Keluarkan pemain yang sesinya dicabut atau akunnya disuspend.
+        $middleware->web(append: [
+            \App\Http\Middleware\ValidateFighterSession::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
