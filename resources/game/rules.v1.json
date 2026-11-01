@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "note": "JANGAN diubah setelah dipakai di produksi. Untuk mengubah rumus, salin ke rules.v2.json, ubah di sana, lalu naikkan game.engine.version.",
+  "stats": ["power", "speed", "stamina", "defense", "chin"],
+  "statMax": 99,
+  "fighter": {
+    "salt": "v1",
+    "baseMin": 40,
+    "baseRange": 26,
+    "clampMin": 35,
+    "clampMax": 75
+  },
+  "styles": [
+    { "id": "petinju",    "name": "Petinju",    "weights": [30, 25, 15, 15, 10, 5],  "bias": { "power": 0,  "speed": 2,  "stamina": 2, "defense": 2,  "chin": 0 } },
+    { "id": "penyerang",  "name": "Penyerang",  "weights": [10, 20, 20, 25, 15, 10], "bias": { "power": 6,  "speed": -2, "stamina": 0, "defense": -2, "chin": 4 } },
+    { "id": "penghindar", "name": "Penghindar", "weights": [40, 25, 10, 10, 5, 10],  "bias": { "power": -3, "speed": 6,  "stamina": 2, "defense": 4,  "chin": -3 } },
+    { "id": "penahan",    "name": "Penahan",    "weights": [20, 20, 15, 15, 10, 20], "bias": { "power": 0,  "speed": -3, "stamina": 4, "defense": 4,  "chin": 6 } }
+  ],
+  "punches": [
+    { "id": "jab",      "name": "jab",            "dmg": 80,  "acc": 80,  "zone": "head" },
+    { "id": "straight", "name": "straight kanan", "dmg": 130, "acc": 0,   "zone": "head" },
+    { "id": "hook_l",   "name": "hook kiri",      "dmg": 120, "acc": -30, "zone": "head" },
+    { "id": "hook_r",   "name": "hook kanan",     "dmg": 140, "acc": -40, "zone": "head" },
+    { "id": "upper",    "name": "uppercut",       "dmg": 160, "acc": -80, "zone": "head" },
+    { "id": "body",     "name": "body shot",      "dmg": 100, "acc": 20,  "zone": "body" }
+  ],
+  "fight": {
+    "rounds": 3,
+    "exchanges": 10,
+    "hp": 1000,
+    "hit": { "base": 450, "k": 4, "min": 150, "max": 850 },
+    "damage": { "powerAdd": 60, "chinSub": 160, "jitterMin": 90, "jitterRange": 21 },
+    "fatigue": { "perStaminaPerRound": 2 },
+    "big": { "base": 90, "multNum": 18, "multDen": 10 },
+    "knockdown": { "hpBelow": 500, "chinRef": 130, "k": 8, "recover": 100, "maxBeforeTko": 3 },
+    "recoverBetweenRounds": { "base": 40 },
+    "scoring": { "winner": 10, "loser": 9, "perKnockdown": 1 }
+  },
+  "ovr": { "power": 25, "speed": 20, "stamina": 15, "defense": 20, "chin": 20 }
+}

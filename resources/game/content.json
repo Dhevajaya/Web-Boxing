@@ -1,0 +1,19 @@
+{
+  "note": "Teks bawaan untuk petarung yang dibuat dari username. Urutan daftar ikut menentukan hasil acak; menambah di AKHIR daftar aman, mengubah/menyisipkan di tengah akan mengubah julukan bawaan semua petarung.",
+  "nicks": [
+    "Si Tangan Besi", "Raja Jab", "Si Kilat", "Banteng Muda", "Si Tembok", "Hook Maut",
+    "Si Kalem", "Pendekar Uppercut", "Macan Gang", "Si Bayangan", "Pukulan Kredit",
+    "Raja Gorengan", "Si Paling Bertahan", "Badai Subuh", "Si Anak Kos", "Juragan Jab"
+  ],
+  "kota": [
+    "Surabaya", "Bandung", "Medan", "Makassar", "Bekasi", "Depok", "Semarang", "Malang",
+    "Palembang", "Pontianak", "Yogyakarta", "Denpasar", "Manado", "Padang", "Banjarmasin", "Ambon"
+  ],
+  "kelas": ["Kelas Bulu", "Kelas Ringan", "Kelas Menengah", "Kelas Berat"],
+  "npcs": [
+    "npc.bang_jago", "npc.mas_pukul", "npc.si_otot", "npc.kak_kilat",
+    "npc.om_tembok", "npc.pak_hook", "npc.mbak_jab", "npc.bang_upper",
+    "npc.si_badai", "npc.mas_kalem", "npc.bang_banteng", "npc.kang_elak",
+    "npc.si_kebal", "npc.om_rimba", "npc.mas_sabuk", "npc.kak_ring"
+  ]
+}
