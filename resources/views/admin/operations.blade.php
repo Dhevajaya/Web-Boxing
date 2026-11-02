@@ -3,7 +3,7 @@
 @section('content')
 @php($tz = app(\App\Services\Game\Calendar::class)->tz())
 <h1>Operasi</h1>
-<div class="card"><h2>Fight Night</h2>
+<div class="card"><h2>Malam Gelanggang</h2>
   <p class="muted">Berjalan otomatis lewat cron tiap menit. Run gagal bisa diulang dari langkah terakhir yang aman. Manual dari terminal: <code>php artisan fightnight:run</code>.</p>
   <table><tr><th>Slot (WIB)</th><th>Status</th><th>Laga</th><th>Diterapkan</th><th>Terbit</th><th></th></tr>
   @forelse ($runs as $run)

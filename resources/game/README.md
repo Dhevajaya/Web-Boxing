@@ -5,7 +5,8 @@ Keduanya harus menghasilkan pertarungan yang identik dari input yang sama (stat,
 
 | File | Isi | Boleh diubah? |
 | --- | --- | --- |
-| `rules.v1.json` | Rumus pertarungan versi 1: pukulan, peluang kena, damage, knockdown, poin ronde, bobot OVR, cara membuat stat dasar dari username | **Tidak**, setelah dipakai di produksi |
+| `rules.v2.json` | **Aktif.** Aturan KAMPUNG TENDANG: 10 atribut, 5 archetype, 8 teknik, pertahanan, napas, rusak kaki, Meter Bara, 8 jurus, skor ronde. Mesin: `app/Game/FightSimulatorV2.php` + `resources/js/game/simulate2.js`. Diperiksa `app/Game/RulesSchema.php` saat dimuat | **Tidak**, setelah dipakai di produksi (buat `rules.v3.json`) |
+| `rules.v1.json` | Arsip era tinju. Rumus pertarungan versi 1: pukulan, peluang kena, damage, knockdown, poin ronde, bobot OVR, cara membuat stat dasar dari username | **Tidak**, setelah dipakai di produksi |
 | `content.json` | Daftar julukan, kota, kelas bawaan, NPC | Tambah di **akhir** daftar saja |
 | `looks.json` | Katalog tampilan avatar: bagian, item, warna, level buka, `defaultPool` untuk tampilan bawaan | Tambah item kapan saja; **jangan** ganti/hapus `id` yang sudah dipakai. Mengubah `defaultPool` mengubah wajah bawaan semua petarung yang belum menyimpan tampilan |
 
@@ -13,7 +14,7 @@ Tampilan bawaan dari username juga dicek kesetaraannya (PHP = JS) lewat bagian `
 
 ## Mengubah rumus
 
-1. Salin `rules.v1.json` menjadi `rules.v2.json`, ubah `"version": 2` dan angkanya.
+1. Salin `rules.v2.json` menjadi `rules.v3.json`, ubah `"version": 3` dan angkanya (cek keseimbangan dengan `php tools/balance-v2.php`).
 2. Tambahkan versi 2 di `resources/js/game/index.js` (`RULES`) dan di daftar versi `tools/make-vectors.php`.
 3. Ubah `game.engine.version` di `config/game.php` menjadi `2`.
 4. Setel keseimbangan: `php tools/engine-stats.php 2 20000 6`.

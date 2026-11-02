@@ -6,7 +6,8 @@ export function baseFighter(rules, content, username) {
   const u = String(username).toLowerCase();
   const rng = Rng.fromString(`${f.salt}|${u}`);
 
-  const style = rules.styles[rng.int(rules.styles.length)];
+  const styles = rules.styles ?? rules.archetypes;
+  const style = styles[rng.int(styles.length)];
   const base = {};
   for (const k of rules.stats) {
     const v = f.baseMin + rng.int(f.baseRange) + (style.bias[k] ?? 0);

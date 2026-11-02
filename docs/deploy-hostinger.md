@@ -59,7 +59,7 @@ php artisan key:generate
 nano .env                               # isi APP_URL, DB_*, GAME_*, dll. Simpan: Ctrl+O, Enter, Ctrl+X
 ```
 
-Yang wajib diisi: `APP_URL` (pakai `https://`), `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`, `GAME_NAME`, `GAME_INSTAGRAM`, `GAME_DM_KEYWORD`.
+Yang wajib diisi: `APP_URL` (pakai `https://`), `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`, `GAME_NAME` (mis. `"KAMPUNG TENDANG"`), `GAME_INSTAGRAM`, `GAME_DM_KEYWORD` (mis. `KAMPUNGTENDANG`).
 Pastikan `APP_DEBUG=false`, `AUTH_DEV_LOGIN=false`, dan `SESSION_SECURE_COOKIE=true`.
 
 ## 5. Database, admin, cache
@@ -123,6 +123,9 @@ php web-boxing/artisan down                       # mode perawatan
 unzip -oq web-boxing-baru.zip -d web-boxing       # timpa file; .env dan storage tetap
 cd web-boxing
 php artisan migrate --force
+# Sekali saja saat pindah dari versi tinju ke KAMPUNG TENDANG (sesudah backup database!):
+#   php artisan game:reset-competitive --dry-run
+#   php artisan game:reset-competitive
 php artisan optimize
 php artisan up
 ```

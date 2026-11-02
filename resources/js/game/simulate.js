@@ -1,6 +1,7 @@
 // Mesin pertarungan deterministik. Identik dengan app/Game/FightSimulator.php.
 // Aturan: hanya integer (idiv), acak hanya dari Rng dengan urutan panggilan yang sama.
 import { Rng, fnv1a } from './rng.js';
+import { simulateV2 } from './simulate2.js';
 
 const idiv = (a, b) => Math.trunc(a / b);
 
@@ -10,6 +11,7 @@ function styleWeights(rules, style) {
 }
 
 export function simulate(rules, a, b, seed) {
+  if (rules.version >= 2) return simulateV2(rules, a, b, seed);
   const F = rules.fight;
   const rng = new Rng(seed);
   const st = { a: a.stats, b: b.stats };
@@ -96,8 +98,11 @@ export function simulate(rules, a, b, seed) {
 // Sidik jari keluaran untuk test kesetaraan PHP dan JavaScript.
 export function signature(result) {
   const parts = [result.win, result.how, result.rd, result.scoreA, result.scoreB];
+  const v2 = (result.version ?? 1) >= 2;
   for (const e of result.events) {
-    parts.push([e.t, e.rd, e.who ?? '', e.p ?? '', e.d ?? '', e.ha, e.hb].join(','));
+    const f = [e.t, e.rd, e.who ?? '', e.p ?? '', e.d ?? '', e.ha, e.hb];
+    if (v2) f.push(e.j ?? '', e.r, e.na, e.nb, e.ma, e.mb, e.la, e.lb);
+    parts.push(f.join(','));
   }
   return fnv1a(parts.join('|')).toString(16).padStart(8, '0');
 }

@@ -37,9 +37,16 @@ class Fight extends Model
         return $q->where('visible_at', '<=', now());
     }
 
-    /** @return array{style:string, stats:array<string,int>} */
+    /** Kolom lama (5 stat tinju) diisi dari atribut v2 agar kueri lama tetap bekerja. */
+    public const V2_LEGACY = ['power' => 'strength', 'speed' => 'speed', 'stamina' => 'stamina', 'defense' => 'defense', 'chin' => 'endurance'];
+
+    /** @return array{style:string, stats:array<string,int>, jurus?:list<string>} */
     public function input(string $side): array
     {
+        $snap = $this->{"{$side}_snap"};
+        if ($snap) {
+            return is_array($snap) ? $snap : json_decode($snap, true);
+        }
         $stats = [];
         foreach (self::STATS as $k) {
             $stats[$k] = (int) $this->{"{$side}_{$k}"};
@@ -48,16 +55,48 @@ class Fight extends Model
         return ['style' => $this->{"{$side}_style"}, 'stats' => $stats];
     }
 
-    /** Kolom stat yang disimpan dari input simulasi. */
-    public static function statColumns(array $a, array $b): array
+    /**
+     * Kolom yang disimpan dari input simulasi (dan ringkasan hasil bila $r diberikan).
+     * Nilai JSON sudah di-encode agar bisa dipakai Fight::create() maupun insert massal.
+     */
+    public static function statColumns(array $a, array $b, ?array $r = null): array
     {
         $cols = ['a_style' => $a['style'], 'b_style' => $b['style']];
+        $v2 = ! isset($a['stats']['power']);
         foreach (self::STATS as $k) {
-            $cols["a_{$k}"] = $a['stats'][$k];
-            $cols["b_{$k}"] = $b['stats'][$k];
+            $src = $v2 ? self::V2_LEGACY[$k] : $k;
+            $cols["a_{$k}"] = $a['stats'][$src];
+            $cols["b_{$k}"] = $b['stats'][$src];
+        }
+        if ($v2) {
+            $cols['a_snap'] = json_encode($a);
+            $cols['b_snap'] = json_encode($b);
+        }
+        if ($r && ($r['version'] ?? 1) >= 2) {
+            $cols['summary'] = json_encode(self::summarize($r));
         }
 
         return $cols;
+    }
+
+    /** Ringkasan kecil hasil v2: skor per ronde, serangan bersih, dan aksi penting. */
+    public static function summarize(array $r): array
+    {
+        $key = [];
+        foreach ($r['events'] as $e) {
+            if (in_array($e['t'], ['kd', 'ko', 'jurus', 'leg'], true)) {
+                $key[] = array_filter(['t' => $e['t'], 'rd' => $e['rd'], 'who' => $e['who'] ?? null, 'j' => $e['j'] ?? null, 'p' => $e['p'] ?? null, 'why' => $e['why'] ?? null]);
+            }
+        }
+
+        return ['rounds' => $r['rounds'] ?? [], 'clean' => $r['clean'] ?? null, 'key' => array_slice($key, 0, 30)];
+    }
+
+    public function summaryData(): ?array
+    {
+        $s = $this->summary;
+
+        return $s ? (is_array($s) ? $s : json_decode($s, true)) : null;
     }
 
     /** Putar ulang laga (hasil identik dengan saat laga dibuat). */
@@ -79,6 +118,7 @@ class Fight extends Model
             'winner' => $this->winner,
             'how' => $this->how,
             'round' => (int) $this->round,
+            'summary' => $this->summaryData(),
             'at' => $this->visible_at?->toIso8601String(),
         ];
     }

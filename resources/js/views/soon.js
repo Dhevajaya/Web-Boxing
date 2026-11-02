@@ -1,7 +1,7 @@
 import { esc } from '../ui.js';
 
 const PAGES = {
-  profil: ['Profil', 'Masuk lewat DM Instagram untuk melihat dan mengatur petarungmu.'],
+  profil: ['Identitas', 'Masuk lewat DM Instagram untuk melihat dan mengatur petarungmu.'],
 };
 
 // Halaman pengisi: profil sebelum masuk, dan halaman yang tidak dikenal.

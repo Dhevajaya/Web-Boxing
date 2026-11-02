@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Season extends Model
 {
-    protected $fillable = ['number', 'name', 'starts_at', 'ends_at', 'status', 'config_snapshot'];
+    protected $fillable = ['number', 'name', 'era', 'starts_at', 'ends_at', 'status', 'config_snapshot'];
 
     protected function casts(): array
     {

@@ -53,12 +53,12 @@ class FoundationTest extends TestCase
     public function test_registered_fighter_uses_points(): void
     {
         $this->seed(GameSeeder::class);
-        $f = Fighter::create(['instagram_username' => 'andi', 'status' => 'active', 'points' => ['power' => 5]]);
-        $base = $f->base()['base']['power'];
+        $f = Fighter::create(['instagram_username' => 'andi', 'status' => 'active', 'points' => ['strength' => 5]]);
+        $base = $f->base()['base']['strength'];
 
         $this->getJson('/api/fighters/andi')
             ->assertOk()
             ->assertJsonPath('data.registered', true)
-            ->assertJsonPath('data.stats.power', min(99, $base + 5));
+            ->assertJsonPath('data.stats.strength', min(99, $base + 5));
     }
 }

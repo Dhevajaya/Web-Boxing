@@ -130,7 +130,7 @@ class ProfileController extends Controller
         return DB::transaction(function () use ($input, $prog, $days) {
             // Kunci baris agar dua permintaan bersamaan tidak sama-sama lolos jeda pindah poin.
             $f = Fighter::whereKey($this->me()->getKey())->lockForUpdate()->firstOrFail();
-            $base = $f->base()['base'];
+            $base = $f->baseFor();
             $lv = $prog->level((int) $f->xp)['lv'];
 
             $error = $prog->checkPoints($input, $lv, $base, $this->statMax());
@@ -162,7 +162,54 @@ class ProfileController extends Controller
         });
     }
 
+    /** PUT /api/me/archetype  { archetype: "raja_tendang" }  Jeda points.archetype_days, ganti pertama bebas. */
+    public function updateArchetype(Request $request)
+    {
+        $id = $request->input('archetype');
+        $R = app(Rules::class)->version();
+        $known = array_column($R['archetypes'] ?? [], null, 'id');
+        if (! is_string($id) || ! isset($known[$id])) {
+            return $this->fail('invalid', 'Gaya bertarung tidak dikenal.');
+        }
+
+        return DB::transaction(function () use ($id) {
+            $f = Fighter::whereKey($this->me()->getKey())->lockForUpdate()->firstOrFail();
+            if ($f->archetypeId() === $id) {
+                return $this->ok($this->payload($f));
+            }
+            if ($next = $this->archetypeNextAt($f)) {
+                return $this->fail('cooldown', 'Gaya bertarung baru bisa diganti lagi nanti.', 429, ['retry_at' => $next->toIso8601String()]);
+            }
+            AuditLog::record('archetype_changed', $f, ['from' => $f->archetypeId(), 'to' => $id], 'fighter', $f->id);
+            // Jurus khas ikut archetype: pilihan lama dikosongkan (otomatis jurus khas yang baru).
+            $f->forceFill(['archetype' => $id, 'archetype_changed_at' => now(), 'jurus' => null])->save();
+
+            return $this->ok($this->payload($f));
+        });
+    }
+
+    /** PUT /api/me/jurus  { jurus: ["gebuk_beruntun", "sambar_badan"] } */
+    public function updateJurus(Request $request, \App\Game\Jurus $jurus)
+    {
+        $f = Fighter::findOrFail($this->me()->getKey());
+        $chosen = $request->input('jurus');
+        $error = $jurus->invalid($f->archetypeId(), $f->levelNumber(), $chosen);
+        if ($error) {
+            return $this->fail('invalid', $error);
+        }
+        $f->forceFill(['jurus' => array_values($chosen)])->save();
+
+        return $this->ok($this->payload($f->refresh()));
+    }
+
     // ---------------------------------------------------------------- bantuan
+
+    private function archetypeNextAt(Fighter $f): ?\Carbon\CarbonInterface
+    {
+        $at = $f->archetype_changed_at?->copy()->addDays((int) $this->game->get('points.archetype_days'));
+
+        return $at?->isFuture() ? $at : null;
+    }
 
     private function me(): Fighter
     {
@@ -205,8 +252,13 @@ class ProfileController extends Controller
         $prog = Progression::fromConfig();
         $level = $prog->level((int) $f->xp);
         $b = $f->base();
-        $points = $this->normalizePoints($f->points ?? [], $b['base']);
+        $base = $f->baseFor();
+        $points = $this->normalizePoints($f->points ?? [], $base);
         $days = (int) $this->game->get('points.respec_days');
+        $R = app(Rules::class)->version();
+        $arch = $f->archetypeId();
+        $archDef = collect($R['archetypes'] ?? [])->firstWhere('id', $arch);
+        $jurus = app(\App\Game\Jurus::class);
 
         return [
             'username' => $f->instagram_username,
@@ -223,9 +275,22 @@ class ProfileController extends Controller
                 'nick' => $b['nick'],
                 'kota' => $b['kota'],
             ],
-            'style' => $b['style'],
-            'styleName' => $b['styleName'],
-            'base' => $b['base'],
+            'style' => $arch,
+            'styleName' => $archDef['name'] ?? $b['styleName'],
+            'archetypes' => collect($R['archetypes'] ?? [])->map(fn ($a) => [
+                'id' => $a['id'], 'name' => $a['name'], 'en' => $a['en'], 'desc' => $a['desc'],
+                'passive' => ['name' => $a['passive']['name'], 'desc' => $a['passive']['desc']], 'signature' => $a['signature'],
+            ])->values(),
+            'archetypeDefault' => $b['style'],
+            'archetypeNextAt' => $this->archetypeNextAt($f)?->toIso8601String(),
+            'archetypeDays' => (int) $this->game->get('points.archetype_days'),
+            'jurus' => collect($jurus->catalog($arch, $level['lv']))->map(fn ($j) => [
+                'id' => $j['id'], 'name' => $j['name'], 'desc' => $j['desc'], 'kind' => $j['kind'],
+                'unlock' => $j['unlock'], 'open' => $j['open'], 'steps' => $j['steps'], 'meter' => $j['meter'],
+            ])->values(),
+            'jurusEquipped' => $f->equippedJurus(),
+            'jurusSlots' => (int) ($R['jurusSlots'] ?? 0),
+            'base' => $base,
             'points' => $points,
             'pointsTotal' => $prog->pointsFor($level['lv']),
             'pointsUsed' => array_sum($points),

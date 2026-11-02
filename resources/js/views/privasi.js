@@ -17,8 +17,8 @@ export function privasiView(el) {
       <ul>
         <li><b>Username Instagram</b> dan <b>ID akun Instagram</b> (IGSID) yang dikirim Meta saat kamu mengirim DM ke @${ig}. Dipakai untuk membuktikan akun itu milikmu.</li>
         <li><b>Status follow</b> ke @${ig} saat masuk (bila diwajibkan).</li>
-        <li><b>Data permainan</b>: tampilan avatar, julukan, kota, poin stat, XP, rekor laga, latihan, sasana, piala, lencana.</li>
-        <li><b>Pesan chat</b> di Markas, disimpan paling lama 7 hari.</li>
+        <li><b>Data permainan</b>: tampilan avatar, julukan, kota, gaya bertarung, jurus, poin atribut, XP, rekor laga, latihan, geng, piala, lencana.</li>
+        <li><b>Pesan chat</b> di Tongkrongan, disimpan paling lama 7 hari.</li>
         <li><b>Sesi masuk</b>: cookie sesi dan jenis browser, agar kamu bisa "keluar dari semua perangkat".</li>
         <li><b>Donasi</b> (bila kamu mendukung): nama donatur, jumlah, dan pesan yang dikirim platform donasi.</li>
         <li><b>Alamat IP</b> hanya disimpan dalam bentuk hash untuk mencegah penyalahgunaan.</li>
@@ -35,7 +35,7 @@ export function privasiView(el) {
       <p>Siapa pun bisa melihat kartu petarung dari username apa pun: avatar, julukan, stat, rekor, dan riwayat laga. Kartu untuk username yang belum daftar dibuat otomatis dari username saja, tanpa data dari Instagram. Pendukung bisa menyembunyikan namanya dari daftar pendukung.</p>
 
       <h2>Menghapus data</h2>
-      <p>Hubungi ${mail} dari akun yang sama untuk meminta data petarungmu dihapus. Kami memprosesnya paling lambat 30 hari. Kamu juga bisa berhenti mengikuti Fight Night cukup dengan tidak membuka game selama 14 hari.</p>
+      <p>Hubungi ${mail} dari akun yang sama untuk meminta data petarungmu dihapus. Kami memprosesnya paling lambat 30 hari. Kamu juga bisa berhenti mengikuti Malam Gelanggang cukup dengan tidak membuka game selama 14 hari.</p>
 
       <h2>Aturan main</h2>
       <ul>

@@ -16,10 +16,10 @@
 return [
 
     'brand' => [
-        'name' => env('GAME_NAME', 'Web Boxing'),
-        'tagline' => env('GAME_TAGLINE', 'Naik ring, buktikan namamu.'),
+        'name' => env('GAME_NAME', 'KAMPUNG TENDANG'),
+        'tagline' => env('GAME_TAGLINE', 'Dari Gang, Naik Gelanggang.'),
         'instagram' => env('GAME_INSTAGRAM', 'akunresmi'),   // tanpa @
-        'keyword' => env('GAME_DM_KEYWORD', 'GELUD'),         // kata kunci DM
+        'keyword' => env('GAME_DM_KEYWORD', 'KAMPUNGTENDANG'), // kata kunci DM
         'timezone' => 'Asia/Jakarta',
         'business_email' => env('GAME_BUSINESS_EMAIL'),
     ],
@@ -38,21 +38,23 @@ return [
     ],
 
     'engine' => [
-        // Versi aturan yang dipakai untuk pertarungan BARU.
-        // Pertarungan lama tetap diputar dengan versinya sendiri.
-        'version' => 1,
+        // Versi aturan yang dipakai untuk pertarungan BARU (2 = KAMPUNG TENDANG, kickboxing).
+        // Pertarungan lama tetap diputar dengan versinya sendiri (1 = arsip era tinju).
+        'version' => 2,
     ],
 
     'stats' => [
-        'keys' => ['power', 'speed', 'stamina', 'defense', 'chin'],
+        // Harus sama dengan "stats" di resources/game/rules.v{engine.version}.json.
+        'keys' => ['strength', 'speed', 'endurance', 'stamina', 'technique', 'accuracy', 'defense', 'agility', 'balance', 'composure'],
         'max' => 99,
     ],
 
     'points' => [
-        'start' => 10,                 // poin saat petarung diaktifkan
-        'per_level' => 2,              // tiap naik level
-        'milestones' => [5 => 3, 10 => 3, 15 => 3, 20 => 3], // bonus di level tertentu
+        'start' => 20,                 // poin saat petarung diaktifkan (10 atribut)
+        'per_level' => 4,              // tiap naik level
+        'milestones' => [5 => 5, 10 => 5, 15 => 5, 20 => 5], // bonus di level tertentu
         'respec_days' => 7,            // memindah poin yang sudah dipasang
+        'archetype_days' => 7,         // jeda ganti archetype (ganti pertama bebas)
     ],
 
     // Profil buatan pemain: julukan, kota, tampilan avatar (katalog: resources/game/looks.json).
@@ -104,13 +106,13 @@ return [
 
     // [minimal bintang, nama tier, ikon]
     'tiers' => [
-        [0, 'Pemula Gang', '🥉'],
-        [3, 'Jagoan Kampung', '🥈'],
-        [6, 'Petarung Kota', '🥇'],
-        [10, 'Juara Provinsi', '🏅'],
-        [15, 'Bintang Nasional', '🌟'],
-        [20, 'Raja Ring', '👑'],
-        [30, 'Legenda', '🔥'],
+        [0, 'Anak Gang', '🥉'],
+        [3, 'Jagoan Gang', '🥈'],
+        [6, 'Penguasa Blok', '🥇'],
+        [10, 'Jawara Kampung', '🏅'],
+        [15, 'Raja Gelanggang', '🌟'],
+        [20, 'Legenda Kampung', '👑'],
+        [30, 'Legenda Abadi', '🔥'],
     ],
 
     'season' => [
@@ -145,19 +147,23 @@ return [
         ['slug' => 'naga', 'name' => 'Naga', 'icon' => '🐉', 'color' => '#2e9d6b', 'motto' => 'Tahan banting'],
     ],
 
+    // Latihan: mini-game 30 detik. Skor terbaik hari ini jadi XP (total semua game maks xp_daily_cap),
+    // ditambah bonus streak sekali sehari. Bintang (1-3) = bonus stat +1..+3 untuk laga hari itu.
     'training' => [
         'seconds' => 30,
-        'xp_cap_per_game' => 20,
+        'xp_daily_cap' => 30,
+        'streak_xp' => 5,
         'bonus_max' => 3,
         'max_taps_per_sec' => 15,
-        // Per mini-game: stat yang dilatih, skor maksimal yang masuk akal (anti-curang),
-        // skor per 1 XP, dan skor untuk bonus +1/+2/+3 stat pada laga hari itu.
+        // stat: stat yang dilatih · stars: skor untuk 1/2/3 bintang · xp_div: skor per 1 XP
+        // max, per_tap, free: batas anti-curang (skor <= max dan skor <= (ketukan + free) x per_tap)
+        // soon: tampil "Segera" (belum bisa dimainkan)
         'games' => [
-            'samsak' => ['stat' => 'power', 'max' => 450, 'xp_div' => 10, 'bonus' => [120, 180, 240]],
-            'hindari' => ['stat' => 'speed', 'max' => 40, 'xp_div' => 1, 'bonus' => [12, 18, 24]],
-            'lompat' => ['stat' => 'stamina', 'max' => 50, 'xp_div' => 1, 'bonus' => [15, 24, 32]],
-            'tahan' => ['stat' => 'defense', 'max' => 60, 'xp_div' => 2, 'bonus' => [30, 42, 52]],
-            'situp' => ['stat' => 'chin', 'max' => 450, 'xp_div' => 8, 'bonus' => [90, 140, 190]],
+            'samsak' => ['stat' => 'strength', 'stars' => [1000, 2200, 3800], 'xp_div' => 100, 'max' => 24000, 'per_tap' => 300, 'free' => 0],
+            'hindari' => ['stat' => 'agility', 'stars' => [500, 1100, 1900], 'xp_div' => 60, 'max' => 8000, 'per_tap' => 220, 'free' => 25],
+            'tahan' => ['stat' => 'defense', 'stars' => [500, 1100, 1800], 'xp_div' => 75, 'max' => 9000, 'per_tap' => 260, 'free' => 25],
+            'lompat' => ['stat' => 'stamina', 'soon' => true],
+            'situp' => ['stat' => 'endurance', 'soon' => true],
         ],
     ],
 

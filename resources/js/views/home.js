@@ -1,6 +1,7 @@
 import { $, esc, api, normalizeUsername, countdown, RESULT } from '../ui.js';
 import { navigate } from '../router.js';
-import { baseFighter, simulate, signature, ovr, lookFor, avatar } from '../game/index.js';
+import { baseFighter, defaultInput, simulate, signature, ovr, lookFor, avatar, LOOKS, JURUS, ARCHETYPES, rules } from '../game/index.js';
+import { createStage } from '../game/stage.js';
 import { describe, resultLine } from '../game/commentary.js';
 import { session, openLogin } from '../auth.js';
 
@@ -11,15 +12,15 @@ export function homeView(el) {
   el.innerHTML = `
     ${expired ? '<p class="banner bad">Link masuk itu sudah kedaluwarsa atau sudah dipakai. Minta link baru ya.</p>' : ''}
     <section class="hero">
-      <span class="eyebrow">Fight Night tiap 6 jam</span>
-      <h1>Mana <em>lawan</em>mu?</h1>
-      <p>Ketik username Instagram untuk melihat kartu petarungnya.</p>
+      <span class="eyebrow tape">${esc(brand.tagline ?? 'Dari Gang, Naik Gelanggang.')}</span>
+      <h1>Siapa <em>jagoan</em> gang ini?</h1>
+      <p>Ketik username Instagram untuk membuka berkas petarungnya.</p>
     </section>
 
-    <section class="card fn-card" id="fn" aria-live="polite">
-      <div class="fn-row"><div><span class="eyebrow">Fight Night berikutnya</span><b class="fn-time" id="fnTime">…</b></div><b class="fn-cd" id="fnCd">--:--:--</b></div>
+    <section class="card fn-card hazard" id="fn" aria-live="polite">
+      <div class="fn-row"><div><span class="eyebrow">Malam Gelanggang berikutnya</span><b class="fn-time" id="fnTime">…</b></div><b class="fn-cd" id="fnCd">--:--:--</b></div>
       <div id="fnMine"></div>
-      <div class="row"><a class="btn btn-ghost btn-sm" href="/ranking" data-link>🏆 Ranking</a>${window.GAME?.features?.piala === false ? '' : '<a class="btn btn-ghost btn-sm" href="/piala" data-link>🥇 Piala</a>'}</div>
+      <div class="row"><a class="btn btn-ghost btn-sm" href="/ranking" data-link>🏆 Papan Jagoan</a>${window.GAME?.features?.piala === false ? '' : '<a class="btn btn-ghost btn-sm" href="/piala" data-link>🥇 Piala</a>'}<a class="btn btn-ghost btn-sm" href="/papan-kabar" data-link>📌 Kabar</a></div>
     </section>
 
     <form class="field" id="search" autocomplete="off">
@@ -30,8 +31,8 @@ export function homeView(el) {
     <p class="err" id="qErr" hidden>Username tidak valid.</p>
 
     <section class="card" aria-labelledby="demoH">
-      <h2 id="demoH">Uji mesin</h2>
-      <p class="sub">Laga dihitung di browser dari seed, lalu dibandingkan dengan hitungan server. Hasilnya harus identik.</p>
+      <h2 id="demoH">Duel Coba</h2>
+      <p class="sub">Adu dua username dengan stat dasar dan jurus khasnya. Laga dihitung di browser lalu dicocokkan dengan server: hasilnya harus identik.</p>
       <div class="row">
         <label class="field"><span class="at">@</span><input id="ua" value="si.biru" aria-label="Petarung sudut biru"></label>
         <label class="field"><span class="at">@</span><input id="ub" value="si.merah" aria-label="Petarung sudut merah"></label>
@@ -47,6 +48,15 @@ export function homeView(el) {
           <span class="vs">VS</span>
           <div><div class="side-av red" id="ab"></div><div class="side-name red" id="nb"></div><div class="hp red"><i id="hb" style="width:100%"></i></div></div>
         </div>
+        <div class="arena-top demo-rd"><div class="rd"><b id="rd">R1</b><small>RONDE</small></div>
+          <button class="snd" id="snd" type="button" aria-pressed="false" title="Suara">🔊</button></div>
+        <div class="ring-wrap"><div class="ring-stage" id="stage"></div>
+          <button class="tap-sound" id="tapSound" type="button" hidden>🔊 Ketuk untuk suara</button></div>
+        <div class="controls">
+          <button class="btn btn-ghost btn-sm" id="play" type="button">Jeda</button>
+          <button class="btn btn-ghost btn-sm" id="speed" type="button">1×</button>
+          <button class="btn btn-ghost btn-sm" id="skip" type="button">Lewati ke hasil</button>
+        </div>
         <ul class="feed" id="feed"></ul>
         <div class="result" id="res" hidden><b id="resT"></b><span id="resS"></span></div>
         <p class="parity" id="parity"></p>
@@ -54,7 +64,7 @@ export function homeView(el) {
     </section>
 
     ${session.me ? '' : `<section class="card">
-      <h2>Jadi petarung</h2>
+      <h2>Naik ke gelanggang</h2>
       <p class="sub">Follow <b>@${esc(brand.instagram)}</b> lalu kirim DM <b>${esc(brand.keyword)}</b>. Tanpa password.</p>
       <button class="btn btn-accent btn-block" id="joinBtn" type="button">Masuk / daftar</button>
     </section>`}
@@ -89,9 +99,10 @@ export function homeView(el) {
   };
   $('#rand', el).onclick = () => { $('#seed', el).value = String((Math.random() * 2 ** 32) >>> 0); };
 
-  let timer = null;
-  $('#go', el).onclick = () => {
-    clearInterval(timer);
+  let stage = null;
+  $('#go', el).onclick = async () => {
+    stage?.destroy();
+    stage = null;
     const ua = normalizeUsername($('#ua', el).value);
     const ub = normalizeUsername($('#ub', el).value);
     const seed = Number($('#seed', el).value) >>> 0;
@@ -99,50 +110,97 @@ export function homeView(el) {
 
     const fa = baseFighter(ua);
     const fb = baseFighter(ub);
-    const A = { style: fa.style, stats: fa.base };
-    const B = { style: fb.style, stats: fb.base };
+    const A = defaultInput(ua);
+    const B = defaultInput(ub);
     const r = simulate(A, B, seed);
     const names = { a: `@${ua}`, b: `@${ub}` };
 
     $('#ring', el).hidden = false;
     $('#res', el).hidden = true;
-    $('#na', el).textContent = `${names.a} · ${ovr(fa.base)}`;
-    $('#nb', el).textContent = `${ovr(fb.base)} · ${names.b}`;
-    // Wajah dari hash dulu, lalu diganti tampilan pilihan pemain bila sudah daftar.
-    const face = (sel, u, flip) => {
-      $(sel, el).innerHTML = avatar(lookFor(u), { size: 64, flip, title: `@${u}` });
-      api(`/api/fighters/${u}`).then(({ data }) => {
-        if (data.look) $(sel, el).innerHTML = avatar(data.look, { size: 64, flip, title: `@${u}` });
-      }).catch(() => {});
-    };
-    face('#aa', ua, false);
-    face('#ab', ub, true);
+    $('#na', el).textContent = `${names.a} · ${ovr(fa.base)} · ${ARCHETYPES[fa.style]?.name ?? ''}`;
+    $('#nb', el).textContent = `${ARCHETYPES[fb.style]?.name ?? ''} · ${ovr(fb.base)} · ${names.b}`;
+    $('#rd', el).textContent = 'R1';
     const feed = $('#feed', el);
     feed.innerHTML = '';
-    const setHp = (e) => {
-      $('#ha', el).style.width = `${e.ha / 10}%`;
-      $('#hb', el).style.width = `${e.hb / 10}%`;
+    const setHp = (ha, hb) => {
+      $('#ha', el).style.width = `${Math.max(0, ha) / 10}%`;
+      $('#hb', el).style.width = `${Math.max(0, hb) / 10}%`;
     };
-    setHp({ ha: 1000, hb: 1000 });
+    setHp(1000, 1000);
 
-    let i = 0;
-    timer = setInterval(() => {
-      const e = r.events[i++];
-      if (!e) {
-        clearInterval(timer);
-        const line = resultLine(r, names);
-        $('#resT', el).textContent = line.title;
-        $('#resS', el).textContent = line.sub;
-        $('#res', el).hidden = false;
-        return;
-      }
-      setHp(e);
+    // Tampilan dari hash dulu; diganti tampilan pilihan pemain bila sudah daftar.
+    const lookOf = (u) => api(`/api/fighters/${u}`).then(({ data }) => data.look ?? lookFor(u)).catch(() => lookFor(u));
+    const btn = $('#go', el);
+    btn.disabled = true;
+    const [la, lb] = await Promise.all([lookOf(ua), lookOf(ub)]);
+    btn.disabled = false;
+    if (!alive) return;
+    $('#aa', el).innerHTML = avatar(la, { size: 64, title: names.a });
+    $('#ab', el).innerHTML = avatar(lb, { size: 64, flip: true, title: names.b });
+
+    const addLine = (e, text = null) => {
       const li = document.createElement('li');
-      li.textContent = describe(e, names);
+      li.textContent = text ?? describe(e, names);
       if (['big', 'kd', 'ko'].includes(e.t)) li.className = 'big';
       if (e.t === 'bell' || e.t === 'end') li.className = 'bell';
       feed.prepend(li);
-    }, 260);
+      while (feed.children.length > 40) feed.lastElementChild.remove();
+    };
+    const showResult = () => {
+      const line = resultLine(r, names);
+      $('#resT', el).textContent = line.title;
+      $('#resS', el).textContent = line.sub;
+      $('#res', el).hidden = false;
+    };
+    let fxLevel = 'full';
+    try { fxLevel = localStorage.getItem('wb.fx') || 'full'; } catch { /* diblokir */ }
+    stage = createStage($('#stage', el), { catalog: LOOKS, looks: { a: la, b: lb }, names, brand, fx: fxLevel, jurusNames: Object.fromEntries(Object.values(JURUS).map((j) => [j.id, j.name])) }, r, {
+      onEvent: (e, i, text) => addLine(e, text),
+      onHp: setHp,
+      onRound: (rd) => { $('#rd', el).textContent = `R${rd}`; },
+      onDone: () => {
+        if (!alive) return;
+        $('#play', el).disabled = true;
+        $('#skip', el).disabled = true;
+        showResult();
+      },
+    });
+    for (const id of ['#play', '#skip']) $(id, el).disabled = false;
+    $('#play', el).textContent = 'Jeda';
+
+    const snd = $('#snd', el);
+    const paintSnd = () => {
+      snd.textContent = stage.muted ? '🔇' : '🔊';
+      snd.setAttribute('aria-pressed', String(stage.muted));
+      snd.setAttribute('aria-label', stage.muted ? 'Nyalakan suara' : 'Matikan suara');
+    };
+    paintSnd();
+    snd.onclick = () => { stage?.setMuted(!stage.muted); paintSnd(); };
+    $('#play', el).onclick = (ev) => {
+      if (stage.playing) stage.pause();
+      else stage.play();
+      ev.currentTarget.textContent = stage.playing ? 'Jeda' : 'Putar';
+    };
+    $('#speed', el).onclick = (ev) => {
+      const next = { 1: 2, 2: 4, 4: 1 }[ev.currentTarget.dataset.s ?? '1'];
+      ev.currentTarget.dataset.s = String(next);
+      ev.currentTarget.textContent = `${next}×`;
+      stage.setSpeed(next);
+    };
+    $('#speed', el).dataset.s = '1';
+    $('#speed', el).textContent = '1×';
+    $('#skip', el).onclick = () => {
+      stage.skip();
+      feed.innerHTML = '';
+      for (const e of [...r.events].reverse().slice(0, 12).reverse()) addLine(e);
+    };
+    stage.play();
+    // Tombol "Tanding!" sendiri adalah sentuhan, jadi suara biasanya langsung jalan.
+    const tap = $('#tapSound', el);
+    tap.hidden = true;
+    setTimeout(() => { if (alive && stage?.audioBlocked() && !stage.muted) tap.hidden = false; }, 400);
+    tap.onclick = () => { stage?.resume(); tap.hidden = true; };
+    $('#ring', el).scrollIntoView({ behavior: 'smooth', block: 'start' });
 
     // Bandingkan dengan hitungan server.
     const sig = signature(r);
@@ -160,5 +218,5 @@ export function homeView(el) {
       .catch(() => { p.textContent = `Browser: ${sig} · server tidak terjangkau.`; });
   };
 
-  return { cleanup: () => { alive = false; clearInterval(timer); stopCd(); } };
+  return { cleanup: () => { alive = false; stage?.destroy(); stopCd(); } };
 }

@@ -28,7 +28,7 @@ class ProfileTest extends TestCase
         $this->getJson('/api/me/profile')->assertUnauthorized();
         $this->putJson('/api/me/look', ['look' => ['skin' => 'gelap']])->assertUnauthorized();
         $this->putJson('/api/me/identity', ['nick' => 'Si Kilat'])->assertUnauthorized();
-        $this->putJson('/api/me/points', ['points' => ['power' => 1]])->assertUnauthorized();
+        $this->putJson('/api/me/points', ['points' => ['strength' => 1]])->assertUnauthorized();
     }
 
     public function test_profile_shows_defaults_and_budget(): void
@@ -39,7 +39,7 @@ class ProfileTest extends TestCase
             ->assertOk()
             ->assertJsonPath('data.username', 'budi')
             ->assertJsonPath('data.level.lv', 1)
-            ->assertJsonPath('data.pointsTotal', 10)
+            ->assertJsonPath('data.pointsTotal', 20)
             ->assertJsonPath('data.pointsUsed', 0)
             ->assertJsonPath('data.lookCustom', false)
             ->assertJsonPath('data.look', app(Looks::class)->default('budi'))
@@ -114,39 +114,39 @@ class ProfileTest extends TestCase
     public function test_points_budget_and_respec(): void
     {
         $f = $this->login();
-        $power = $f->base()['base']['power'];
+        $power = $f->baseFor()['strength'];
 
-        $this->putJson('/api/me/points', ['points' => ['power' => 6, 'speed' => 5]])
+        $this->putJson('/api/me/points', ['points' => ['strength' => 16, 'speed' => 5]])
             ->assertStatus(422)
             ->assertJsonPath('error.code', 'over_budget');
-        $this->putJson('/api/me/points', ['points' => ['power' => '3']])->assertJsonPath('error.code', 'invalid');
+        $this->putJson('/api/me/points', ['points' => ['strength' => '3']])->assertJsonPath('error.code', 'invalid');
         $this->putJson('/api/me/points', ['points' => [3, 2]])->assertJsonPath('error.code', 'invalid');
 
         // Pembagian pertama: bebas.
-        $this->putJson('/api/me/points', ['points' => ['power' => 6, 'speed' => 4]])
+        $this->putJson('/api/me/points', ['points' => ['strength' => 6, 'speed' => 4]])
             ->assertOk()
             ->assertJsonPath('data.pointsUsed', 10)
             ->assertJsonPath('data.respecNextAt', null);
-        $this->getJson('/api/fighters/budi')->assertJsonPath('data.stats.power', min(99, $power + 6));
+        $this->getJson('/api/fighters/budi')->assertJsonPath('data.stats.strength', min(99, $power + 6));
 
         // Memindah poin (power turun): boleh sekali, lalu terkunci 7 hari.
-        $this->putJson('/api/me/points', ['points' => ['power' => 3, 'speed' => 4, 'chin' => 3]])
+        $this->putJson('/api/me/points', ['points' => ['strength' => 3, 'speed' => 4, 'endurance' => 3]])
             ->assertOk()
-            ->assertJsonPath('data.points.chin', 3);
+            ->assertJsonPath('data.points.endurance', 3);
         $this->assertNotNull(Fighter::find($f->id)->points_respec_at);
 
-        $this->putJson('/api/me/points', ['points' => ['power' => 0, 'speed' => 4, 'chin' => 6]])
+        $this->putJson('/api/me/points', ['points' => ['strength' => 0, 'speed' => 4, 'endurance' => 6]])
             ->assertStatus(429)
             ->assertJsonPath('error.code', 'respec_locked');
 
         // Naik level: poin BARU boleh ditambah kapan saja, tanpa menunggu.
-        Fighter::whereKey($f->id)->update(['xp' => 50]); // Level 2 = 12 poin
-        $this->putJson('/api/me/points', ['points' => ['power' => 3, 'speed' => 4, 'chin' => 5]])
+        Fighter::whereKey($f->id)->update(['xp' => 50]); // Level 2 = 24 poin
+        $this->putJson('/api/me/points', ['points' => ['strength' => 3, 'speed' => 4, 'endurance' => 15]])
             ->assertOk()
-            ->assertJsonPath('data.pointsTotal', 12);
+            ->assertJsonPath('data.pointsTotal', 24);
 
         $this->travel(8)->days();
-        $this->putJson('/api/me/points', ['points' => ['power' => 0, 'speed' => 4, 'chin' => 8]])->assertOk();
+        $this->putJson('/api/me/points', ['points' => ['strength' => 0, 'speed' => 4, 'endurance' => 18]])->assertOk();
         $this->assertSame(4, AuditLog::where('action', 'points_changed')->count());
     }
 

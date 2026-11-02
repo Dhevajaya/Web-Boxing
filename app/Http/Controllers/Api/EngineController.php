@@ -26,10 +26,11 @@ class EngineController extends Controller
         $version = (int) $request->integer('v', $rules->current);
         $seed = (int) $request->integer('seed', 1) & 0xFFFFFFFF;
 
-        $fa = $factory->base($ua, $version);
-        $fb = $factory->base($ub, $version);
-        $inA = ['style' => $fa['style'], 'stats' => $fa['base']];
-        $inB = ['style' => $fb['style'], 'stats' => $fb['base']];
+        if (! in_array($version, [1, $rules->current], true)) {
+            return $this->fail('invalid', 'Versi mesin tidak dikenal.');
+        }
+        $inA = $factory->defaultInput($ua, $version);
+        $inB = $factory->defaultInput($ub, $version);
         $r = $sim->simulate($inA, $inB, $seed, $version);
 
         return $this->ok([

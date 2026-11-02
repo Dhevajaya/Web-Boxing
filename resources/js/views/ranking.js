@@ -6,14 +6,14 @@ export function rankingView(el, initial = 'season') {
   let alive = true;
   let board = initial;
   let page = 1;
-  document.title = `Ranking · ${window.GAME?.brand?.name ?? ''}`;
+  document.title = `Papan Jagoan · ${window.GAME?.brand?.name ?? ''}`;
 
   el.innerHTML = `
-    <section class="hero"><span class="eyebrow">Papan peringkat</span><h1>Rank<em>ing</em></h1></section>
+    <section class="hero"><span class="eyebrow tape">Siapa paling ditakuti</span><h1>Papan <em>Jagoan</em></h1></section>
     <div class="tabs two" role="tablist">
       <button role="tab" type="button" data-b="season">Season</button>
-      <button role="tab" type="button" data-b="week">Minggu ini</button>
-      ${window.GAME?.features?.sasana === false ? '' : '<button role="tab" type="button" data-b="sasana">Sasana</button>'}
+      <button role="tab" type="button" data-b="week">Adu Reputasi</button>
+      ${window.GAME?.features?.sasana === false ? '' : '<button role="tab" type="button" data-b="sasana">Perang Geng</button>'}
     </div>
     <p class="sub" id="rkSub"></p>
     <div id="rkMe"></div>
@@ -46,8 +46,8 @@ export function rankingView(el, initial = 'season') {
       if (board === 'sasana') {
         const { data } = await api('/api/sasana/war');
         if (!alive) return;
-        $('#rkSub', el).textContent = `Perang Sasana ${data.season?.name ?? ''}: 3 poin per menang, 1 per seri, +1 tiap KO.`;
-        $('#rkList', el).innerHTML = data.rows.map(sasanaRow).join('') || '<li class="empty">Belum ada sasana yang bertanding.</li>';
+        $('#rkSub', el).textContent = `Perang Geng ${data.season?.name ?? ''}: 3 poin per menang, 1 per seri, +1 tiap KO.`;
+        $('#rkList', el).innerHTML = data.rows.map(sasanaRow).join('') || '<li class="empty">Belum ada geng yang bertanding.</li>';
         $('#rkMore', el).hidden = true;
         return;
       }
@@ -57,7 +57,7 @@ export function rankingView(el, initial = 'season') {
         ? `${data.season?.name ?? 'Season'} · urut bintang, lalu kemenangan.`
         : `Minggu mulai ${new Date(`${data.week}T00:00:00`).toLocaleDateString('id-ID', { day: 'numeric', month: 'long' })} · urut kemenangan, lalu KO.`;
       const html = data.rows.map(row).join('');
-      if (reset) $('#rkList', el).innerHTML = html || '<li class="empty">Belum ada laga. Tunggu Fight Night pertama!</li>';
+      if (reset) $('#rkList', el).innerHTML = html || '<li class="empty">Belum ada laga. Tunggu Malam Gelanggang pertama!</li>';
       else $('#rkList', el).insertAdjacentHTML('beforeend', html);
       $('#rkMore', el).hidden = !data.more;
       if (data.me && reset) $('#rkMe', el).innerHTML = `<p class="banner">Peringkatmu: <b>#${data.me.rank}</b></p>`;

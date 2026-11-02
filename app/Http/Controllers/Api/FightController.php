@@ -51,6 +51,7 @@ class FightController extends Controller
                 'round' => (int) $x->round,
                 'xp' => (int) $x->{"xp_{$side}"},
                 'code' => $x->code ?? null,
+                'v' => (int) $x->engine_version,
                 'opponent' => $opp?->summary(),
             ];
         })->values();

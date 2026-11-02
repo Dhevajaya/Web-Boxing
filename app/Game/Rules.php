@@ -37,7 +37,11 @@ final class Rules
             if (! is_file($file)) {
                 throw new RuntimeException("Aturan mesin versi {$v} tidak ditemukan: {$file}");
             }
-            $this->versions[$v] = json_decode(file_get_contents($file), true, flags: JSON_THROW_ON_ERROR);
+            $rules = json_decode(file_get_contents($file), true, flags: JSON_THROW_ON_ERROR);
+            if ($v >= 2 && ($errors = RulesSchema::errors($rules))) {
+                throw new RuntimeException("Aturan mesin versi {$v} tidak valid:\n- ".implode("\n- ", $errors));
+            }
+            $this->versions[$v] = $rules;
         }
 
         return $this->versions[$v];

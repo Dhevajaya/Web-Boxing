@@ -124,12 +124,7 @@ Artisan::command('game:simulate {a} {b} {--seed=1} {--v=}', function (FighterFac
     $v = $this->option('v') ? (int) $this->option('v') : null;
     $fa = $factory->base($this->argument('a'), $v);
     $fb = $factory->base($this->argument('b'), $v);
-    $r = $sim->simulate(
-        ['style' => $fa['style'], 'stats' => $fa['base']],
-        ['style' => $fb['style'], 'stats' => $fb['base']],
-        (int) $this->option('seed'),
-        $v,
-    );
+    $r = $sim->simulate($factory->defaultInput($fa['username'], $v), $factory->defaultInput($fb['username'], $v), (int) $this->option('seed'), $v);
 
     $this->table(['', '@'.$fa['username'], '@'.$fb['username']], [
         ['Gaya', $fa['styleName'], $fb['styleName']],
@@ -138,7 +133,7 @@ Artisan::command('game:simulate {a} {b} {--seed=1} {--v=}', function (FighterFac
     ]);
 
     foreach ($r['events'] as $e) {
-        $this->line(sprintf('R%d %-5s %-2s %-9s dmg=%-4s HP %4d - %-4d', $e['rd'], $e['t'], $e['who'] ?? '', $e['p'] ?? '', $e['d'] ?? '', $e['ha'], $e['hb']));
+        $this->line(sprintf('R%d %-6s %-2s %-10s %-16s dmg=%-4s HP %4d - %-4d', $e['rd'], $e['t'], $e['who'] ?? '', $e['p'] ?? '', $e['j'] ?? '', $e['d'] ?? '', $e['ha'], $e['hb']));
     }
     $winner = $r['win'] === 'draw' ? 'SERI' : '@'.($r['win'] === 'a' ? $fa['username'] : $fb['username']);
     $this->info("Hasil: {$winner} · {$r['how']} ronde {$r['rd']} · poin {$r['scoreA']}-{$r['scoreB']} · sig ".FightSimulator::signature($r));
@@ -194,3 +189,24 @@ Artisan::command('admin:create {email} {--name=Owner} {--role=owner : owner, mod
     $admin = \App\Models\Admin::updateOrCreate(['email' => $email], ['name' => (string) $this->option('name'), 'password' => $password, 'role' => $role]);
     $this->info("Admin {$admin->email} ({$admin->role}) siap. Masuk di ".url('/admin'));
 })->purpose('Buat atau perbarui akun admin (password di-hash)');
+
+// --- Migrasi ke KAMPUNG TENDANG ---
+Artisan::command('game:reset-competitive {--dry-run : tampilkan yang akan berubah tanpa mengubah apa pun} {--force : tanpa konfirmasi}', function (\App\Services\Game\CompetitiveReset $reset) {
+    $plan = $reset->plan();
+    $s = $plan['season'];
+    $this->info('Season berjalan: '.($s ? "#{$s['number']} {$s['name']} (era {$s['era']})" : 'tidak ada'));
+    $this->table(['Yang terdampak', 'Baris'], collect($plan['rows'])->map(fn ($n, $k) => [$k, $n])->values()->all());
+    if ($this->option('dry-run')) {
+        $this->comment('Dry-run: tidak ada yang diubah.');
+
+        return 0;
+    }
+    $this->warn('Pastikan database sudah di-backup. Langkah ini tidak bisa dibatalkan tanpa backup.');
+    if (! $this->option('force') && ! $this->confirm('Mulai era KAMPUNG TENDANG sekarang?')) {
+        return 1;
+    }
+    $r = $reset->run();
+    $this->info("Selesai. Season baru: #{$r['season']->number} {$r['season']->name}. Lencana veteran: {$r['veterans']} pemain.");
+
+    return 0;
+})->purpose('Nolkan statistik kompetitif untuk era KAMPUNG TENDANG (laga lama tetap jadi arsip)');

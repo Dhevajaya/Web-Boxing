@@ -32,7 +32,7 @@ class Fighter extends Model implements AuthenticatableContract
 
     protected $fillable = [
         'instagram_username', 'ig_scoped_id', 'status', 'muted_until', 'is_npc', 'look', 'nick', 'kota', 'identity_changed_at',
-        'points', 'points_respec_at', 'xp', 'level', 'sasana_id', 'sasana_season',
+        'points', 'points_respec_at', 'archetype', 'archetype_changed_at', 'jurus', 'xp', 'level', 'sasana_id', 'sasana_season',
         'supporter_tier', 'supporter_anonymous', 'verified_at', 'activated_at', 'last_active_at',
     ];
 
@@ -46,6 +46,8 @@ class Fighter extends Model implements AuthenticatableContract
             'look' => 'array',
             'points' => 'array',
             'points_respec_at' => 'datetime',
+            'archetype_changed_at' => 'datetime',
+            'jurus' => 'array',
             'identity_changed_at' => 'datetime',
             'muted_until' => 'datetime',
             'verified_at' => 'datetime',
@@ -98,13 +100,42 @@ class Fighter extends Model implements AuthenticatableContract
     /** Stat efektif untuk laga: dasar + poin + bonus latihan hari ini. */
     public function effectiveStats(array $bonus = [], ?int $version = null): array
     {
-        return app(FighterFactory::class)->effective($this->base($version)['base'], $this->points ?? [], $bonus, $version);
+        return app(FighterFactory::class)->effective($this->baseFor($version), $this->points ?? [], $bonus, $version);
+    }
+
+    /** Stat dasar: hash username + bias archetype pilihan (v2) atau gaya bawaan (v1). */
+    public function baseFor(?int $version = null): array
+    {
+        return app(FighterFactory::class)->baseWithStyle($this->instagram_username, $this->archetypeId($version), $version);
+    }
+
+    /** Archetype aktif (v2): pilihan pemain, atau bawaan dari username. */
+    public function archetypeId(?int $version = null): string
+    {
+        $b = $this->base($version);
+        if (! ($b['v2'] ?? false)) {
+            return $b['style'];
+        }
+        $ids = array_column(app(\App\Game\Rules::class)->version($version)['archetypes'], 'id');
+
+        return in_array($this->archetype, $ids, true) ? $this->archetype : $b['style'];
+    }
+
+    /** Jurus aktif yang sah untuk level dan archetype sekarang (v2). Kosong = jurus khas. */
+    public function equippedJurus(?int $version = null): array
+    {
+        return app(\App\Game\Jurus::class)->equipped($this->archetypeId($version), $this->levelNumber(), $this->jurus ?? [], $version);
     }
 
     /** Input untuk FightSimulator. */
     public function fightInput(array $bonus = [], ?int $version = null): array
     {
-        return ['style' => $this->base($version)['style'], 'stats' => $this->effectiveStats($bonus, $version)];
+        $in = ['style' => $this->archetypeId($version), 'stats' => $this->effectiveStats($bonus, $version)];
+        if ($this->base($version)['v2'] ?? false) {
+            $in['jurus'] = $this->equippedJurus($version);
+        }
+
+        return $in;
     }
 
     /** Tampilan avatar: pilihan tersimpan di atas bawaan dari username. */
@@ -128,6 +159,7 @@ class Fighter extends Model implements AuthenticatableContract
             'nick' => ($this->nick ?: $b['nick']).' dari '.($this->kota ?: $b['kota']),
             'look' => $this->resolvedLook(),
             'level' => Progression::fromConfig()->level((int) $this->xp)['lv'],
+            'style' => $this->archetype ?: $b['style'],
             'npc' => (bool) $this->is_npc,
             'supporter' => $this->supporter_anonymous ? null : $this->supporter_tier,
         ];

@@ -7,7 +7,7 @@
 </div>
 <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
   <div class="card">
-    <h2>Fight Night</h2>
+    <h2>Malam Gelanggang</h2>
     <p>Berikutnya: <b>{{ $next->setTimezone($tz)->translatedFormat('l, d M H:i') }} WIB</b></p>
     <table><tr><th>Slot (WIB)</th><th>Status</th><th>Laga</th></tr>
       @forelse ($runs as $run)

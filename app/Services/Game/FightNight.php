@@ -161,7 +161,7 @@ class FightNight
         $since = $slot->subDays((int) $this->game->get('fight_night.active_days'));
         $players = Fighter::players()->active()->whereNotNull('activated_at')
             ->where('last_active_at', '>=', $since)
-            ->get(['id', 'instagram_username', 'points']);
+            ->get(['id', 'instagram_username', 'points', 'archetype']);
 
         $season = Season::current();
         $records = $season
@@ -192,7 +192,7 @@ class FightNight
         $slot = CarbonImmutable::parse($run->slot_at);
         $slice = array_slice($run->plan ?? [], $run->cursor, $this->chunk());
         $ids = array_values(array_unique(array_merge(array_column($slice, 0), array_column($slice, 1))));
-        $fighters = Fighter::whereIn('id', $ids)->get(['id', 'instagram_username', 'points'])->keyBy('id');
+        $fighters = Fighter::whereIn('id', $ids)->get(['id', 'instagram_username', 'points', 'archetype', 'jurus', 'xp'])->keyBy('id');
         $bonus = $this->bonus->for($ids, $this->calendar->gameDate($slot));
         $version = $this->rules->current;
         $seasonId = Season::current()?->id;
@@ -211,7 +211,7 @@ class FightNight
             $rows[] = [
                 'kind' => 'night', 'slot_at' => $slot, 'season_id' => $seasonId,
                 'a_id' => $a, 'b_id' => $b, 'seed' => (int) $seed, 'engine_version' => $version,
-            ] + Fight::statColumns($ia, $ib) + [
+            ] + Fight::statColumns($ia, $ib, $r) + [
                 'winner' => $r['win'], 'how' => $r['how'], 'round' => $r['rd'],
                 'score_a' => $r['scoreA'], 'score_b' => $r['scoreB'],
                 'visible_at' => $slot, 'created_at' => $now, 'updated_at' => $now,

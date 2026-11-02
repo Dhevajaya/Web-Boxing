@@ -10,6 +10,7 @@ import { madingView } from './views/mading.js';
 import { pialaView } from './views/piala.js';
 import { latihanView } from './views/latihan.js';
 import { markasView } from './views/markas.js';
+import { gelanggangView } from './views/gelanggang.js';
 import { dukungView } from './views/dukung.js';
 import { privasiView } from './views/privasi.js';
 import { sendChallenge, esc } from './ui.js';
@@ -31,21 +32,22 @@ route(/^\/profil\/?$/, () => {
     openLogin();
   }
 }, 'profil');
-route(/^\/profil\/(tampilan|identitas|stat|sasana)\/?$/, (section) => {
+route(/^\/profil\/(tampilan|identitas|stat|gaya|sasana)\/?$/, (section) => {
   if (session.me) return editorView(view, section);
   soonView(view, 'profil');
   openLogin();
   return null;
 }, 'profil');
 route(/^\/laga\/(\d+)\/?$/, (id) => arenaView(view, id), null);
-route(/^\/ranking\/?$/, () => rankingView(view, new URLSearchParams(location.search).get('papan') || 'season'), 'home');
-route(/^\/mading\/?$/, () => madingView(view), 'mading');
-route(/^\/piala\/?$/, gated('piala', () => pialaView(view)), 'mading');
-route(/^\/dukung\/?$/, gated('dukung', () => dukungView(view)), null);
+route(/^\/gelanggang\/?$/, () => gelanggangView(view), 'gelanggang');
+route(/^\/(?:ranking|papan-jagoan)\/?$/, () => rankingView(view, new URLSearchParams(location.search).get('papan') || 'season'), 'gelanggang');
+route(/^\/(?:mading|papan-kabar)\/?$/, () => madingView(view), 'home');
+route(/^\/piala\/?$/, gated('piala', () => pialaView(view)), 'gelanggang');
+route(/^\/(?:dukung|saweran)\/?$/, gated('dukung', () => dukungView(view)), null);
 route(/^\/privasi\/?$/, () => privasiView(view), null);
 route(/^\/latihan\/?$/, gated('latihan', () => latihanView(view)), 'latihan');
-route(/^\/markas\/?$/, gated('markas', () => markasView(view, new URLSearchParams(location.search).get('ruang') || 'alun')), 'markas');
-route(/^\/t\/([A-Za-z0-9_-]{6,16})\/?$/, (code) => arenaView(view, code, { title: 'Tantangan', extra: challengeExtra }), null);
+route(/^\/(?:tongkrongan|markas)\/?$/, gated('markas', () => markasView(view, new URLSearchParams(location.search).get('ruang') || 'alun')), 'markas');
+route(/^\/t\/([A-Za-z0-9_-]{6,16})\/?$/, (code) => arenaView(view, code, { title: 'Ajak Duel', extra: challengeExtra }), null);
 route(/^\/([A-Za-z0-9._]{1,30})\/?$/, (u) => fighterView(view, u.toLowerCase()),
   (u) => (session.me && session.me.username === u.toLowerCase() ? 'profil' : null));
 route(/.*/, () => soonView(view, ''), null);
@@ -56,8 +58,8 @@ function challengeExtra(box, f) {
   const a = f.fighters.a?.username;
   const b = f.fighters.b?.username;
   const target = me === b ? a : me === a ? b : a;
-  const label = me === b ? `Tantang balik @${target}` : me === a ? `Tantang @${target} lagi` : `Tantang @${target}`;
-  box.innerHTML = `<button class="btn btn-accent btn-block" type="button">🥊 ${esc(label)}</button><p class="m-status" hidden></p>`;
+  const label = me === b ? `Balas duel @${target}` : me === a ? `Ajak @${target} duel lagi` : `Ajak duel @${target}`;
+  box.innerHTML = `<button class="btn btn-accent btn-block" type="button">⚑ ${esc(label)}</button><p class="m-status" hidden></p>`;
   box.querySelector('button').onclick = async (e) => {
     if (!session.me) return openLogin();
     const btn = e.currentTarget;
@@ -81,10 +83,13 @@ document.querySelector('.tabbar').style.gridTemplateColumns = `repeat(${document
 const loginBtn = document.getElementById('loginBtn');
 loginBtn.addEventListener('click', () => (session.me ? navigate(`/${session.me.username}`) : openLogin()));
 onAuthChange((me) => {
-  loginBtn.textContent = me ? 'Profil' : 'Masuk';
+  loginBtn.textContent = me ? 'Identitas' : 'Masuk';
   loginBtn.classList.toggle('btn-accent', !!me);
   loginBtn.classList.toggle('btn-outline', !me);
 });
+
+// Sesi habis saat menyimpan sesuatu: segarkan status masuk lalu tawarkan masuk lagi.
+addEventListener('auth:expired', () => loadSession().then(() => { if (!session.me) openLogin(); }));
 
 // Tampilkan halaman setelah status masuk diketahui (cepat: dua request kecil).
 loadSession().finally(start);

@@ -1,6 +1,8 @@
-# Web Boxing
+# KAMPUNG TENDANG
 
-Game tinju komunitas berbasis web. Pemain memakai username Instagram sebagai identitas petarung, masuk lewat DM ke akun resmi, lalu bertanding otomatis di **Fight Night** tiap 6 jam, menantang teman, latihan, ikut **Piala Mingguan**, membela **sasana**, dan naik ranking.
+*Dari Gang, Naik Gelanggang.* Game kickboxing komunitas berbasis web dengan aturan original, gaya bertarung, dan jurus. Pemain memakai username Instagram sebagai identitas petarung, masuk lewat DM ke akun resmi, lalu bertarung otomatis di **Malam Gelanggang** tiap 6 jam, mengajak duel teman, latihan, ikut **Piala Kampung**, membela **geng**, dan naik **Papan Jagoan**.
+
+Migrasi dari versi tinju: lihat bagian *Migrasi dari era tinju* di [docs/game-design.md](docs/game-design.md).
 
 Stack: **Laravel 12 · PHP 8.3 · MySQL/SQLite · JavaScript (Vite)**. Berjalan di shared hosting: cukup satu cron tiap menit, tanpa worker atau websocket.
 

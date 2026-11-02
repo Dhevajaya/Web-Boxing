@@ -24,6 +24,9 @@ final class FightSimulator
     public function simulate(array $a, array $b, int $seed, ?int $version = null): array
     {
         $R = $this->rules->version($version);
+        if ($R['version'] >= 2) {
+            return (new FightSimulatorV2)->simulate($R, $a, $b, $seed);
+        }
         $F = $R['fight'];
         $rng = new Rng($seed);
 
@@ -120,10 +123,13 @@ final class FightSimulator
     public static function signature(array $result): string
     {
         $parts = [$result['win'], $result['how'], $result['rd'], $result['scoreA'], $result['scoreB']];
+        $v2 = ($result['version'] ?? 1) >= 2;
         foreach ($result['events'] as $e) {
-            $parts[] = implode(',', [
-                $e['t'], $e['rd'], $e['who'] ?? '', $e['p'] ?? '', $e['d'] ?? '', $e['ha'], $e['hb'],
-            ]);
+            $f = [$e['t'], $e['rd'], $e['who'] ?? '', $e['p'] ?? '', $e['d'] ?? '', $e['ha'], $e['hb']];
+            if ($v2) {
+                array_push($f, $e['j'] ?? '', $e['r'], $e['na'], $e['nb'], $e['ma'], $e['mb'], $e['la'], $e['lb']);
+            }
+            $parts[] = implode(',', $f);
         }
 
         return sprintf('%08x', Rng::fnv1a(implode('|', $parts)));

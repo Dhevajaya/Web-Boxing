@@ -109,8 +109,8 @@ class ProfileRulesTest extends TestCase
         $p = $this->prog();
         $base = ['power' => 70, 'speed' => 50, 'stamina' => 50, 'defense' => 50, 'chin' => 50];
 
-        $this->assertNull($p->checkPoints(['power' => 4, 'speed' => 6], 1, $base, 99));
-        $this->assertSame('over_budget', $p->checkPoints(['power' => 5, 'speed' => 6], 1, $base, 99));
+        $this->assertNull($p->checkPoints(['power' => 14, 'speed' => 6], 1, $base, 99));
+        $this->assertSame('over_budget', $p->checkPoints(['power' => 15, 'speed' => 6], 1, $base, 99));
         $this->assertSame('invalid', $p->checkPoints(['luck' => 1], 1, $base, 99));
         $this->assertSame('invalid', $p->checkPoints(['power' => '3'], 1, $base, 99));
         $this->assertSame('invalid', $p->checkPoints(['power' => -1], 1, $base, 99));

@@ -25,7 +25,7 @@ foreach (['', 'a', 'gelud', 'v1|budi_99', 'Ring Kita 🥊'] as $s) {
     $out['fnv'][] = ['s' => $s, 'h' => Rng::fnv1a($s)];
 }
 
-foreach ([1] as $version) {
+foreach ([1, 2] as $version) {
     $rules = engine_rules($version);
     $factory = new FighterFactory($rules);
     $sim = new FightSimulator($rules);
@@ -58,8 +58,16 @@ foreach ([1] as $version) {
             $points[$k] = $gen->int(12);
         }
         $bonus = [$stats[$gen->int(count($stats))] => $gen->int(4)];
+        $in = ['style' => $b['style'], 'stats' => $factory->effective($b['base'], $points, $bonus, $version)];
+        if ($version >= 2) {
+            // Jurus: khas archetype + satu jurus acak (kadang Pamungkas), urutan acak.
+            $R = $factory->rules()->version($version);
+            $sig = array_values(array_filter($R['archetypes'], fn ($a) => $a['id'] === $b['style']))[0]['signature'];
+            $extra = ['patah_ranting', 'sambar_badan', 'pukulan_pamungkas', 'balas_telak', 'tendang_sapu'][$gen->int(5)];
+            $in['jurus'] = $gen->int(2) ? [$sig, $extra] : [$extra, $sig];
+        }
 
-        return ['style' => $b['style'], 'stats' => $factory->effective($b['base'], $points, $bonus, $version)];
+        return $in;
     };
 
     for ($i = 0; $i < 400; $i++) {

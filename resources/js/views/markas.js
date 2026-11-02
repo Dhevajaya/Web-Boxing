@@ -1,4 +1,4 @@
-// Markas: chat Alun-alun, chat sasana, dan cari lawan sparing. Chat memakai polling tiap 4 detik.
+// Tongkrongan: chat Alun-alun, chat geng, dan cari lawan duel. Chat memakai polling tiap 4 detik.
 import { $, esc, api, sendChallenge } from '../ui.js';
 import { avatar } from '../game/index.js';
 import { session, openLogin } from '../auth.js';
@@ -13,15 +13,15 @@ export function markasView(el, initial = 'alun') {
   let poll = null;
   let lastId = 0;
   let room = null;
-  document.title = `Markas · ${window.GAME?.brand?.name ?? ''}`;
+  document.title = `Tongkrongan · ${window.GAME?.brand?.name ?? ''}`;
   const max = window.GAME?.chat?.max_len ?? 80;
 
   el.innerHTML = `
-    <section class="hero"><span class="eyebrow">Tempat nongkrong petarung</span><h1>Mar<em>kas</em></h1></section>
+    <section class="hero"><span class="eyebrow tape">Tempat nongkrong petarung</span><h1>Tong<em>krongan</em></h1></section>
     <div class="tabs" role="tablist" style="grid-template-columns:repeat(3,1fr)">
       <button role="tab" type="button" data-t="alun">Alun-alun</button>
-      <button role="tab" type="button" data-t="sasana">Sasana</button>
-      <button role="tab" type="button" data-t="spar">Cari lawan</button>
+      <button role="tab" type="button" data-t="sasana">Geng</button>
+      <button role="tab" type="button" data-t="spar">Ajak Duel</button>
     </div>
     <section class="card mk" id="pane"></section>`;
   el.querySelectorAll('[data-t]').forEach((b) => b.addEventListener('click', () => show(b.dataset.t)));
@@ -31,18 +31,18 @@ export function markasView(el, initial = 'alun') {
   function show(t) {
     stop();
     tab = t;
-    history.replaceState({}, '', t === 'alun' ? '/markas' : `/markas?ruang=${t}`);
+    history.replaceState({}, '', t === 'alun' ? '/tongkrongan' : `/tongkrongan?ruang=${t}`);
     el.querySelectorAll('[data-t]').forEach((b) => b.setAttribute('aria-selected', b.dataset.t === t ? 'true' : 'false'));
     if (t === 'spar') return spar();
     if (t === 'sasana') {
-      if (!session.me) return gate('Masuk dulu untuk membuka ruang sasana.');
+      if (!session.me) return gate('Masuk dulu untuk membuka ruang geng.');
       return api('/api/me/profile', { cache: 'no-store' }).then(({ data }) => {
         if (!alive || tab !== 'sasana') return;
         if (!data.sasanaLocked || !data.sasana) {
-          $('#pane', el).innerHTML = '<p class="sub">Kamu belum bergabung dengan sasana season ini.</p><a class="btn btn-accent btn-block" href="/profil/sasana" data-link>Pilih sasana</a>';
+          $('#pane', el).innerHTML = '<p class="sub">Kamu belum bergabung dengan geng season ini.</p><a class="btn btn-accent btn-block" href="/profil/sasana" data-link>Pilih geng</a>';
           return;
         }
-        chat(`sasana:${data.sasana.slug}`, `${data.sasana.icon} Markas ${data.sasana.name}`);
+        chat(`sasana:${data.sasana.slug}`, `${data.sasana.icon} Geng ${data.sasana.name}`);
       });
     }
     return chat('alun', 'Alun-alun');
@@ -158,7 +158,7 @@ export function markasView(el, initial = 'alun') {
 
   function spar() {
     room = null;
-    if (!session.me) return gate('Masuk dulu untuk mencari lawan sparing.');
+    if (!session.me) return gate('Masuk dulu untuk mencari lawan duel.');
     const pane = $('#pane', el);
     pane.innerHTML = '<p class="loading">Mencari lawan…</p>';
     api('/api/spar').then(({ data }) => {
@@ -168,7 +168,7 @@ export function markasView(el, initial = 'alun') {
         <ul class="spar">${data.rows.map((r) => `<li>
           <a class="mini-av lg" href="/${esc(r.username)}" data-link>${avatar(r.look, { size: 44 })}</a>
           <a class="rk-id" href="/${esc(r.username)}" data-link><b>@${esc(r.username)}</b><small>${r.sasana ? `${esc(r.sasana.icon)} ` : ''}Lv${r.level} · ★ ${r.stars} · NILAI ${r.ovr}</small></a>
-          <button class="btn btn-accent btn-sm" type="button" data-u="${esc(r.username)}">Tantang</button></li>`).join('') || '<li class="empty">Belum ada lawan setara yang aktif. Coba lagi nanti.</li>'}</ul>
+          <button class="btn btn-accent btn-sm" type="button" data-u="${esc(r.username)}">Ajak Duel</button></li>`).join('') || '<li class="empty">Belum ada lawan setara yang aktif. Coba lagi nanti.</li>'}</ul>
         <p class="m-status" id="sErr" hidden></p>`;
       pane.querySelectorAll('[data-u]').forEach((b) => b.addEventListener('click', async () => {
         b.disabled = true;

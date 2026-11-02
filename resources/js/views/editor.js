@@ -1,24 +1,20 @@
-// Editor profil pemain: /profil/tampilan, /profil/identitas, /profil/stat.
+// Editor Identitas pemain: /profil/tampilan, /profil/identitas, /profil/gaya, /profil/stat, /profil/sasana.
 // Satu tampilan dengan tiga tab; pindah tab tidak memuat ulang data, jadi pilihan
 // yang belum disimpan di tab lain tetap ada.
-import { $, esc, api, STAT_NAMES } from '../ui.js';
-import { LOOKS, avatar, lookRandom, content, effective, ovr } from '../game/index.js';
+import { $, esc, api, STAT_NAMES, STAT_HELP } from '../ui.js';
+import { LOOKS, avatar, lookRandom, content, effective, ovr, TECH_NAMES } from '../game/index.js';
 import { session } from '../auth.js';
 
 const TABS = [
-  ['tampilan', 'Tampilan'],
+  ['tampilan', 'Koleksi'],
   ['identitas', 'Julukan'],
-  ['stat', 'Poin stat'],
-  ...(window.GAME?.features?.sasana === false ? [] : [['sasana', 'Sasana']]),
+  ['gaya', 'Gaya'],
+  ['stat', 'Atribut'],
+  ...(window.GAME?.features?.sasana === false ? [] : [['sasana', 'Geng']]),
 ];
 
-const STAT_HINTS = {
-  power: 'Besar damage dan peluang pukulan keras.',
-  speed: 'Seberapa sering menyerang duluan dan peluang pukulan kena.',
-  stamina: 'Tenaga di ronde akhir dan pemulihan antar-ronde.',
-  defense: 'Mengurangi peluang pukulan lawan kena.',
-  chin: 'Mengurangi damage dan peluang jatuh (knockdown).',
-};
+const STAT_HINTS = STAT_HELP;
+const KIND_NAMES = { combo: 'Kombinasi', counter: 'Balasan', finisher: 'Pamungkas' };
 
 const fmtTime = (iso) => new Date(iso).toLocaleString('id-ID', {
   weekday: 'long', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit', timeZone: window.GAME?.brand?.timezone,
@@ -59,7 +55,7 @@ export function editorView(el, initialTab) {
   function frame() {
     el.innerHTML = `
       <a href="/${esc(p.username)}" data-link class="sub back">← Kembali ke kartu</a>
-      <div class="tabs" role="tablist" aria-label="Bagian profil">
+      <div class="tabs" role="tablist" aria-label="Bagian profil" style="grid-template-columns:repeat(${TABS.length},1fr)">
         ${TABS.map(([id, label]) => `<button role="tab" type="button" data-tab="${id}" id="tab-${id}" aria-controls="pane">${label}</button>`).join('')}
       </div>
       <section id="pane" class="card editor" role="tabpanel"></section>`;
@@ -76,7 +72,7 @@ export function editorView(el, initialTab) {
       b.tabIndex = on ? 0 : -1;
     });
     $('#pane', el).setAttribute('aria-labelledby', `tab-${id}`);
-    ({ tampilan: drawLook, identitas: drawIdentity, stat: drawStats, sasana: drawSasana })[id]();
+    ({ tampilan: drawLook, identitas: drawIdentity, gaya: drawStyle, stat: drawStats, sasana: drawSasana })[id]();
   }
 
   // Simpan ke server; perbarui profil bila berhasil, tampilkan pesan bila gagal.
@@ -206,6 +202,57 @@ export function editorView(el, initialTab) {
     refresh();
   }
 
+  // ------------------------------------------------------------ gaya bertarung & jurus andalan
+
+  function drawStyle() {
+    const pane = $('#pane', el);
+    const locked = !!p.archetypeNextAt;
+    let pick = p.style;
+    let chosen = [...p.jurusEquipped];
+    pane.innerHTML = `
+      <h3 class="ed-h">Gaya bertarung</h3>
+      ${locked ? `<p class="note">Gaya bertarung bisa diganti lagi <b>${esc(fmtTime(p.archetypeNextAt))}</b>.</p>`
+        : `<p class="hint">Gaya bertarung mengubah bias atribut, kecenderungan di gelanggang, sifat pasif, dan jurus khas. Bisa diganti tiap ${p.archetypeDays} hari.</p>`}
+      <div class="arch">${p.archetypes.map((a) => `
+        <label class="arch-o${a.id === p.style ? ' cur' : ''}">
+          <input type="radio" name="arch" value="${esc(a.id)}" ${a.id === p.style ? 'checked' : ''} ${locked && a.id !== p.style ? 'disabled' : ''}>
+          <span><b>${esc(a.name)}</b> <small>${esc(a.en)}${a.id === p.archetypeDefault ? ' · bawaan' : ''}</small>
+          <em>${esc(a.desc)}</em><small class="pas">Pasif: ${esc(a.passive.name)}. ${esc(a.passive.desc)}</small></span>
+        </label>`).join('')}</div>
+      <div class="savebar inline"><p class="m-status" id="archStatus" aria-live="polite"></p>
+        <button class="btn btn-accent" type="button" id="saveArch" disabled>Ganti gaya</button></div>
+
+      <h3 class="ed-h">Jurus Andalan</h3>
+      <p class="hint">Pasang ${p.jurusSlots} jurus. Jurus keluar otomatis saat Meter Bara penuh dan syaratnya terpenuhi, maksimal sekali per ronde.</p>
+      <ul class="jurus">${p.jurus.map((j) => `
+        <li class="${j.open ? '' : 'locked'}"><label>
+          <input type="checkbox" value="${esc(j.id)}" ${chosen.includes(j.id) ? 'checked' : ''} ${j.open ? '' : 'disabled'}>
+          <span><b>${esc(j.name)}</b> <small class="pill">${esc(KIND_NAMES[j.kind] ?? j.kind)}</small>${j.open ? '' : ` <small class="pill">Lv ${j.unlock}</small>`}
+          <em>${esc(j.desc)}</em><small class="steps">Bara ${j.meter} · ${j.steps.map((t) => esc(TECH_NAMES[t] ?? t)).join(' → ')}</small></span>
+        </label></li>`).join('')}</ul>
+      <div class="savebar inline"><p class="m-status" id="saveStatus" aria-live="polite"></p>
+        <button class="btn btn-accent" type="button" id="saveJurus" disabled>Simpan jurus</button></div>`;
+
+    pane.querySelectorAll('input[name="arch"]').forEach((r) => r.addEventListener('change', () => {
+      pick = r.value;
+      $('#saveArch', pane).disabled = pick === p.style;
+    }));
+    $('#saveArch', pane).onclick = async (e) => {
+      const name = p.archetypes.find((a) => a.id === pick)?.name;
+      if (!confirm(`Ganti gaya bertarung jadi ${name}? Jurus khas ikut berganti, dan gaya baru bisa diganti lagi ${p.archetypeDays} hari lagi.`)) return;
+      await save('/api/me/archetype', { archetype: pick }, e.currentTarget, $('#archStatus', pane), `Gaya bertarung sekarang ${name}.`);
+    };
+    const boxes = [...pane.querySelectorAll('.jurus input')];
+    const refresh = () => {
+      chosen = boxes.filter((b) => b.checked).map((b) => b.value);
+      for (const b of boxes) b.disabled = !p.jurus.find((j) => j.id === b.value)?.open || (!b.checked && chosen.length >= p.jurusSlots);
+      $('#saveJurus', pane).disabled = !chosen.length || same(chosen, p.jurusEquipped);
+    };
+    boxes.forEach((b) => b.addEventListener('change', refresh));
+    $('#saveJurus', pane).onclick = (e) => save('/api/me/jurus', { jurus: chosen }, e.currentTarget, $('#saveStatus', pane), 'Jurus Andalan tersimpan.');
+    refresh();
+  }
+
   // ------------------------------------------------------------ poin stat
 
   function drawStats() {
@@ -215,7 +262,7 @@ export function editorView(el, initialTab) {
 
     pane.innerHTML = `
       <div class="pts-head">
-        <div><b id="free"></b><small>poin tersisa</small></div>
+        <div><b id="free"></b><small>poin atribut tersisa</small></div>
         <div class="ovr-change"><small>NILAI</small><b id="ovrNow"></b></div>
       </div>
       ${respecLocked
@@ -280,21 +327,21 @@ export function editorView(el, initialTab) {
 
   function drawSasana() {
     const pane = $('#pane', el);
-    pane.innerHTML = '<p class="loading">Memuat sasana…</p>';
+    pane.innerHTML = '<p class="loading">Memuat geng…</p>';
     api('/api/sasana').then(({ data }) => {
       if (!alive || tab !== 'sasana') return;
       const mine = p.sasana?.slug;
       pane.innerHTML = `
-        <p class="hint">Pilih satu sasana untuk season ini. Kemenangan Fight Night-mu menyumbang poin Perang Sasana (3 per menang, 1 per seri, +1 tiap KO). ${p.sasanaLocked ? '<b>Pilihanmu terkunci sampai season berikutnya.</b>' : 'Setelah memilih, tidak bisa pindah sampai season berikutnya.'}</p>
+        <p class="hint">Pilih satu geng untuk season ini. Kemenangan Malam Gelanggang-mu menyumbang poin Perang Geng (3 per menang, 1 per seri, +1 tiap KO). ${p.sasanaLocked ? '<b>Pilihanmu terkunci sampai season berikutnya.</b>' : 'Setelah memilih, tidak bisa pindah sampai season berikutnya.'}</p>
         <div class="sas-grid">${data.map((s) => `
           <button type="button" class="sas${mine === s.slug ? ' on' : ''}" data-slug="${esc(s.slug)}" style="--c:${esc(s.color)}" ${p.sasanaLocked ? 'disabled' : ''} aria-pressed="${mine === s.slug}">
             <span class="sas-ic" aria-hidden="true">${esc(s.icon)}</span><b>${esc(s.name)}</b><small>${esc(s.motto ?? '')}</small><em>${s.members} anggota</em>
           </button>`).join('')}</div>
-        <a class="btn btn-ghost btn-block" href="/ranking?papan=sasana" data-link>Lihat Perang Sasana</a>
+        <a class="btn btn-ghost btn-block" href="/ranking?papan=sasana" data-link>Lihat Perang Geng</a>
         <div class="savebar"><p class="m-status" id="saveStatus" aria-live="polite"></p></div>`;
       pane.querySelectorAll('.sas').forEach((b) => b.addEventListener('click', async () => {
         const name = b.querySelector('b').textContent;
-        if (!confirm(`Gabung sasana ${name}? Tidak bisa pindah sampai season berikutnya.`)) return;
+        if (!confirm(`Gabung geng ${name}? Tidak bisa pindah sampai season berikutnya.`)) return;
         try {
           await api('/api/me/sasana', { method: 'PUT', body: JSON.stringify({ slug: b.dataset.slug }) });
           const { data: fresh } = await api('/api/me/profile', { cache: 'no-store' });

@@ -119,6 +119,7 @@ class AuthController extends Controller
     {
         $auth->logout($request, $request->boolean('everywhere'));
 
-        return $this->ok(['status' => 'ok']);
+        // Sesi diganti saat keluar: kirim token CSRF baru agar halaman tidak perlu dimuat ulang.
+        return $this->ok(['status' => 'ok', 'csrf' => csrf_token()]);
     }
 }

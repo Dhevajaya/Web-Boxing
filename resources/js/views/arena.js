@@ -1,16 +1,16 @@
-// Arena: memutar ulang laga dari input yang tersimpan (stat, gaya, seed, versi).
+// Arena: memutar ulang laga dari input yang tersimpan (stat, gaya, seed, versi) dengan
+// animasi tampak samping, efek suara, dan komentator bersuara (resources/js/game/stage.js).
 // Hasil di browser harus sama dengan hasil server; bila tidak, ditandai.
 import { $, esc, api, fmtDate, KIND } from '../ui.js';
-import { simulate, avatar, lookFor } from '../game/index.js';
+import { simulate, lookFor, LOOKS, rules, JURUS } from '../game/index.js';
 import { describe, resultLine } from '../game/commentary.js';
+import { createStage } from '../game/stage.js';
 import { session } from '../auth.js';
-
-const PACE = { bell: 1300, miss: 520, hit: 650, big: 950, kd: 1700, ko: 2200, end: 1600 };
 
 export function arenaView(el, id, { title = null, extra = null } = {}) {
   let alive = true;
-  let timer = null;
-  el.innerHTML = '<p class="loading">Menyiapkan ring…</p>';
+  let stage = null;
+  el.innerHTML = '<p class="loading">Menyiapkan gelanggang…</p>';
 
   const url = typeof id === 'string' && !/^\d+$/.test(id) ? `/api/challenges/${encodeURIComponent(id)}` : `/api/fights/${id}`;
   api(url)
@@ -32,27 +32,32 @@ export function arenaView(el, id, { title = null, extra = null } = {}) {
       r = null;
     }
     const match = r && r.win === f.winner && r.how === f.how && r.rd === f.round;
+    const v2 = (f.v ?? 1) >= 2;
+    const R = v2 ? rules(f.v) : null;
+    const staMax = v2 ? { a: R.fight.stamina.base + R.fight.stamina.perStat * f.a.stats.stamina, b: R.fight.stamina.base + R.fight.stamina.perStat * f.b.stats.stamina } : null;
+    const meters = (s) => `<div class="meters"><span class="mt napas" title="Napas"><i id="n${s}" style="width:100%"></i></span><span class="mt bara" title="Meter Bara"><i id="m${s}" style="width:0%"></i></span><span class="leg" id="l${s}" title="Kaki" hidden>🦵</span></div>`;
 
     el.innerHTML = `
       <a href="${session.me ? `/${esc(session.me.username)}` : '/'}" data-link class="sub back">← Kembali</a>
-      <div class="arena-meta"><span class="eyebrow">${esc(title ?? KIND[f.kind] ?? 'Laga')}</span><span class="sub">${esc(fmtDate(f.at, { weekday: 'short' }))} WIB</span></div>
-      <section class="arena" aria-label="Arena">
+      <section class="arena2" aria-label="Arena">
+        <div class="arena-meta"><span class="eyebrow">${esc(title ?? KIND[f.kind] ?? 'Laga')}</span>
+          <span class="sub">${esc(fmtDate(f.at, { weekday: 'short' }))} WIB</span>
+          <span class="arena-tools"><button class="snd" id="fxBtn" type="button" title="Efek visual">✦</button><button class="snd" id="snd" type="button" aria-pressed="false" title="Suara">🔊</button></span></div>
         <div class="arena-top">
-          <div class="corner blue"><a href="/${esc(A.username)}" data-link class="cname">${esc(names.a)}</a><div class="hp blue"><i id="ha" style="width:100%"></i></div></div>
-          <div class="rd" id="rd">R1</div>
-          <div class="corner red"><a href="/${esc(B.username)}" data-link class="cname">${esc(names.b)}</a><div class="hp red"><i id="hb" style="width:100%"></i></div></div>
+          <div class="corner blue"><a href="/${esc(A.username)}" data-link class="cname">${esc(names.a)}</a><div class="hp blue"><i id="ha" style="width:100%"></i></div>${v2 ? meters('a') : ''}</div>
+          <div class="rd"><b id="rd">R1</b><small>RONDE</small></div>
+          <div class="corner red"><a href="/${esc(B.username)}" data-link class="cname">${esc(names.b)}</a><div class="hp red"><i id="hb" style="width:100%"></i></div>${v2 ? meters('b') : ''}</div>
         </div>
-        <div class="ring">
-          <div class="boxer a" id="ba">${avatar(A.look, { size: 150, title: names.a })}</div>
-          <div class="boxer b" id="bb">${avatar(B.look, { size: 150, flip: true, title: names.b })}</div>
-          <div class="pow" id="pow" hidden></div>
-        </div>
+        ${v2 ? '' : '<p class="archive-tag">Arsip era tinju · diputar dengan aturan lama</p>'}
+        <div class="ring-wrap"><div class="ring-stage" id="stage"></div>
+          <button class="tap-sound" id="tapSound" type="button" hidden>🔊 Ketuk untuk suara</button></div>
         <div class="controls">
           <button class="btn btn-ghost btn-sm" id="play" type="button">Jeda</button>
           <button class="btn btn-ghost btn-sm" id="speed" type="button">1×</button>
-          <button class="btn btn-ghost btn-sm" id="skip" type="button">Lewati</button>
+          <button class="btn btn-ghost btn-sm" id="skip" type="button">Lewati ke hasil</button>
         </div>
         <ul class="feed" id="feed" aria-live="off"></ul>
+        <p class="hint" id="voiceHint" hidden>Komentator bersuara butuh suara Bahasa Indonesia di perangkat ini (Pengaturan → Teks ke ucapan). Efek suara tetap jalan.</p>
       </section>
       <section class="card result-card" id="res" hidden></section>
       ${extra ? '<div id="extra"></div>' : ''}
@@ -61,82 +66,102 @@ export function arenaView(el, id, { title = null, extra = null } = {}) {
     if (extra) extra($('#extra', el), f);
     if (!r) return showResult(f, names);
 
-    const ba = $('#ba', el);
-    const bb = $('#bb', el);
     const feed = $('#feed', el);
-    const pow = $('#pow', el);
-    let i = 0;
-    let speed = 1;
-    let playing = true;
-
-    const setHp = (e) => {
-      $('#ha', el).style.width = `${e.ha / 10}%`;
-      $('#hb', el).style.width = `${e.hb / 10}%`;
+    const setHp = (ha, hb) => {
+      $('#ha', el).style.width = `${Math.max(0, ha) / 10}%`;
+      $('#hb', el).style.width = `${Math.max(0, hb) / 10}%`;
     };
-    const anim = (node, cls) => {
-      node.classList.remove('lunge', 'hit', 'big', 'down', 'win', 'dodge');
-      void node.offsetWidth; // mulai ulang animasi CSS
-      if (cls) node.classList.add(cls);
-    };
-    const show = (e) => {
-      setHp(e);
-      $('#rd', el).textContent = `R${e.rd}`;
-      const atk = e.who === 'a' ? ba : bb;
-      const def = e.who === 'a' ? bb : ba;
-      if (['hit', 'big', 'kd', 'ko', 'miss'].includes(e.t)) anim(atk, 'lunge');
-      if (e.t === 'miss') anim(def, 'dodge');
-      if (e.t === 'hit') anim(def, 'hit');
-      if (e.t === 'big') anim(def, 'big');
-      if (e.t === 'kd' || e.t === 'ko') anim(def, 'down');
-      if (['big', 'kd', 'ko'].includes(e.t)) {
-        pow.hidden = false;
-        pow.className = `pow ${e.who === 'a' ? 'on-b' : 'on-a'}`;
-        pow.textContent = e.t === 'ko' ? 'KO!' : e.t === 'kd' ? 'JATUH!' : 'BAM!';
-        void pow.offsetWidth;
-        pow.classList.add('go');
-      }
+    const addLine = (e, text = null) => {
       const li = document.createElement('li');
-      li.textContent = describe(e, names);
+      li.textContent = text ?? describe(e, names);
       if (['big', 'kd', 'ko'].includes(e.t)) li.className = 'big';
       if (e.t === 'bell' || e.t === 'end') li.className = 'bell';
       feed.prepend(li);
-    };
-    const finish = () => {
-      clearTimeout(timer);
-      const last = r.events[r.events.length - 1];
-      setHp(last);
-      if (r.win !== 'draw') {
-        anim(r.win === 'a' ? ba : bb, 'win');
-        if (r.how !== 'Angka') anim(r.win === 'a' ? bb : ba, 'down');
-      }
-      $('#play', el).disabled = true;
-      $('#skip', el).disabled = true;
-      showResult(f, names, r);
-    };
-    const next = () => {
-      if (!alive) return;
-      const e = r.events[i++];
-      if (!e) return finish();
-      show(e);
-      if (playing) timer = setTimeout(next, PACE[e.t] / speed);
+      while (feed.children.length > 40) feed.lastElementChild.remove();
     };
 
+    let fxLevel = 'full';
+    try { fxLevel = localStorage.getItem('wb.fx') || 'full'; } catch { /* diblokir */ }
+    const setStatus = (e) => {
+      if (!v2 || e.na === undefined) return;
+      for (const s of ['a', 'b']) {
+        const n = $(`#n${s}`, el);
+        if (!n) return;
+        n.style.width = `${Math.max(0, Math.min(100, (e[`n${s}`] / staMax[s]) * 100))}%`;
+        $(`#m${s}`, el).style.width = `${e[`m${s}`]}%`;
+        $(`#m${s}`, el).parentElement.classList.toggle('full', e[`m${s}`] >= 100);
+        const leg = $(`#l${s}`, el);
+        leg.hidden = e[`l${s}`] < 25;
+        leg.classList.toggle('bad', e[`l${s}`] >= 50);
+      }
+    };
+    stage = createStage($('#stage', el), {
+      catalog: LOOKS,
+      looks: { a: A.look ?? lookFor(A.username), b: B.look ?? lookFor(B.username) },
+      names,
+      brand: window.GAME?.brand ?? {},
+      fx: fxLevel,
+      jurusNames: Object.fromEntries(Object.values(JURUS).map((j) => [j.id, j.name])),
+    }, r, {
+      onEvent: (e, i, text) => addLine(e, text),
+      onStatus: setStatus,
+      onHp: setHp,
+      onRound: (rd) => { $('#rd', el).textContent = `R${rd}`; },
+      onDone: () => {
+        if (!alive) return;
+        $('#play', el).disabled = true;
+        $('#skip', el).disabled = true;
+        showResult(f, names, r);
+      },
+    });
+
+    const snd = $('#snd', el);
+    const paintSnd = () => {
+      snd.textContent = stage.muted ? '🔇' : '🔊';
+      snd.setAttribute('aria-pressed', String(stage.muted));
+      snd.setAttribute('aria-label', stage.muted ? 'Nyalakan suara' : 'Matikan suara');
+    };
+    paintSnd();
+    snd.onclick = () => { stage.setMuted(!stage.muted); paintSnd(); };
+    const fxBtn = $('#fxBtn', el);
+    const FX = { full: ['Efek: Penuh', '✦'], lite: ['Efek: Ringan', '✧'], off: ['Efek: Hemat', '·'] };
+    const paintFx = () => { fxBtn.textContent = FX[fxLevel][1]; fxBtn.title = `${FX[fxLevel][0]} (berlaku di laga berikutnya)`; fxBtn.setAttribute('aria-label', FX[fxLevel][0]); };
+    paintFx();
+    fxBtn.onclick = () => {
+      fxLevel = { full: 'lite', lite: 'off', off: 'full' }[fxLevel];
+      try { localStorage.setItem('wb.fx', fxLevel); } catch { /* abaikan */ }
+      paintFx();
+      addLine({ t: 'bell' }, `${FX[fxLevel][0]} dipakai mulai laga berikutnya.`);
+    };
+    // Daftar suara perangkat dimuat belakangan di beberapa browser.
+    setTimeout(() => { if (alive && !stage.muted && !stage.voiceAvailable()) $('#voiceHint', el).hidden = false; }, 1500);
+
     $('#play', el).onclick = (ev) => {
-      playing = !playing;
-      ev.currentTarget.textContent = playing ? 'Jeda' : 'Putar';
-      clearTimeout(timer);
-      if (playing) next();
+      if (stage.playing) stage.pause();
+      else stage.play();
+      ev.currentTarget.textContent = stage.playing ? 'Jeda' : 'Putar';
     };
     $('#speed', el).onclick = (ev) => {
-      speed = speed === 1 ? 2 : speed === 2 ? 4 : 1;
-      ev.currentTarget.textContent = `${speed}×`;
+      const next = { 1: 2, 2: 4, 4: 1 }[ev.currentTarget.dataset.s ?? '1'];
+      ev.currentTarget.dataset.s = String(next);
+      ev.currentTarget.textContent = `${next}×`;
+      stage.setSpeed(next);
     };
     $('#skip', el).onclick = () => {
-      clearTimeout(timer);
-      while (i < r.events.length) show(r.events[i++]);
-      finish();
+      stage.skip();
+      feed.innerHTML = '';
+      for (const e of [...r.events].reverse().slice(0, 12).reverse()) addLine(e);
     };
-    timer = setTimeout(next, 500);
+    stage.play();
+    // Suara diblokir browser (link dibuka langsung): tawarkan tombol, sentuhan apa pun juga membukanya.
+    const tap = $('#tapSound', el);
+    const unlock = () => {
+      stage?.resume();
+      setTimeout(() => { if (tap.isConnected) tap.hidden = !stage.audioBlocked() || stage.muted; }, 150);
+    };
+    setTimeout(() => { if (alive && stage.audioBlocked() && !stage.muted) tap.hidden = false; }, 400);
+    tap.onclick = unlock;
+    el.addEventListener('pointerdown', unlock, { once: true });
   }
 
   function showResult(f, names, r = null) {
@@ -144,27 +169,28 @@ export function arenaView(el, id, { title = null, extra = null } = {}) {
     const mySide = session.me && (f.fighters.a?.username === session.me.username ? 'a' : f.fighters.b?.username === session.me.username ? 'b' : null);
     const myXp = mySide ? f.xp?.[mySide] : 0;
     const box = $('#res', el);
+    if (!box) return;
     box.hidden = false;
     box.innerHTML = `
       <div class="result"><b>${esc(line.title)}</b><span>${esc(line.sub)}</span></div>
+      ${f.summary?.rounds?.length ? `<div class="cards">${f.summary.rounds.map(([a, b], k) => `<span><small>R${k + 1}</small>${a} - ${b}</span>`).join('')}</div>` : ''}
       ${myXp ? `<p class="xp-gain">+${myXp} XP untukmu</p>` : ''}
       <div class="row">
         <button class="btn btn-ghost" type="button" id="share">Bagikan</button>
         <button class="btn btn-ghost" type="button" id="again">Putar ulang</button>
       </div>`;
-    $('#again', box).onclick = () => arenaView(el, id, { title, extra });
+    $('#again', box).onclick = () => { stage?.destroy(); arenaView(el, id, { title, extra }); };
     $('#share', box).onclick = async (e) => {
       const btn = e.currentTarget;
-      const link = location.href;
       try {
-        if (navigator.share) await navigator.share({ title: document.title, url: link });
+        if (navigator.share) await navigator.share({ title: document.title, url: location.href });
         else {
-          await navigator.clipboard.writeText(link);
+          await navigator.clipboard.writeText(location.href);
           btn.textContent = 'Link tersalin';
         }
       } catch { /* dibatalkan */ }
     };
   }
 
-  return { cleanup: () => { alive = false; clearTimeout(timer); } };
+  return { cleanup: () => { alive = false; stage?.destroy(); } };
 }

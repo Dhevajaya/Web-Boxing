@@ -60,7 +60,8 @@ final class SettingsSchema
                 ['chat.report_threshold', 'Laporan sampai pesan disembunyikan', 'int'],
                 ['chat.mute_hours', 'Lama bisu otomatis (jam)', 'int'],
                 ['profile.identity_cooldown_hours', 'Jeda ganti julukan (jam)', 'int'],
-                ['training.xp_cap_per_game', 'XP latihan per game per hari', 'int'],
+                ['training.xp_daily_cap', 'XP latihan maksimal per hari', 'int'],
+                ['training.streak_xp', 'Bonus XP streak latihan harian', 'int'],
                 ['training.bonus_max', 'Bonus stat latihan maksimal', 'int'],
             ],
         ];

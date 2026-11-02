@@ -14,16 +14,16 @@ const who = (f, link = true) => {
 export function madingView(el) {
   let alive = true;
   let stop = () => {};
-  document.title = `Mading · ${window.GAME?.brand?.name ?? ''}`;
-  el.innerHTML = '<section class="hero"><span class="eyebrow">Papan pengumuman</span><h1>Mading <em>Ring</em></h1></section><p class="loading">Memuat…</p>';
+  document.title = `Papan Kabar · ${window.GAME?.brand?.name ?? ''}`;
+  el.innerHTML = '<section class="hero"><span class="eyebrow tape">Kabar dari gang</span><h1>Papan <em>Kabar</em></h1></section><p class="loading">Memuat…</p>';
 
   api('/api/mading').then(({ data }) => {
     if (!alive) return;
     const n = data.night;
     el.innerHTML = `
-      <section class="hero"><span class="eyebrow">Papan pengumuman</span><h1>Mading <em>Ring</em></h1></section>
+      <section class="hero"><span class="eyebrow tape">Kabar dari gang</span><h1>Papan <em>Kabar</em></h1></section>
       <section class="card fn-card">
-        <div class="fn-row"><div><span class="eyebrow">Fight Night berikutnya</span><b class="fn-time">${esc(fmtDate(data.next, { weekday: 'long', day: undefined, month: undefined }))} WIB</b></div><b class="fn-cd" id="cd">--:--:--</b></div>
+        <div class="fn-row"><div><span class="eyebrow">Malam Gelanggang berikutnya</span><b class="fn-time">${esc(fmtDate(data.next, { weekday: 'long', day: undefined, month: undefined }))} WIB</b></div><b class="fn-cd" id="cd">--:--:--</b></div>
       </section>
       ${data.news.length ? data.news.map((a) => `
         <article class="card news${a.pinned ? ' pinned' : ''}">
@@ -32,7 +32,7 @@ export function madingView(el) {
           <div class="news-body">${para(a.body)}</div>
         </article>`).join('') : ''}
       ${n ? `<section class="card">
-        <h2>Fight Night terakhir</h2>
+        <h2>Malam Gelanggang terakhir</h2>
         <p class="sub">${esc(fmtDate(n.slot, { weekday: 'long' }))} WIB</p>
         <div class="record"><div><b>${n.fights}</b><small>Laga</small></div><div><b>${n.ko}</b><small>KO/TKO</small></div><div><b>${n.draws}</b><small>Seri</small></div></div>
         ${n.highlights.map((h) => `<a class="hl" href="/laga/${h.id}" data-link>

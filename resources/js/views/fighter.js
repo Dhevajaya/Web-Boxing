@@ -1,6 +1,6 @@
 import { esc, api, STAT_NAMES, fmtDate, RESULT, KIND, badgeLabel, sendChallenge } from '../ui.js';
 import { navigate } from '../router.js';
-import { baseFighter, ovr, lookFor, avatar } from '../game/index.js';
+import { baseFighter, ovr, lookFor, avatar, JURUS } from '../game/index.js';
 import { session, logout, openLogin } from '../auth.js';
 
 export function fighterView(el, username) {
@@ -38,7 +38,7 @@ export function fightList(box, username) {
         return `<li><a href="${x.kind === 'challenge' && x.code ? `/t/${esc(x.code)}` : `/laga/${x.id}`}" data-link>
           <span class="res ${cls}" title="${label}">${letter}</span>
           <span class="fl-av">${o.look ? avatar(o.look, { size: 36 }) : ''}</span>
-          <span class="fl-id"><b>vs @${esc(o.username)}</b><small>${esc(KIND[x.kind] ?? x.kind)} · ${esc(x.how)}${x.how !== 'Angka' ? ` R${x.round}` : ''}${x.xp ? ` · +${x.xp} XP` : ''}</small></span>
+          <span class="fl-id"><b>vs @${esc(o.username)}</b><small>${x.v === 1 ? 'Arsip tinju · ' : ''}${esc(KIND[x.kind] ?? x.kind)} · ${esc(x.how)}${x.how !== 'Angka' ? ` R${x.round}` : ''}${x.xp ? ` · +${x.xp} XP` : ''}</small></span>
           <span class="fl-at">${esc(fmtDate(x.at, { hour: undefined, minute: undefined }))}</span></a></li>`;
       }).join('');
       if (!before && !html) list.innerHTML = '<li class="empty">Belum ada laga.</li>';
@@ -67,16 +67,17 @@ function draw(el, f) {
   const welcome = mine && new URLSearchParams(location.search).has('selamat');
   if (welcome) history.replaceState({}, '', location.pathname); // jangan tampil lagi saat dimuat ulang
 
-  const stats = Object.entries(STAT_NAMES)
+  const stats = Object.entries(STAT_NAMES).filter(([k]) => f.stats[k] !== undefined)
     .map(([k, label]) => `<div class="stat"><span>${label}</span><div class="bar"><i style="width:${f.stats[k]}%"></i></div><b>${f.stats[k]}</b></div>`)
     .join('');
+  const jurus = (f.jurus ?? []).map((j) => JURUS[j.id] ? { ...j, desc: JURUS[j.id].desc } : j);
   const brand = window.GAME?.brand ?? {};
   const look = f.look ?? lookFor(f.username);
   const free = f.pointsFree ?? 0;
 
   el.innerHTML = `
     <a href="/" data-link class="sub back">← Cari nama lain</a>
-    ${welcome ? `<p class="banner">🥊 Selamat datang di ring, <b>@${esc(f.username)}</b>! Atur tampilan dan bagikan ${free || ''} poin statmu dulu, Fight Night berikutnya kamu ikut bertanding otomatis.</p>` : ''}
+    ${welcome ? `<p class="banner">⚑ Selamat datang di gelanggang, <b>@${esc(f.username)}</b>! Pilih gaya bertarung, bagikan ${free || ''} poin atributmu, lalu Malam Gelanggang berikutnya kamu ikut bertarung otomatis.</p>` : ''}
     <article class="fcard">
       <div class="fcard-head">
         <div class="fcard-av">${avatar(look, { size: 92, title: `Avatar @${f.username}` })}</div>
@@ -93,7 +94,7 @@ function draw(el, f) {
           ${f.verified ? '<span class="pill on">✓ Terverifikasi</span>' : ''}
           ${f.registered && f.tier ? `<span class="pill tier">${esc(f.tier.icon)} ${esc(f.tier.name)}</span>` : ''}
           <span class="pill">${esc(f.kelas)}</span>
-          <span class="pill">${esc(f.styleName)}</span>
+          <span class="pill arch-pill" title="${esc(f.passive ? `Pasif: ${f.passive.name}. ${f.passive.desc}` : '')}">${esc(f.styleName)}</span>
           ${f.registered ? '' : '<span class="pill">Belum daftar</span>'}
           ${f.supporter ? `<span class="pill sup-pill">♥ Pendukung</span>` : ''}
           ${f.sasana ? `<span class="pill" style="color:${esc(f.sasana.color)}">${esc(f.sasana.icon)} ${esc(f.sasana.name)}</span>` : ''}
@@ -105,44 +106,46 @@ function draw(el, f) {
           <div><b>${f.record.l}</b><small>Kalah</small></div>
           <div><b>${f.record.d}</b><small>Seri</small></div>
         </div>` : ''}
+        ${jurus.length ? `<div class="jurus-mini"><small>Jurus Andalan</small>${jurus.map((j) => `<span title="${esc(j.desc ?? '')}">✦ ${esc(j.name)}</span>`).join('')}</div>` : ''}
         <div class="stats">${stats}</div>
       </div>
     </article>
     ${f.registered && f.active && !mine && !f.npc ? `<section class="card challenge">
-      <div><h2>Tantang @${esc(f.username)}</h2><p class="sub">Laga instan 3 ronde. Hasilnya bisa dibagikan.</p></div>
-      <button class="btn btn-accent" id="chBtn" type="button">🥊 Tantang!</button>
+      <div><h2>Ajak duel @${esc(f.username)}</h2><p class="sub">Duel kilat 3 ronde. Hasilnya bisa dibagikan.</p></div>
+      <button class="btn btn-accent" id="chBtn" type="button">⚑ Ajak Duel!</button>
       <p class="m-status" id="chErr" hidden></p>
     </section>` : ''}
     ${f.registered && f.npc && session.me ? `<section class="card challenge">
-      <div><h2>Latih tanding</h2><p class="sub">NPC ini siap jadi lawan latihanmu.</p></div>
-      <button class="btn btn-ghost" id="chBtn" type="button">🥊 Tantang</button>
+      <div><h2>Latih tanding</h2><p class="sub">Jagoan kampung ini siap jadi lawan latihanmu.</p></div>
+      <button class="btn btn-ghost" id="chBtn" type="button">⚑ Ajak Duel</button>
       <p class="m-status" id="chErr" hidden></p>
     </section>` : ''}
     ${f.registered ? `<section class="card" id="history">
-      <h2>Laga terakhir</h2>
+      <h2>Riwayat Laga</h2>
       <ul class="fights"></ul>
       <button class="btn btn-ghost btn-block more" type="button" hidden>Muat lebih banyak</button>
     </section>` : ''}
     ${mine ? `<section class="card">
-      <h2>Atur petarung</h2>
-      <nav class="edit-links" aria-label="Atur petarung">
-        <a href="/profil/tampilan" data-link><span class="ic" aria-hidden="true">🎨</span><span><b>Tampilan</b><small>Wajah, rambut, sarung tinju</small></span></a>
+      <h2>Atur Identitas</h2>
+      <nav class="edit-links" aria-label="Atur Identitas">
+        <a href="/profil/gaya" data-link><span class="ic" aria-hidden="true">✦</span><span><b>Gaya & Jurus Andalan</b><small>${esc(f.styleName)} · ${jurus.map((j) => esc(j.name)).join(', ') || 'jurus khas'}</small></span></a>
+        <a href="/profil/stat" data-link><span class="ic" aria-hidden="true">💪</span><span><b>Atribut</b><small>${free ? `${free} poin belum dipakai` : 'Semua poin sudah terpasang'}</small></span>${free ? `<em class="dot">${free}</em>` : ''}</a>
+        <a href="/profil/tampilan" data-link><span class="ic" aria-hidden="true">🎨</span><span><b>Koleksi</b><small>Wajah, rambut, sarung, celana</small></span></a>
         <a href="/profil/identitas" data-link><span class="ic" aria-hidden="true">✏️</span><span><b>Julukan & kota</b><small>“${esc(f.nick)}”</small></span></a>
-        ${window.GAME?.features?.sasana === false ? '' : `<a href="/profil/sasana" data-link><span class="ic" aria-hidden="true">🏯</span><span><b>Sasana</b><small>${f.sasana ? `${esc(f.sasana.icon)} ${esc(f.sasana.name)}` : 'Belum memilih kubu'}</small></span></a>`}
-        <a href="/profil/stat" data-link><span class="ic" aria-hidden="true">💪</span><span><b>Poin stat</b><small>${free ? `${free} poin belum dipakai` : 'Semua poin sudah terpasang'}</small></span>${free ? `<em class="dot">${free}</em>` : ''}</a>
+        ${window.GAME?.features?.sasana === false ? '' : `<a href="/profil/sasana" data-link><span class="ic" aria-hidden="true">🏴</span><span><b>Geng</b><small>${f.sasana ? `${esc(f.sasana.icon)} ${esc(f.sasana.name)}` : 'Belum gabung geng'}</small></span></a>`}
       </nav>
     </section>
     <section class="card">
       <h2>Akunmu</h2>
       <p class="sub">${f.verified ? 'Terverifikasi lewat Instagram.' : 'Masuk lewat mode manual/pengembang, belum terverifikasi Instagram.'}</p>
       <div class="row">
-        <button class="btn btn-ghost" id="logoutBtn" type="button">Keluar</button>
-        <button class="btn btn-ghost" id="logoutAllBtn" type="button">Keluar semua perangkat</button>
+        <button class="btn btn-ghost" id="logoutBtn" type="button">Cabut</button>
+        <button class="btn btn-ghost" id="logoutAllBtn" type="button">Cabut dari semua perangkat</button>
       </div>
     </section>` : ''}
     ${!f.registered && !session.me ? `<section class="card">
       <h2>Ini akunmu?</h2>
-      <p class="sub">Kartu ini dibuat otomatis dari username. Follow <b>@${esc(brand.instagram)}</b> lalu kirim DM <b>${esc(brand.keyword)}</b> untuk jadi petarung.</p>
+      <p class="sub">Berkas ini dibuat otomatis dari username. Follow <b>@${esc(brand.instagram)}</b> lalu kirim DM <b>${esc(brand.keyword)}</b> untuk naik gelanggang.</p>
       <button class="btn btn-accent btn-block" id="claimBtn" type="button">Masuk / daftar</button>
     </section>` : ''}
     ${f.offline ? '<p class="parity">Server belum terhubung; kartu dihitung di browser.</p>' : ''}

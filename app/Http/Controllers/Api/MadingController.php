@@ -30,7 +30,7 @@ class MadingController extends Controller
             $night = null;
             if ($run) {
                 $fights = Fight::where('kind', 'night')->where('slot_at', $run->slot_at)
-                    ->get(['id', 'a_id', 'b_id', 'winner', 'how', 'round', 'a_power', 'a_speed', 'a_stamina', 'a_defense', 'a_chin', 'b_power', 'b_speed', 'b_stamina', 'b_defense', 'b_chin', 'a_style', 'b_style']);
+                    ->get(['id', 'a_id', 'b_id', 'winner', 'how', 'round', 'a_power', 'a_speed', 'a_stamina', 'a_defense', 'a_chin', 'b_power', 'b_speed', 'b_stamina', 'b_defense', 'b_chin', 'a_style', 'b_style', 'a_snap', 'b_snap', 'engine_version']);
                 $kos = $fights->whereIn('how', ['KO', 'TKO']);
                 $fastest = $kos->sortBy([['round', 'asc'], ['id', 'asc']])->first();
                 // Kejutan: pemenang dengan OVR paling jauh di bawah lawannya.
@@ -42,7 +42,8 @@ class MadingController extends Controller
                     }
                     $w = $f->winner;
                     $l = $w === 'a' ? 'b' : 'a';
-                    $d = $factory->ovr($f->input($l)['stats']) - $factory->ovr($f->input($w)['stats']);
+                    $v = (int) $f->engine_version;
+                    $d = $factory->ovr($f->input($l)['stats'], $v) - $factory->ovr($f->input($w)['stats'], $v);
                     if ($d > $gap) {
                         [$gap, $upset] = [$d, $f];
                     }

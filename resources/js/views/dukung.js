@@ -4,14 +4,14 @@ import { session, openLogin } from '../auth.js';
 
 const rp = (n) => `Rp${Number(n).toLocaleString('id-ID')}`;
 const PERKS = {
-  tribun: ['Lencana ♥ Pendukung di kartu', 'Tanda ♥ di ranking dan chat', 'Sarung tinju & celana Neon'],
+  tribun: ['Lencana ♥ Pendukung di kartu', 'Tanda ♥ di ranking dan chat', 'Sarung & celana Neon'],
   ringside: ['Semua keuntungan Tribun', 'Warna rambut Emas'],
   vip: ['Semua keuntungan Ringside', 'Namamu di urutan teratas daftar pendukung'],
 };
 
 export function dukungView(el) {
   let alive = true;
-  document.title = `Dukung · ${window.GAME?.brand?.name ?? ''}`;
+  document.title = `Saweran · ${window.GAME?.brand?.name ?? ''}`;
   el.innerHTML = '<p class="loading">Memuat…</p>';
 
   const load = () => api('/api/dukung', { cache: 'no-cache' }).then(({ data }) => alive && draw(data)).catch((e) => {
@@ -21,8 +21,8 @@ export function dukungView(el) {
   function draw(d) {
     const me = d.me;
     el.innerHTML = `
-      <section class="hero"><span class="eyebrow">Server, hosting, dan kopi admin</span><h1>Du<em>kung</em></h1>
-        <p>Game ini gratis. Dukunganmu membayar server agar Fight Night tetap jalan tiap 6 jam.</p></section>
+      <section class="hero"><span class="eyebrow">Server, hosting, dan kopi admin</span><h1>Sawe<em>ran</em></h1>
+        <p>Game ini gratis. Dukunganmu membayar server agar Malam Gelanggang tetap jalan tiap 6 jam.</p></section>
       <section class="card">
         <h2>Cara dukung</h2>
         <ol class="steps">

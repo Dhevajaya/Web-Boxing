@@ -30,27 +30,27 @@ class ProgressionTest extends TestCase
     public function test_points_with_milestones(): void
     {
         $p = $this->p();
-        $this->assertSame(10, $p->pointsFor(1));
-        $this->assertSame(16, $p->pointsFor(4));   // 10 + 2*3, bonus Lv5 belum
-        $this->assertSame(21, $p->pointsFor(5));   // 10 + 2*4 + 3
-        $this->assertSame(60, $p->pointsFor(20));  // 10 + 2*19 + 3*4
+        $this->assertSame(20, $p->pointsFor(1));
+        $this->assertSame(32, $p->pointsFor(4));   // 20 + 4*3, bonus Lv5 belum
+        $this->assertSame(41, $p->pointsFor(5));   // 20 + 4*4 + 5
+        $this->assertSame(116, $p->pointsFor(20)); // 20 + 4*19 + 5*4
     }
 
     public function test_tiers(): void
     {
         $p = $this->p();
-        $this->assertSame('Pemula Gang', $p->tier(0)['name']);
-        $this->assertSame('Petarung Kota', $p->tier(9)['name']);
-        $this->assertSame('Legenda', $p->tier(99)['name']);
+        $this->assertSame('Anak Gang', $p->tier(0)['name']);
+        $this->assertSame('Penguasa Blok', $p->tier(9)['name']);
+        $this->assertSame('Legenda Abadi', $p->tier(99)['name']);
     }
 
     public function test_points_validation(): void
     {
         $p = $this->p();
-        $keys = ['power', 'speed', 'stamina', 'defense', 'chin'];
-        $this->assertTrue($p->validPoints(['power' => 5, 'speed' => 5], 1, $keys));
-        $this->assertFalse($p->validPoints(['power' => 11], 1, $keys));
+        $keys = ['strength', 'speed', 'stamina', 'defense', 'endurance'];
+        $this->assertTrue($p->validPoints(['strength' => 5, 'speed' => 5], 1, $keys));
+        $this->assertFalse($p->validPoints(['strength' => 21], 1, $keys));
         $this->assertFalse($p->validPoints(['luck' => 1], 1, $keys));
-        $this->assertFalse($p->validPoints(['power' => -1], 1, $keys));
+        $this->assertFalse($p->validPoints(['strength' => -1], 1, $keys));
     }
 }

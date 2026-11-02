@@ -17,7 +17,7 @@ function matchCard(m) {
 export function pialaView(el) {
   let alive = true;
   let stop = () => {};
-  document.title = `Piala Mingguan · ${window.GAME?.brand?.name ?? ''}`;
+  document.title = `Piala Kampung · ${window.GAME?.brand?.name ?? ''}`;
 
   const load = () => api('/api/piala', { cache: 'no-cache' }).then(({ data }) => alive && draw(data)).catch((e) => {
     if (alive) el.innerHTML = `<p class="banner bad">${esc(e.message)}</p>`;
@@ -37,7 +37,7 @@ export function pialaView(el) {
         <p class="sub"><b>${c.entrants}</b> petarung mendaftar (minimal ${c.min_entrants}). ${c.auto_active_days ? `Pemain yang aktif ${c.auto_active_days} hari terakhir ikut otomatis saat undian; tekan <b>Mundur</b> kalau tidak mau ikut.` : ''}</p>
         ${me ? (me.entered
           ? '<div class="row"><span class="pill on">✓ Kamu terdaftar</span><button class="btn btn-ghost btn-sm" id="leave" type="button">Mundur</button></div>'
-          : '<button class="btn btn-accent btn-block" id="join" type="button">🏆 Daftar Piala</button>')
+          : '<button class="btn btn-accent btn-block" id="join" type="button">🏆 Daftar Piala Kampung</button>')
           : '<button class="btn btn-accent btn-block" id="login" type="button">Masuk untuk mendaftar</button>'}`;
     } else if (c.status === 'drawn') {
       status = `
@@ -52,7 +52,7 @@ export function pialaView(el) {
     }
 
     el.innerHTML = `
-      <section class="hero"><span class="eyebrow">Minggu ${esc(week)}</span><h1>Piala <em>Mingguan</em></h1>
+      <section class="hero"><span class="eyebrow">Minggu ${esc(week)}</span><h1>Piala <em>Kampung</em></h1>
         <p>Turnamen gugur. Kalah sekali langsung pulang, juaranya dapat lencana permanen.</p></section>
       <section class="card">${status}<p class="m-status" id="pErr" hidden></p></section>
       ${myRounds.length ? `<section class="card"><h2>Lagamu</h2><div class="bm-list">${myRounds.map((m) => `<div><span class="eyebrow">${esc(m.name)}</span>${matchCard(m)}</div>`).join('')}</div></section>` : ''}

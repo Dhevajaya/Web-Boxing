@@ -1,0 +1,145 @@
+{
+  "version": 2,
+  "ruleset": "kampung_tendang",
+  "note": "Aturan KAMPUNG TENDANG (kickboxing original, bukan regulasi resmi). Status: USULAN fase 1, belum dipakai mesin (game.engine.version masih 1). Setelah dipakai di produksi JANGAN diubah: salin ke rules.v3.json. Semua angka bulat agar PHP dan JS menghitung identik. Persen ditulis per seribu (permil) bila bernama *Pm.",
+
+  "stats": ["strength", "speed", "endurance", "stamina", "technique", "accuracy", "defense", "agility", "balance", "composure"],
+  "statNames": {
+    "strength": "Tenaga", "speed": "Kecepatan", "endurance": "Daya Tahan", "stamina": "Napas", "technique": "Teknik",
+    "accuracy": "Akurasi", "defense": "Pertahanan", "agility": "Kelincahan", "balance": "Keseimbangan", "composure": "Mental"
+  },
+  "statHelp": {
+    "strength": "Kerusakan pukulan dan tendangan",
+    "speed": "Siapa bergerak duluan tiap giliran, jeda antar serangan",
+    "endurance": "Mengurangi kerusakan yang diterima dan menahan jatuh",
+    "stamina": "Besar bar napas dan pemulihan antar ronde",
+    "technique": "Peluang kombinasi dan jurus berhasil, isi Meter Bara",
+    "accuracy": "Peluang serangan mengenai sasaran",
+    "defense": "Guard: mengurangi kerusakan dan skor lawan",
+    "agility": "Menghindar dan mengatur jarak",
+    "balance": "Check low kick, menahan rusak kaki, cepat bangun",
+    "composure": "Tetap tajam saat lelah, tertinggal, atau di ronde akhir"
+  },
+  "statMax": 99,
+  "fighter": { "salt": "v2", "baseMin": 40, "baseRange": 26, "clampMin": 35, "clampMax": 75 },
+
+  "archetypes": [
+    {
+      "id": "jago_gebuk", "name": "Jago Gebuk", "en": "Pressure Fighter",
+      "desc": "Menekan lawan dengan serangan beruntun, agresif, dan tidak memberi ruang bernapas.",
+      "bias": { "strength": 3, "speed": 1, "endurance": 2, "stamina": 3, "technique": 0, "accuracy": 0, "defense": -2, "agility": -2, "balance": 0, "composure": 1 },
+      "prefs": { "hand": 55, "kick": 22, "defend": 10, "step": 13 },
+      "rangePref": "close",
+      "passive": { "id": "napas_kuda", "name": "Napas Kuda", "desc": "Biaya napas pukulan -10%", "handStaminaPm": 900 },
+      "signature": "gebuk_beruntun"
+    },
+    {
+      "id": "raja_tendang", "name": "Raja Tendang", "en": "Kick Specialist",
+      "desc": "Mengandalkan tendangan keras, serangan jarak menengah, dan kombinasi kaki.",
+      "bias": { "strength": 2, "speed": 0, "endurance": 0, "stamina": 2, "technique": 2, "accuracy": 1, "defense": -1, "agility": 0, "balance": 2, "composure": -2 },
+      "prefs": { "hand": 22, "kick": 55, "defend": 10, "step": 13 },
+      "rangePref": "mid",
+      "passive": { "id": "kaki_besi", "name": "Kaki Besi", "desc": "Akurasi tendangan +3", "kickAcc": 30 },
+      "signature": "tendang_sapu"
+    },
+    {
+      "id": "ahli_balas", "name": "Ahli Balas", "en": "Counter Technician",
+      "desc": "Menunggu lawan membuka celah, lalu membalas dengan serangan akurat.",
+      "bias": { "strength": 0, "speed": 2, "endurance": -1, "stamina": 0, "technique": 1, "accuracy": 3, "defense": 1, "agility": 2, "balance": -1, "composure": 1 },
+      "prefs": { "hand": 38, "kick": 22, "defend": 28, "step": 12 },
+      "rangePref": "mid",
+      "passive": { "id": "mata_elang", "name": "Mata Elang", "desc": "Setelah lawan meleset, serangan berikutnya +12 akurasi dan +20% kerusakan", "counterAcc": 120, "counterDmgPm": 1200 },
+      "signature": "balas_telak"
+    },
+    {
+      "id": "jaga_jarak", "name": "Jaga Jarak", "en": "Range Controller",
+      "desc": "Mengendalikan jarak, memutus kombinasi, dan menjaga lawan tetap di luar jangkauan.",
+      "bias": { "strength": -1, "speed": 1, "endurance": 0, "stamina": 2, "technique": 1, "accuracy": 1, "defense": 1, "agility": 3, "balance": 1, "composure": 1 },
+      "prefs": { "hand": 28, "kick": 42, "defend": 10, "step": 20 },
+      "rangePref": "far",
+      "passive": { "id": "langkah_ringan", "name": "Langkah Ringan", "desc": "Lawan yang mencoba mendekat gagal 25%", "stepPm": 250 },
+      "signature": "tendang_penahan"
+    },
+    {
+      "id": "petarung_komplet", "name": "Petarung Komplet", "en": "Balanced Fighter",
+      "desc": "Memiliki kemampuan seimbang untuk menyerang, bertahan, dan beradaptasi.",
+      "bias": { "strength": 1, "speed": 1, "endurance": 1, "stamina": 1, "technique": 1, "accuracy": 1, "defense": 1, "agility": 1, "balance": 1, "composure": 1 },
+      "prefs": { "hand": 40, "kick": 36, "defend": 12, "step": 12 },
+      "rangePref": "mid",
+      "passive": { "id": "serba_bisa", "name": "Serba Bisa", "desc": "Meter Bara +10% dari semua sumber", "meterPm": 1100 },
+      "signature": "paket_komplet"
+    }
+  ],
+
+  "ranges": ["close", "mid", "far"],
+  "rangeNames": { "close": "dekat", "mid": "sedang", "far": "jauh" },
+
+  "techniques": [
+    { "id": "jab", "name": "jab", "cat": "hand", "ranges": ["close", "mid"], "stamina": 3, "acc": 80, "dmg": 60, "score": 1, "zone": "head", "anim": "jab" },
+    { "id": "cross", "name": "cross", "cat": "hand", "ranges": ["close", "mid"], "stamina": 5, "acc": 0, "dmg": 110, "score": 1, "zone": "head", "anim": "straight" },
+    { "id": "hook", "name": "hook", "cat": "hand", "ranges": ["close"], "stamina": 7, "acc": -30, "dmg": 120, "score": 1, "zone": "head", "anim": "hook" },
+    { "id": "upper", "name": "uppercut", "cat": "hand", "ranges": ["close"], "stamina": 8, "acc": -70, "dmg": 150, "score": 2, "zone": "head", "anim": "upper" },
+    { "id": "low_kick", "name": "low kick", "cat": "kick", "ranges": ["close", "mid"], "stamina": 6, "acc": 60, "dmg": 70, "leg": 26, "score": 1, "zone": "leg", "checkable": true, "anim": "kick_low" },
+    { "id": "body_kick", "name": "tendangan badan", "cat": "kick", "ranges": ["mid"], "stamina": 9, "acc": -20, "dmg": 120, "score": 2, "zone": "body", "anim": "kick_body" },
+    { "id": "high_kick", "name": "tendangan kepala", "cat": "kick", "ranges": ["mid", "far"], "stamina": 14, "acc": -120, "dmg": 190, "score": 3, "zone": "head", "anim": "kick_high" },
+    { "id": "teep", "name": "tendangan dorong", "cat": "kick", "ranges": ["mid", "far"], "stamina": 6, "acc": 40, "dmg": 70, "score": 1, "zone": "body", "push": 1, "anim": "teep" }
+  ],
+
+  "defenses": {
+    "guard": { "name": "guard", "chanceBase": 220, "perStat": 3, "upBonus": 220, "dmgTakenPm": 400, "meter": 6 },
+    "evade": { "name": "hindar", "meter": 6 },
+    "check": { "name": "check", "chanceBase": -40, "perStat": 6, "reflectLeg": 10, "meter": 8 },
+    "set": { "name": "atur napas", "stamina": 4, "meter": 2 },
+    "step": { "name": "atur jarak" }
+  },
+
+  "jurus": [
+    { "id": "gebuk_beruntun", "name": "Gebuk Beruntun", "archetype": "jago_gebuk", "unlock": 1, "kind": "combo",
+      "steps": ["jab", "cross", "hook", "low_kick"], "ranges": ["close"], "meter": 100, "stamina": 20, "dmgPm": 1300, "accBonus": 40, "fx": 3,
+      "desc": "Empat serangan beruntun di jarak dekat, diakhiri low kick." },
+    { "id": "tendang_sapu", "name": "Tendang Sapu", "archetype": "raja_tendang", "unlock": 1, "kind": "combo",
+      "steps": ["low_kick", "high_kick"], "ranges": ["mid"], "meter": 100, "stamina": 22, "dmgPm": 1300, "accBonus": 40, "fx": 3,
+      "desc": "Low kick memancing guard turun, lalu tendangan kepala menyusul." },
+    { "id": "balas_telak", "name": "Balas Telak", "archetype": "ahli_balas", "unlock": 1, "kind": "counter",
+      "trigger": "after_evade", "steps": ["cross", "hook", "upper"], "ranges": ["close", "mid"], "meter": 100, "stamina": 18, "dmgPm": 1450, "accBonus": 80, "fx": 3,
+      "desc": "Setelah menghindar, langsung membalas cross, hook, dan uppercut." },
+    { "id": "tendang_penahan", "name": "Tendang Penahan", "archetype": "jaga_jarak", "unlock": 1, "kind": "combo",
+      "steps": ["teep", "body_kick"], "ranges": ["mid", "far"], "meter": 100, "stamina": 18, "dmgPm": 1350, "accBonus": 50, "push": 1, "fx": 3,
+      "desc": "Tendangan dorong memutus serangan lawan, disusul tendangan badan." },
+    { "id": "paket_komplet", "name": "Paket Komplet", "archetype": "petarung_komplet", "unlock": 1, "kind": "combo",
+      "steps": ["jab", "body_kick", "cross"], "ranges": ["mid"], "meter": 100, "stamina": 19, "dmgPm": 1300, "accBonus": 50, "fx": 3,
+      "desc": "Tangan, kaki, tangan: sulit dibaca dari arah mana datangnya." },
+    { "id": "patah_ranting", "name": "Patah Ranting", "archetype": null, "unlock": 5, "kind": "counter",
+      "trigger": "after_check", "steps": ["low_kick", "cross"], "ranges": ["close", "mid"], "meter": 70, "stamina": 13, "dmgPm": 1250, "accBonus": 60, "fx": 2,
+      "desc": "Setelah check berhasil, membalas low kick ke kaki yang sama." },
+    { "id": "sambar_badan", "name": "Sambar Badan", "archetype": null, "unlock": 5, "kind": "combo",
+      "steps": ["cross", "body_kick"], "ranges": ["mid"], "meter": 70, "stamina": 15, "dmgPm": 1250, "accBonus": 40, "fx": 2,
+      "desc": "Cross ke kepala menarik guard naik, tendangan menyambar badan." },
+    { "id": "pukulan_pamungkas", "name": "Pukulan Pamungkas", "archetype": null, "unlock": 10, "kind": "finisher",
+      "requires": { "round": 3, "oppHpBelowPm": 300 }, "steps": ["jab", "cross", "high_kick", "upper"], "ranges": ["close", "mid"], "meter": 100, "stamina": 25, "dmgPm": 1600, "accBonus": 60, "fx": 3,
+      "desc": "Hanya di ronde 3 saat lawan goyah: rentetan penutup dengan tendangan kepala." }
+  ],
+  "jurusSlots": 2,
+  "jurusPerRound": 1,
+  "jurusDmgCapPm": 1600,
+
+  "meter": { "max": 100, "cleanHit": 8, "takeHit": 4, "techniqueDiv": 10 },
+
+  "fight": {
+    "rounds": 3,
+    "ticks": 16,
+    "hp": 1000,
+    "stamina": { "base": 0, "perStat": 2, "recoverRound": 30, "recoverTick": 0, "tiredBelow": 28, "tiredAccPm": 650, "tiredDmgPm": 600, "tiredComposurePm": 2 },
+    "recoverHp": { "base": 30, "perStat": 1 },
+    "startRange": "mid",
+    "hit": { "base": 560, "center": 50, "accPerStat": 5, "evadePerStat": 4, "min": 150, "max": 880 },
+    "damage": { "strengthAdd": 45, "enduranceSub": 150, "jitterMin": 90, "jitterRange": 21, "guardDefensePerStat": 3 },
+    "leg": { "max": 100, "balanceKickPm": 4, "balanceSubPm": 6, "slowAt": 50, "slowSpeedPm": 800, "tkoAt": 100 },
+    "composure": { "losingAccPerStat": 4, "lastRoundDmgPerStat": 2 },
+    "big": { "base": 0, "techniquePerStat": 2, "jurusTechPerStat": 3, "multPm": 1800 },
+    "knockdown": { "hpBelow": 600, "enduranceRef": 155, "balanceDiv": 2, "k": 10, "balanceRecoverPerStat": 2, "recover": 100, "maxPerRoundTko": 3 },
+    "scoring": { "winner": 10, "loser": 9, "perKnockdown": 1, "knockdownPoints": 3, "tieBreak": ["damage", "cleanHits", "draw"] }
+  },
+
+  "ovr": { "strength": 13, "speed": 11, "endurance": 11, "stamina": 9, "technique": 10, "accuracy": 11, "defense": 10, "agility": 9, "balance": 8, "composure": 8 }
+}

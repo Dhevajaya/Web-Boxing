@@ -54,7 +54,7 @@ class Challenges
         $fight = Fight::create([
             'kind' => 'challenge', 'code' => $this->code(), 'season_id' => Season::current()?->id,
             'a_id' => $me->id, 'b_id' => $opp->id, 'seed' => $seed, 'engine_version' => $version,
-        ] + Fight::statColumns($ia, $ib) + [
+        ] + Fight::statColumns($ia, $ib, $r) + [
             'winner' => $r['win'], 'how' => $r['how'], 'round' => $r['rd'],
             'score_a' => $r['scoreA'], 'score_b' => $r['scoreB'], 'visible_at' => now(),
         ]);

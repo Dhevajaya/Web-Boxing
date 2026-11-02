@@ -28,6 +28,10 @@ class FighterController extends Controller
         $f = Fighter::where('instagram_username', $u)->first();
         $base = $factory->base($u);
         $stats = $f ? $f->effectiveStats() : $base['base'];
+        $R = app(\App\Game\Rules::class)->version();
+        $arch = $f ? $f->archetypeId() : $base['style'];
+        $archDef = collect($R['archetypes'] ?? [])->firstWhere('id', $arch);
+        $jurusNames = collect($R['jurus'] ?? [])->pluck('name', 'id');
         $prog = Progression::fromConfig();
         $level = $prog->level((int) ($f?->xp ?? 0));
 
@@ -43,12 +47,15 @@ class FighterController extends Controller
             'active' => $f?->status === 'active',
             'npc' => (bool) $f?->is_npc,
             'verified' => (bool) $f?->verified_at,
-            'style' => $base['style'],
-            'styleName' => $base['styleName'],
+            'style' => $arch,
+            'styleName' => $archDef['name'] ?? $base['styleName'],
+            'passive' => $archDef ? ['name' => $archDef['passive']['name'], 'desc' => $archDef['passive']['desc']] : null,
+            'jurus' => collect($f ? $f->equippedJurus() : array_filter([$archDef['signature'] ?? null]))
+                ->map(fn ($id) => ['id' => $id, 'name' => $jurusNames[$id] ?? $id])->values(),
             'kelas' => $base['kelas'],
             'nick' => ($f?->nick ?: $base['nick']).' dari '.($f?->kota ?: $base['kota']),
             'look' => $looks->resolve($f?->look, $u),
-            'base' => $base['base'],
+            'base' => $f ? $f->baseFor() : $base['base'],
             'points' => $f?->points ?? (object) [],
             'stats' => $stats,
             'ovr' => $factory->ovr($stats),

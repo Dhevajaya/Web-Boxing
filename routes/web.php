@@ -39,6 +39,7 @@ Route::prefix('api')->group(function () {
         Route::get('sasana', [SasanaController::class, 'index'])->middleware('feature:sasana');
         Route::get('sasana/war', [SasanaController::class, 'war'])->middleware('feature:sasana');
         Route::get('training', [TrainingController::class, 'index'])->middleware('feature:latihan');
+        Route::get('training/{game}/top', [TrainingController::class, 'top'])->where('game', '[a-z]{3,12}')->middleware('feature:latihan');
         Route::get('dukung', [SupportController::class, 'index'])->middleware('feature:dukung');
         Route::get('chat/{room}', [ChatController::class, 'index'])->where('room', 'alun|sasana:[a-z0-9_-]{1,32}')->middleware('feature:markas');
         Route::get('seasons', [SeasonController::class, 'index']);
@@ -47,6 +48,8 @@ Route::prefix('api')->group(function () {
         Route::get('auth/options', [AuthController::class, 'options']);
         Route::get('auth/status/{id}', [AuthController::class, 'status'])->whereUuid('id');
         Route::get('me', [AuthController::class, 'me']);
+        // Token CSRF terbaru, dipakai browser bila halaman memegang token lama (HTTP 419).
+        Route::get('csrf', fn () => response()->json(['data' => ['token' => csrf_token()]])->header('Cache-Control', 'no-store'));
     });
 
     Route::middleware('throttle:auth')->group(function () {
@@ -65,6 +68,8 @@ Route::prefix('api')->group(function () {
             Route::put('me/look', [ProfileController::class, 'updateLook']);
             Route::put('me/identity', [ProfileController::class, 'updateIdentity']);
             Route::put('me/points', [ProfileController::class, 'updatePoints']);
+            Route::put('me/archetype', [ProfileController::class, 'updateArchetype']);
+            Route::put('me/jurus', [ProfileController::class, 'updateJurus']);
             Route::post('challenges', [ChallengeController::class, 'store']);
             Route::post('piala/join', [PialaController::class, 'join'])->middleware('feature:piala');
             Route::post('piala/leave', [PialaController::class, 'leave'])->middleware('feature:piala');
@@ -100,10 +105,10 @@ Route::get('/masuk/{token}', [AuthController::class, 'consume'])
 $shell = fn () => view('app');
 
 Route::get('/', $shell)->name('home');
-Route::get('/{page}', $shell)->where('page', 'mading|latihan|markas|piala|profil|dukung|privasi|ranking')->name('page');
-Route::get('/profil/{section}', $shell)->where('section', 'tampilan|identitas|stat|sasana')->name('profile.edit');
+Route::get('/{page}', $shell)->where('page', 'mading|latihan|markas|piala|profil|dukung|privasi|ranking|gelanggang|tongkrongan|papan-kabar|papan-jagoan|saweran')->name('page');
+Route::get('/profil/{section}', $shell)->where('section', 'tampilan|identitas|gaya|stat|sasana')->name('profile.edit');
 Route::get('/laga/{id}', $shell)->whereNumber('id')->name('fight');
 Route::get('/t/{id}', $shell)->where('id', '[A-Za-z0-9_-]{6,16}')->name('challenge');
 Route::get('/{username}', fn (string $username) => view('app', ['pageTitle' => '@'.strtolower($username)]))
-    ->where('username', '(?!up$|api$|build$|admin$|masuk$)[A-Za-z0-9._]{1,30}')
+    ->where('username', '(?!up$|api$|build$|admin$|masuk$|gelanggang$|tongkrongan$)[A-Za-z0-9._]{1,30}')
     ->name('fighter');

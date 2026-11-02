@@ -125,7 +125,7 @@ class Piala
             }
 
             $ids = CupEntry::where('cup_id', $cup->id)->where('status', 'in')->pluck('fighter_id');
-            $people = Fighter::whereIn('id', $ids)->players()->active()->get(['id', 'instagram_username', 'points']);
+            $people = Fighter::whereIn('id', $ids)->players()->active()->get(['id', 'instagram_username', 'points', 'archetype']);
             $n = $people->count();
             if ($n < (int) $this->game->get('piala.min_entrants')) {
                 $cup->forceFill(['status' => 'cancelled', 'entrants' => $n, 'drawn_at' => now()])->save();
@@ -225,7 +225,7 @@ class Piala
         $fight = Fight::create([
             'kind' => 'cup', 'slot_at' => $at, 'season_id' => Season::current()?->id,
             'a_id' => $fa->id, 'b_id' => $fb->id, 'seed' => $seed, 'engine_version' => $version,
-        ] + Fight::statColumns($ia, $ib) + [
+        ] + Fight::statColumns($ia, $ib, $r) + [
             'winner' => $r['win'], 'how' => $r['how'], 'round' => $r['rd'],
             'score_a' => $r['scoreA'], 'score_b' => $r['scoreB'], 'visible_at' => $at,
         ]);

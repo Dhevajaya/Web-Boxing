@@ -318,6 +318,20 @@ class InstagramLoginTest extends TestCase
         $this->assertGuest('fighter');
     }
 
+    public function test_csrf_refresh_and_logout_returns_new_token(): void
+    {
+        $this->profiles['111'] = ['budi', true];
+        $this->webhook($this->dm('111', 'GELUD'));
+        $this->get('/masuk/'.$this->lastLinkToken());
+
+        $old = $this->getJson('/api/csrf')->assertOk()->assertHeader('Cache-Control', 'no-store, private')->json('data.token');
+        $this->assertNotEmpty($old);
+        $new = $this->postJson('/api/me/logout')->assertOk()->json('data.csrf');
+        $this->assertNotEmpty($new);
+        $this->assertNotSame($old, $new);
+        $this->assertSame($new, $this->getJson('/api/csrf')->json('data.token'));
+    }
+
     public function test_options_and_rate_limit(): void
     {
         $this->getJson('/api/auth/options')
