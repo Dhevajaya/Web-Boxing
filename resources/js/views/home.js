@@ -1,6 +1,6 @@
 import { $, esc, api, normalizeUsername, countdown, RESULT } from '../ui.js';
 import { navigate } from '../router.js';
-import { baseFighter, defaultInput, simulate, signature, ovr, lookFor, avatar, LOOKS, JURUS, ARCHETYPES, rules } from '../game/index.js';
+import { defaultInput, simulate, signature, ovr, lookFor, avatar, LOOKS, JURUS, ARCHETYPES, CURRENT_VERSION } from '../game/index.js';
 import { createStage } from '../game/stage.js';
 import { describe, resultLine } from '../game/commentary.js';
 import { session, openLogin } from '../auth.js';
@@ -32,10 +32,10 @@ export function homeView(el) {
 
     <section class="card" aria-labelledby="demoH">
       <h2 id="demoH">Duel Coba</h2>
-      <p class="sub">Adu dua username dengan stat dasar dan jurus khasnya. Laga dihitung di browser lalu dicocokkan dengan server: hasilnya harus identik.</p>
+      <p class="sub">${session.me ? 'Petarungmu sendiri (atribut, gaya bertarung, dan jurus andalanmu) melawan siapa pun. Tidak mengubah rekor dan tidak memberi XP.' : 'Adu dua username. Petarung terdaftar memakai atribut, gaya, dan jurus aslinya. Tidak mengubah rekor.'}</p>
       <div class="row">
-        <label class="field"><span class="at">@</span><input id="ua" value="si.biru" aria-label="Petarung sudut biru"></label>
-        <label class="field"><span class="at">@</span><input id="ub" value="si.merah" aria-label="Petarung sudut merah"></label>
+        <label class="field"><span class="at">@</span><input id="ua" value="${esc(session.me?.username ?? 'si.biru')}" aria-label="Petarung sudut krem" autocapitalize="none" spellcheck="false"></label>
+        <label class="field"><span class="at">@</span><input id="ub" value="si.merah" aria-label="Lawan (sudut bata)" placeholder="lawan" autocapitalize="none" spellcheck="false"></label>
       </div>
       <div class="row">
         <label class="field"><span class="at">#</span><input id="seed" inputmode="numeric" value="2026" aria-label="Seed"></label>
@@ -108,17 +108,24 @@ export function homeView(el) {
     const seed = Number($('#seed', el).value) >>> 0;
     if (!ua || !ub) return;
 
-    const fa = baseFighter(ua);
-    const fb = baseFighter(ub);
-    const A = defaultInput(ua);
-    const B = defaultInput(ub);
-    const r = simulate(A, B, seed);
+    const btn = $('#go', el);
+    btn.disabled = true;
+    // Input laga dari server (petarung terdaftar = atribut, gaya, dan jurus asli). Versi mesin ikut di URL
+    // agar jawaban lama di cache browser tidak terpakai setelah mesin berganti.
+    let pre = null;
+    try {
+      pre = (await api(`/api/engine/preview/${ua}/${ub}?v=${CURRENT_VERSION}&seed=${seed}`, { cache: 'no-store' })).data;
+    } catch { /* server tidak terjangkau: pakai stat dasar */ }
+    const v = pre?.v ?? CURRENT_VERSION;
+    const A = pre?.a ?? defaultInput(ua);
+    const B = pre?.b ?? defaultInput(ub);
+    const r = simulate(A, B, seed, v);
     const names = { a: `@${ua}`, b: `@${ub}` };
 
     $('#ring', el).hidden = false;
     $('#res', el).hidden = true;
-    $('#na', el).textContent = `${names.a} · ${ovr(fa.base)} · ${ARCHETYPES[fa.style]?.name ?? ''}`;
-    $('#nb', el).textContent = `${ARCHETYPES[fb.style]?.name ?? ''} · ${ovr(fb.base)} · ${names.b}`;
+    $('#na', el).textContent = `${names.a} · ${ovr(A.stats, v)} · ${ARCHETYPES[A.style]?.name ?? ''}`;
+    $('#nb', el).textContent = `${ARCHETYPES[B.style]?.name ?? ''} · ${ovr(B.stats, v)} · ${names.b}`;
     $('#rd', el).textContent = 'R1';
     const feed = $('#feed', el);
     feed.innerHTML = '';
@@ -130,8 +137,6 @@ export function homeView(el) {
 
     // Tampilan dari hash dulu; diganti tampilan pilihan pemain bila sudah daftar.
     const lookOf = (u) => api(`/api/fighters/${u}`).then(({ data }) => data.look ?? lookFor(u)).catch(() => lookFor(u));
-    const btn = $('#go', el);
-    btn.disabled = true;
     const [la, lb] = await Promise.all([lookOf(ua), lookOf(ub)]);
     btn.disabled = false;
     if (!alive) return;
@@ -206,16 +211,14 @@ export function homeView(el) {
     const sig = signature(r);
     const p = $('#parity', el);
     p.className = 'parity';
-    p.textContent = `Browser: ${sig} · menghubungi server…`;
-    api(`/api/engine/preview/${ua}/${ub}?seed=${seed}`)
-      .then(({ data }) => {
-        const same = data.sig === sig;
-        p.className = `parity ${same ? 'ok' : 'bad'}`;
-        p.textContent = same
-          ? `✓ Server menghitung hasil yang sama (sidik jari ${sig}).`
-          : `✗ Berbeda! browser ${sig}, server ${data.sig}. Jalankan test vektor.`;
-      })
-      .catch(() => { p.textContent = `Browser: ${sig} · server tidak terjangkau.`; });
+    if (!pre) p.textContent = `Browser: ${sig} · server tidak terjangkau.`;
+    else {
+      const same = pre.sig === sig;
+      p.className = `parity ${same ? 'ok' : 'bad'}`;
+      p.textContent = same
+        ? `✓ Server menghitung hasil yang sama (sidik jari ${sig}).`
+        : `✗ Berbeda! browser ${sig}, server ${pre.sig}. Muat ulang halaman (Ctrl+F5); kalau masih, jalankan test vektor.`;
+    }
   };
 
   return { cleanup: () => { alive = false; stage?.destroy(); stopCd(); } };

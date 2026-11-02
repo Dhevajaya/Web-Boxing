@@ -51,6 +51,19 @@ class KampungTendangTest extends TestCase
         $this->assertArrayHasKey('summary', $payload);
     }
 
+    public function test_engine_preview_uses_my_real_fighter(): void
+    {
+        $this->player('hana', ['archetype' => 'ahli_balas', 'points' => ['speed' => 9]]);
+        $res = $this->getJson('/api/engine/preview/hana/orang.asing?v=2&seed=7')->assertOk()->assertHeader('Cache-Control', 'no-store, private');
+        $hana = Fighter::where('instagram_username', 'hana')->first();
+        $this->assertSame($hana->fightInput(), $res->json('data.a'));
+        $this->assertSame(['a' => true, 'b' => false], $res->json('data.registered'));
+        $this->assertSame(app(\App\Game\FighterFactory::class)->defaultInput('orang.asing'), $res->json('data.b'));
+        // Hasil dari input itu identik dengan simulasi ulang di server.
+        $r = app(\App\Game\FightSimulator::class)->simulate($res->json('data.a'), $res->json('data.b'), 7, 2);
+        $this->assertSame(\App\Game\FightSimulator::signature($r), $res->json('data.sig'));
+    }
+
     public function test_jurus_ownership_follows_level_and_archetype(): void
     {
         $f = $this->loginAs($this->player('citra', ['archetype' => 'jago_gebuk']));

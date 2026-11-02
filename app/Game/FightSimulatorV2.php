@@ -382,7 +382,9 @@ final class FightSimulatorV2
         }
 
         $K = $F['knockdown'];
-        if ($big && $this->hp[$def] < $K['hpBelow'] && $this->rng->int(1000) < ($K['enduranceRef'] - $D['endurance'] - intdiv($D['balance'], $K['balanceDiv'])) * $K['k']) {
+        // Jatuh: pukulan keras saat HP di bawah hpBelow, atau serangan berat saat HP sudah tipis.
+        $kdTry = ($big && $this->hp[$def] < $K['hpBelow']) || ($d >= $K['heavyDmg'] && $this->hp[$def] < $K['heavyHpBelow']);
+        if ($kdTry && $this->rng->int(1000) < ($K['enduranceRef'] - $D['endurance'] - intdiv($D['balance'], $K['balanceDiv'])) * $K['k']) {
             $this->kd[$def]++;
             $this->kdRound[$def]++;
             if ($this->kdRound[$def] >= $K['maxPerRoundTko']) {

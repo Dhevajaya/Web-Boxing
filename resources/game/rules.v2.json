@@ -80,8 +80,8 @@
     { "id": "hook", "name": "hook", "cat": "hand", "ranges": ["close"], "stamina": 7, "acc": -30, "dmg": 120, "score": 1, "zone": "head", "anim": "hook" },
     { "id": "upper", "name": "uppercut", "cat": "hand", "ranges": ["close"], "stamina": 8, "acc": -70, "dmg": 150, "score": 2, "zone": "head", "anim": "upper" },
     { "id": "low_kick", "name": "low kick", "cat": "kick", "ranges": ["close", "mid"], "stamina": 6, "acc": 60, "dmg": 70, "leg": 26, "score": 1, "zone": "leg", "checkable": true, "anim": "kick_low" },
-    { "id": "body_kick", "name": "tendangan badan", "cat": "kick", "ranges": ["mid"], "stamina": 9, "acc": -20, "dmg": 120, "score": 2, "zone": "body", "anim": "kick_body" },
-    { "id": "high_kick", "name": "tendangan kepala", "cat": "kick", "ranges": ["mid", "far"], "stamina": 14, "acc": -120, "dmg": 190, "score": 3, "zone": "head", "anim": "kick_high" },
+    { "id": "body_kick", "name": "tendangan badan", "cat": "kick", "ranges": ["mid"], "stamina": 9, "acc": -20, "dmg": 128, "score": 2, "zone": "body", "anim": "kick_body" },
+    { "id": "high_kick", "name": "tendangan kepala", "cat": "kick", "ranges": ["mid", "far"], "stamina": 14, "acc": -120, "dmg": 200, "score": 3, "zone": "head", "anim": "kick_high" },
     { "id": "teep", "name": "tendangan dorong", "cat": "kick", "ranges": ["mid", "far"], "stamina": 6, "acc": 40, "dmg": 70, "score": 1, "zone": "body", "push": 1, "anim": "teep" }
   ],
 
@@ -130,14 +130,14 @@
     "ticks": 16,
     "hp": 1000,
     "stamina": { "base": 0, "perStat": 2, "recoverRound": 30, "recoverTick": 0, "tiredBelow": 28, "tiredAccPm": 650, "tiredDmgPm": 600, "tiredComposurePm": 2 },
-    "recoverHp": { "base": 30, "perStat": 1 },
+    "recoverHp": { "base": 0, "perStat": 1 },
     "startRange": "mid",
     "hit": { "base": 560, "center": 50, "accPerStat": 5, "evadePerStat": 4, "min": 150, "max": 880 },
-    "damage": { "strengthAdd": 45, "enduranceSub": 150, "jitterMin": 90, "jitterRange": 21, "guardDefensePerStat": 3 },
+    "damage": { "strengthAdd": 85, "enduranceSub": 150, "jitterMin": 90, "jitterRange": 21, "guardDefensePerStat": 3 },
     "leg": { "max": 100, "balanceKickPm": 4, "balanceSubPm": 6, "slowAt": 50, "slowSpeedPm": 800, "tkoAt": 100 },
     "composure": { "losingAccPerStat": 4, "lastRoundDmgPerStat": 2 },
-    "big": { "base": 0, "techniquePerStat": 2, "jurusTechPerStat": 3, "multPm": 1800 },
-    "knockdown": { "hpBelow": 600, "enduranceRef": 155, "balanceDiv": 2, "k": 10, "balanceRecoverPerStat": 2, "recover": 100, "maxPerRoundTko": 3 },
+    "big": { "base": 60, "techniquePerStat": 2, "jurusTechPerStat": 3, "multPm": 1800 },
+    "knockdown": { "hpBelow": 750, "heavyDmg": 150, "heavyHpBelow": 350, "enduranceRef": 155, "balanceDiv": 2, "k": 10, "balanceRecoverPerStat": 2, "recover": 100, "maxPerRoundTko": 3 },
     "scoring": { "winner": 10, "loser": 9, "perKnockdown": 1, "knockdownPoints": 3, "tieBreak": ["damage", "cleanHits", "draw"] }
   },
 

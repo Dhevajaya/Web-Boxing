@@ -17430,12 +17430,12 @@
             "seed": 1807401597,
             "expect": {
                 "win": "b",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 27,
-                "scoreB": 30,
-                "events": 62,
-                "sig": "8b48a08c"
+                "scoreA": 18,
+                "scoreB": 20,
+                "events": 51,
+                "sig": "d3e84388"
             }
         },
         {
@@ -17483,10 +17483,10 @@
                 "win": "a",
                 "how": "Angka",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
-                "events": 57,
-                "sig": "c01509e8"
+                "scoreA": 30,
+                "scoreB": 25,
+                "events": 61,
+                "sig": "afcbfde6"
             }
         },
         {
@@ -17533,11 +17533,11 @@
             "expect": {
                 "win": "a",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 20,
-                "scoreB": 17,
-                "events": 47,
-                "sig": "ac864116"
+                "rd": 2,
+                "scoreA": 10,
+                "scoreB": 9,
+                "events": 23,
+                "sig": "74be8f6b"
             }
         },
         {
@@ -17588,7 +17588,7 @@
                 "scoreA": 30,
                 "scoreB": 27,
                 "events": 59,
-                "sig": "65193645"
+                "sig": "aa8ba7e6"
             }
         },
         {
@@ -17633,13 +17633,13 @@
             },
             "seed": 2472082144,
             "expect": {
-                "win": "a",
+                "win": "b",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 17,
-                "scoreB": 20,
-                "events": 50,
-                "sig": "83de492e"
+                "rd": 2,
+                "scoreA": 9,
+                "scoreB": 10,
+                "events": 37,
+                "sig": "962f5684"
             }
         },
         {
@@ -17684,13 +17684,13 @@
             },
             "seed": 823898834,
             "expect": {
-                "win": "b",
-                "how": "Angka",
+                "win": "a",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 27,
-                "scoreB": 28,
-                "events": 61,
-                "sig": "bc938c56"
+                "scoreA": 16,
+                "scoreB": 20,
+                "events": 50,
+                "sig": "d99307c3"
             }
         },
         {
@@ -17735,13 +17735,13 @@
             },
             "seed": 275845951,
             "expect": {
-                "win": "b",
+                "win": "a",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 18,
-                "scoreB": 20,
-                "events": 52,
-                "sig": "00380923"
+                "rd": 2,
+                "scoreA": 9,
+                "scoreB": 10,
+                "events": 34,
+                "sig": "6d396fd3"
             }
         },
         {
@@ -17790,9 +17790,9 @@
                 "how": "KO",
                 "rd": 2,
                 "scoreA": 9,
-                "scoreB": 10,
-                "events": 38,
-                "sig": "5d6e133a"
+                "scoreB": 9,
+                "events": 20,
+                "sig": "7b6e97d2"
             }
         },
         {
@@ -17837,13 +17837,13 @@
             },
             "seed": 4047034952,
             "expect": {
-                "win": "a",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 29,
-                "scoreB": 27,
-                "events": 57,
-                "sig": "40b78878"
+                "win": "b",
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 10,
+                "scoreB": 9,
+                "events": 35,
+                "sig": "5a029783"
             }
         },
         {
@@ -17888,13 +17888,13 @@
             },
             "seed": 2083828124,
             "expect": {
-                "win": "b",
-                "how": "KO",
+                "win": "a",
+                "how": "Angka",
                 "rd": 3,
-                "scoreA": 20,
-                "scoreB": 17,
-                "events": 55,
-                "sig": "4bcbd640"
+                "scoreA": 29,
+                "scoreB": 25,
+                "events": 61,
+                "sig": "bdc805f9"
             }
         },
         {
@@ -17940,12 +17940,12 @@
             "seed": 2082625912,
             "expect": {
                 "win": "a",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 30,
-                "scoreB": 25,
-                "events": 63,
-                "sig": "9c092006"
+                "scoreA": 20,
+                "scoreB": 17,
+                "events": 53,
+                "sig": "36023704"
             }
         },
         {
@@ -17991,12 +17991,12 @@
             "seed": 1351608314,
             "expect": {
                 "win": "b",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 61,
-                "sig": "f6b87a5a"
+                "scoreA": 20,
+                "scoreB": 17,
+                "events": 55,
+                "sig": "16179cdd"
             }
         },
         {
@@ -18042,12 +18042,12 @@
             "seed": 682709577,
             "expect": {
                 "win": "a",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 27,
-                "events": 61,
-                "sig": "b503e614"
+                "scoreA": 17,
+                "scoreB": 20,
+                "events": 53,
+                "sig": "c953e594"
             }
         },
         {
@@ -18094,11 +18094,11 @@
             "expect": {
                 "win": "b",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 19,
-                "scoreB": 18,
-                "events": 46,
-                "sig": "43030004"
+                "rd": 2,
+                "scoreA": 7,
+                "scoreB": 10,
+                "events": 27,
+                "sig": "a5897824"
             }
         },
         {
@@ -18143,13 +18143,13 @@
             },
             "seed": 3248514090,
             "expect": {
-                "win": "a",
+                "win": "b",
                 "how": "KO",
                 "rd": 3,
-                "scoreA": 19,
+                "scoreA": 18,
                 "scoreB": 19,
-                "events": 56,
-                "sig": "b4b5a965"
+                "events": 53,
+                "sig": "93c93296"
             }
         },
         {
@@ -18194,13 +18194,13 @@
             },
             "seed": 6939580,
             "expect": {
-                "win": "b",
+                "win": "a",
                 "how": "Angka",
                 "rd": 3,
                 "scoreA": 27,
-                "scoreB": 29,
+                "scoreB": 27,
                 "events": 61,
-                "sig": "cd4f1e6c"
+                "sig": "39336887"
             }
         },
         {
@@ -18245,13 +18245,13 @@
             },
             "seed": 3987846446,
             "expect": {
-                "win": "b",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 27,
-                "scoreB": 29,
-                "events": 57,
-                "sig": "9dfd4175"
+                "win": "a",
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 10,
+                "scoreB": 9,
+                "events": 35,
+                "sig": "26437b60"
             }
         },
         {
@@ -18298,11 +18298,11 @@
             "expect": {
                 "win": "b",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 19,
-                "scoreB": 19,
-                "events": 54,
-                "sig": "f505e1e4"
+                "rd": 2,
+                "scoreA": 10,
+                "scoreB": 9,
+                "events": 30,
+                "sig": "2d6aafbb"
             }
         },
         {
@@ -18347,13 +18347,13 @@
             },
             "seed": 849954664,
             "expect": {
-                "win": "a",
-                "how": "Angka",
+                "win": "b",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 26,
-                "events": 59,
-                "sig": "109bb5f8"
+                "scoreA": 18,
+                "scoreB": 18,
+                "events": 47,
+                "sig": "e544eaa5"
             }
         },
         {
@@ -18399,12 +18399,12 @@
             "seed": 1535365208,
             "expect": {
                 "win": "b",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 27,
-                "scoreB": 29,
-                "events": 67,
-                "sig": "a74d7d8a"
+                "scoreA": 18,
+                "scoreB": 19,
+                "events": 56,
+                "sig": "30ad651e"
             }
         },
         {
@@ -18452,10 +18452,10 @@
                 "win": "b",
                 "how": "Angka",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 61,
-                "sig": "5659cf41"
+                "scoreA": 25,
+                "scoreB": 30,
+                "events": 60,
+                "sig": "02c6ceee"
             }
         },
         {
@@ -18500,13 +18500,13 @@
             },
             "seed": 950502348,
             "expect": {
-                "win": "a",
-                "how": "KO",
+                "win": "b",
+                "how": "Angka",
                 "rd": 3,
-                "scoreA": 19,
-                "scoreB": 19,
-                "events": 55,
-                "sig": "266f205a"
+                "scoreA": 26,
+                "scoreB": 30,
+                "events": 61,
+                "sig": "dcb56ca3"
             }
         },
         {
@@ -18554,10 +18554,10 @@
                 "win": "b",
                 "how": "KO",
                 "rd": 3,
-                "scoreA": 19,
-                "scoreB": 19,
-                "events": 52,
-                "sig": "05537ce8"
+                "scoreA": 20,
+                "scoreB": 17,
+                "events": 58,
+                "sig": "f600ce80"
             }
         },
         {
@@ -18603,12 +18603,12 @@
             "seed": 854143985,
             "expect": {
                 "win": "a",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
-                "events": 61,
-                "sig": "59cbe97d"
+                "scoreA": 19,
+                "scoreB": 19,
+                "events": 51,
+                "sig": "78949aa1"
             }
         },
         {
@@ -18653,13 +18653,13 @@
             },
             "seed": 3857939156,
             "expect": {
-                "win": "a",
+                "win": "b",
                 "how": "Angka",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
-                "events": 59,
-                "sig": "aa09471f"
+                "scoreA": 26,
+                "scoreB": 29,
+                "events": 62,
+                "sig": "0e5c6314"
             }
         },
         {
@@ -18704,13 +18704,13 @@
             },
             "seed": 984740420,
             "expect": {
-                "win": "a",
-                "how": "KO",
-                "rd": 3,
-                "scoreA": 18,
-                "scoreB": 19,
-                "events": 44,
-                "sig": "efdf5228"
+                "win": "b",
+                "how": "TKO",
+                "rd": 2,
+                "scoreA": 9,
+                "scoreB": 10,
+                "events": 37,
+                "sig": "a697f6c3"
             }
         },
         {
@@ -18756,12 +18756,12 @@
             "seed": 2089484723,
             "expect": {
                 "win": "a",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
-                "events": 60,
-                "sig": "0738ac8e"
+                "scoreA": 18,
+                "scoreB": 18,
+                "events": 53,
+                "sig": "2a888297"
             }
         },
         {
@@ -18812,7 +18812,7 @@
                 "scoreA": 28,
                 "scoreB": 29,
                 "events": 57,
-                "sig": "0afc1fce"
+                "sig": "1482fa75"
             }
         },
         {
@@ -18861,9 +18861,9 @@
                 "how": "KO",
                 "rd": 3,
                 "scoreA": 19,
-                "scoreB": 19,
-                "events": 55,
-                "sig": "049f87cf"
+                "scoreB": 15,
+                "events": 46,
+                "sig": "11835e1d"
             }
         },
         {
@@ -18908,13 +18908,13 @@
             },
             "seed": 4166599233,
             "expect": {
-                "win": "b",
-                "how": "KO",
-                "rd": 3,
-                "scoreA": 20,
-                "scoreB": 17,
-                "events": 49,
-                "sig": "251ce54d"
+                "win": "a",
+                "how": "TKO",
+                "rd": 2,
+                "scoreA": 8,
+                "scoreB": 10,
+                "events": 33,
+                "sig": "1f70a415"
             }
         },
         {
@@ -18962,10 +18962,10 @@
                 "win": "a",
                 "how": "Angka",
                 "rd": 3,
-                "scoreA": 29,
+                "scoreA": 27,
                 "scoreB": 27,
                 "events": 59,
-                "sig": "d17f2993"
+                "sig": "32d63253"
             }
         },
         {
@@ -19011,12 +19011,12 @@
             "seed": 162193508,
             "expect": {
                 "win": "b",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 26,
-                "scoreB": 28,
-                "events": 59,
-                "sig": "dd8983df"
+                "scoreA": 18,
+                "scoreB": 18,
+                "events": 44,
+                "sig": "bfeba4cc"
             }
         },
         {
@@ -19062,12 +19062,12 @@
             "seed": 220418384,
             "expect": {
                 "win": "b",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 28,
-                "events": 59,
-                "sig": "a6ddd4a8"
+                "scoreA": 16,
+                "scoreB": 17,
+                "events": 54,
+                "sig": "256f1c69"
             }
         },
         {
@@ -19113,12 +19113,12 @@
             "seed": 3292194148,
             "expect": {
                 "win": "a",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 26,
-                "events": 60,
-                "sig": "199911f3"
+                "scoreA": 20,
+                "scoreB": 18,
+                "events": 39,
+                "sig": "8939fc3d"
             }
         },
         {
@@ -19164,12 +19164,12 @@
             "seed": 1565923851,
             "expect": {
                 "win": "a",
-                "how": "KO",
-                "rd": 3,
-                "scoreA": 19,
-                "scoreB": 19,
-                "events": 40,
-                "sig": "9f80c4f6"
+                "how": "TKO",
+                "rd": 2,
+                "scoreA": 10,
+                "scoreB": 8,
+                "events": 36,
+                "sig": "58365c52"
             }
         },
         {
@@ -19217,10 +19217,10 @@
                 "win": "b",
                 "how": "KO",
                 "rd": 3,
-                "scoreA": 20,
-                "scoreB": 18,
-                "events": 58,
-                "sig": "944b411f"
+                "scoreA": 17,
+                "scoreB": 19,
+                "events": 53,
+                "sig": "24c6b9d5"
             }
         },
         {
@@ -19265,13 +19265,13 @@
             },
             "seed": 2185319015,
             "expect": {
-                "win": "a",
-                "how": "Angka",
+                "win": "b",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
-                "events": 63,
-                "sig": "5db22e98"
+                "scoreA": 20,
+                "scoreB": 18,
+                "events": 57,
+                "sig": "2cc93e48"
             }
         },
         {
@@ -19317,12 +19317,12 @@
             "seed": 799219554,
             "expect": {
                 "win": "b",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 63,
-                "sig": "c8dde99d"
+                "scoreA": 19,
+                "scoreB": 19,
+                "events": 54,
+                "sig": "edd2fd6f"
             }
         },
         {
@@ -19367,13 +19367,13 @@
             },
             "seed": 2767173671,
             "expect": {
-                "win": "b",
-                "how": "Angka",
+                "win": "a",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 57,
-                "sig": "fc8caece"
+                "scoreA": 19,
+                "scoreB": 19,
+                "events": 43,
+                "sig": "35823085"
             }
         },
         {
@@ -19420,11 +19420,11 @@
             "expect": {
                 "win": "a",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 19,
-                "scoreB": 17,
-                "events": 56,
-                "sig": "19544960"
+                "rd": 2,
+                "scoreA": 9,
+                "scoreB": 10,
+                "events": 38,
+                "sig": "3d1ae263"
             }
         },
         {
@@ -19471,11 +19471,11 @@
             "expect": {
                 "win": "b",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 19,
-                "scoreB": 19,
-                "events": 46,
-                "sig": "30abf210"
+                "rd": 2,
+                "scoreA": 10,
+                "scoreB": 9,
+                "events": 37,
+                "sig": "d5f4cfd8"
             }
         },
         {
@@ -19520,13 +19520,13 @@
             },
             "seed": 981133387,
             "expect": {
-                "win": "a",
+                "win": "b",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 18,
-                "scoreB": 19,
-                "events": 57,
-                "sig": "dd9b312c"
+                "rd": 2,
+                "scoreA": 10,
+                "scoreB": 8,
+                "events": 44,
+                "sig": "b3d299b6"
             }
         },
         {
@@ -19572,12 +19572,12 @@
             "seed": 2052892072,
             "expect": {
                 "win": "b",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 28,
-                "events": 61,
-                "sig": "c7011dc5"
+                "scoreA": 18,
+                "scoreB": 19,
+                "events": 50,
+                "sig": "9215abbf"
             }
         },
         {
@@ -19623,12 +19623,12 @@
             "seed": 747263204,
             "expect": {
                 "win": "b",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 28,
-                "scoreB": 28,
-                "events": 71,
-                "sig": "ff5f38ee"
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 9,
+                "scoreB": 10,
+                "events": 31,
+                "sig": "901c851f"
             }
         },
         {
@@ -19674,12 +19674,12 @@
             "seed": 1484623874,
             "expect": {
                 "win": "a",
-                "how": "KO",
+                "how": "Angka",
                 "rd": 3,
-                "scoreA": 18,
-                "scoreB": 19,
-                "events": 67,
-                "sig": "c2d71a29"
+                "scoreA": 27,
+                "scoreB": 26,
+                "events": 63,
+                "sig": "3be9ec17"
             }
         },
         {
@@ -19724,13 +19724,13 @@
             },
             "seed": 1714672912,
             "expect": {
-                "win": "a",
-                "how": "Angka",
+                "win": "b",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 27,
-                "events": 63,
-                "sig": "241f5eaf"
+                "scoreA": 19,
+                "scoreB": 19,
+                "events": 45,
+                "sig": "ab8076cf"
             }
         },
         {
@@ -19775,13 +19775,13 @@
             },
             "seed": 1528734491,
             "expect": {
-                "win": "b",
+                "win": "a",
                 "how": "KO",
                 "rd": 3,
-                "scoreA": 19,
-                "scoreB": 18,
-                "events": 54,
-                "sig": "429a4efd"
+                "scoreA": 18,
+                "scoreB": 19,
+                "events": 49,
+                "sig": "810572aa"
             }
         },
         {
@@ -19829,10 +19829,10 @@
                 "win": "a",
                 "how": "KO",
                 "rd": 3,
-                "scoreA": 20,
-                "scoreB": 17,
-                "events": 53,
-                "sig": "26ab5800"
+                "scoreA": 18,
+                "scoreB": 18,
+                "events": 43,
+                "sig": "0ae82ac3"
             }
         },
         {
@@ -19883,7 +19883,7 @@
                 "scoreA": 29,
                 "scoreB": 27,
                 "events": 57,
-                "sig": "c2525a60"
+                "sig": "a3995b16"
             }
         },
         {
@@ -19929,12 +19929,12 @@
             "seed": 345228498,
             "expect": {
                 "win": "b",
-                "how": "KO",
-                "rd": 3,
-                "scoreA": 19,
-                "scoreB": 19,
-                "events": 60,
-                "sig": "9592ac78"
+                "how": "TKO",
+                "rd": 2,
+                "scoreA": 8,
+                "scoreB": 10,
+                "events": 40,
+                "sig": "ac3640fd"
             }
         },
         {
@@ -19980,12 +19980,12 @@
             "seed": 2556188892,
             "expect": {
                 "win": "b",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 27,
-                "scoreB": 29,
-                "events": 57,
-                "sig": "67874961"
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 9,
+                "scoreB": 10,
+                "events": 32,
+                "sig": "bd1c6eae"
             }
         },
         {
@@ -20030,13 +20030,13 @@
             },
             "seed": 1397574792,
             "expect": {
-                "win": "a",
-                "how": "Angka",
+                "win": "b",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
-                "events": 59,
-                "sig": "c5ed3ab4"
+                "scoreA": 20,
+                "scoreB": 18,
+                "events": 60,
+                "sig": "866a1d23"
             }
         },
         {
@@ -20081,13 +20081,13 @@
             },
             "seed": 1595003191,
             "expect": {
-                "win": "a",
+                "win": "b",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 19,
-                "scoreB": 19,
-                "events": 58,
-                "sig": "ce26d76a"
+                "rd": 2,
+                "scoreA": 10,
+                "scoreB": 9,
+                "events": 26,
+                "sig": "d2ed324e"
             }
         },
         {
@@ -20132,13 +20132,13 @@
             },
             "seed": 82040166,
             "expect": {
-                "win": "b",
-                "how": "Angka",
+                "win": "a",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 63,
-                "sig": "100d1281"
+                "scoreA": 18,
+                "scoreB": 18,
+                "events": 45,
+                "sig": "de7d5f38"
             }
         },
         {
@@ -20183,13 +20183,13 @@
             },
             "seed": 291749592,
             "expect": {
-                "win": "b",
-                "how": "Angka",
+                "win": "a",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 63,
-                "sig": "95b69689"
+                "scoreA": 18,
+                "scoreB": 18,
+                "events": 45,
+                "sig": "1d041f9e"
             }
         },
         {
@@ -20236,11 +20236,11 @@
             "expect": {
                 "win": "b",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 18,
-                "scoreB": 20,
-                "events": 41,
-                "sig": "9b916fba"
+                "rd": 2,
+                "scoreA": 10,
+                "scoreB": 8,
+                "events": 33,
+                "sig": "0444516e"
             }
         },
         {
@@ -20285,13 +20285,13 @@
             },
             "seed": 3560314452,
             "expect": {
-                "win": "b",
-                "how": "Angka",
+                "win": "a",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 61,
-                "sig": "2a802038"
+                "scoreA": 17,
+                "scoreB": 20,
+                "events": 45,
+                "sig": "c696f3e3"
             }
         },
         {
@@ -20338,11 +20338,11 @@
             "expect": {
                 "win": "b",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 17,
-                "scoreB": 20,
-                "events": 59,
-                "sig": "54597fff"
+                "rd": 2,
+                "scoreA": 9,
+                "scoreB": 10,
+                "events": 33,
+                "sig": "1c30cac9"
             }
         },
         {
@@ -20390,10 +20390,10 @@
                 "win": "b",
                 "how": "KO",
                 "rd": 3,
-                "scoreA": 20,
+                "scoreA": 17,
                 "scoreB": 18,
-                "events": 57,
-                "sig": "e0b49856"
+                "events": 45,
+                "sig": "2617896b"
             }
         },
         {
@@ -20439,12 +20439,12 @@
             "seed": 1186400741,
             "expect": {
                 "win": "a",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
-                "events": 59,
-                "sig": "220b78a0"
+                "scoreA": 19,
+                "scoreB": 18,
+                "events": 45,
+                "sig": "06f1c1e4"
             }
         },
         {
@@ -20489,13 +20489,13 @@
             },
             "seed": 4171512630,
             "expect": {
-                "win": "b",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 61,
-                "sig": "ef54e8ac"
+                "win": "a",
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 8,
+                "scoreB": 10,
+                "events": 29,
+                "sig": "7457ce94"
             }
         },
         {
@@ -20541,12 +20541,12 @@
             "seed": 2650318654,
             "expect": {
                 "win": "b",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 62,
-                "sig": "6d938fde"
+                "scoreA": 19,
+                "scoreB": 16,
+                "events": 52,
+                "sig": "2bbdfd48"
             }
         },
         {
@@ -20592,12 +20592,12 @@
             "seed": 2912601687,
             "expect": {
                 "win": "a",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 27,
-                "scoreB": 27,
-                "events": 59,
-                "sig": "b0925a73"
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 9,
+                "scoreB": 10,
+                "events": 29,
+                "sig": "8b79c642"
             }
         },
         {
@@ -20642,13 +20642,13 @@
             },
             "seed": 2490677440,
             "expect": {
-                "win": "a",
-                "how": "Angka",
+                "win": "b",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
-                "events": 62,
-                "sig": "884346f3"
+                "scoreA": 19,
+                "scoreB": 18,
+                "events": 55,
+                "sig": "6e1d2d1a"
             }
         },
         {
@@ -20696,10 +20696,10 @@
                 "win": "a",
                 "how": "Angka",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
-                "events": 66,
-                "sig": "dddcd623"
+                "scoreA": 28,
+                "scoreB": 27,
+                "events": 60,
+                "sig": "f8c7d0a6"
             }
         },
         {
@@ -20745,12 +20745,12 @@
             "seed": 176840455,
             "expect": {
                 "win": "b",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 27,
-                "scoreB": 30,
-                "events": 60,
-                "sig": "6ba3e174"
+                "scoreA": 18,
+                "scoreB": 20,
+                "events": 59,
+                "sig": "07bc7733"
             }
         },
         {
@@ -20797,11 +20797,11 @@
             "expect": {
                 "win": "b",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 19,
-                "scoreB": 19,
-                "events": 50,
-                "sig": "e5109ab5"
+                "rd": 2,
+                "scoreA": 9,
+                "scoreB": 10,
+                "events": 30,
+                "sig": "6821874d"
             }
         },
         {
@@ -20846,13 +20846,13 @@
             },
             "seed": 2328282690,
             "expect": {
-                "win": "a",
+                "win": "b",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 19,
-                "scoreB": 19,
-                "events": 51,
-                "sig": "362935de"
+                "rd": 2,
+                "scoreA": 9,
+                "scoreB": 9,
+                "events": 31,
+                "sig": "fdd63940"
             }
         },
         {
@@ -20897,13 +20897,13 @@
             },
             "seed": 4214977473,
             "expect": {
-                "win": "b",
+                "win": "a",
                 "how": "Angka",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
+                "scoreA": 27,
+                "scoreB": 27,
                 "events": 59,
-                "sig": "d1ea4f75"
+                "sig": "05d8d300"
             }
         },
         {
@@ -20950,11 +20950,11 @@
             "expect": {
                 "win": "b",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 18,
-                "scoreB": 19,
-                "events": 53,
-                "sig": "806c696b"
+                "rd": 2,
+                "scoreA": 8,
+                "scoreB": 10,
+                "events": 20,
+                "sig": "4ba339d7"
             }
         },
         {
@@ -21000,12 +21000,12 @@
             "seed": 1121669675,
             "expect": {
                 "win": "a",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 30,
-                "scoreB": 24,
-                "events": 67,
-                "sig": "09f8fac0"
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 10,
+                "scoreB": 9,
+                "events": 40,
+                "sig": "51f274e5"
             }
         },
         {
@@ -21051,12 +21051,12 @@
             "seed": 1640544219,
             "expect": {
                 "win": "b",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 26,
-                "scoreB": 28,
-                "events": 59,
-                "sig": "692b51a9"
+                "scoreA": 18,
+                "scoreB": 18,
+                "events": 60,
+                "sig": "e027d42d"
             }
         },
         {
@@ -21104,10 +21104,10 @@
                 "win": "b",
                 "how": "Angka",
                 "rd": 3,
-                "scoreA": 28,
+                "scoreA": 24,
                 "scoreB": 29,
-                "events": 57,
-                "sig": "ca2a952b"
+                "events": 61,
+                "sig": "6c2c416a"
             }
         },
         {
@@ -21154,11 +21154,11 @@
             "expect": {
                 "win": "a",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 17,
-                "scoreB": 20,
-                "events": 57,
-                "sig": "19d0d2a4"
+                "rd": 2,
+                "scoreA": 8,
+                "scoreB": 9,
+                "events": 39,
+                "sig": "15ca7d52"
             }
         },
         {
@@ -21204,12 +21204,12 @@
             "seed": 1820245570,
             "expect": {
                 "win": "b",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 63,
-                "sig": "aa9428cb"
+                "scoreA": 19,
+                "scoreB": 19,
+                "events": 61,
+                "sig": "3319e41e"
             }
         },
         {
@@ -21254,13 +21254,13 @@
             },
             "seed": 2630929196,
             "expect": {
-                "win": "a",
-                "how": "Angka",
+                "win": "b",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 30,
-                "scoreB": 27,
-                "events": 61,
-                "sig": "8b6a608a"
+                "scoreA": 20,
+                "scoreB": 16,
+                "events": 51,
+                "sig": "6dacd7c5"
             }
         },
         {
@@ -21311,7 +21311,7 @@
                 "scoreA": 29,
                 "scoreB": 27,
                 "events": 61,
-                "sig": "9c3cd15d"
+                "sig": "0859f19e"
             }
         },
         {
@@ -21356,13 +21356,13 @@
             },
             "seed": 4083252278,
             "expect": {
-                "win": "b",
-                "how": "Angka",
+                "win": "a",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 61,
-                "sig": "222ca2e1"
+                "scoreA": 19,
+                "scoreB": 19,
+                "events": 52,
+                "sig": "9c20656c"
             }
         },
         {
@@ -21407,13 +21407,13 @@
             },
             "seed": 3314607494,
             "expect": {
-                "win": "a",
-                "how": "Angka",
+                "win": "b",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
-                "events": 57,
-                "sig": "79c76eb4"
+                "scoreA": 18,
+                "scoreB": 19,
+                "events": 44,
+                "sig": "4fd0fe20"
             }
         },
         {
@@ -21459,12 +21459,12 @@
             "seed": 1004749065,
             "expect": {
                 "win": "a",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
-                "events": 59,
-                "sig": "0aaf73bc"
+                "scoreA": 20,
+                "scoreB": 18,
+                "events": 50,
+                "sig": "96d51627"
             }
         },
         {
@@ -21509,13 +21509,13 @@
             },
             "seed": 2440955446,
             "expect": {
-                "win": "b",
-                "how": "KO",
+                "win": "a",
+                "how": "Angka",
                 "rd": 3,
-                "scoreA": 19,
-                "scoreB": 18,
-                "events": 61,
-                "sig": "ae660eac"
+                "scoreA": 28,
+                "scoreB": 27,
+                "events": 57,
+                "sig": "f875e2c3"
             }
         },
         {
@@ -21561,12 +21561,12 @@
             "seed": 1856269549,
             "expect": {
                 "win": "a",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 26,
-                "events": 63,
-                "sig": "d12393e0"
+                "scoreA": 18,
+                "scoreB": 18,
+                "events": 58,
+                "sig": "856e15b4"
             }
         },
         {
@@ -21612,12 +21612,12 @@
             "seed": 1411882068,
             "expect": {
                 "win": "b",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 59,
-                "sig": "cf90e357"
+                "scoreA": 19,
+                "scoreB": 18,
+                "events": 53,
+                "sig": "510448df"
             }
         },
         {
@@ -21662,13 +21662,13 @@
             },
             "seed": 318147810,
             "expect": {
-                "win": "b",
-                "how": "Angka",
+                "win": "a",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 27,
-                "scoreB": 29,
-                "events": 59,
-                "sig": "3e9e2a1e"
+                "scoreA": 19,
+                "scoreB": 19,
+                "events": 48,
+                "sig": "49dc70df"
             }
         },
         {
@@ -21715,11 +21715,11 @@
             "expect": {
                 "win": "b",
                 "how": "KO",
-                "rd": 2,
-                "scoreA": 9,
-                "scoreB": 10,
-                "events": 28,
-                "sig": "d10e1f2a"
+                "rd": 3,
+                "scoreA": 17,
+                "scoreB": 19,
+                "events": 47,
+                "sig": "2c6d5779"
             }
         },
         {
@@ -21770,7 +21770,7 @@
                 "scoreA": 27,
                 "scoreB": 29,
                 "events": 57,
-                "sig": "e23ea8df"
+                "sig": "1dec3898"
             }
         },
         {
@@ -21820,8 +21820,8 @@
                 "rd": 2,
                 "scoreA": 9,
                 "scoreB": 10,
-                "events": 29,
-                "sig": "dc009193"
+                "events": 32,
+                "sig": "47594538"
             }
         },
         {
@@ -21869,10 +21869,10 @@
                 "win": "a",
                 "how": "Angka",
                 "rd": 3,
-                "scoreA": 29,
+                "scoreA": 28,
                 "scoreB": 28,
                 "events": 55,
-                "sig": "2e255a4a"
+                "sig": "43d9ca92"
             }
         },
         {
@@ -21918,12 +21918,12 @@
             "seed": 1903949017,
             "expect": {
                 "win": "b",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 61,
-                "sig": "cbd45c60"
+                "scoreA": 17,
+                "scoreB": 20,
+                "events": 52,
+                "sig": "3cdb9e2b"
             }
         },
         {
@@ -21969,12 +21969,12 @@
             "seed": 1310252689,
             "expect": {
                 "win": "b",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 26,
-                "scoreB": 30,
-                "events": 59,
-                "sig": "2bb4a209"
+                "scoreA": 19,
+                "scoreB": 19,
+                "events": 47,
+                "sig": "aa456170"
             }
         },
         {
@@ -22019,13 +22019,13 @@
             },
             "seed": 802466082,
             "expect": {
-                "win": "b",
-                "how": "Angka",
+                "win": "a",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 58,
-                "sig": "038ca149"
+                "scoreA": 19,
+                "scoreB": 19,
+                "events": 49,
+                "sig": "f59e76c9"
             }
         },
         {
@@ -22076,7 +22076,7 @@
                 "scoreA": 30,
                 "scoreB": 27,
                 "events": 57,
-                "sig": "147e4251"
+                "sig": "6be32eab"
             }
         },
         {
@@ -22123,11 +22123,11 @@
             "expect": {
                 "win": "b",
                 "how": "KO",
-                "rd": 2,
-                "scoreA": 10,
-                "scoreB": 9,
-                "events": 39,
-                "sig": "774c3bb1"
+                "rd": 3,
+                "scoreA": 18,
+                "scoreB": 18,
+                "events": 50,
+                "sig": "7c3d5393"
             }
         },
         {
@@ -22172,13 +22172,13 @@
             },
             "seed": 2307406159,
             "expect": {
-                "win": "b",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 60,
-                "sig": "71208222"
+                "win": "a",
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 9,
+                "scoreB": 10,
+                "events": 38,
+                "sig": "bc20270f"
             }
         },
         {
@@ -22224,12 +22224,12 @@
             "seed": 2031549538,
             "expect": {
                 "win": "a",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
+                "scoreA": 20,
+                "scoreB": 18,
                 "events": 64,
-                "sig": "d8cf0ac4"
+                "sig": "94364558"
             }
         },
         {
@@ -22274,13 +22274,13 @@
             },
             "seed": 3080230892,
             "expect": {
-                "win": "b",
+                "win": "a",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 18,
-                "scoreB": 20,
-                "events": 46,
-                "sig": "c15d2882"
+                "rd": 2,
+                "scoreA": 9,
+                "scoreB": 10,
+                "events": 33,
+                "sig": "70e6d619"
             }
         },
         {
@@ -22326,12 +22326,12 @@
             "seed": 1206758732,
             "expect": {
                 "win": "a",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 26,
-                "events": 60,
-                "sig": "56bd594f"
+                "scoreA": 19,
+                "scoreB": 18,
+                "events": 56,
+                "sig": "fbfdb5fc"
             }
         },
         {
@@ -22377,12 +22377,12 @@
             "seed": 3171802624,
             "expect": {
                 "win": "a",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 27,
-                "scoreB": 27,
-                "events": 66,
-                "sig": "6b47e105"
+                "scoreA": 19,
+                "scoreB": 19,
+                "events": 50,
+                "sig": "7ce406ca"
             }
         },
         {
@@ -22427,13 +22427,13 @@
             },
             "seed": 1190940506,
             "expect": {
-                "win": "a",
+                "win": "b",
                 "how": "Angka",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
+                "scoreA": 26,
+                "scoreB": 29,
                 "events": 57,
-                "sig": "2598c984"
+                "sig": "ed1567f8"
             }
         },
         {
@@ -22478,13 +22478,13 @@
             },
             "seed": 290028509,
             "expect": {
-                "win": "b",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 26,
-                "scoreB": 29,
-                "events": 61,
-                "sig": "3a51a09c"
+                "win": "a",
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 10,
+                "scoreB": 8,
+                "events": 31,
+                "sig": "263ba779"
             }
         },
         {
@@ -22531,11 +22531,11 @@
             "expect": {
                 "win": "b",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 19,
-                "scoreB": 19,
-                "events": 55,
-                "sig": "c05523d9"
+                "rd": 2,
+                "scoreA": 10,
+                "scoreB": 9,
+                "events": 30,
+                "sig": "59cadb2a"
             }
         },
         {
@@ -22580,13 +22580,13 @@
             },
             "seed": 3177148129,
             "expect": {
-                "win": "a",
-                "how": "Angka",
+                "win": "b",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
-                "events": 61,
-                "sig": "7fe04847"
+                "scoreA": 19,
+                "scoreB": 18,
+                "events": 51,
+                "sig": "60211192"
             }
         },
         {
@@ -22632,12 +22632,12 @@
             "seed": 419300678,
             "expect": {
                 "win": "b",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 26,
-                "scoreB": 30,
-                "events": 57,
-                "sig": "3baa155c"
+                "scoreA": 19,
+                "scoreB": 19,
+                "events": 51,
+                "sig": "92778426"
             }
         },
         {
@@ -22682,13 +22682,13 @@
             },
             "seed": 1011537041,
             "expect": {
-                "win": "a",
+                "win": "b",
                 "how": "KO",
                 "rd": 3,
-                "scoreA": 19,
-                "scoreB": 19,
-                "events": 54,
-                "sig": "624fbaf6"
+                "scoreA": 18,
+                "scoreB": 17,
+                "events": 49,
+                "sig": "8f9d1ffd"
             }
         },
         {
@@ -22733,13 +22733,13 @@
             },
             "seed": 3442245191,
             "expect": {
-                "win": "a",
-                "how": "Angka",
+                "win": "b",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 27,
-                "events": 67,
-                "sig": "542d004a"
+                "scoreA": 20,
+                "scoreB": 18,
+                "events": 49,
+                "sig": "af9e8952"
             }
         },
         {
@@ -22786,11 +22786,11 @@
             "expect": {
                 "win": "a",
                 "how": "KO",
-                "rd": 2,
-                "scoreA": 10,
-                "scoreB": 9,
-                "events": 30,
-                "sig": "511532a0"
+                "rd": 3,
+                "scoreA": 18,
+                "scoreB": 18,
+                "events": 43,
+                "sig": "1a390c73"
             }
         },
         {
@@ -22835,13 +22835,13 @@
             },
             "seed": 4065086066,
             "expect": {
-                "win": "b",
-                "how": "Angka",
+                "win": "a",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 27,
-                "scoreB": 30,
-                "events": 57,
-                "sig": "65b2ba52"
+                "scoreA": 18,
+                "scoreB": 20,
+                "events": 43,
+                "sig": "b87446bc"
             }
         },
         {
@@ -22887,12 +22887,12 @@
             "seed": 912009957,
             "expect": {
                 "win": "a",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 30,
-                "scoreB": 27,
-                "events": 59,
-                "sig": "4a511d93"
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 8,
+                "scoreB": 10,
+                "events": 23,
+                "sig": "3a47e761"
             }
         },
         {
@@ -22937,13 +22937,13 @@
             },
             "seed": 662506221,
             "expect": {
-                "win": "b",
-                "how": "Angka",
+                "win": "a",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 27,
-                "scoreB": 28,
-                "events": 61,
-                "sig": "462900b7"
+                "scoreA": 20,
+                "scoreB": 16,
+                "events": 59,
+                "sig": "7b2efbef"
             }
         },
         {
@@ -22989,12 +22989,12 @@
             "seed": 1487418640,
             "expect": {
                 "win": "b",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 26,
-                "scoreB": 30,
-                "events": 59,
-                "sig": "8e0d4bba"
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 9,
+                "scoreB": 10,
+                "events": 31,
+                "sig": "a6c591cb"
             }
         },
         {
@@ -23039,13 +23039,13 @@
             },
             "seed": 158346749,
             "expect": {
-                "win": "b",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 27,
-                "scoreB": 29,
-                "events": 58,
-                "sig": "90a03fd4"
+                "win": "a",
+                "how": "TKO",
+                "rd": 1,
+                "scoreA": 0,
+                "scoreB": 0,
+                "events": 17,
+                "sig": "a405b8e3"
             }
         },
         {
@@ -23093,10 +23093,10 @@
                 "win": "a",
                 "how": "KO",
                 "rd": 3,
-                "scoreA": 19,
-                "scoreB": 19,
+                "scoreA": 20,
+                "scoreB": 16,
                 "events": 51,
-                "sig": "8398e551"
+                "sig": "544f2844"
             }
         },
         {
@@ -23141,13 +23141,13 @@
             },
             "seed": 3403438532,
             "expect": {
-                "win": "b",
-                "how": "Angka",
+                "win": "a",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 61,
-                "sig": "49985311"
+                "scoreA": 18,
+                "scoreB": 20,
+                "events": 50,
+                "sig": "77c836a5"
             }
         },
         {
@@ -23192,13 +23192,13 @@
             },
             "seed": 1903850883,
             "expect": {
-                "win": "a",
+                "win": "b",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 18,
-                "scoreB": 18,
-                "events": 60,
-                "sig": "99d81842"
+                "rd": 2,
+                "scoreA": 7,
+                "scoreB": 9,
+                "events": 35,
+                "sig": "e8b11e25"
             }
         },
         {
@@ -23244,12 +23244,12 @@
             "seed": 2089846183,
             "expect": {
                 "win": "b",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 57,
-                "sig": "2b1c86b1"
+                "scoreA": 19,
+                "scoreB": 19,
+                "events": 46,
+                "sig": "9549f2e7"
             }
         },
         {
@@ -23294,13 +23294,13 @@
             },
             "seed": 1205027006,
             "expect": {
-                "win": "a",
+                "win": "b",
                 "how": "Angka",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
-                "events": 59,
-                "sig": "10e34745"
+                "scoreA": 27,
+                "scoreB": 29,
+                "events": 61,
+                "sig": "bda5181a"
             }
         },
         {
@@ -23348,10 +23348,10 @@
                 "win": "a",
                 "how": "KO",
                 "rd": 3,
-                "scoreA": 19,
-                "scoreB": 18,
-                "events": 60,
-                "sig": "8633a8f6"
+                "scoreA": 16,
+                "scoreB": 19,
+                "events": 45,
+                "sig": "617ed4a3"
             }
         },
         {
@@ -23397,12 +23397,12 @@
             "seed": 2640490833,
             "expect": {
                 "win": "b",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 25,
-                "scoreB": 30,
-                "events": 57,
-                "sig": "3f8552c7"
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 7,
+                "scoreB": 10,
+                "events": 31,
+                "sig": "e9cb222a"
             }
         },
         {
@@ -23447,13 +23447,13 @@
             },
             "seed": 3862302952,
             "expect": {
-                "win": "a",
+                "win": "b",
                 "how": "KO",
                 "rd": 3,
                 "scoreA": 19,
                 "scoreB": 19,
-                "events": 54,
-                "sig": "696ad184"
+                "events": 45,
+                "sig": "e46aeef2"
             }
         },
         {
@@ -23498,13 +23498,13 @@
             },
             "seed": 1615627446,
             "expect": {
-                "win": "b",
+                "win": "a",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 18,
-                "scoreB": 18,
-                "events": 63,
-                "sig": "4c5b89af"
+                "rd": 2,
+                "scoreA": 9,
+                "scoreB": 10,
+                "events": 38,
+                "sig": "3ac1d4fe"
             }
         },
         {
@@ -23553,9 +23553,9 @@
                 "how": "KO",
                 "rd": 3,
                 "scoreA": 20,
-                "scoreB": 18,
+                "scoreB": 16,
                 "events": 44,
-                "sig": "b5f80bae"
+                "sig": "68182f94"
             }
         },
         {
@@ -23601,12 +23601,12 @@
             "seed": 3482291946,
             "expect": {
                 "win": "b",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 27,
-                "scoreB": 30,
-                "events": 59,
-                "sig": "fa1b0bd1"
+                "scoreA": 18,
+                "scoreB": 20,
+                "events": 52,
+                "sig": "ec1ef5ad"
             }
         },
         {
@@ -23655,9 +23655,9 @@
                 "how": "Angka",
                 "rd": 3,
                 "scoreA": 30,
-                "scoreB": 27,
+                "scoreB": 26,
                 "events": 61,
-                "sig": "5118a173"
+                "sig": "e98e31df"
             }
         },
         {
@@ -23702,13 +23702,13 @@
             },
             "seed": 1168502324,
             "expect": {
-                "win": "b",
+                "win": "a",
                 "how": "KO",
                 "rd": 3,
-                "scoreA": 19,
+                "scoreA": 18,
                 "scoreB": 19,
-                "events": 56,
-                "sig": "36700105"
+                "events": 50,
+                "sig": "c358b9d5"
             }
         },
         {
@@ -23753,13 +23753,13 @@
             },
             "seed": 3929333868,
             "expect": {
-                "win": "b",
+                "win": "a",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 19,
-                "scoreB": 19,
-                "events": 51,
-                "sig": "acb57c16"
+                "rd": 2,
+                "scoreA": 8,
+                "scoreB": 10,
+                "events": 33,
+                "sig": "cec435d7"
             }
         },
         {
@@ -23807,10 +23807,10 @@
                 "win": "b",
                 "how": "KO",
                 "rd": 3,
-                "scoreA": 19,
-                "scoreB": 19,
-                "events": 60,
-                "sig": "d3f5c7c0"
+                "scoreA": 17,
+                "scoreB": 18,
+                "events": 63,
+                "sig": "d25170d1"
             }
         },
         {
@@ -23856,12 +23856,12 @@
             "seed": 265292481,
             "expect": {
                 "win": "b",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 66,
-                "sig": "d32408ea"
+                "scoreA": 19,
+                "scoreB": 19,
+                "events": 59,
+                "sig": "0c753247"
             }
         },
         {
@@ -23907,12 +23907,12 @@
             "seed": 479807410,
             "expect": {
                 "win": "b",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 59,
-                "sig": "193b901d"
+                "scoreA": 18,
+                "scoreB": 19,
+                "events": 44,
+                "sig": "89856960"
             }
         },
         {
@@ -23958,12 +23958,12 @@
             "seed": 3493912867,
             "expect": {
                 "win": "b",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 28,
-                "events": 57,
-                "sig": "2e366250"
+                "scoreA": 18,
+                "scoreB": 19,
+                "events": 53,
+                "sig": "6d5f6b74"
             }
         },
         {
@@ -24008,13 +24008,13 @@
             },
             "seed": 2695982099,
             "expect": {
-                "win": "a",
-                "how": "Angka",
+                "win": "b",
+                "how": "TKO",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
-                "events": 57,
-                "sig": "1a1bfe45"
+                "scoreA": 19,
+                "scoreB": 19,
+                "events": 55,
+                "sig": "23d2bb61"
             }
         },
         {
@@ -24061,11 +24061,11 @@
             "expect": {
                 "win": "b",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 19,
-                "scoreB": 19,
-                "events": 44,
-                "sig": "70db96b2"
+                "rd": 1,
+                "scoreA": 0,
+                "scoreB": 0,
+                "events": 15,
+                "sig": "eb4a02aa"
             }
         },
         {
@@ -24113,10 +24113,10 @@
                 "win": "a",
                 "how": "KO",
                 "rd": 3,
-                "scoreA": 18,
-                "scoreB": 20,
-                "events": 57,
-                "sig": "48edb4b7"
+                "scoreA": 19,
+                "scoreB": 17,
+                "events": 46,
+                "sig": "304786da"
             }
         },
         {
@@ -24161,13 +24161,13 @@
             },
             "seed": 2448071514,
             "expect": {
-                "win": "a",
+                "win": "b",
                 "how": "KO",
                 "rd": 3,
                 "scoreA": 19,
                 "scoreB": 19,
-                "events": 57,
-                "sig": "4b00c0d2"
+                "events": 51,
+                "sig": "d6004043"
             }
         },
         {
@@ -24213,12 +24213,12 @@
             "seed": 2675872946,
             "expect": {
                 "win": "a",
-                "how": "Angka",
+                "how": "TKO",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
-                "events": 57,
-                "sig": "720d62c1"
+                "scoreA": 19,
+                "scoreB": 19,
+                "events": 54,
+                "sig": "3690cd9d"
             }
         },
         {
@@ -24264,12 +24264,12 @@
             "seed": 2214920850,
             "expect": {
                 "win": "b",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 25,
-                "scoreB": 30,
-                "events": 57,
-                "sig": "731849e2"
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 8,
+                "scoreB": 10,
+                "events": 34,
+                "sig": "e9e17370"
             }
         },
         {
@@ -24314,13 +24314,13 @@
             },
             "seed": 185834362,
             "expect": {
-                "win": "a",
-                "how": "Angka",
+                "win": "b",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 28,
-                "events": 65,
-                "sig": "9d15d63c"
+                "scoreA": 17,
+                "scoreB": 19,
+                "events": 57,
+                "sig": "3d3e7d71"
             }
         },
         {
@@ -24366,12 +24366,12 @@
             "seed": 704724818,
             "expect": {
                 "win": "a",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
-                "events": 61,
-                "sig": "3df6e945"
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 10,
+                "scoreB": 9,
+                "events": 29,
+                "sig": "18bceb00"
             }
         },
         {
@@ -24417,12 +24417,12 @@
             "seed": 3864385094,
             "expect": {
                 "win": "a",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
-                "events": 65,
-                "sig": "5a885477"
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 10,
+                "scoreB": 8,
+                "events": 25,
+                "sig": "5bd73035"
             }
         },
         {
@@ -24468,12 +24468,12 @@
             "seed": 428944746,
             "expect": {
                 "win": "b",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 66,
-                "sig": "99127618"
+                "scoreA": 19,
+                "scoreB": 18,
+                "events": 47,
+                "sig": "906d0ba9"
             }
         },
         {
@@ -24518,13 +24518,13 @@
             },
             "seed": 3595618436,
             "expect": {
-                "win": "a",
-                "how": "KO",
+                "win": "b",
+                "how": "Angka",
                 "rd": 3,
-                "scoreA": 19,
-                "scoreB": 19,
-                "events": 53,
-                "sig": "140f970b"
+                "scoreA": 28,
+                "scoreB": 28,
+                "events": 61,
+                "sig": "bb6d1ce2"
             }
         },
         {
@@ -24569,13 +24569,13 @@
             },
             "seed": 465777416,
             "expect": {
-                "win": "a",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
-                "events": 61,
-                "sig": "fcbb5706"
+                "win": "b",
+                "how": "TKO",
+                "rd": 1,
+                "scoreA": 0,
+                "scoreB": 0,
+                "events": 17,
+                "sig": "c43e16a8"
             }
         },
         {
@@ -24621,12 +24621,12 @@
             "seed": 2426888856,
             "expect": {
                 "win": "a",
-                "how": "KO",
+                "how": "Angka",
                 "rd": 3,
-                "scoreA": 20,
-                "scoreB": 17,
-                "events": 63,
-                "sig": "415ffe00"
+                "scoreA": 28,
+                "scoreB": 24,
+                "events": 62,
+                "sig": "c35c96f5"
             }
         },
         {
@@ -24671,13 +24671,13 @@
             },
             "seed": 423748324,
             "expect": {
-                "win": "b",
+                "win": "a",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 19,
-                "scoreB": 19,
-                "events": 56,
-                "sig": "26f48e13"
+                "rd": 2,
+                "scoreA": 10,
+                "scoreB": 8,
+                "events": 35,
+                "sig": "06c93ccf"
             }
         },
         {
@@ -24722,13 +24722,13 @@
             },
             "seed": 4177533317,
             "expect": {
-                "win": "b",
+                "win": "a",
                 "how": "Angka",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
+                "scoreA": 29,
+                "scoreB": 27,
                 "events": 59,
-                "sig": "097679fc"
+                "sig": "6d44fbdd"
             }
         },
         {
@@ -24773,13 +24773,13 @@
             },
             "seed": 792387862,
             "expect": {
-                "win": "a",
-                "how": "TKO",
-                "rd": 3,
-                "scoreA": 19,
-                "scoreB": 19,
-                "events": 49,
-                "sig": "97507508"
+                "win": "b",
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 10,
+                "scoreB": 9,
+                "events": 29,
+                "sig": "4ee80d06"
             }
         },
         {
@@ -24824,13 +24824,13 @@
             },
             "seed": 3107879731,
             "expect": {
-                "win": "a",
+                "win": "b",
                 "how": "KO",
                 "rd": 3,
                 "scoreA": 18,
-                "scoreB": 19,
-                "events": 56,
-                "sig": "a958a688"
+                "scoreB": 17,
+                "events": 60,
+                "sig": "6f478f0f"
             }
         },
         {
@@ -24879,9 +24879,9 @@
                 "how": "Angka",
                 "rd": 3,
                 "scoreA": 29,
-                "scoreB": 28,
+                "scoreB": 26,
                 "events": 60,
-                "sig": "c972d9a1"
+                "sig": "175aab7b"
             }
         },
         {
@@ -24927,12 +24927,12 @@
             "seed": 1742365875,
             "expect": {
                 "win": "a",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
-                "events": 64,
-                "sig": "495aa542"
+                "scoreA": 20,
+                "scoreB": 17,
+                "events": 59,
+                "sig": "d8c25050"
             }
         },
         {
@@ -24982,8 +24982,8 @@
                 "rd": 2,
                 "scoreA": 8,
                 "scoreB": 10,
-                "events": 40,
-                "sig": "36d3324d"
+                "events": 30,
+                "sig": "52b45453"
             }
         },
         {
@@ -25028,13 +25028,13 @@
             },
             "seed": 3638072549,
             "expect": {
-                "win": "a",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 28,
-                "scoreB": 27,
-                "events": 57,
-                "sig": "42d34fae"
+                "win": "b",
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 9,
+                "scoreB": 10,
+                "events": 32,
+                "sig": "c1d86aee"
             }
         },
         {
@@ -25085,7 +25085,7 @@
                 "scoreA": 30,
                 "scoreB": 27,
                 "events": 61,
-                "sig": "5c84f906"
+                "sig": "310bdb3d"
             }
         },
         {
@@ -25131,12 +25131,12 @@
             "seed": 3370036435,
             "expect": {
                 "win": "a",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
-                "events": 57,
-                "sig": "0c125c23"
+                "scoreA": 18,
+                "scoreB": 18,
+                "events": 56,
+                "sig": "583d2c41"
             }
         },
         {
@@ -25181,13 +25181,13 @@
             },
             "seed": 4190687486,
             "expect": {
-                "win": "b",
+                "win": "a",
                 "how": "KO",
                 "rd": 2,
-                "scoreA": 10,
+                "scoreA": 8,
                 "scoreB": 9,
-                "events": 35,
-                "sig": "f7e2d118"
+                "events": 27,
+                "sig": "48ae084a"
             }
         },
         {
@@ -25233,12 +25233,12 @@
             "seed": 2895988507,
             "expect": {
                 "win": "b",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 27,
-                "scoreB": 29,
-                "events": 66,
-                "sig": "87334a87"
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 9,
+                "scoreB": 10,
+                "events": 37,
+                "sig": "b9abce6b"
             }
         },
         {
@@ -25283,13 +25283,13 @@
             },
             "seed": 4141958846,
             "expect": {
-                "win": "a",
+                "win": "b",
                 "how": "Angka",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
-                "events": 59,
-                "sig": "465f72a0"
+                "scoreA": 27,
+                "scoreB": 29,
+                "events": 61,
+                "sig": "c6879096"
             }
         },
         {
@@ -25334,13 +25334,13 @@
             },
             "seed": 2393446249,
             "expect": {
-                "win": "a",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 30,
-                "scoreB": 26,
-                "events": 63,
-                "sig": "26224534"
+                "win": "b",
+                "how": "KO",
+                "rd": 1,
+                "scoreA": 0,
+                "scoreB": 0,
+                "events": 15,
+                "sig": "e5fcb273"
             }
         },
         {
@@ -25385,13 +25385,13 @@
             },
             "seed": 946320429,
             "expect": {
-                "win": "b",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 27,
-                "scoreB": 28,
-                "events": 61,
-                "sig": "1ebf3665"
+                "win": "a",
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 10,
+                "scoreB": 8,
+                "events": 34,
+                "sig": "276fd4e1"
             }
         },
         {
@@ -25439,10 +25439,10 @@
                 "win": "b",
                 "how": "Angka",
                 "rd": 3,
-                "scoreA": 28,
+                "scoreA": 27,
                 "scoreB": 29,
                 "events": 59,
-                "sig": "5e6e3b8d"
+                "sig": "69a7d1ed"
             }
         },
         {
@@ -25488,12 +25488,12 @@
             "seed": 748747757,
             "expect": {
                 "win": "b",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 57,
-                "sig": "efed193b"
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 8,
+                "scoreB": 10,
+                "events": 31,
+                "sig": "785433e8"
             }
         },
         {
@@ -25543,8 +25543,8 @@
                 "rd": 3,
                 "scoreA": 18,
                 "scoreB": 19,
-                "events": 57,
-                "sig": "3cd644a5"
+                "events": 40,
+                "sig": "f69eadb4"
             }
         },
         {
@@ -25589,13 +25589,13 @@
             },
             "seed": 2580967505,
             "expect": {
-                "win": "b",
+                "win": "a",
                 "how": "Angka",
                 "rd": 3,
                 "scoreA": 28,
-                "scoreB": 29,
-                "events": 60,
-                "sig": "b7f68f6d"
+                "scoreB": 27,
+                "events": 59,
+                "sig": "5c7e3e4d"
             }
         },
         {
@@ -25641,12 +25641,12 @@
             "seed": 4284326123,
             "expect": {
                 "win": "b",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 25,
-                "scoreB": 30,
-                "events": 68,
-                "sig": "9170491e"
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 9,
+                "scoreB": 10,
+                "events": 35,
+                "sig": "c3f3469d"
             }
         },
         {
@@ -25694,10 +25694,10 @@
                 "win": "b",
                 "how": "Angka",
                 "rd": 3,
-                "scoreA": 26,
+                "scoreA": 25,
                 "scoreB": 30,
                 "events": 63,
-                "sig": "210c0349"
+                "sig": "3896416e"
             }
         },
         {
@@ -25742,13 +25742,13 @@
             },
             "seed": 2682233167,
             "expect": {
-                "win": "a",
-                "how": "Angka",
+                "win": "b",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 27,
-                "events": 59,
-                "sig": "f3a0fbfa"
+                "scoreA": 19,
+                "scoreB": 19,
+                "events": 46,
+                "sig": "cc813181"
             }
         },
         {
@@ -25794,12 +25794,12 @@
             "seed": 2788225478,
             "expect": {
                 "win": "b",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 27,
-                "scoreB": 28,
-                "events": 65,
-                "sig": "ae6226ee"
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 8,
+                "scoreB": 10,
+                "events": 28,
+                "sig": "f2d2db50"
             }
         },
         {
@@ -25844,13 +25844,13 @@
             },
             "seed": 259258703,
             "expect": {
-                "win": "b",
+                "win": "a",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 19,
-                "scoreB": 19,
-                "events": 62,
-                "sig": "04714ab5"
+                "rd": 2,
+                "scoreA": 10,
+                "scoreB": 9,
+                "events": 28,
+                "sig": "92a726f3"
             }
         },
         {
@@ -25901,7 +25901,7 @@
                 "scoreA": 28,
                 "scoreB": 29,
                 "events": 59,
-                "sig": "b641f786"
+                "sig": "2a18fcc4"
             }
         },
         {
@@ -25949,10 +25949,10 @@
                 "win": "b",
                 "how": "KO",
                 "rd": 3,
-                "scoreA": 20,
-                "scoreB": 18,
-                "events": 61,
-                "sig": "c76354bc"
+                "scoreA": 19,
+                "scoreB": 16,
+                "events": 51,
+                "sig": "01b04c11"
             }
         },
         {
@@ -26001,9 +26001,9 @@
                 "how": "KO",
                 "rd": 2,
                 "scoreA": 10,
-                "scoreB": 9,
-                "events": 29,
-                "sig": "3262c3c6"
+                "scoreB": 8,
+                "events": 27,
+                "sig": "a723f339"
             }
         },
         {
@@ -26048,13 +26048,13 @@
             },
             "seed": 2391422227,
             "expect": {
-                "win": "b",
+                "win": "a",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 19,
-                "scoreB": 18,
-                "events": 48,
-                "sig": "c32419ab"
+                "rd": 2,
+                "scoreA": 10,
+                "scoreB": 8,
+                "events": 25,
+                "sig": "ec50ef39"
             }
         },
         {
@@ -26099,13 +26099,13 @@
             },
             "seed": 896805398,
             "expect": {
-                "win": "b",
-                "how": "Angka",
+                "win": "a",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 27,
-                "scoreB": 29,
-                "events": 59,
-                "sig": "7bb2c5b5"
+                "scoreA": 19,
+                "scoreB": 17,
+                "events": 46,
+                "sig": "7225296d"
             }
         },
         {
@@ -26150,13 +26150,13 @@
             },
             "seed": 3182135012,
             "expect": {
-                "win": "a",
-                "how": "Angka",
+                "win": "b",
+                "how": "TKO",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
-                "events": 61,
-                "sig": "0522a294"
+                "scoreA": 17,
+                "scoreB": 20,
+                "events": 51,
+                "sig": "e4949560"
             }
         },
         {
@@ -26203,11 +26203,11 @@
             "expect": {
                 "win": "a",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 18,
-                "scoreB": 20,
-                "events": 52,
-                "sig": "a038aa14"
+                "rd": 2,
+                "scoreA": 8,
+                "scoreB": 10,
+                "events": 32,
+                "sig": "33e37523"
             }
         },
         {
@@ -26254,11 +26254,11 @@
             "expect": {
                 "win": "a",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 20,
-                "scoreB": 18,
-                "events": 56,
-                "sig": "2b28d9d2"
+                "rd": 2,
+                "scoreA": 10,
+                "scoreB": 8,
+                "events": 26,
+                "sig": "32b092e6"
             }
         },
         {
@@ -26304,12 +26304,12 @@
             "seed": 1919274377,
             "expect": {
                 "win": "b",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 61,
-                "sig": "c5766143"
+                "how": "KO",
+                "rd": 1,
+                "scoreA": 0,
+                "scoreB": 0,
+                "events": 15,
+                "sig": "4790fe48"
             }
         },
         {
@@ -26355,12 +26355,12 @@
             "seed": 1330329908,
             "expect": {
                 "win": "b",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 26,
-                "scoreB": 30,
-                "events": 61,
-                "sig": "174cd4d2"
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 9,
+                "scoreB": 10,
+                "events": 39,
+                "sig": "3580fd2e"
             }
         },
         {
@@ -26405,13 +26405,13 @@
             },
             "seed": 3056773010,
             "expect": {
-                "win": "a",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 29,
-                "scoreB": 27,
-                "events": 61,
-                "sig": "c4bf1918"
+                "win": "b",
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 8,
+                "scoreB": 10,
+                "events": 37,
+                "sig": "d1fe6a35"
             }
         },
         {
@@ -26458,11 +26458,11 @@
             "expect": {
                 "win": "a",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 18,
-                "scoreB": 19,
-                "events": 55,
-                "sig": "151829bc"
+                "rd": 2,
+                "scoreA": 8,
+                "scoreB": 10,
+                "events": 36,
+                "sig": "45afe6df"
             }
         },
         {
@@ -26507,13 +26507,13 @@
             },
             "seed": 2460935531,
             "expect": {
-                "win": "b",
-                "how": "Angka",
+                "win": "a",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 59,
-                "sig": "7e14fe4a"
+                "scoreA": 18,
+                "scoreB": 20,
+                "events": 48,
+                "sig": "4a3a1004"
             }
         },
         {
@@ -26558,13 +26558,13 @@
             },
             "seed": 2047581426,
             "expect": {
-                "win": "b",
-                "how": "Angka",
+                "win": "a",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 57,
-                "sig": "8bcc50e2"
+                "scoreA": 18,
+                "scoreB": 19,
+                "events": 42,
+                "sig": "f0ddd554"
             }
         },
         {
@@ -26615,7 +26615,7 @@
                 "scoreA": 26,
                 "scoreB": 30,
                 "events": 62,
-                "sig": "cb568f1b"
+                "sig": "2174193f"
             }
         },
         {
@@ -26660,13 +26660,13 @@
             },
             "seed": 4251608979,
             "expect": {
-                "win": "b",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 27,
-                "scoreB": 29,
-                "events": 55,
-                "sig": "e4114772"
+                "win": "a",
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 9,
+                "scoreB": 9,
+                "events": 26,
+                "sig": "b1598fbf"
             }
         },
         {
@@ -26711,13 +26711,13 @@
             },
             "seed": 604098090,
             "expect": {
-                "win": "b",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 27,
-                "scoreB": 29,
-                "events": 65,
-                "sig": "f991892e"
+                "win": "a",
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 9,
+                "scoreB": 10,
+                "events": 32,
+                "sig": "c882dbf7"
             }
         },
         {
@@ -26762,13 +26762,13 @@
             },
             "seed": 2010052423,
             "expect": {
-                "win": "a",
-                "how": "Angka",
+                "win": "b",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
-                "events": 62,
-                "sig": "d91c68e3"
+                "scoreA": 19,
+                "scoreB": 19,
+                "events": 49,
+                "sig": "8b9077a9"
             }
         },
         {
@@ -26814,12 +26814,12 @@
             "seed": 3577428766,
             "expect": {
                 "win": "b",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 26,
-                "scoreB": 30,
-                "events": 57,
-                "sig": "881308b0"
+                "scoreA": 15,
+                "scoreB": 19,
+                "events": 40,
+                "sig": "90a0e2d6"
             }
         },
         {
@@ -26866,11 +26866,11 @@
             "expect": {
                 "win": "b",
                 "how": "KO",
-                "rd": 2,
-                "scoreA": 9,
-                "scoreB": 10,
-                "events": 39,
-                "sig": "46c57736"
+                "rd": 1,
+                "scoreA": 0,
+                "scoreB": 0,
+                "events": 21,
+                "sig": "9dfae1e7"
             }
         },
         {
@@ -26916,12 +26916,12 @@
             "seed": 369585250,
             "expect": {
                 "win": "b",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 27,
-                "scoreB": 28,
-                "events": 64,
-                "sig": "0a172354"
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 9,
+                "scoreB": 10,
+                "events": 32,
+                "sig": "317fed96"
             }
         },
         {
@@ -26967,12 +26967,12 @@
             "seed": 791935257,
             "expect": {
                 "win": "a",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 28,
-                "scoreB": 27,
-                "events": 57,
-                "sig": "356f788e"
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 9,
+                "scoreB": 10,
+                "events": 28,
+                "sig": "731862e3"
             }
         },
         {
@@ -27018,12 +27018,12 @@
             "seed": 1891505254,
             "expect": {
                 "win": "a",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
-                "events": 59,
-                "sig": "8ec29a29"
+                "scoreA": 19,
+                "scoreB": 17,
+                "events": 44,
+                "sig": "e45dbb58"
             }
         },
         {
@@ -27071,10 +27071,10 @@
                 "win": "b",
                 "how": "KO",
                 "rd": 3,
-                "scoreA": 18,
+                "scoreA": 17,
                 "scoreB": 20,
-                "events": 55,
-                "sig": "dc8747d4"
+                "events": 46,
+                "sig": "dcde63a8"
             }
         },
         {
@@ -27119,13 +27119,13 @@
             },
             "seed": 340090844,
             "expect": {
-                "win": "a",
+                "win": "b",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 20,
-                "scoreB": 18,
-                "events": 58,
-                "sig": "64d0048a"
+                "rd": 2,
+                "scoreA": 10,
+                "scoreB": 9,
+                "events": 24,
+                "sig": "b3a5eb0b"
             }
         },
         {
@@ -27171,12 +27171,12 @@
             "seed": 3664765407,
             "expect": {
                 "win": "b",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 27,
-                "scoreB": 30,
-                "events": 62,
-                "sig": "7f18db9b"
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 9,
+                "scoreB": 10,
+                "events": 32,
+                "sig": "b9eb1013"
             }
         },
         {
@@ -27221,13 +27221,13 @@
             },
             "seed": 3267217217,
             "expect": {
-                "win": "b",
-                "how": "Angka",
+                "win": "a",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 59,
-                "sig": "85b71208"
+                "scoreA": 19,
+                "scoreB": 19,
+                "events": 53,
+                "sig": "a6a83ae1"
             }
         },
         {
@@ -27274,11 +27274,11 @@
             "expect": {
                 "win": "a",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 19,
-                "scoreB": 19,
-                "events": 58,
-                "sig": "0e0f8785"
+                "rd": 2,
+                "scoreA": 9,
+                "scoreB": 10,
+                "events": 24,
+                "sig": "c543108b"
             }
         },
         {
@@ -27326,10 +27326,10 @@
                 "win": "a",
                 "how": "KO",
                 "rd": 3,
-                "scoreA": 19,
-                "scoreB": 19,
-                "events": 58,
-                "sig": "e2a18e34"
+                "scoreA": 17,
+                "scoreB": 18,
+                "events": 65,
+                "sig": "823995af"
             }
         },
         {
@@ -27374,13 +27374,13 @@
             },
             "seed": 1145236215,
             "expect": {
-                "win": "b",
-                "how": "Angka",
+                "win": "a",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 63,
-                "sig": "92a6a616"
+                "scoreA": 17,
+                "scoreB": 18,
+                "events": 48,
+                "sig": "19e293d0"
             }
         },
         {
@@ -27426,12 +27426,12 @@
             "seed": 4185929518,
             "expect": {
                 "win": "b",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 62,
-                "sig": "bed365bf"
+                "scoreA": 19,
+                "scoreB": 19,
+                "events": 58,
+                "sig": "b0627e0a"
             }
         },
         {
@@ -27480,9 +27480,9 @@
                 "how": "Angka",
                 "rd": 3,
                 "scoreA": 28,
-                "scoreB": 29,
-                "events": 61,
-                "sig": "073a6fca"
+                "scoreB": 28,
+                "events": 57,
+                "sig": "78f3d54c"
             }
         },
         {
@@ -27532,8 +27532,8 @@
                 "rd": 3,
                 "scoreA": 29,
                 "scoreB": 27,
-                "events": 63,
-                "sig": "a7558fcd"
+                "events": 62,
+                "sig": "c0c9818c"
             }
         },
         {
@@ -27579,12 +27579,12 @@
             "seed": 676116953,
             "expect": {
                 "win": "b",
-                "how": "KO",
+                "how": "Angka",
                 "rd": 3,
-                "scoreA": 18,
-                "scoreB": 20,
-                "events": 59,
-                "sig": "cddc56bb"
+                "scoreA": 25,
+                "scoreB": 30,
+                "events": 61,
+                "sig": "afac6f97"
             }
         },
         {
@@ -27632,10 +27632,10 @@
                 "win": "a",
                 "how": "KO",
                 "rd": 2,
-                "scoreA": 9,
-                "scoreB": 10,
-                "events": 32,
-                "sig": "77470057"
+                "scoreA": 7,
+                "scoreB": 9,
+                "events": 38,
+                "sig": "ee97a6ff"
             }
         },
         {
@@ -27680,13 +27680,13 @@
             },
             "seed": 544020938,
             "expect": {
-                "win": "b",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 27,
-                "scoreB": 29,
-                "events": 59,
-                "sig": "c7a24ee7"
+                "win": "a",
+                "how": "TKO",
+                "rd": 2,
+                "scoreA": 10,
+                "scoreB": 8,
+                "events": 32,
+                "sig": "4cc29f40"
             }
         },
         {
@@ -27734,10 +27734,10 @@
                 "win": "a",
                 "how": "KO",
                 "rd": 3,
-                "scoreA": 18,
-                "scoreB": 19,
-                "events": 46,
-                "sig": "840a35ae"
+                "scoreA": 17,
+                "scoreB": 17,
+                "events": 57,
+                "sig": "51533e42"
             }
         },
         {
@@ -27783,12 +27783,12 @@
             "seed": 2117450750,
             "expect": {
                 "win": "a",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
-                "events": 61,
-                "sig": "5b268dd2"
+                "scoreA": 19,
+                "scoreB": 19,
+                "events": 49,
+                "sig": "10926a55"
             }
         },
         {
@@ -27833,13 +27833,13 @@
             },
             "seed": 4102016245,
             "expect": {
-                "win": "a",
+                "win": "b",
                 "how": "Angka",
                 "rd": 3,
-                "scoreA": 29,
+                "scoreA": 26,
                 "scoreB": 28,
                 "events": 57,
-                "sig": "a17d914d"
+                "sig": "89382372"
             }
         },
         {
@@ -27884,13 +27884,13 @@
             },
             "seed": 2742739276,
             "expect": {
-                "win": "a",
-                "how": "KO",
-                "rd": 2,
-                "scoreA": 9,
-                "scoreB": 10,
-                "events": 30,
-                "sig": "b4c48daa"
+                "win": "b",
+                "how": "Angka",
+                "rd": 3,
+                "scoreA": 26,
+                "scoreB": 29,
+                "events": 60,
+                "sig": "ad847ec9"
             }
         },
         {
@@ -27936,12 +27936,12 @@
             "seed": 1911853274,
             "expect": {
                 "win": "b",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 28,
-                "events": 57,
-                "sig": "6c468fe3"
+                "scoreA": 18,
+                "scoreB": 18,
+                "events": 44,
+                "sig": "ecc18f01"
             }
         },
         {
@@ -27987,12 +27987,12 @@
             "seed": 1915372049,
             "expect": {
                 "win": "a",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 29,
-                "scoreB": 26,
-                "events": 59,
-                "sig": "f877c4b3"
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 10,
+                "scoreB": 9,
+                "events": 33,
+                "sig": "534c60bf"
             }
         },
         {
@@ -28037,13 +28037,13 @@
             },
             "seed": 702444540,
             "expect": {
-                "win": "b",
+                "win": "a",
                 "how": "KO",
-                "rd": 2,
-                "scoreA": 9,
-                "scoreB": 10,
-                "events": 30,
-                "sig": "65b2785d"
+                "rd": 3,
+                "scoreA": 17,
+                "scoreB": 20,
+                "events": 53,
+                "sig": "0a35cb18"
             }
         },
         {
@@ -28088,13 +28088,13 @@
             },
             "seed": 1308203420,
             "expect": {
-                "win": "a",
-                "how": "Angka",
+                "win": "b",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 27,
-                "events": 62,
-                "sig": "4ba94662"
+                "scoreA": 18,
+                "scoreB": 19,
+                "events": 63,
+                "sig": "4fe11c75"
             }
         },
         {
@@ -28140,12 +28140,12 @@
             "seed": 196050141,
             "expect": {
                 "win": "a",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 30,
-                "scoreB": 26,
-                "events": 64,
-                "sig": "49c2203f"
+                "scoreA": 20,
+                "scoreB": 17,
+                "events": 54,
+                "sig": "ef05a7bb"
             }
         },
         {
@@ -28192,11 +28192,11 @@
             "expect": {
                 "win": "a",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 16,
-                "scoreB": 20,
-                "events": 60,
-                "sig": "3d7162b6"
+                "rd": 2,
+                "scoreA": 9,
+                "scoreB": 10,
+                "events": 37,
+                "sig": "5c047d6f"
             }
         },
         {
@@ -28241,13 +28241,13 @@
             },
             "seed": 1265672397,
             "expect": {
-                "win": "b",
+                "win": "a",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 17,
-                "scoreB": 20,
-                "events": 51,
-                "sig": "4d7271e0"
+                "rd": 2,
+                "scoreA": 8,
+                "scoreB": 10,
+                "events": 31,
+                "sig": "9d126de2"
             }
         },
         {
@@ -28295,10 +28295,10 @@
                 "win": "b",
                 "how": "KO",
                 "rd": 3,
-                "scoreA": 18,
-                "scoreB": 20,
-                "events": 57,
-                "sig": "85fc4c65"
+                "scoreA": 17,
+                "scoreB": 18,
+                "events": 52,
+                "sig": "104ed322"
             }
         },
         {
@@ -28345,11 +28345,11 @@
             "expect": {
                 "win": "a",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 18,
-                "scoreB": 20,
-                "events": 54,
-                "sig": "30ede9e4"
+                "rd": 2,
+                "scoreA": 9,
+                "scoreB": 10,
+                "events": 23,
+                "sig": "d98a3788"
             }
         },
         {
@@ -28395,12 +28395,12 @@
             "seed": 548598156,
             "expect": {
                 "win": "b",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 27,
-                "scoreB": 29,
-                "events": 57,
-                "sig": "f3610711"
+                "scoreA": 17,
+                "scoreB": 19,
+                "events": 54,
+                "sig": "e3510040"
             }
         },
         {
@@ -28446,12 +28446,12 @@
             "seed": 1832092090,
             "expect": {
                 "win": "b",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 26,
-                "scoreB": 30,
-                "events": 59,
-                "sig": "8a30013f"
+                "scoreA": 17,
+                "scoreB": 20,
+                "events": 38,
+                "sig": "02dbfa37"
             }
         },
         {
@@ -28496,13 +28496,13 @@
             },
             "seed": 3566630959,
             "expect": {
-                "win": "b",
+                "win": "a",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 20,
-                "scoreB": 18,
-                "events": 42,
-                "sig": "da5ec086"
+                "rd": 2,
+                "scoreA": 10,
+                "scoreB": 9,
+                "events": 27,
+                "sig": "79a0d25a"
             }
         },
         {
@@ -28547,13 +28547,13 @@
             },
             "seed": 2822591439,
             "expect": {
-                "win": "a",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 27,
-                "scoreB": 26,
-                "events": 60,
-                "sig": "42f3e7be"
+                "win": "b",
+                "how": "KO",
+                "rd": 1,
+                "scoreA": 0,
+                "scoreB": 0,
+                "events": 17,
+                "sig": "8a9179af"
             }
         },
         {
@@ -28598,13 +28598,13 @@
             },
             "seed": 2038833888,
             "expect": {
-                "win": "b",
-                "how": "Angka",
+                "win": "a",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 63,
-                "sig": "b3bc52e7"
+                "scoreA": 19,
+                "scoreB": 19,
+                "events": 50,
+                "sig": "cd70d74b"
             }
         },
         {
@@ -28650,12 +28650,12 @@
             "seed": 976182408,
             "expect": {
                 "win": "b",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 25,
-                "scoreB": 30,
-                "events": 60,
-                "sig": "0e66bcca"
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 7,
+                "scoreB": 10,
+                "events": 37,
+                "sig": "7b35e0b9"
             }
         },
         {
@@ -28700,13 +28700,13 @@
             },
             "seed": 3608581171,
             "expect": {
-                "win": "a",
+                "win": "b",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 19,
-                "scoreB": 18,
-                "events": 44,
-                "sig": "b1f69bec"
+                "rd": 2,
+                "scoreA": 9,
+                "scoreB": 9,
+                "events": 35,
+                "sig": "e31546e3"
             }
         },
         {
@@ -28756,8 +28756,8 @@
                 "rd": 2,
                 "scoreA": 9,
                 "scoreB": 10,
-                "events": 35,
-                "sig": "8aa28653"
+                "events": 29,
+                "sig": "52d0ebe5"
             }
         },
         {
@@ -28805,10 +28805,10 @@
                 "win": "b",
                 "how": "Angka",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
+                "scoreA": 27,
+                "scoreB": 27,
                 "events": 59,
-                "sig": "a5d2b3bb"
+                "sig": "c9f83816"
             }
         },
         {
@@ -28856,10 +28856,10 @@
                 "win": "a",
                 "how": "KO",
                 "rd": 2,
-                "scoreA": 10,
+                "scoreA": 7,
                 "scoreB": 9,
-                "events": 35,
-                "sig": "23051404"
+                "events": 34,
+                "sig": "d413635b"
             }
         },
         {
@@ -28910,7 +28910,7 @@
                 "scoreA": 29,
                 "scoreB": 27,
                 "events": 60,
-                "sig": "d4d0ac3f"
+                "sig": "9aad9c4f"
             }
         },
         {
@@ -28955,13 +28955,13 @@
             },
             "seed": 3235633642,
             "expect": {
-                "win": "a",
+                "win": "b",
                 "how": "Angka",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
-                "events": 60,
-                "sig": "d70982db"
+                "scoreA": 26,
+                "scoreB": 26,
+                "events": 57,
+                "sig": "5172c710"
             }
         },
         {
@@ -29007,12 +29007,12 @@
             "seed": 3709288199,
             "expect": {
                 "win": "b",
-                "how": "KO",
+                "how": "Angka",
                 "rd": 3,
-                "scoreA": 19,
-                "scoreB": 18,
-                "events": 51,
-                "sig": "d953cb6b"
+                "scoreA": 26,
+                "scoreB": 28,
+                "events": 61,
+                "sig": "b666db5d"
             }
         },
         {
@@ -29058,12 +29058,12 @@
             "seed": 1626721068,
             "expect": {
                 "win": "b",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 57,
-                "sig": "aa7246d5"
+                "scoreA": 18,
+                "scoreB": 18,
+                "events": 54,
+                "sig": "9fd12981"
             }
         },
         {
@@ -29110,11 +29110,11 @@
             "expect": {
                 "win": "a",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 19,
-                "scoreB": 19,
-                "events": 55,
-                "sig": "7f453396"
+                "rd": 2,
+                "scoreA": 8,
+                "scoreB": 10,
+                "events": 35,
+                "sig": "bb551f32"
             }
         },
         {
@@ -29159,13 +29159,13 @@
             },
             "seed": 839609953,
             "expect": {
-                "win": "b",
-                "how": "Angka",
+                "win": "a",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 26,
-                "scoreB": 29,
-                "events": 61,
-                "sig": "0bf474f0"
+                "scoreA": 18,
+                "scoreB": 18,
+                "events": 59,
+                "sig": "bada7dc3"
             }
         },
         {
@@ -29211,12 +29211,12 @@
             "seed": 3039618843,
             "expect": {
                 "win": "a",
-                "how": "Angka",
+                "how": "TKO",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
-                "events": 57,
-                "sig": "12a39b4e"
+                "scoreA": 19,
+                "scoreB": 19,
+                "events": 43,
+                "sig": "e50ef75b"
             }
         },
         {
@@ -29262,12 +29262,12 @@
             "seed": 1698893232,
             "expect": {
                 "win": "b",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 27,
-                "scoreB": 29,
-                "events": 60,
-                "sig": "6a5bcec0"
+                "scoreA": 16,
+                "scoreB": 20,
+                "events": 59,
+                "sig": "1e38364d"
             }
         },
         {
@@ -29312,13 +29312,13 @@
             },
             "seed": 1300162278,
             "expect": {
-                "win": "a",
+                "win": "b",
                 "how": "KO",
                 "rd": 3,
                 "scoreA": 18,
-                "scoreB": 20,
-                "events": 51,
-                "sig": "94d1e8f5"
+                "scoreB": 19,
+                "events": 55,
+                "sig": "358dacae"
             }
         },
         {
@@ -29366,10 +29366,10 @@
                 "win": "b",
                 "how": "KO",
                 "rd": 2,
-                "scoreA": 9,
+                "scoreA": 8,
                 "scoreB": 10,
-                "events": 25,
-                "sig": "f19fb0b8"
+                "events": 30,
+                "sig": "a8467012"
             }
         },
         {
@@ -29418,9 +29418,9 @@
                 "how": "Angka",
                 "rd": 3,
                 "scoreA": 29,
-                "scoreB": 28,
-                "events": 60,
-                "sig": "06dc95fe"
+                "scoreB": 26,
+                "events": 62,
+                "sig": "f54362bd"
             }
         },
         {
@@ -29468,10 +29468,10 @@
                 "win": "b",
                 "how": "KO",
                 "rd": 2,
-                "scoreA": 9,
+                "scoreA": 8,
                 "scoreB": 10,
-                "events": 42,
-                "sig": "01d918e8"
+                "events": 26,
+                "sig": "60ddf592"
             }
         },
         {
@@ -29517,12 +29517,12 @@
             "seed": 2135107873,
             "expect": {
                 "win": "b",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 27,
-                "scoreB": 30,
-                "events": 61,
-                "sig": "a4c9ad13"
+                "scoreA": 17,
+                "scoreB": 20,
+                "events": 47,
+                "sig": "b6de2c9c"
             }
         },
         {
@@ -29567,13 +29567,13 @@
             },
             "seed": 4100577138,
             "expect": {
-                "win": "a",
+                "win": "b",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 19,
-                "scoreB": 18,
-                "events": 57,
-                "sig": "229e1d64"
+                "rd": 2,
+                "scoreA": 8,
+                "scoreB": 9,
+                "events": 37,
+                "sig": "60ddc228"
             }
         },
         {
@@ -29619,12 +29619,12 @@
             "seed": 3288891104,
             "expect": {
                 "win": "a",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 30,
-                "scoreB": 27,
-                "events": 61,
-                "sig": "25b5a73b"
+                "scoreA": 18,
+                "scoreB": 18,
+                "events": 56,
+                "sig": "c9c41671"
             }
         },
         {
@@ -29670,12 +29670,12 @@
             "seed": 1073541080,
             "expect": {
                 "win": "b",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 63,
-                "sig": "7bf39781"
+                "how": "TKO",
+                "rd": 2,
+                "scoreA": 9,
+                "scoreB": 10,
+                "events": 32,
+                "sig": "dd4342c2"
             }
         },
         {
@@ -29726,7 +29726,7 @@
                 "scoreA": 28,
                 "scoreB": 29,
                 "events": 57,
-                "sig": "e09c59ed"
+                "sig": "bd5152b4"
             }
         },
         {
@@ -29771,13 +29771,13 @@
             },
             "seed": 2036310840,
             "expect": {
-                "win": "b",
-                "how": "Angka",
+                "win": "a",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 61,
-                "sig": "dad0a161"
+                "scoreA": 19,
+                "scoreB": 19,
+                "events": 57,
+                "sig": "e463ed1b"
             }
         },
         {
@@ -29822,13 +29822,13 @@
             },
             "seed": 2487381695,
             "expect": {
-                "win": "b",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 27,
-                "scoreB": 29,
-                "events": 60,
-                "sig": "fb54843f"
+                "win": "a",
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 8,
+                "scoreB": 10,
+                "events": 20,
+                "sig": "28315880"
             }
         },
         {
@@ -29873,13 +29873,13 @@
             },
             "seed": 2998760148,
             "expect": {
-                "win": "a",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
-                "events": 61,
-                "sig": "5e0f048f"
+                "win": "b",
+                "how": "TKO",
+                "rd": 2,
+                "scoreA": 10,
+                "scoreB": 9,
+                "events": 30,
+                "sig": "af42052c"
             }
         },
         {
@@ -29928,9 +29928,9 @@
                 "how": "KO",
                 "rd": 2,
                 "scoreA": 10,
-                "scoreB": 9,
-                "events": 34,
-                "sig": "bde49a83"
+                "scoreB": 8,
+                "events": 37,
+                "sig": "2d3d9cf1"
             }
         },
         {
@@ -29977,11 +29977,11 @@
             "expect": {
                 "win": "b",
                 "how": "KO",
-                "rd": 2,
-                "scoreA": 9,
-                "scoreB": 10,
-                "events": 36,
-                "sig": "f86c8c62"
+                "rd": 3,
+                "scoreA": 18,
+                "scoreB": 18,
+                "events": 44,
+                "sig": "45ccb2fb"
             }
         },
         {
@@ -30026,13 +30026,13 @@
             },
             "seed": 1370983620,
             "expect": {
-                "win": "a",
-                "how": "Angka",
+                "win": "b",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
-                "events": 63,
-                "sig": "80f872df"
+                "scoreA": 20,
+                "scoreB": 17,
+                "events": 55,
+                "sig": "ce5d3b43"
             }
         },
         {
@@ -30080,10 +30080,10 @@
                 "win": "b",
                 "how": "Angka",
                 "rd": 3,
-                "scoreA": 28,
+                "scoreA": 27,
                 "scoreB": 29,
-                "events": 61,
-                "sig": "c4ced003"
+                "events": 55,
+                "sig": "f978d20b"
             }
         },
         {
@@ -30129,12 +30129,12 @@
             "seed": 2313764197,
             "expect": {
                 "win": "b",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 61,
-                "sig": "395653a2"
+                "scoreA": 18,
+                "scoreB": 20,
+                "events": 54,
+                "sig": "59a58261"
             }
         },
         {
@@ -30179,13 +30179,13 @@
             },
             "seed": 4095904326,
             "expect": {
-                "win": "a",
+                "win": "b",
                 "how": "Angka",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
+                "scoreA": 26,
+                "scoreB": 29,
                 "events": 60,
-                "sig": "3ec5cd0c"
+                "sig": "bde4399a"
             }
         },
         {
@@ -30230,13 +30230,13 @@
             },
             "seed": 3385121684,
             "expect": {
-                "win": "a",
+                "win": "b",
                 "how": "Angka",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
-                "events": 59,
-                "sig": "99260d11"
+                "scoreA": 26,
+                "scoreB": 29,
+                "events": 63,
+                "sig": "28ab72dc"
             }
         },
         {
@@ -30281,13 +30281,13 @@
             },
             "seed": 813354477,
             "expect": {
-                "win": "a",
-                "how": "Angka",
+                "win": "b",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
-                "events": 59,
-                "sig": "8aa644ca"
+                "scoreA": 19,
+                "scoreB": 19,
+                "events": 42,
+                "sig": "7b90db87"
             }
         },
         {
@@ -30336,9 +30336,9 @@
                 "how": "Angka",
                 "rd": 3,
                 "scoreA": 28,
-                "scoreB": 29,
-                "events": 63,
-                "sig": "29a8e707"
+                "scoreB": 28,
+                "events": 60,
+                "sig": "2954e4d5"
             }
         },
         {
@@ -30386,10 +30386,10 @@
                 "win": "b",
                 "how": "Angka",
                 "rd": 3,
-                "scoreA": 27,
-                "scoreB": 29,
-                "events": 59,
-                "sig": "979f7c98"
+                "scoreA": 25,
+                "scoreB": 30,
+                "events": 57,
+                "sig": "90cbadbf"
             }
         },
         {
@@ -30435,12 +30435,12 @@
             "seed": 3753566892,
             "expect": {
                 "win": "b",
-                "how": "KO",
-                "rd": 3,
-                "scoreA": 19,
-                "scoreB": 19,
-                "events": 61,
-                "sig": "e1a2ca20"
+                "how": "TKO",
+                "rd": 2,
+                "scoreA": 10,
+                "scoreB": 9,
+                "events": 30,
+                "sig": "26f9199d"
             }
         },
         {
@@ -30485,13 +30485,13 @@
             },
             "seed": 3451782648,
             "expect": {
-                "win": "a",
+                "win": "b",
                 "how": "Angka",
                 "rd": 3,
-                "scoreA": 29,
+                "scoreA": 28,
                 "scoreB": 28,
                 "events": 57,
-                "sig": "91c71ca8"
+                "sig": "e384581f"
             }
         },
         {
@@ -30536,13 +30536,13 @@
             },
             "seed": 2793617547,
             "expect": {
-                "win": "b",
-                "how": "KO",
+                "win": "a",
+                "how": "TKO",
                 "rd": 3,
-                "scoreA": 19,
-                "scoreB": 19,
-                "events": 51,
-                "sig": "3b557710"
+                "scoreA": 16,
+                "scoreB": 20,
+                "events": 54,
+                "sig": "8c6876b0"
             }
         },
         {
@@ -30588,12 +30588,12 @@
             "seed": 315047789,
             "expect": {
                 "win": "b",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 26,
-                "scoreB": 29,
-                "events": 64,
-                "sig": "3f60f655"
+                "scoreA": 16,
+                "scoreB": 20,
+                "events": 60,
+                "sig": "4b1ad2c4"
             }
         },
         {
@@ -30638,13 +30638,13 @@
             },
             "seed": 1772916171,
             "expect": {
-                "win": "a",
-                "how": "Angka",
+                "win": "b",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
-                "events": 65,
-                "sig": "07a812a2"
+                "scoreA": 19,
+                "scoreB": 18,
+                "events": 44,
+                "sig": "4d51aad4"
             }
         },
         {
@@ -30690,12 +30690,12 @@
             "seed": 1705827188,
             "expect": {
                 "win": "a",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 27,
-                "events": 63,
-                "sig": "f7c1a0b3"
+                "scoreA": 18,
+                "scoreB": 18,
+                "events": 41,
+                "sig": "6bc4bdcb"
             }
         },
         {
@@ -30741,12 +30741,12 @@
             "seed": 2651187347,
             "expect": {
                 "win": "b",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 27,
-                "scoreB": 29,
-                "events": 62,
-                "sig": "80d35009"
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 10,
+                "scoreB": 9,
+                "events": 34,
+                "sig": "d214fa36"
             }
         },
         {
@@ -30791,13 +30791,13 @@
             },
             "seed": 740496772,
             "expect": {
-                "win": "a",
-                "how": "Angka",
+                "win": "b",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 27,
-                "events": 67,
-                "sig": "e87e3fe9"
+                "scoreA": 16,
+                "scoreB": 20,
+                "events": 50,
+                "sig": "c7a30d27"
             }
         },
         {
@@ -30843,12 +30843,12 @@
             "seed": 1188315580,
             "expect": {
                 "win": "a",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 29,
-                "scoreB": 27,
-                "events": 66,
-                "sig": "76c86fab"
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 9,
+                "scoreB": 10,
+                "events": 34,
+                "sig": "9aed7cfe"
             }
         },
         {
@@ -30894,12 +30894,12 @@
             "seed": 479758001,
             "expect": {
                 "win": "b",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 63,
-                "sig": "ea69c737"
+                "scoreA": 19,
+                "scoreB": 18,
+                "events": 52,
+                "sig": "0f1ead5c"
             }
         },
         {
@@ -30944,13 +30944,13 @@
             },
             "seed": 107674836,
             "expect": {
-                "win": "b",
+                "win": "a",
                 "how": "Angka",
                 "rd": 3,
-                "scoreA": 25,
-                "scoreB": 30,
-                "events": 59,
-                "sig": "cd54c675"
+                "scoreA": 28,
+                "scoreB": 28,
+                "events": 68,
+                "sig": "692c064d"
             }
         },
         {
@@ -30998,10 +30998,10 @@
                 "win": "b",
                 "how": "KO",
                 "rd": 3,
-                "scoreA": 19,
-                "scoreB": 19,
-                "events": 49,
-                "sig": "a39a9b30"
+                "scoreA": 16,
+                "scoreB": 20,
+                "events": 45,
+                "sig": "34f2aea1"
             }
         },
         {
@@ -31049,10 +31049,10 @@
                 "win": "b",
                 "how": "KO",
                 "rd": 2,
-                "scoreA": 10,
-                "scoreB": 7,
-                "events": 26,
-                "sig": "4592910e"
+                "scoreA": 9,
+                "scoreB": 8,
+                "events": 23,
+                "sig": "46192550"
             }
         },
         {
@@ -31097,13 +31097,13 @@
             },
             "seed": 1361407924,
             "expect": {
-                "win": "a",
+                "win": "b",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 20,
-                "scoreB": 17,
-                "events": 56,
-                "sig": "c68896be"
+                "rd": 2,
+                "scoreA": 10,
+                "scoreB": 8,
+                "events": 36,
+                "sig": "1099257c"
             }
         },
         {
@@ -31149,12 +31149,12 @@
             "seed": 3576697937,
             "expect": {
                 "win": "a",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 27,
-                "events": 61,
-                "sig": "d06bd2b6"
+                "scoreA": 18,
+                "scoreB": 18,
+                "events": 51,
+                "sig": "77aa3524"
             }
         },
         {
@@ -31199,13 +31199,13 @@
             },
             "seed": 1790050605,
             "expect": {
-                "win": "a",
+                "win": "b",
                 "how": "KO",
                 "rd": 3,
-                "scoreA": 18,
+                "scoreA": 16,
                 "scoreB": 20,
-                "events": 50,
-                "sig": "427816c7"
+                "events": 47,
+                "sig": "be04f695"
             }
         },
         {
@@ -31251,12 +31251,12 @@
             "seed": 199017707,
             "expect": {
                 "win": "a",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
-                "events": 62,
-                "sig": "f5292c60"
+                "scoreA": 19,
+                "scoreB": 19,
+                "events": 44,
+                "sig": "3c2c3d44"
             }
         },
         {
@@ -31306,8 +31306,8 @@
                 "rd": 2,
                 "scoreA": 9,
                 "scoreB": 10,
-                "events": 27,
-                "sig": "96bc0c17"
+                "events": 24,
+                "sig": "d01538d7"
             }
         },
         {
@@ -31352,13 +31352,13 @@
             },
             "seed": 2465189420,
             "expect": {
-                "win": "b",
-                "how": "Angka",
+                "win": "a",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 27,
-                "scoreB": 29,
-                "events": 61,
-                "sig": "9369ee3b"
+                "scoreA": 19,
+                "scoreB": 19,
+                "events": 57,
+                "sig": "db2a796f"
             }
         },
         {
@@ -31403,13 +31403,13 @@
             },
             "seed": 456687198,
             "expect": {
-                "win": "b",
+                "win": "a",
                 "how": "Angka",
                 "rd": 3,
-                "scoreA": 27,
-                "scoreB": 29,
+                "scoreA": 28,
+                "scoreB": 27,
                 "events": 57,
-                "sig": "971ffc0e"
+                "sig": "e1e3eb47"
             }
         },
         {
@@ -31455,12 +31455,12 @@
             "seed": 1773574905,
             "expect": {
                 "win": "a",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 30,
-                "scoreB": 25,
-                "events": 67,
-                "sig": "951c96ce"
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 10,
+                "scoreB": 9,
+                "events": 34,
+                "sig": "cc3a80b9"
             }
         },
         {
@@ -31506,12 +31506,12 @@
             "seed": 3436374912,
             "expect": {
                 "win": "b",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 67,
-                "sig": "6d7829a1"
+                "scoreA": 20,
+                "scoreB": 17,
+                "events": 44,
+                "sig": "583339cf"
             }
         },
         {
@@ -31558,11 +31558,11 @@
             "expect": {
                 "win": "a",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 19,
-                "scoreB": 19,
-                "events": 46,
-                "sig": "6d4663b4"
+                "rd": 2,
+                "scoreA": 8,
+                "scoreB": 10,
+                "events": 27,
+                "sig": "c91564cf"
             }
         },
         {
@@ -31607,13 +31607,13 @@
             },
             "seed": 3869399755,
             "expect": {
-                "win": "a",
+                "win": "b",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 18,
-                "scoreB": 19,
-                "events": 63,
-                "sig": "71db0a39"
+                "rd": 2,
+                "scoreA": 10,
+                "scoreB": 9,
+                "events": 38,
+                "sig": "fca6108d"
             }
         },
         {
@@ -31658,13 +31658,13 @@
             },
             "seed": 1142975,
             "expect": {
-                "win": "b",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 27,
-                "scoreB": 29,
-                "events": 63,
-                "sig": "b55b52b1"
+                "win": "a",
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 10,
+                "scoreB": 9,
+                "events": 31,
+                "sig": "e2652add"
             }
         },
         {
@@ -31713,9 +31713,9 @@
                 "how": "Angka",
                 "rd": 3,
                 "scoreA": 29,
-                "scoreB": 28,
+                "scoreB": 26,
                 "events": 62,
-                "sig": "0025f978"
+                "sig": "f52d472f"
             }
         },
         {
@@ -31760,13 +31760,13 @@
             },
             "seed": 3266719306,
             "expect": {
-                "win": "a",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 29,
-                "scoreB": 27,
-                "events": 57,
-                "sig": "faf4e420"
+                "win": "b",
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 9,
+                "scoreB": 10,
+                "events": 23,
+                "sig": "73f8dc68"
             }
         },
         {
@@ -31811,13 +31811,13 @@
             },
             "seed": 1800003080,
             "expect": {
-                "win": "a",
+                "win": "b",
                 "how": "KO",
                 "rd": 3,
-                "scoreA": 15,
-                "scoreB": 20,
-                "events": 61,
-                "sig": "0726f159"
+                "scoreA": 18,
+                "scoreB": 17,
+                "events": 47,
+                "sig": "5639cd94"
             }
         },
         {
@@ -31863,12 +31863,12 @@
             "seed": 1354922361,
             "expect": {
                 "win": "b",
-                "how": "KO",
-                "rd": 2,
-                "scoreA": 9,
-                "scoreB": 10,
-                "events": 39,
-                "sig": "a2d20fa7"
+                "how": "Angka",
+                "rd": 3,
+                "scoreA": 25,
+                "scoreB": 26,
+                "events": 59,
+                "sig": "dfab4308"
             }
         },
         {
@@ -31914,12 +31914,12 @@
             "seed": 1922667762,
             "expect": {
                 "win": "b",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 27,
-                "scoreB": 30,
-                "events": 62,
-                "sig": "0ec3e9ea"
+                "scoreA": 18,
+                "scoreB": 20,
+                "events": 52,
+                "sig": "1be1c85a"
             }
         },
         {
@@ -31968,9 +31968,9 @@
                 "how": "KO",
                 "rd": 2,
                 "scoreA": 10,
-                "scoreB": 9,
-                "events": 37,
-                "sig": "d9d3d4b7"
+                "scoreB": 8,
+                "events": 36,
+                "sig": "8c4bddda"
             }
         },
         {
@@ -32015,13 +32015,13 @@
             },
             "seed": 639736718,
             "expect": {
-                "win": "b",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 25,
-                "scoreB": 30,
-                "events": 59,
-                "sig": "dae2b7db"
+                "win": "a",
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 8,
+                "scoreB": 10,
+                "events": 40,
+                "sig": "a5416d5a"
             }
         },
         {
@@ -32066,13 +32066,13 @@
             },
             "seed": 976357817,
             "expect": {
-                "win": "a",
+                "win": "b",
                 "how": "Angka",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
+                "scoreA": 26,
+                "scoreB": 29,
                 "events": 59,
-                "sig": "651e7bb7"
+                "sig": "e2eb823c"
             }
         },
         {
@@ -32119,11 +32119,11 @@
             "expect": {
                 "win": "a",
                 "how": "KO",
-                "rd": 2,
-                "scoreA": 10,
-                "scoreB": 9,
-                "events": 24,
-                "sig": "056638cc"
+                "rd": 1,
+                "scoreA": 0,
+                "scoreB": 0,
+                "events": 9,
+                "sig": "d2d26b07"
             }
         },
         {
@@ -32169,12 +32169,12 @@
             "seed": 1191665897,
             "expect": {
                 "win": "a",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
-                "events": 59,
-                "sig": "e815dcb4"
+                "scoreA": 19,
+                "scoreB": 19,
+                "events": 52,
+                "sig": "adb0f7fa"
             }
         },
         {
@@ -32220,12 +32220,12 @@
             "seed": 615664401,
             "expect": {
                 "win": "a",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
-                "events": 63,
-                "sig": "8ea1f22d"
+                "scoreA": 18,
+                "scoreB": 18,
+                "events": 59,
+                "sig": "6dc7bd7d"
             }
         },
         {
@@ -32270,13 +32270,13 @@
             },
             "seed": 2556499435,
             "expect": {
-                "win": "a",
+                "win": "b",
                 "how": "KO",
                 "rd": 3,
-                "scoreA": 18,
+                "scoreA": 16,
                 "scoreB": 20,
-                "events": 58,
-                "sig": "a46a72dd"
+                "events": 44,
+                "sig": "2d3c1a30"
             }
         },
         {
@@ -32323,11 +32323,11 @@
             "expect": {
                 "win": "a",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 18,
-                "scoreB": 19,
-                "events": 53,
-                "sig": "435cfb01"
+                "rd": 2,
+                "scoreA": 10,
+                "scoreB": 9,
+                "events": 33,
+                "sig": "03b59944"
             }
         },
         {
@@ -32374,11 +32374,11 @@
             "expect": {
                 "win": "a",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 19,
-                "scoreB": 19,
-                "events": 50,
-                "sig": "8065d149"
+                "rd": 2,
+                "scoreA": 8,
+                "scoreB": 10,
+                "events": 39,
+                "sig": "1452731a"
             }
         },
         {
@@ -32423,13 +32423,13 @@
             },
             "seed": 87809910,
             "expect": {
-                "win": "b",
+                "win": "a",
                 "how": "KO",
                 "rd": 3,
-                "scoreA": 19,
-                "scoreB": 19,
-                "events": 49,
-                "sig": "9e817684"
+                "scoreA": 18,
+                "scoreB": 18,
+                "events": 45,
+                "sig": "1dfcef1c"
             }
         },
         {
@@ -32476,11 +32476,11 @@
             "expect": {
                 "win": "a",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 19,
-                "scoreB": 19,
-                "events": 58,
-                "sig": "9a07fb52"
+                "rd": 2,
+                "scoreA": 9,
+                "scoreB": 9,
+                "events": 36,
+                "sig": "583f8690"
             }
         },
         {
@@ -32528,10 +32528,10 @@
                 "win": "b",
                 "how": "Angka",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
+                "scoreA": 26,
+                "scoreB": 27,
                 "events": 62,
-                "sig": "358220de"
+                "sig": "d7e54a56"
             }
         },
         {
@@ -32577,12 +32577,12 @@
             "seed": 3792880840,
             "expect": {
                 "win": "a",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 27,
-                "events": 63,
-                "sig": "dd8331cc"
+                "scoreA": 18,
+                "scoreB": 19,
+                "events": 50,
+                "sig": "fa6f3115"
             }
         },
         {
@@ -32630,10 +32630,10 @@
                 "win": "b",
                 "how": "TKO",
                 "rd": 3,
-                "scoreA": 19,
-                "scoreB": 19,
+                "scoreA": 18,
+                "scoreB": 18,
                 "events": 45,
-                "sig": "20badf52"
+                "sig": "69dfe3f7"
             }
         },
         {
@@ -32678,13 +32678,13 @@
             },
             "seed": 191501886,
             "expect": {
-                "win": "a",
+                "win": "b",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 19,
-                "scoreB": 19,
-                "events": 51,
-                "sig": "72833ad7"
+                "rd": 2,
+                "scoreA": 10,
+                "scoreB": 9,
+                "events": 35,
+                "sig": "1d83f2a5"
             }
         },
         {
@@ -32730,12 +32730,12 @@
             "seed": 4028407167,
             "expect": {
                 "win": "b",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 26,
-                "scoreB": 30,
+                "scoreA": 15,
+                "scoreB": 20,
                 "events": 60,
-                "sig": "72adc175"
+                "sig": "07e67c2c"
             }
         },
         {
@@ -32783,10 +32783,10 @@
                 "win": "a",
                 "how": "Angka",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
+                "scoreA": 28,
+                "scoreB": 26,
                 "events": 57,
-                "sig": "4683ac7b"
+                "sig": "6ebbf136"
             }
         },
         {
@@ -32833,11 +32833,11 @@
             "expect": {
                 "win": "a",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 19,
-                "scoreB": 18,
-                "events": 54,
-                "sig": "262b028c"
+                "rd": 2,
+                "scoreA": 8,
+                "scoreB": 10,
+                "events": 36,
+                "sig": "8c789e1a"
             }
         },
         {
@@ -32882,13 +32882,13 @@
             },
             "seed": 1696492024,
             "expect": {
-                "win": "b",
-                "how": "KO",
+                "win": "a",
+                "how": "TKO",
                 "rd": 2,
-                "scoreA": 9,
+                "scoreA": 7,
                 "scoreB": 10,
-                "events": 42,
-                "sig": "e1a2b725"
+                "events": 29,
+                "sig": "dedc49c4"
             }
         },
         {
@@ -32933,13 +32933,13 @@
             },
             "seed": 3701147816,
             "expect": {
-                "win": "a",
+                "win": "b",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 19,
-                "scoreB": 19,
-                "events": 55,
-                "sig": "52720e06"
+                "rd": 2,
+                "scoreA": 10,
+                "scoreB": 9,
+                "events": 23,
+                "sig": "a0847428"
             }
         },
         {
@@ -32984,13 +32984,13 @@
             },
             "seed": 1322105568,
             "expect": {
-                "win": "b",
-                "how": "Angka",
+                "win": "a",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 27,
-                "scoreB": 29,
-                "events": 59,
-                "sig": "eeb0711a"
+                "scoreA": 19,
+                "scoreB": 19,
+                "events": 47,
+                "sig": "13d005b6"
             }
         },
         {
@@ -33036,12 +33036,12 @@
             "seed": 2593952040,
             "expect": {
                 "win": "b",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 57,
-                "sig": "aa1ee9e2"
+                "scoreA": 18,
+                "scoreB": 18,
+                "events": 49,
+                "sig": "4955fa4f"
             }
         },
         {
@@ -33086,13 +33086,13 @@
             },
             "seed": 2044660716,
             "expect": {
-                "win": "b",
-                "how": "Angka",
+                "win": "a",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 26,
-                "scoreB": 28,
-                "events": 64,
-                "sig": "be4a7acd"
+                "scoreA": 19,
+                "scoreB": 17,
+                "events": 46,
+                "sig": "d990b334"
             }
         },
         {
@@ -33137,13 +33137,13 @@
             },
             "seed": 1739814207,
             "expect": {
-                "win": "a",
-                "how": "Angka",
+                "win": "b",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 30,
-                "scoreB": 26,
-                "events": 61,
-                "sig": "c7189223"
+                "scoreA": 17,
+                "scoreB": 18,
+                "events": 46,
+                "sig": "dc6a9fb6"
             }
         },
         {
@@ -33189,12 +33189,12 @@
             "seed": 1027672795,
             "expect": {
                 "win": "a",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
-                "events": 60,
-                "sig": "d4a7e574"
+                "scoreA": 18,
+                "scoreB": 18,
+                "events": 47,
+                "sig": "11d6d62c"
             }
         },
         {
@@ -33243,9 +33243,9 @@
                 "how": "Angka",
                 "rd": 3,
                 "scoreA": 30,
-                "scoreB": 25,
-                "events": 59,
-                "sig": "bbe838cf"
+                "scoreB": 24,
+                "events": 57,
+                "sig": "52298fb4"
             }
         },
         {
@@ -33290,13 +33290,13 @@
             },
             "seed": 1434723161,
             "expect": {
-                "win": "b",
-                "how": "Angka",
+                "win": "a",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 27,
-                "scoreB": 29,
-                "events": 61,
-                "sig": "263642bb"
+                "scoreA": 18,
+                "scoreB": 19,
+                "events": 43,
+                "sig": "c185e5b3"
             }
         },
         {
@@ -33344,10 +33344,10 @@
                 "win": "a",
                 "how": "KO",
                 "rd": 3,
-                "scoreA": 20,
+                "scoreA": 16,
                 "scoreB": 18,
-                "events": 57,
-                "sig": "62078ed6"
+                "events": 56,
+                "sig": "8a74a779"
             }
         },
         {
@@ -33397,8 +33397,8 @@
                 "rd": 2,
                 "scoreA": 9,
                 "scoreB": 10,
-                "events": 33,
-                "sig": "12ed8df7"
+                "events": 27,
+                "sig": "967dc937"
             }
         },
         {
@@ -33447,9 +33447,9 @@
                 "how": "KO",
                 "rd": 2,
                 "scoreA": 10,
-                "scoreB": 8,
-                "events": 34,
-                "sig": "37e9136e"
+                "scoreB": 7,
+                "events": 35,
+                "sig": "6e28378f"
             }
         },
         {
@@ -33497,10 +33497,10 @@
                 "win": "b",
                 "how": "KO",
                 "rd": 3,
-                "scoreA": 18,
-                "scoreB": 20,
-                "events": 55,
-                "sig": "37968c68"
+                "scoreA": 17,
+                "scoreB": 18,
+                "events": 45,
+                "sig": "40d12350"
             }
         },
         {
@@ -33545,13 +33545,13 @@
             },
             "seed": 2686490150,
             "expect": {
-                "win": "b",
+                "win": "a",
                 "how": "KO",
                 "rd": 3,
-                "scoreA": 19,
+                "scoreA": 18,
                 "scoreB": 19,
-                "events": 58,
-                "sig": "f46f1c0b"
+                "events": 51,
+                "sig": "4de2b624"
             }
         },
         {
@@ -33602,7 +33602,7 @@
                 "scoreA": 28,
                 "scoreB": 29,
                 "events": 61,
-                "sig": "641e6f5d"
+                "sig": "ad0611dd"
             }
         },
         {
@@ -33648,12 +33648,12 @@
             "seed": 2283262499,
             "expect": {
                 "win": "a",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 30,
-                "scoreB": 27,
-                "events": 61,
-                "sig": "eeb5e69b"
+                "scoreA": 20,
+                "scoreB": 18,
+                "events": 57,
+                "sig": "316b765c"
             }
         },
         {
@@ -33699,12 +33699,12 @@
             "seed": 327753354,
             "expect": {
                 "win": "b",
-                "how": "KO",
+                "how": "Angka",
                 "rd": 3,
-                "scoreA": 19,
-                "scoreB": 18,
-                "events": 59,
-                "sig": "ebe7b856"
+                "scoreA": 25,
+                "scoreB": 27,
+                "events": 57,
+                "sig": "fc288be1"
             }
         },
         {
@@ -33749,13 +33749,13 @@
             },
             "seed": 895027428,
             "expect": {
-                "win": "a",
-                "how": "Angka",
+                "win": "b",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 27,
-                "events": 63,
-                "sig": "3123845c"
+                "scoreA": 18,
+                "scoreB": 19,
+                "events": 57,
+                "sig": "d0ddfa8d"
             }
         },
         {
@@ -33800,13 +33800,13 @@
             },
             "seed": 649040294,
             "expect": {
-                "win": "b",
+                "win": "a",
                 "how": "KO",
                 "rd": 3,
-                "scoreA": 20,
-                "scoreB": 17,
-                "events": 61,
-                "sig": "4d834349"
+                "scoreA": 17,
+                "scoreB": 18,
+                "events": 49,
+                "sig": "bb928108"
             }
         },
         {
@@ -33851,13 +33851,13 @@
             },
             "seed": 15023089,
             "expect": {
-                "win": "a",
-                "how": "TKO",
+                "win": "b",
+                "how": "KO",
                 "rd": 3,
                 "scoreA": 20,
-                "scoreB": 17,
-                "events": 50,
-                "sig": "eb935c5f"
+                "scoreB": 16,
+                "events": 55,
+                "sig": "862f1ac9"
             }
         },
         {
@@ -33905,10 +33905,10 @@
                 "win": "b",
                 "how": "KO",
                 "rd": 3,
-                "scoreA": 17,
-                "scoreB": 20,
-                "events": 47,
-                "sig": "5b3183d5"
+                "scoreA": 19,
+                "scoreB": 15,
+                "events": 44,
+                "sig": "73838db2"
             }
         },
         {
@@ -33953,13 +33953,13 @@
             },
             "seed": 3159281635,
             "expect": {
-                "win": "b",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 26,
-                "scoreB": 30,
-                "events": 65,
-                "sig": "395c4f27"
+                "win": "a",
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 9,
+                "scoreB": 10,
+                "events": 34,
+                "sig": "4ad10b53"
             }
         },
         {
@@ -34005,12 +34005,12 @@
             "seed": 3716875100,
             "expect": {
                 "win": "b",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 28,
-                "scoreB": 28,
-                "events": 62,
-                "sig": "574c99c6"
+                "how": "TKO",
+                "rd": 2,
+                "scoreA": 10,
+                "scoreB": 8,
+                "events": 37,
+                "sig": "20203fb2"
             }
         },
         {
@@ -34059,9 +34059,9 @@
                 "how": "KO",
                 "rd": 3,
                 "scoreA": 19,
-                "scoreB": 19,
-                "events": 59,
-                "sig": "8e3f012c"
+                "scoreB": 18,
+                "events": 50,
+                "sig": "79d0b73c"
             }
         },
         {
@@ -34107,12 +34107,12 @@
             "seed": 2944148049,
             "expect": {
                 "win": "b",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 63,
-                "sig": "02dd9557"
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 9,
+                "scoreB": 10,
+                "events": 37,
+                "sig": "157028f6"
             }
         },
         {
@@ -34159,11 +34159,11 @@
             "expect": {
                 "win": "b",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 18,
-                "scoreB": 20,
-                "events": 56,
-                "sig": "dae6ece0"
+                "rd": 2,
+                "scoreA": 9,
+                "scoreB": 10,
+                "events": 35,
+                "sig": "88908511"
             }
         },
         {
@@ -34209,12 +34209,12 @@
             "seed": 10502341,
             "expect": {
                 "win": "b",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 57,
-                "sig": "20922094"
+                "scoreA": 19,
+                "scoreB": 19,
+                "events": 50,
+                "sig": "209100f6"
             }
         },
         {
@@ -34262,10 +34262,10 @@
                 "win": "b",
                 "how": "KO",
                 "rd": 3,
-                "scoreA": 18,
+                "scoreA": 17,
                 "scoreB": 20,
-                "events": 56,
-                "sig": "8bb708a9"
+                "events": 53,
+                "sig": "8993e9d4"
             }
         },
         {
@@ -34310,13 +34310,13 @@
             },
             "seed": 3783037789,
             "expect": {
-                "win": "b",
-                "how": "Angka",
+                "win": "a",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
+                "scoreA": 19,
+                "scoreB": 19,
                 "events": 60,
-                "sig": "f0ea66e0"
+                "sig": "10dba416"
             }
         },
         {
@@ -34361,13 +34361,13 @@
             },
             "seed": 893046007,
             "expect": {
-                "win": "a",
-                "how": "Angka",
+                "win": "b",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 30,
-                "scoreB": 26,
-                "events": 65,
-                "sig": "7ac3a4af"
+                "scoreA": 20,
+                "scoreB": 18,
+                "events": 60,
+                "sig": "d61ee84a"
             }
         },
         {
@@ -34412,13 +34412,13 @@
             },
             "seed": 1779966721,
             "expect": {
-                "win": "b",
+                "win": "a",
                 "how": "Angka",
                 "rd": 3,
-                "scoreA": 26,
-                "scoreB": 29,
+                "scoreA": 30,
+                "scoreB": 25,
                 "events": 60,
-                "sig": "53ce03ed"
+                "sig": "17200080"
             }
         },
         {
@@ -34464,12 +34464,12 @@
             "seed": 355126198,
             "expect": {
                 "win": "b",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 61,
-                "sig": "659df662"
+                "how": "TKO",
+                "rd": 2,
+                "scoreA": 10,
+                "scoreB": 9,
+                "events": 33,
+                "sig": "cd4ac93c"
             }
         },
         {
@@ -34514,13 +34514,13 @@
             },
             "seed": 3958061926,
             "expect": {
-                "win": "a",
+                "win": "b",
                 "how": "Angka",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
-                "events": 63,
-                "sig": "7c6d22ce"
+                "scoreA": 27,
+                "scoreB": 29,
+                "events": 61,
+                "sig": "77ae6b7c"
             }
         },
         {
@@ -34565,13 +34565,13 @@
             },
             "seed": 1199488479,
             "expect": {
-                "win": "a",
+                "win": "b",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 19,
-                "scoreB": 17,
-                "events": 63,
-                "sig": "0d2dce1d"
+                "rd": 2,
+                "scoreA": 9,
+                "scoreB": 10,
+                "events": 34,
+                "sig": "256e017d"
             }
         },
         {
@@ -34616,13 +34616,13 @@
             },
             "seed": 1291104694,
             "expect": {
-                "win": "a",
+                "win": "b",
                 "how": "KO",
                 "rd": 2,
                 "scoreA": 10,
                 "scoreB": 8,
-                "events": 27,
-                "sig": "6cc5e0cf"
+                "events": 29,
+                "sig": "7beac90b"
             }
         },
         {
@@ -34668,12 +34668,12 @@
             "seed": 2782928402,
             "expect": {
                 "win": "b",
-                "how": "TKO",
-                "rd": 2,
-                "scoreA": 9,
-                "scoreB": 10,
-                "events": 42,
-                "sig": "e7b17d14"
+                "how": "Angka",
+                "rd": 3,
+                "scoreA": 24,
+                "scoreB": 25,
+                "events": 58,
+                "sig": "dede7c3c"
             }
         },
         {
@@ -34718,13 +34718,13 @@
             },
             "seed": 2722535921,
             "expect": {
-                "win": "a",
+                "win": "b",
                 "how": "Angka",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 27,
-                "events": 61,
-                "sig": "c42ebcc4"
+                "scoreA": 27,
+                "scoreB": 28,
+                "events": 62,
+                "sig": "2e07e4e9"
             }
         },
         {
@@ -34770,12 +34770,12 @@
             "seed": 3724004994,
             "expect": {
                 "win": "a",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
-                "events": 59,
-                "sig": "b014d09f"
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 10,
+                "scoreB": 8,
+                "events": 34,
+                "sig": "075f1567"
             }
         },
         {
@@ -34820,13 +34820,13 @@
             },
             "seed": 1523803496,
             "expect": {
-                "win": "b",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 27,
-                "scoreB": 28,
-                "events": 64,
-                "sig": "446f9d82"
+                "win": "a",
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 9,
+                "scoreB": 10,
+                "events": 30,
+                "sig": "e01ccb45"
             }
         },
         {
@@ -34871,13 +34871,13 @@
             },
             "seed": 1380979876,
             "expect": {
-                "win": "b",
-                "how": "Angka",
+                "win": "a",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 63,
-                "sig": "f6023cb8"
+                "scoreA": 18,
+                "scoreB": 19,
+                "events": 47,
+                "sig": "81d751e4"
             }
         },
         {
@@ -34923,12 +34923,12 @@
             "seed": 2479803437,
             "expect": {
                 "win": "b",
-                "how": "KO",
+                "how": "TKO",
                 "rd": 3,
-                "scoreA": 19,
-                "scoreB": 19,
-                "events": 52,
-                "sig": "4d3ae723"
+                "scoreA": 17,
+                "scoreB": 18,
+                "events": 51,
+                "sig": "25ed8dd3"
             }
         },
         {
@@ -34974,12 +34974,12 @@
             "seed": 267728361,
             "expect": {
                 "win": "a",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 30,
-                "scoreB": 27,
-                "events": 59,
-                "sig": "2c84ba42"
+                "how": "KO",
+                "rd": 1,
+                "scoreA": 0,
+                "scoreB": 0,
+                "events": 17,
+                "sig": "e357b66d"
             }
         },
         {
@@ -35029,8 +35029,8 @@
                 "rd": 3,
                 "scoreA": 28,
                 "scoreB": 29,
-                "events": 59,
-                "sig": "d3ed8a34"
+                "events": 57,
+                "sig": "038898d6"
             }
         },
         {
@@ -35076,12 +35076,12 @@
             "seed": 1142885151,
             "expect": {
                 "win": "b",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 28,
-                "scoreB": 28,
-                "events": 57,
-                "sig": "b766cdfd"
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 8,
+                "scoreB": 10,
+                "events": 24,
+                "sig": "939b6de9"
             }
         },
         {
@@ -35129,10 +35129,10 @@
                 "win": "b",
                 "how": "KO",
                 "rd": 3,
-                "scoreA": 19,
-                "scoreB": 18,
-                "events": 57,
-                "sig": "ace1b2b9"
+                "scoreA": 18,
+                "scoreB": 17,
+                "events": 45,
+                "sig": "ccf9dcd5"
             }
         },
         {
@@ -35177,13 +35177,13 @@
             },
             "seed": 574240457,
             "expect": {
-                "win": "a",
-                "how": "Angka",
+                "win": "b",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 28,
-                "events": 68,
-                "sig": "217f8434"
+                "scoreA": 18,
+                "scoreB": 18,
+                "events": 55,
+                "sig": "f66dffdb"
             }
         },
         {
@@ -35228,13 +35228,13 @@
             },
             "seed": 4113026239,
             "expect": {
-                "win": "a",
-                "how": "KO",
+                "win": "b",
+                "how": "TKO",
                 "rd": 3,
-                "scoreA": 19,
-                "scoreB": 18,
-                "events": 41,
-                "sig": "5fb432f1"
+                "scoreA": 18,
+                "scoreB": 19,
+                "events": 51,
+                "sig": "f222b067"
             }
         },
         {
@@ -35279,13 +35279,13 @@
             },
             "seed": 2260717602,
             "expect": {
-                "win": "b",
-                "how": "Angka",
+                "win": "a",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 61,
-                "sig": "b45e622f"
+                "scoreA": 20,
+                "scoreB": 18,
+                "events": 45,
+                "sig": "549baedf"
             }
         },
         {
@@ -35331,12 +35331,12 @@
             "seed": 2099205322,
             "expect": {
                 "win": "a",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 28,
-                "events": 63,
-                "sig": "37721e42"
+                "scoreA": 18,
+                "scoreB": 20,
+                "events": 54,
+                "sig": "22657de4"
             }
         },
         {
@@ -35381,13 +35381,13 @@
             },
             "seed": 2422951732,
             "expect": {
-                "win": "a",
+                "win": "b",
                 "how": "Angka",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
+                "scoreA": 27,
+                "scoreB": 29,
                 "events": 61,
-                "sig": "c6a871b5"
+                "sig": "ff8cdf18"
             }
         },
         {
@@ -35434,11 +35434,11 @@
             "expect": {
                 "win": "a",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 19,
-                "scoreB": 18,
-                "events": 49,
-                "sig": "7930cb74"
+                "rd": 2,
+                "scoreA": 8,
+                "scoreB": 10,
+                "events": 40,
+                "sig": "7a7b6727"
             }
         },
         {
@@ -35484,12 +35484,12 @@
             "seed": 309642141,
             "expect": {
                 "win": "a",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 27,
-                "events": 57,
-                "sig": "160e7677"
+                "scoreA": 18,
+                "scoreB": 19,
+                "events": 52,
+                "sig": "49c368d8"
             }
         },
         {
@@ -35535,12 +35535,12 @@
             "seed": 2635877050,
             "expect": {
                 "win": "b",
-                "how": "Angka",
+                "how": "TKO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 59,
-                "sig": "ba142aee"
+                "scoreA": 19,
+                "scoreB": 19,
+                "events": 44,
+                "sig": "8e869562"
             }
         },
         {
@@ -35588,10 +35588,10 @@
                 "win": "b",
                 "how": "Angka",
                 "rd": 3,
-                "scoreA": 27,
-                "scoreB": 30,
+                "scoreA": 28,
+                "scoreB": 29,
                 "events": 61,
-                "sig": "1e1ab0b8"
+                "sig": "24422e48"
             }
         },
         {
@@ -35636,13 +35636,13 @@
             },
             "seed": 3811316336,
             "expect": {
-                "win": "b",
-                "how": "Angka",
+                "win": "a",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 57,
-                "sig": "482d3159"
+                "scoreA": 19,
+                "scoreB": 18,
+                "events": 54,
+                "sig": "c898390f"
             }
         },
         {
@@ -35693,7 +35693,7 @@
                 "scoreA": 27,
                 "scoreB": 29,
                 "events": 61,
-                "sig": "d93dffc5"
+                "sig": "39245054"
             }
         },
         {
@@ -35738,13 +35738,13 @@
             },
             "seed": 831196279,
             "expect": {
-                "win": "b",
+                "win": "a",
                 "how": "KO",
                 "rd": 3,
-                "scoreA": 20,
-                "scoreB": 18,
-                "events": 68,
-                "sig": "6b328212"
+                "scoreA": 15,
+                "scoreB": 19,
+                "events": 54,
+                "sig": "bc766237"
             }
         },
         {
@@ -35791,11 +35791,11 @@
             "expect": {
                 "win": "b",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 19,
-                "scoreB": 19,
-                "events": 44,
-                "sig": "32d5676a"
+                "rd": 1,
+                "scoreA": 0,
+                "scoreB": 0,
+                "events": 15,
+                "sig": "410aa7d7"
             }
         },
         {
@@ -35845,8 +35845,8 @@
                 "rd": 3,
                 "scoreA": 18,
                 "scoreB": 20,
-                "events": 57,
-                "sig": "3bd0cf2a"
+                "events": 43,
+                "sig": "d4cc3df9"
             }
         },
         {
@@ -35892,12 +35892,12 @@
             "seed": 331971598,
             "expect": {
                 "win": "b",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 60,
-                "sig": "5f62c4e8"
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 8,
+                "scoreB": 9,
+                "events": 38,
+                "sig": "b8f5e25f"
             }
         },
         {
@@ -35946,9 +35946,9 @@
                 "how": "KO",
                 "rd": 2,
                 "scoreA": 9,
-                "scoreB": 10,
-                "events": 39,
-                "sig": "a3560286"
+                "scoreB": 8,
+                "events": 35,
+                "sig": "e2f9787c"
             }
         },
         {
@@ -35994,12 +35994,12 @@
             "seed": 2489410859,
             "expect": {
                 "win": "a",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 30,
-                "scoreB": 27,
-                "events": 57,
-                "sig": "ff46a9dc"
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 10,
+                "scoreB": 9,
+                "events": 27,
+                "sig": "e1327f02"
             }
         },
         {
@@ -36046,11 +36046,11 @@
             "expect": {
                 "win": "b",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 19,
-                "scoreB": 16,
-                "events": 46,
-                "sig": "3379d9fb"
+                "rd": 1,
+                "scoreA": 0,
+                "scoreB": 0,
+                "events": 14,
+                "sig": "bd52391c"
             }
         },
         {
@@ -36097,11 +36097,11 @@
             "expect": {
                 "win": "b",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 18,
-                "scoreB": 20,
-                "events": 63,
-                "sig": "892fb0a1"
+                "rd": 2,
+                "scoreA": 9,
+                "scoreB": 10,
+                "events": 33,
+                "sig": "8c3df266"
             }
         },
         {
@@ -36147,12 +36147,12 @@
             "seed": 3698866787,
             "expect": {
                 "win": "a",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
-                "events": 61,
-                "sig": "c9eb6a52"
+                "scoreA": 19,
+                "scoreB": 19,
+                "events": 51,
+                "sig": "04522d8e"
             }
         },
         {
@@ -36198,12 +36198,12 @@
             "seed": 2069936551,
             "expect": {
                 "win": "b",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 26,
-                "scoreB": 30,
-                "events": 63,
-                "sig": "529cc6e2"
+                "scoreA": 17,
+                "scoreB": 20,
+                "events": 52,
+                "sig": "c0aec15b"
             }
         },
         {
@@ -36248,13 +36248,13 @@
             },
             "seed": 620245340,
             "expect": {
-                "win": "a",
-                "how": "Angka",
+                "win": "b",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 26,
-                "events": 62,
-                "sig": "85b12954"
+                "scoreA": 17,
+                "scoreB": 18,
+                "events": 56,
+                "sig": "ffe1178c"
             }
         },
         {
@@ -36300,12 +36300,12 @@
             "seed": 229450484,
             "expect": {
                 "win": "a",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 30,
-                "scoreB": 27,
-                "events": 59,
-                "sig": "191baa46"
+                "how": "TKO",
+                "rd": 1,
+                "scoreA": 0,
+                "scoreB": 0,
+                "events": 17,
+                "sig": "4e9cf8b8"
             }
         },
         {
@@ -36351,12 +36351,12 @@
             "seed": 909267116,
             "expect": {
                 "win": "b",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 65,
-                "sig": "eccccc5c"
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 9,
+                "scoreB": 10,
+                "events": 40,
+                "sig": "be03fa79"
             }
         },
         {
@@ -36402,12 +36402,12 @@
             "seed": 227343393,
             "expect": {
                 "win": "a",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 27,
-                "events": 59,
-                "sig": "07046774"
+                "scoreA": 19,
+                "scoreB": 19,
+                "events": 50,
+                "sig": "559c064f"
             }
         },
         {
@@ -36454,11 +36454,11 @@
             "expect": {
                 "win": "b",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 19,
-                "scoreB": 19,
-                "events": 58,
-                "sig": "05a5023c"
+                "rd": 2,
+                "scoreA": 8,
+                "scoreB": 10,
+                "events": 44,
+                "sig": "2366bbfe"
             }
         },
         {
@@ -36504,12 +36504,12 @@
             "seed": 1853834880,
             "expect": {
                 "win": "a",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 28,
-                "events": 62,
-                "sig": "95e6c22c"
+                "scoreA": 16,
+                "scoreB": 20,
+                "events": 49,
+                "sig": "30a4005b"
             }
         },
         {
@@ -36557,10 +36557,10 @@
                 "win": "b",
                 "how": "Angka",
                 "rd": 3,
-                "scoreA": 27,
+                "scoreA": 28,
                 "scoreB": 29,
-                "events": 61,
-                "sig": "1a52a0ce"
+                "events": 57,
+                "sig": "27f92d48"
             }
         },
         {
@@ -36606,12 +36606,12 @@
             "seed": 2911642596,
             "expect": {
                 "win": "a",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 30,
-                "scoreB": 26,
-                "events": 60,
-                "sig": "9cc98b4b"
+                "scoreA": 20,
+                "scoreB": 17,
+                "events": 53,
+                "sig": "a9de33b4"
             }
         },
         {
@@ -36656,13 +36656,13 @@
             },
             "seed": 3865858321,
             "expect": {
-                "win": "b",
+                "win": "a",
                 "how": "Angka",
                 "rd": 3,
                 "scoreA": 28,
-                "scoreB": 29,
+                "scoreB": 28,
                 "events": 61,
-                "sig": "dd756744"
+                "sig": "8fd4b0bf"
             }
         },
         {
@@ -36712,8 +36712,8 @@
                 "rd": 2,
                 "scoreA": 10,
                 "scoreB": 9,
-                "events": 31,
-                "sig": "8046e916"
+                "events": 27,
+                "sig": "85878bb3"
             }
         },
         {
@@ -36761,10 +36761,10 @@
                 "win": "b",
                 "how": "KO",
                 "rd": 3,
-                "scoreA": 18,
-                "scoreB": 20,
-                "events": 51,
-                "sig": "d0e0f316"
+                "scoreA": 19,
+                "scoreB": 17,
+                "events": 43,
+                "sig": "44b0d192"
             }
         },
         {
@@ -36812,10 +36812,10 @@
                 "win": "b",
                 "how": "KO",
                 "rd": 3,
-                "scoreA": 19,
-                "scoreB": 19,
-                "events": 56,
-                "sig": "412e846b"
+                "scoreA": 18,
+                "scoreB": 18,
+                "events": 61,
+                "sig": "a18fa974"
             }
         },
         {
@@ -36862,11 +36862,11 @@
             "expect": {
                 "win": "a",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 18,
-                "scoreB": 18,
-                "events": 63,
-                "sig": "f377aa2e"
+                "rd": 2,
+                "scoreA": 7,
+                "scoreB": 10,
+                "events": 38,
+                "sig": "f6ca3726"
             }
         },
         {
@@ -36913,11 +36913,11 @@
             "expect": {
                 "win": "a",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 18,
-                "scoreB": 20,
-                "events": 52,
-                "sig": "ea9066fa"
+                "rd": 2,
+                "scoreA": 10,
+                "scoreB": 8,
+                "events": 39,
+                "sig": "929040b2"
             }
         },
         {
@@ -36963,12 +36963,12 @@
             "seed": 304649072,
             "expect": {
                 "win": "a",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 30,
-                "scoreB": 27,
-                "events": 57,
-                "sig": "23744beb"
+                "scoreA": 20,
+                "scoreB": 18,
+                "events": 47,
+                "sig": "461b0ef7"
             }
         },
         {
@@ -37015,11 +37015,11 @@
             "expect": {
                 "win": "a",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 19,
-                "scoreB": 19,
-                "events": 52,
-                "sig": "5ce64b8b"
+                "rd": 2,
+                "scoreA": 10,
+                "scoreB": 8,
+                "events": 37,
+                "sig": "4b19280f"
             }
         },
         {
@@ -37064,13 +37064,13 @@
             },
             "seed": 3879675918,
             "expect": {
-                "win": "a",
+                "win": "b",
                 "how": "Angka",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 27,
+                "scoreA": 26,
+                "scoreB": 28,
                 "events": 60,
-                "sig": "f9817de7"
+                "sig": "3ac2be53"
             }
         },
         {
@@ -37116,12 +37116,12 @@
             "seed": 4030680361,
             "expect": {
                 "win": "b",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 59,
-                "sig": "5077b5bd"
+                "scoreA": 19,
+                "scoreB": 19,
+                "events": 54,
+                "sig": "b9fe92bb"
             }
         },
         {
@@ -37167,12 +37167,12 @@
             "seed": 1660637914,
             "expect": {
                 "win": "b",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 64,
-                "sig": "0e4b14a2"
+                "scoreA": 20,
+                "scoreB": 17,
+                "events": 48,
+                "sig": "eb84f524"
             }
         },
         {
@@ -37218,12 +37218,12 @@
             "seed": 189213987,
             "expect": {
                 "win": "b",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 27,
-                "scoreB": 29,
-                "events": 61,
-                "sig": "c12ef19d"
+                "how": "TKO",
+                "rd": 1,
+                "scoreA": 0,
+                "scoreB": 0,
+                "events": 19,
+                "sig": "1c9a1a9a"
             }
         },
         {
@@ -37268,13 +37268,13 @@
             },
             "seed": 903037141,
             "expect": {
-                "win": "b",
+                "win": "a",
                 "how": "KO",
                 "rd": 3,
-                "scoreA": 19,
+                "scoreA": 18,
                 "scoreB": 18,
-                "events": 63,
-                "sig": "fc356648"
+                "events": 48,
+                "sig": "2dd439d9"
             }
         },
         {
@@ -37320,12 +37320,12 @@
             "seed": 2095271987,
             "expect": {
                 "win": "b",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 28,
-                "scoreB": 29,
-                "events": 59,
-                "sig": "6701f1e0"
+                "scoreA": 18,
+                "scoreB": 20,
+                "events": 42,
+                "sig": "284b6e06"
             }
         },
         {
@@ -37375,8 +37375,8 @@
                 "rd": 3,
                 "scoreA": 18,
                 "scoreB": 20,
-                "events": 54,
-                "sig": "7adcf032"
+                "events": 48,
+                "sig": "39cf3911"
             }
         },
         {
@@ -37421,13 +37421,13 @@
             },
             "seed": 1548407988,
             "expect": {
-                "win": "b",
-                "how": "Angka",
+                "win": "a",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 26,
-                "scoreB": 30,
-                "events": 64,
-                "sig": "0faabc83"
+                "scoreA": 15,
+                "scoreB": 20,
+                "events": 54,
+                "sig": "1417ac16"
             }
         },
         {
@@ -37474,11 +37474,11 @@
             "expect": {
                 "win": "a",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 19,
-                "scoreB": 19,
-                "events": 50,
-                "sig": "2ad8573a"
+                "rd": 2,
+                "scoreA": 8,
+                "scoreB": 9,
+                "events": 37,
+                "sig": "fc17bd99"
             }
         },
         {
@@ -37523,13 +37523,13 @@
             },
             "seed": 2033762330,
             "expect": {
-                "win": "a",
-                "how": "Angka",
+                "win": "b",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 29,
-                "scoreB": 27,
-                "events": 63,
-                "sig": "aa025f93"
+                "scoreA": 19,
+                "scoreB": 18,
+                "events": 43,
+                "sig": "5a972746"
             }
         },
         {
@@ -37575,12 +37575,12 @@
             "seed": 738322710,
             "expect": {
                 "win": "b",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 26,
-                "scoreB": 29,
-                "events": 59,
-                "sig": "6c0e2416"
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 8,
+                "scoreB": 10,
+                "events": 26,
+                "sig": "01d93470"
             }
         },
         {
@@ -37627,11 +37627,11 @@
             "expect": {
                 "win": "a",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 20,
-                "scoreB": 18,
-                "events": 60,
-                "sig": "47b5df3b"
+                "rd": 2,
+                "scoreA": 10,
+                "scoreB": 9,
+                "events": 34,
+                "sig": "79c06827"
             }
         },
         {
@@ -37678,11 +37678,11 @@
             "expect": {
                 "win": "b",
                 "how": "KO",
-                "rd": 3,
-                "scoreA": 19,
-                "scoreB": 19,
-                "events": 57,
-                "sig": "c9485025"
+                "rd": 2,
+                "scoreA": 9,
+                "scoreB": 10,
+                "events": 37,
+                "sig": "dd30f216"
             }
         },
         {
@@ -37728,12 +37728,12 @@
             "seed": 738411969,
             "expect": {
                 "win": "b",
-                "how": "Angka",
+                "how": "KO",
                 "rd": 3,
-                "scoreA": 27,
-                "scoreB": 29,
-                "events": 61,
-                "sig": "1933e1ef"
+                "scoreA": 18,
+                "scoreB": 19,
+                "events": 44,
+                "sig": "f2406f42"
             }
         },
         {
@@ -37779,12 +37779,12 @@
             "seed": 3917330340,
             "expect": {
                 "win": "a",
-                "how": "Angka",
-                "rd": 3,
-                "scoreA": 30,
-                "scoreB": 26,
-                "events": 55,
-                "sig": "aaed20a7"
+                "how": "KO",
+                "rd": 2,
+                "scoreA": 10,
+                "scoreB": 9,
+                "events": 29,
+                "sig": "a17104cd"
             }
         }
     ],

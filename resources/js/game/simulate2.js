@@ -187,7 +187,8 @@ export function simulateV2(R, a, b, seed) {
     }
 
     const K = F.knockdown;
-    if (big && hp[def] < K.hpBelow && rng.int(1000) < (K.enduranceRef - D.endurance - idiv(D.balance, K.balanceDiv)) * K.k) {
+    const kdTry = (big && hp[def] < K.hpBelow) || (d >= K.heavyDmg && hp[def] < K.heavyHpBelow);
+    if (kdTry && rng.int(1000) < (K.enduranceRef - D.endurance - idiv(D.balance, K.balanceDiv)) * K.k) {
       kd[def]++;
       kdRound[def]++;
       if (kdRound[def] >= K.maxPerRoundTko) {

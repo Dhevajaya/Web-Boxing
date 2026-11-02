@@ -46,6 +46,7 @@ $ev = [];
 $archW = $archN = [];
 $tkoLeg = $draw = 0;
 $jurusHit = 0;
+$withKd = 0;
 $endHp = 0;
 for ($i = 0; $i < $n; $i++) {
     $a = $side();
@@ -71,6 +72,9 @@ for ($i = 0; $i < $n; $i++) {
             $archW[$x['style']] = ($archW[$x['style']] ?? 0) + 1;
         }
     }
+    if (array_filter($r['events'], fn ($e) => $e['t'] === 'kd' || ($e['t'] === 'ko' && ($e['why'] ?? '') !== 'leg'))) {
+        $withKd++;
+    }
     $last = end($r['events']);
     $endHp += $last['ha'] + $last['hb'];
 }
@@ -82,6 +86,7 @@ foreach ($how as $k => $v) {
 echo '  seri: '.$pct($draw).'   TKO kaki: '.$pct($tkoLeg)."\n";
 ksort($rdEnd);
 echo '  selesai di ronde: '.json_encode($rdEnd)."\n";
+echo '  laga dengan jatuh/hitungan: '.$pct($withKd)."\n";
 echo '  HP rata-rata di akhir: '.intdiv($endHp, 2 * $n)."\n";
 echo "Kejadian per laga:\n";
 arsort($ev);

@@ -30,8 +30,9 @@ owner bisa mengubah sebagian dari panel admin → **Pengaturan** tanpa deploy ul
 - **Napas**: tiap teknik memakai napas; napas rendah menurunkan akurasi dan kerusakan. **Rusak kaki** dari low kick: 50% = lambat, 100% = TKO.
 - **Meter Bara** terisi dari serangan bersih, pertahanan, dan terkena serangan. Saat penuh, jurus keluar (maks 1 per ronde).
 - Skor ronde: tangan 1, tendangan badan 2, tendangan kepala 3, jatuh +3. Ronde 10–9 (−1 tiap jatuh); poin sama → kerusakan lebih banyak menang ronde.
+- Jatuh: pukulan keras saat HP < 750, atau serangan berat (≥150) saat HP < 350; lalu hitungan wasit. HP hanya pulih sedikit di jeda ronde.
 - Hasil: KO, TKO (3 jatuh dalam satu ronde atau kaki rusak), atau Angka; seri dipecah kerusakan total lalu serangan bersih.
-- Keseimbangan diuji dengan `php tools/balance-v2.php` (10.000 laga: ±35% KO/TKO, tiap archetype 47–53%).
+- Keseimbangan diuji dengan `php tools/balance-v2.php` (10.000 laga: ±80% KO/TKO, ±20% angka, rata-rata 2 kali jatuh per laga, tiap archetype 47–52%).
 
 ## Malam Gelanggang (otomatis, dulu Fight Night)
 

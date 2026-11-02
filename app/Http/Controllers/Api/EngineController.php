@@ -29,8 +29,13 @@ class EngineController extends Controller
         if (! in_array($version, [1, $rules->current], true)) {
             return $this->fail('invalid', 'Versi mesin tidak dikenal.');
         }
-        $inA = $factory->defaultInput($ua, $version);
-        $inB = $factory->defaultInput($ub, $version);
+        // Petarung terdaftar memakai input aslinya (atribut + poin, gaya, jurus); lainnya stat dasar.
+        $people = $version === $rules->current
+            ? Fighter::whereIn('instagram_username', [$ua, $ub])->active()->get()->keyBy('instagram_username')
+            : collect();
+        $input = fn (string $u) => $people->has($u) ? $people[$u]->fightInput([], $version) : $factory->defaultInput($u, $version);
+        $inA = $input($ua);
+        $inB = $input($ub);
         $r = $sim->simulate($inA, $inB, $seed, $version);
 
         return $this->ok([
@@ -45,6 +50,7 @@ class EngineController extends Controller
             'scoreB' => $r['scoreB'],
             'events' => count($r['events']),
             'sig' => FightSimulator::signature($r),
-        ], headers: ['Cache-Control' => 'public, max-age=86400, s-maxage=86400']);
+            'registered' => ['a' => $people->has($ua), 'b' => $people->has($ub)],
+        ], headers: ['Cache-Control' => $people->isEmpty() ? 'public, max-age=3600' : 'no-store']);
     }
 }
